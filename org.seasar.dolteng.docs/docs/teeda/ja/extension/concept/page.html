@@ -1,0 +1,612 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta http-equiv="Content-Language" content="ja" /> 
+<meta http-equiv="Content-Style-Type" content="text/css" /> 
+<title>Teeda - Extension - 概念 - ページモデル</title>
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/main.css" media="screen,projection" />
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/print.css" media="print" />
+<link href="../../css/maven-base.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/maven-theme.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/prettify.css" type="text/css" rel="stylesheet" media="screen" />
+<script type="text/javascript" src="../../js/prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+
+<div id="wrapper">
+
+<div id="header">
+
+<div class="line"><span class="hide">spacer</span></div>
+
+<div id="logo"><h1 id="h01" class="hide">The Seasar Foundation Project Site</h1><img src="http://www.seasar.org/images/seasar_logo_blue.gif" alt="The Seasar Foundation" width="390" height="180" /></div>
+
+<div id="tool">
+
+<h2><a href="http://search.seasar.org/">Site Search</a></h2>
+
+<form id="search" action="http://search.seasar.org/">
+<div>
+	<input id="search_phrase" type="text" name="phrase" size="20" />
+	<input type="hidden" name="perpage" value="30" />
+	<input type="hidden" name="enc" value="UTF-8" />
+	<input id="search_go" type="submit" value="Search" />
+</div>
+</form>
+
+<h2>Teeda Banner</h2>
+
+<p><a href="http://teeda.seasar.org/teeda_banner.png"><img src="http://teeda.seasar.org/teeda_banner.png" alt="Teeda Banner" title="Teeda Banner" width="146" height="33" /></a></p>
+
+</div>
+
+<div id="navi">
+<p><a href="../../../en/">English</a> | <a href="../../../ja/">Japanese</a></p>
+</div>
+
+</div><!-- header -->
+
+<div id="contents_left">
+           
+  
+
+  
+    
+  
+  
+                   <h2>About</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">ホーム</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../license.html">ライセンス</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../downloads.html">ダウンロード</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../changelog.html">変更履歴</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../roadmap.html">ロードマップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://ml.seasar.org/mailman/listinfo/seasar-user">メーリングリスト</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://www.seasar.org/issues/browse/TEEDA">トラッキング</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://svn.seasar.org/browse/?root=teeda">SVN リポジトリブラウザ</a>
+        </li>
+          </ul>
+          <h2>General</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../env.html">環境</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../setup.html">開発環境のセットアップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../deploy.html">実行環境へのデプロイ</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://www.seasar.org/wiki/index.php?FAQ%2FTeeda">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../presentations.html">プレゼンテーション資料</a>
+        </li>
+          </ul>
+          <h2>Teeda Core</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_core.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../example.html">サンプル解説</a>
+        </li>
+          </ul>
+          <h2>Teeda Extension</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../extension/index.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/firststep/index.html">ファーストステップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/tutorial/index.html">チュートリアル</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/example.html">サンプル解説</a>
+        </li>
+              
+                
+              
+            
+            
+      
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="../../extension/concept/index.html">概念</a>
+                <ul>
+                  
+    <li class="none">
+              <strong>ページモデル</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/concept/prg.html">PRGパターン</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/concept/lifecycle.html">ライフサイクル</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/concept/scope.html">状態とスコープ</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/concept/layout.html">レイアウト</a>
+        </li>
+              </ul>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/reverse/index.html">逆引きリファレンス</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/reference/index.html">リファレンス</a>
+              </li>
+          </ul>
+          <h2>Teeda Ajax</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_ajax.html">概要</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../kumu.html">Kumu</a>
+              </li>
+          </ul>
+          <h2>プロジェクト文書</h2>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-info.html">プロジェクト情報</a>
+              </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-reports.html">プロジェクトレポート</a>
+              </li>
+          </ul>
+          <h2>モジュール</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Teeda</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-core/ja/index.html">Teeda Core</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-extension/ja/index.html">Teeda Extension</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-ajax/ja/index.html">Teeda Ajax</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-tiger/ja/index.html">Teeda Tiger</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy" name="poweredBy">
+            <img alt="Built by Maven" src="../../images/logos/maven-feather.png" />
+          </a>
+                       
+  
+
+  
+    
+  
+  
+  </div><!-- contents_left -->
+
+<div id="contents_center">
+
+<div id="article">
+<div class="section"><h2><a name="ページモデル"></a>
+ページモデル</h2>
+<ul><li><a href="#概要">概要</a>
+</li>
+<li><a href="#テンプレートHTML">テンプレートHTML</a>
+</li>
+<li><a href="#ページクラス">ページクラス</a>
+</li>
+<li><a href="#レンダリング">レンダリング</a>
+</li>
+<li><a href="#ポストバック">ポストバック</a>
+</li>
+<li><a href="#サブアプリケーション">サブアプリケーション</a>
+</li>
+<li><a href="#命名規約">命名規約</a>
+<ul><li><a href="#テンプレートHTMLの命名規約">
+								テンプレートHTMLの命名規約
+							</a>
+</li>
+<li><a href="#ページクラスの命名規約">ページクラスの命名規約</a>
+</li>
+<li><a href="#ページ名の命名規約">ページ名の命名規約</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section"><h2><a name="概要"></a>
+概要</h2>
+<div class="sidebar">ページクラスとアクションクラスを併用することもできます．</div><p>Teeda Extensionは，ページモデルに基づくプレゼンテーションフレームワークです．</p>
+<p>
+				ページを構成するのは，静的なテンプレートとなるHTMLと， 動的な情報を持つページクラスです．
+				テンプレートHTMLとページクラスは1対1に対応します．
+			</p>
+<img src="../../images/extension/concept/page1.png" alt="ページモデル" /></div>
+<div class="section"><h2><a name="テンプレートHTML"></a>
+テンプレートHTML</h2>
+<p>Teeda Extensionは，ビューにJSPではなくHTML (正確にはXHTML) を使用します．</p>
+<p>
+				テンプレートHTMLは， ブラウザに向けてレンダリングされるHTMLのひな形で，
+				主にid属性を使用して実行時に置き換える部分を示します．
+			</p>
+<h5>テンプレートHTMLの例</h5>
+<div class="source"><pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+  &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;ja&quot; lang=&quot;ja&quot;&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    name &lt;span id=&quot;name&quot;&gt;dummy&lt;/span&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+<p>
+				上のテンプレートHTMLの例では，
+				<code>&lt;span&gt;</code>
+				要素に
+				<code>&quot;name&quot;</code>
+				というidが付けられています．
+			</p>
+</div>
+<div class="section"><h2><a name="ページクラス"></a>
+ページクラス</h2>
+<p>ページクラスはテンプレートHTMLに対応する情報を保持するクラスです．</p>
+<p>
+				ページクラスはPOJO(Plain Old Java Object)であり，
+				特定のクラスを継承したり，インタフェースを実装したりする必要はありません．
+			</p>
+<p>
+				ページクラスは動的な情報をプロパティに保持します．
+				getter/setterメソッドを使うJavaBeans流のプロパティだけでなく，
+				publicフィールドもプロパティとして利用可能です．
+			</p>
+<h5>ページクラスの例</h5>
+<div class="source"><pre>
+public class HelloPage {
+    public String name =&quot;ABC&quot;;
+}
+</pre>
+</div>
+<p>
+				上のページクラスの例では，
+				<code>name</code>
+				というプロパティが定義されています．
+			</p>
+</div>
+<div class="section"><h2><a name="レンダリング"></a>
+レンダリング</h2>
+<p>
+				実行時， テンプレートHTMLの動的な部分は対応するページクラスのプロパティで置き換えられて，
+				ブラウザに向けてレンダリングされます．
+			</p>
+<img src="../../images/extension/concept/page2.png" alt="レンダリング" /><p>
+				上のテンプレートHTMLの例にページクラスの例が適用されると，レンダリングされるHTMLは次のようになります．
+			</p>
+<div class="source"><pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+  &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;ja&quot; lang=&quot;ja&quot;&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    name &lt;span id=&quot;name&quot;&gt;ABC&lt;/span&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+<p>
+				テンプレートHTMLのid属性とページクラスのプロパティは規約によって結びつけられるため，
+				明示的に指定をする必要はありません．
+			</p>
+</div>
+<div class="section"><h2><a name="ポストバック"></a>
+ポストバック</h2>
+<p>
+				テンプレートHTMLは
+				<code>&lt;form&gt;</code>
+				を持つことが出来ます． TeedaExtensionでは，
+				<code>&lt;form&gt;</code>
+				をサブミットした場合の宛先 (action) は， 常に表示されているそのページ自身となります．
+			</p>
+<img src="../../images/extension/concept/page3.png" alt="ポストバック" /><p>
+				このように，
+				<code>&lt;form&gt;</code>
+				がサブミットされてページが呼び戻されることを「
+				<strong>ポストバック</strong>
+				」と呼びます．
+			</p>
+<div class="caution"><div>注意点</div><p>
+					Teeda Extensionでは，HTTPプロトコルのPOSTメソッドはポストバックでのみ使用します．
+					また，ポストバックは常にPOSTメソッドを使用します．
+				</p>
+</div></div>
+<div class="section"><h2><a name="サブアプリケーション"></a>
+サブアプリケーション</h2>
+<p>同じディレクトリ (パッケージ) のページは一つの「サブアプリケーション」を構成します．</p>
+<p>
+				入力画面・確認画面・完了画面のように，
+				一連のインタラクションを構成する複数のページを同じサブアプリケーションに含めることにより，
+				状態の引継ぎが容易になります． 詳細は「
+				<a href="scope.html">状態とスコープ</a>
+
+				」を参照してください．
+			</p>
+</div>
+<div class="section"><h2><a name="命名規約"></a>
+命名規約</h2>
+<div class="sidebar">
+				SMART deployの詳細はSeasar2の
+				<a href="http://s2container.seasar.org/2.4/ja/DIContainer.html" class="externalLink">
+					「DIContainer」
+				</a>
+
+				－
+				<a href="http://s2container.seasar.org/2.4/ja/DIContainer.html#SMARTdeploy" class="externalLink">
+					「SAMRT deploy」
+				</a>
+
+				を参照してください．
+			</div><p>
+				Teeda Extensionは，
+				<a href="http://s2container.seasar.org/2.4/ja/" class="externalLink">
+					Seasar2
+				</a>
+
+				のSMART deployに準拠しています．
+			</p>
+<p>
+				テンプレートHTML及びページクラスをSMART deployの規約に従って配置することで，
+				面倒な設定が不要となっています．
+			</p>
+<div class="section"><h3><a name="テンプレートHTMLの命名規約"></a>
+テンプレートHTMLの命名規約</h3>
+<p>
+					テンプレートHTMLは，
+					<var>ビュールート</var>
+					ディレクトリの下に， サブアプリケーション単位のサブディレクトリを作成して配置します． デフォルトの
+					<var>ビュールート</var>
+					ディレクトリは
+					<code>/view</code>
+					です．
+				</p>
+<p>
+					テンプレートHTMLは先頭を英小文字とします． デフォルトの拡張子は
+					<code>.html</code>
+					です．
+				</p>
+<p>以下はテンプレートHTMLのパスの例です．</p>
+<div class="source"><pre>
+/view/hello/hello.html
+</pre>
+</div>
+<p>このページにアクセスするURLは次のようになります．</p>
+<div class="source"><pre>
+http://localhost:8080/teeda-html-example/view/hello/hello.html
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="ページクラスの命名規約"></a>
+ページクラスの命名規約</h3>
+<p>
+					ページクラスは，
+					&lt;ルートパッケージ&gt;.&lt;サブアプリケーションルートパッケージ&gt;の下に，
+					サブアプリケーション単位のサブパッケージを作成して配置します． デフォルトの
+					&lt;サブアプリケーションルートパッケージ&gt;は
+					<code>web</code>
+					です．
+				</p>
+<p>
+					ページクラスの名前は，テンプレートHTMLファイルの名前の先頭を大文字にし，
+					拡張子を取り除いて接尾辞を付加したものにします． デフォルトの接尾辞は
+					<code>Page</code>
+					です．
+				</p>
+<p>
+					以下は，
+					<code>/view/hello/hello.html</code>
+					に対応するページクラスの例です．
+				</p>
+<div class="source"><pre>
+examples.teeda.web.hello.HelloPage
+</pre>
+</div>
+<p>
+					この例では，
+					<code>examples.teeda</code>
+					がルートパッケージです．
+				</p>
+</div>
+<div class="section"><h3><a name="ページ名の命名規約"></a>
+ページ名の命名規約</h3>
+<p>
+					ページを表す名前は，
+					<var>ビュールート</var>
+					ディレクトリを基点として，
+					サブアプリケーション単位のサブディレクトリとページクラスの名前をアンダースコア
+					<code>'_'</code>
+					でつなげたものです．
+					ただし，サブディレクトリおよびページクラスはJavaBeansにおけるプロパティの規約に従い，
+					先頭を小文字にします (先頭の文字と2文字目がともに大文字の場合はそのまま)．
+				</p>
+<p>
+					以下は，
+					<code>/view/hello/hello.html</code>
+					に対応するページ名の例です．
+				</p>
+<div class="source"><pre>
+hello_helloPage
+</pre>
+</div>
+</div>
+</div>
+
+</div><!-- article -->
+
+</div><!-- contents_center -->
+
+<div id="footer">
+<address>  &copy; Copyright
+  
+          2005-2008,
+    
+          The Seasar Foundation and the others. All rights reserved.
+      </address>
+<div class="line"><span class="hide">spacer</span></div>
+</div><!-- footer -->
+
+</div><!-- wrapper -->
+
+</body>
+</html>

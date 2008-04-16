@@ -1,0 +1,566 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta http-equiv="Content-Language" content="ja" /> 
+<meta http-equiv="Content-Style-Type" content="text/css" /> 
+<title>Teeda - Extension - 逆引きリファレンス - 条件制御</title>
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/main.css" media="screen,projection" />
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/print.css" media="print" />
+<link href="../../css/maven-base.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/maven-theme.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/prettify.css" type="text/css" rel="stylesheet" media="screen" />
+<script type="text/javascript" src="../../js/prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+
+<div id="wrapper">
+
+<div id="header">
+
+<div class="line"><span class="hide">spacer</span></div>
+
+<div id="logo"><h1 id="h01" class="hide">The Seasar Foundation Project Site</h1><img src="http://www.seasar.org/images/seasar_logo_blue.gif" alt="The Seasar Foundation" width="390" height="180" /></div>
+
+<div id="tool">
+
+<h2><a href="http://search.seasar.org/">Site Search</a></h2>
+
+<form id="search" action="http://search.seasar.org/">
+<div>
+	<input id="search_phrase" type="text" name="phrase" size="20" />
+	<input type="hidden" name="perpage" value="30" />
+	<input type="hidden" name="enc" value="UTF-8" />
+	<input id="search_go" type="submit" value="Search" />
+</div>
+</form>
+
+<h2>Teeda Banner</h2>
+
+<p><a href="http://teeda.seasar.org/teeda_banner.png"><img src="http://teeda.seasar.org/teeda_banner.png" alt="Teeda Banner" title="Teeda Banner" width="146" height="33" /></a></p>
+
+</div>
+
+<div id="navi">
+<p><a href="../../../en/">English</a> | <a href="../../../ja/">Japanese</a></p>
+</div>
+
+</div><!-- header -->
+
+<div id="contents_left">
+           
+  
+
+  
+    
+  
+  
+                   <h2>About</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">ホーム</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../license.html">ライセンス</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../downloads.html">ダウンロード</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../changelog.html">変更履歴</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../roadmap.html">ロードマップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://ml.seasar.org/mailman/listinfo/seasar-user">メーリングリスト</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://www.seasar.org/issues/browse/TEEDA">トラッキング</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://svn.seasar.org/browse/?root=teeda">SVN リポジトリブラウザ</a>
+        </li>
+          </ul>
+          <h2>General</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../env.html">環境</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../setup.html">開発環境のセットアップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../deploy.html">実行環境へのデプロイ</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://www.seasar.org/wiki/index.php?FAQ%2FTeeda">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../presentations.html">プレゼンテーション資料</a>
+        </li>
+          </ul>
+          <h2>Teeda Core</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_core.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../example.html">サンプル解説</a>
+        </li>
+          </ul>
+          <h2>Teeda Extension</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../extension/index.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/firststep/index.html">ファーストステップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/tutorial/index.html">チュートリアル</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/example.html">サンプル解説</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/concept/index.html">概念</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+            
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="../../extension/reverse/index.html">逆引きリファレンス</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/output.html">出力</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/link.html">リンク</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/input.html">入力フォーム</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/validation.html">バリデーション</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/convert.html">コンバート</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/foreach.html">繰り返し</a>
+        </li>
+                  
+    <li class="none">
+              <strong>条件制御</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/layout.html">レイアウト</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/transition.html">画面遷移と状態</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/preview.html">プレビュー</a>
+        </li>
+              </ul>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/reference/index.html">リファレンス</a>
+              </li>
+          </ul>
+          <h2>Teeda Ajax</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_ajax.html">概要</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../kumu.html">Kumu</a>
+              </li>
+          </ul>
+          <h2>プロジェクト文書</h2>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-info.html">プロジェクト情報</a>
+              </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-reports.html">プロジェクトレポート</a>
+              </li>
+          </ul>
+          <h2>モジュール</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Teeda</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-core/ja/index.html">Teeda Core</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-extension/ja/index.html">Teeda Extension</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-ajax/ja/index.html">Teeda Ajax</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-tiger/ja/index.html">Teeda Tiger</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy" name="poweredBy">
+            <img alt="Built by Maven" src="../../images/logos/maven-feather.png" />
+          </a>
+                       
+  
+
+  
+    
+  
+  
+  </div><!-- contents_left -->
+
+<div id="contents_center">
+
+<div id="article">
+<div class="section"><h2><a name="条件制御"></a>
+条件制御</h2>
+<ul><li><a href="#条件が成立した場合だけ要素を出力するには">
+						条件が成立した場合だけ要素を出力するには
+					</a>
+</li>
+<li><a href="#条件が成立しなかった場合だけ要素を出力するには">
+						条件が成立しなかった場合だけ要素を出力するには
+					</a>
+</li>
+</ul>
+<div class="section"><h3><a name="条件が成立した場合だけ要素を出力するには"></a>
+条件が成立した場合だけ要素を出力するには</h3>
+<div class="sidebar">
+					他の機能に割り当てられている要素と併用することはできません．
+					そのような場合は他の機能に割り当てられている要素の外側に
+					<code>&lt;span&gt;</code>
+					要素や
+					<code>&lt;div&gt;</code>
+					要素を記述し， その
+					<code>id</code>
+					属性を
+					<code>is～</code>
+					にします．
+				</div><p>
+					任意の要素に
+					<code>id</code>
+					属性を付け，
+					<code>is</code>
+					で始まる値とします．
+				</p>
+<p>
+					ページクラスに，要素の
+					<code>id</code>
+					属性から先頭の
+					<code>is</code>
+					を除いた名前で， 型が
+					<code>boolean</code>
+					のプロパティを用意します．
+					<br />
+</p>
+<p> </p>
+<div class="sidebar"><a href="../reference/xhtml.html#Teeda_Extension拡張属性">
+						Teeda Extension拡張属性
+					</a>
+
+					を使用するには
+					<code>&lt;html&gt;</code>
+					要素で
+					<a href="../reference/xhtml.html#te名前空間">te名前空間</a>
+
+					を宣言する必要があります．
+				</div><p>
+					レンダリング時， プロパティが
+					<code>true</code>
+					の場合のみ要素の開始タグ及び終了タグとその内容が出力されます．
+					<a href="output.html#タグを出力したくない場合には">
+						タグを出力したくない場合
+					</a>
+
+					には
+					<code>te:omittag</code>
+					属性に
+					<code>true</code>
+					を設定します．
+				</p>
+<p>
+					プロパティが
+					<code>false</code>
+					の場合，要素 (開始タグ及び終了タグと内容) は出力されません．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+aaa&lt;span id=&quot;isDisplay&quot;&gt;bbb&lt;/span&gt;ccc
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public boolean display;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>display</code>
+					プロパティが
+					<code>true</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+aaa&lt;span id=&quot;isDisplay&quot;&gt;bbb&lt;/span&gt;ccc
+</pre>
+</div>
+<p><code>display</code>
+					プロパティが
+					<code>false</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+aaaccc
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="条件が成立しなかった場合だけ要素を出力するには"></a>
+条件が成立しなかった場合だけ要素を出力するには</h3>
+<div class="sidebar">
+					他の機能に割り当てられている要素と併用することはできません．
+					そのような場合は他の機能に割り当てられている要素の外側に
+					<code>&lt;span&gt;</code>
+					要素や
+					<code>&lt;div&gt;</code>
+					要素を記述し， その
+					<code>id</code>
+					属性を
+					<code>isNot～</code>
+					にします．
+				</div><p>
+					任意の要素に
+					<code>id</code>
+					属性を付け，
+					<code>isNot</code>
+					で始まる値とします．
+				</p>
+<p>
+					ページクラスに，要素の
+					<code>id</code>
+					属性から先頭の
+					<code>isNot</code>
+					を除いた名前で， 型が
+					<code>boolean</code>
+					のプロパティを用意します．
+					<br />
+</p>
+<p> </p>
+<div class="sidebar"><a href="../reference/xhtml.html#Teeda_Extension拡張属性">
+						Teeda Extension拡張属性
+					</a>
+
+					を使用するには
+					<code>&lt;html&gt;</code>
+					要素で
+					<a href="../reference/xhtml.html#te名前空間">te名前空間</a>
+
+					を宣言する必要があります．
+				</div><p>
+					レンダリング時， プロパティが
+					<code>false</code>
+					の場合のみ要素の開始タグ及び終了タグとその内容が出力されます．
+					<a href="output.html#タグを出力したくない場合には">
+						タグを出力したくない場合
+					</a>
+
+					には
+					<code>te:omittag</code>
+					属性に
+					<code>true</code>
+					を設定します．
+				</p>
+<p>
+					プロパティが
+					<code>true</code>
+					の場合，要素 (開始タグ及び終了タグと内容) は出力されません．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+aaa&lt;span id=&quot;isNotHide&quot;&gt;bbb&lt;/span&gt;ccc
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public boolean hide;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>hide</code>
+					プロパティが
+					<code>false</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+aaa&lt;span id=&quot;isNotHide&quot;&gt;bbb&lt;/span&gt;ccc
+</pre>
+</div>
+<p><code>hide</code>
+					プロパティが
+					<code>true</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+aaaccc
+</pre>
+</div>
+</div>
+</div>
+
+</div><!-- article -->
+
+</div><!-- contents_center -->
+
+<div id="footer">
+<address>  &copy; Copyright
+  
+          2005-2008,
+    
+          The Seasar Foundation and the others. All rights reserved.
+      </address>
+<div class="line"><span class="hide">spacer</span></div>
+</div><!-- footer -->
+
+</div><!-- wrapper -->
+
+</body>
+</html>

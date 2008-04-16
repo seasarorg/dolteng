@@ -1,0 +1,1067 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta http-equiv="Content-Language" content="ja" /> 
+<meta http-equiv="Content-Style-Type" content="text/css" /> 
+<title>Teeda - Extension - 逆引きリファレンス - 画面遷移と状態</title>
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/main.css" media="screen,projection" />
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/print.css" media="print" />
+<link href="../../css/maven-base.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/maven-theme.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/prettify.css" type="text/css" rel="stylesheet" media="screen" />
+<script type="text/javascript" src="../../js/prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+
+<div id="wrapper">
+
+<div id="header">
+
+<div class="line"><span class="hide">spacer</span></div>
+
+<div id="logo"><h1 id="h01" class="hide">The Seasar Foundation Project Site</h1><img src="http://www.seasar.org/images/seasar_logo_blue.gif" alt="The Seasar Foundation" width="390" height="180" /></div>
+
+<div id="tool">
+
+<h2><a href="http://search.seasar.org/">Site Search</a></h2>
+
+<form id="search" action="http://search.seasar.org/">
+<div>
+	<input id="search_phrase" type="text" name="phrase" size="20" />
+	<input type="hidden" name="perpage" value="30" />
+	<input type="hidden" name="enc" value="UTF-8" />
+	<input id="search_go" type="submit" value="Search" />
+</div>
+</form>
+
+<h2>Teeda Banner</h2>
+
+<p><a href="http://teeda.seasar.org/teeda_banner.png"><img src="http://teeda.seasar.org/teeda_banner.png" alt="Teeda Banner" title="Teeda Banner" width="146" height="33" /></a></p>
+
+</div>
+
+<div id="navi">
+<p><a href="../../../en/">English</a> | <a href="../../../ja/">Japanese</a></p>
+</div>
+
+</div><!-- header -->
+
+<div id="contents_left">
+           
+  
+
+  
+    
+  
+  
+                   <h2>About</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">ホーム</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../license.html">ライセンス</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../downloads.html">ダウンロード</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../changelog.html">変更履歴</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../roadmap.html">ロードマップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://ml.seasar.org/mailman/listinfo/seasar-user">メーリングリスト</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://www.seasar.org/issues/browse/TEEDA">トラッキング</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://svn.seasar.org/browse/?root=teeda">SVN リポジトリブラウザ</a>
+        </li>
+          </ul>
+          <h2>General</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../env.html">環境</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../setup.html">開発環境のセットアップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../deploy.html">実行環境へのデプロイ</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://www.seasar.org/wiki/index.php?FAQ%2FTeeda">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../presentations.html">プレゼンテーション資料</a>
+        </li>
+          </ul>
+          <h2>Teeda Core</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_core.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../example.html">サンプル解説</a>
+        </li>
+          </ul>
+          <h2>Teeda Extension</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../extension/index.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/firststep/index.html">ファーストステップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/tutorial/index.html">チュートリアル</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/example.html">サンプル解説</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/concept/index.html">概念</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+            
+            
+      
+              
+            <li class="expanded">
+              <a href="../../extension/reverse/index.html">逆引きリファレンス</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/output.html">出力</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/link.html">リンク</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/input.html">入力フォーム</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/validation.html">バリデーション</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/convert.html">コンバート</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/foreach.html">繰り返し</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/condition.html">条件制御</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/layout.html">レイアウト</a>
+        </li>
+                  
+    <li class="none">
+              <strong>画面遷移と状態</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/preview.html">プレビュー</a>
+        </li>
+              </ul>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/reference/index.html">リファレンス</a>
+              </li>
+          </ul>
+          <h2>Teeda Ajax</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_ajax.html">概要</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../kumu.html">Kumu</a>
+              </li>
+          </ul>
+          <h2>プロジェクト文書</h2>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-info.html">プロジェクト情報</a>
+              </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-reports.html">プロジェクトレポート</a>
+              </li>
+          </ul>
+          <h2>モジュール</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Teeda</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-core/ja/index.html">Teeda Core</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-extension/ja/index.html">Teeda Extension</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-ajax/ja/index.html">Teeda Ajax</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-tiger/ja/index.html">Teeda Tiger</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy" name="poweredBy">
+            <img alt="Built by Maven" src="../../images/logos/maven-feather.png" />
+          </a>
+                       
+  
+
+  
+    
+  
+  
+  </div><!-- contents_left -->
+
+<div id="contents_center">
+
+<div id="article">
+<div class="section"><h2><a name="画面遷移と状態"></a>
+画面遷移と状態</h2>
+<ul><li><a href="#画面遷移">画面遷移</a>
+<ul><li><a href="#初期表示やリダイレクト表示で別画面へ遷移するには">
+								初期表示やリダイレクト表示で別画面へ遷移するには
+							</a>
+</li>
+<li><a href="#ポストバックで別画面へ遷移するには">
+								ポストバックで別画面へ遷移するには
+							</a>
+</li>
+<li><a href="#異なったプロトコルで画面遷移するには">
+								異なったプロトコルで画面遷移するには
+							</a>
+</li>
+<li><a href="#外部サイトにリダイレクトするには">
+								外部サイトにリダイレクトするには
+							</a>
+</li>
+</ul>
+</li>
+<li><a href="#状態の引き継ぎ">状態の引き継ぎ</a>
+<ul><li><a href="#画面を表示したときの状態をサブミットされたときまで引き継ぐには">
+								画面を表示したときの状態をサブミットされたときまで引き継ぐには
+							</a>
+</li>
+<li><a href="#画面遷移の前後で状態を引き継ぐには">
+								画面遷移の前後で状態を引き継ぐには
+							</a>
+</li>
+<li><a href="#画面遷移の前後だけ状態を引き継ぐには">
+								画面遷移の前後だけ状態を引き継ぐには
+							</a>
+</li>
+<li><a href="#サブアプリケーション内の複数の画面に跨って状態を引き継ぐには">
+								サブアプリケーション内の複数の画面に跨って状態を引き継ぐには
+							</a>
+</li>
+<li><a href="#異なったサブアプリケーションに跨って状態を引き継ぐには">
+								異なったサブアプリケーションに跨って状態を引き継ぐには
+							</a>
+</li>
+<li><a href="#特定のサブミットボタンが押されたときは画面遷移で状態を引き継がないようにするには">
+								特定のサブミットボタンが押されたときは画面遷移で状態を引き継がないようにするには
+							</a>
+</li>
+<li><a href="#サブミットボタンが押されたときにサブアプリケーションスコープの状態を破棄するには">
+								サブミットボタンが押されたときにサブアプリケーションスコープの状態を破棄するには
+							</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section"><h2><a name="画面遷移"></a>
+画面遷移</h2>
+<div class="section"><h3><a name="初期表示やリダイレクト表示で別画面へ遷移するには"></a>
+初期表示やリダイレクト表示で別画面へ遷移するには</h3>
+<p><a href="../concept/lifecycle.html#initializeメソッド"><code>initialize()</code></a>
+
+					メソッドの戻り値で次画面のページクラスまたは
+					<a href="../concept/page.html#ページ名の命名規約">ページ名</a>
+
+					を指定します．
+				</p>
+<h5>例：ページクラス (FooPage.java)</h5>
+<div class="source"><pre>
+public Class initialize() {
+    return NextPage.class;
+}
+</pre>
+</div>
+<h4>関連項目</h4>
+<ul><li><a href="../concept/lifecycle.html#ライフサイクルメソッド">
+							ライフサイクルメソッド
+						</a>
+<ul><li><a href="../concept/lifecycle.html#initializeメソッド">
+									initializeメソッド
+								</a>
+</li>
+</ul>
+</li>
+<li><a href="../concept/lifecycle.html#リクエストパターン">
+							リクエストパターン
+						</a>
+</li>
+<li><a href="../concept/lifecycle.html#リクエストパターンとライフサイクルメソッド">
+							リクエストパターンとライフサイクルメソッド
+						</a>
+<ul><li><a href="../concept/lifecycle.html#初期表示">
+									初期表示
+								</a>
+</li>
+<li><a href="../concept/lifecycle.html#リダイレクト表示">
+									リダイレクト表示
+								</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section"><h3><a name="ポストバックで別画面へ遷移するには"></a>
+ポストバックで別画面へ遷移するには</h3>
+<p><a href="../concept/lifecycle.html#doメソッド"><code>do～()</code></a>
+
+					メソッドの戻り値で次画面のページクラスまたは
+					<a href="../concept/page.html#ページ名の命名規約">ページ名</a>
+
+					を指定します．
+				</p>
+<h5>例：ページクラス (FooPage.java)</h5>
+<div class="source"><pre>
+public Class doNext() {
+    return NextPage.class;
+}
+</pre>
+</div>
+<h4>関連項目</h4>
+<ul><li><a href="../concept/lifecycle.html#ライフサイクルメソッド">
+							ライフサイクルメソッド
+						</a>
+<ul><li><a href="../concept/lifecycle.html#doメソッド">
+									do～()メソッド
+								</a>
+</li>
+</ul>
+</li>
+<li><a href="../concept/lifecycle.html#リクエストパターン">
+							リクエストパターン
+						</a>
+</li>
+<li><a href="../concept/lifecycle.html#リクエストパターンとライフサイクルメソッド">
+							リクエストパターンとライフサイクルメソッド
+						</a>
+<ul><li><a href="../concept/lifecycle.html#ポストバック_自画面表示">
+									ポストバック (自画面表示)
+								</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section"><h3><a name="異なったプロトコルで画面遷移するには"></a>
+異なったプロトコルで画面遷移するには</h3>
+<div class="sidebar">プロトコルの他，ポート番号を指定することもできます．</div><p><a href="../concept/lifecycle.html#ライフサイクルメソッド">
+						ライフサイクルメソッド
+					</a>
+
+					に
+					<code>@Redirect</code>
+					アノテーションを付与し，リダイレクトで使用するプロトコル (httpまたはhttps) を指定します．
+				</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@Redirect(protocol = ProtocolType.HTTPS)
+public Class doXxx() {
+    return XxxPage.class;
+}
+</pre>
+</div>
+<h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String doXxx_REDIRECT = &quot;protocol=https&quot;;
+public Class doXxx() {
+    return XxxPage.class;
+}
+</pre>
+</div>
+<h4>関連項目</h4>
+<ul><li><a href="../concept/lifecycle.html#ライフサイクルメソッド">
+							ライフサイクルメソッド
+						</a>
+</li>
+</ul>
+</div>
+<div class="section"><h3><a name="外部サイトにリダイレクトするには"></a>
+外部サイトにリダイレクトするには</h3>
+<p>
+					ページクラスに
+					<code>javax.servlet.http.HttpServletResponse</code>
+					型および
+					<code>javax.faces.context.FacesContext</code>
+					型のプロパティを用意します．
+					<a href="../concept/lifecycle.html#ライフサイクルメソッド">
+						ライフサイクルメソッドの中で
+					</a>
+<code>HttpServletResponse</code>
+					の
+					<code>sendRedirect(String location)</code>
+					メソッドを呼び出してリダイレクト先を指定します． その後，
+					<code>FacesContext</code>
+					の
+					<code>responseComplete()</code>
+					メソッドを呼び出します．
+				</p>
+<h5>例：ページクラス (FooPage.java)</h5>
+<div class="source"><pre>
+public HttpServletResponse response;
+public FacesContext facesContext;
+
+public Class doRedirect() {
+    String url = &quot;...&quot;;
+    response.sendRedirect(url);
+    facesContext.responseComplete();
+    return null;
+}
+</pre>
+</div>
+<h4>関連項目</h4>
+<ul><li><a href="../concept/lifecycle.html#ライフサイクルメソッド">
+							ライフサイクルメソッド
+						</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="section"><h2><a name="状態の引き継ぎ"></a>
+状態の引き継ぎ</h2>
+<div class="section"><h3><a name="画面を表示したときの状態をサブミットされたときまで引き継ぐには"></a>
+画面を表示したときの状態をサブミットされたときまで引き継ぐには</h3>
+<p><a href="../concept/lifecycle.html#初期表示">初期表示</a>
+
+					や
+					<a href="../concept/lifecycle.html#リダイレクト表示">
+						リダイレクト表示
+					</a>
+
+					，
+					<a href="../concept/lifecycle.html#ポストバック_自画面表示">
+						ポストバック (自画面表示)
+					</a>
+
+					等で画面を表示したときのページクラスの状態 (HTMLの
+					<code>&lt;input&gt;</code>
+					等にマッピングされていないプロパティの値) を， 画面がサブミットされたとき (
+					<a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					) まで引き継ぐには，
+					<a href="../concept/scope.html#ページスコープ">ページスコープ</a>
+
+					を使用します．
+				</p>
+<p><a href="../concept/scope.html#ページスコープ">ページスコープ</a>
+
+					を使用するには，引き継ぎたいプロパティに
+					<code>PageScope</code>
+					アノテーションを指定します．
+				</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@PageScope
+public String name;
+</pre>
+</div>
+<div class="sidebar">複数のプロパティをカンマ区切りで指定することができます．</div><h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String PAGE_SCOPE = &quot;name&quot;;
+public String name;
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，
+					<code>name</code>
+					プロパティは
+					<a href="../concept/scope.html#ページスコープ">ページスコープ</a>
+
+					に追加されます．
+				</p>
+<h4>関連項目</h4>
+<ul><li><a href="../concept/page.html#ポストバック">ポストバック</a>
+</li>
+<li><a href="../concept/lifecycle.html#リクエストパターン">
+							リクエストパターン
+						</a>
+</li>
+<li><a href="../concept/lifecycle.html#リクエストパターンとライフサイクルメソッド">
+							リクエストパターンとライフサイクルメソッド
+						</a>
+</li>
+<li><a href="../concept/scope.html#ページスコープ">
+							ページスコープ
+						</a>
+</li>
+</ul>
+</div>
+<div class="section"><h3><a name="画面遷移の前後で状態を引き継ぐには"></a>
+画面遷移の前後で状態を引き継ぐには</h3>
+<p><a href="../concept/lifecycle.html#ポストバック_リダイレクト">
+						ポストバック (リダイレクト)
+					</a>
+
+					時のページクラスの状態 (プロパティの値) を，
+					<a href="../concept/lifecycle.html#リダイレクト表示">
+						リダイレクト表示
+					</a>
+
+					まで引き継ぐには， 引き継ぎたいプロパティを，
+					画面遷移元のページクラスと画面遷移先のページクラスの両方に，
+					<strong>同じ名前と型</strong>
+					で用意します．
+				</p>
+<h5>例：画面遷移元ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public String name;
+</pre>
+</div>
+<h5>例：画面遷移先ページクラスのプロパティ (BarPage.java)</h5>
+<div class="source"><pre>
+public String name;
+</pre>
+</div>
+<p><a href="../concept/lifecycle.html#ポストバック_リダイレクト">
+						ポストバック (リダイレクト)
+					</a>
+
+					時， 画面遷移元と 画面遷移先のページクラスに共通のプロパティは
+					<a href="../concept/scope.html#デフォルトスコープ">
+						デフォルトスコープ
+					</a>
+
+					に追加されます．
+				</p>
+<div class="caution"><div>注意事項</div><p><a href="../concept/scope.html#デフォルトスコープ">
+							デフォルトスコープ
+						</a>
+
+						は実質
+						<a href="../concept/scope.html#サブアプリケーションスコープ">
+							サブアプリケーションスコープ
+						</a>
+
+						であるため， リダイレクト時に引き継いだ状態は，
+						同じサブアプリケーションの画面を表示している間引き継がれ続けます． この動作が不都合な場合は「
+						<a href="#画面遷移の前後だけ状態を引き継ぐには">
+							画面遷移の前後だけ状態を引き継ぐには
+						</a>
+
+						」を参照してください．
+					</p>
+</div><h4>関連項目</h4>
+<ul><li><a href="../concept/page.html#ポストバック">ポストバック</a>
+</li>
+<li><a href="../concept/lifecycle.html#リクエストパターン">
+							リクエストパターン
+						</a>
+</li>
+<li><a href="../concept/lifecycle.html#リクエストパターンとライフサイクルメソッド">
+							リクエストパターンとライフサイクルメソッド
+						</a>
+<ul><li><a href="../concept/lifecycle.html#ポストバック_リダイレクト">
+									ポストバック (リダイレクト)
+								</a>
+</li>
+<li><a href="../concept/lifecycle.html#リダイレクト表示">
+									リダイレクト表示
+								</a>
+</li>
+</ul>
+</li>
+<li><a href="../concept/scope.html#デフォルトスコープ">
+							デフォルトスコープ
+						</a>
+</li>
+</ul>
+</div>
+<div class="section"><h3><a name="画面遷移の前後だけ状態を引き継ぐには"></a>
+画面遷移の前後だけ状態を引き継ぐには</h3>
+<p><a href="../concept/lifecycle.html#ポストバック_リダイレクト">
+						ポストバック (リダイレクト)
+					</a>
+
+					時のページクラスの状態 (プロパティの値) を，
+					<a href="../concept/lifecycle.html#リダイレクト表示">
+						リダイレクト表示
+					</a>
+
+					まで引き継ぐが， その後は同じサブアプリケーション内の画面でも引き継がないようにするには， 画面遷移
+					<strong>元</strong>
+					ページクラスのプロパティに
+					<code>RedirectScope</code>
+					アノテーションを指定します．
+				</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@RedirectScope
+public String name;
+</pre>
+</div>
+<div class="sidebar">複数のプロパティをカンマ区切りで指定することができます．</div><h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String REDIRECT_SCOPE = &quot;name&quot;;
+public String name;
+</pre>
+</div>
+<p><a href="../concept/lifecycle.html#ポストバック_リダイレクト">
+						ポストバック (リダイレクト)
+					</a>
+
+					時，
+					<code>name</code>
+					プロパティは
+					<a href="../concept/scope.html#リダイレクトスコープ">
+						リダイレクトスコープ
+					</a>
+
+					に追加されます．
+				</p>
+<div class="caution"><div>注意事項</div><p><a href="../concept/scope.html#リダイレクトスコープ">
+							リダイレクトスコープ
+						</a>
+
+						は
+						<a href="../concept/lifecycle.html#リダイレクト表示">
+							リダイレクト表示
+						</a>
+
+						後に破棄されるため， 再読込を行うと状態は失われます． 再読込で状態を維持する必要がある場合は，
+						画面遷移
+						<strong>先</strong>
+						ページクラスのプロパティに
+						<a href="../concept/scope.html#ページスコープ">
+							ページスコープ
+						</a>
+
+						を指定してください． 詳細は「
+						<a href="#画面を表示したときの状態をサブミットされたときまで引き継ぐには">
+							画面を表示したときの状態をサブミットされたときまで引き継ぐには
+						</a>
+
+						」を参照してください．
+					</p>
+</div><h4>関連項目</h4>
+<ul><li><a href="../concept/page.html#ポストバック">ポストバック</a>
+</li>
+<li><a href="../concept/lifecycle.html#リクエストパターン">
+							リクエストパターン
+						</a>
+</li>
+<li><a href="../concept/lifecycle.html#リクエストパターンとライフサイクルメソッド">
+							リクエストパターンとライフサイクルメソッド
+						</a>
+<ul><li><a href="../concept/lifecycle.html#ポストバック_リダイレクト">
+									ポストバック (リダイレクト)
+								</a>
+</li>
+<li><a href="../concept/lifecycle.html#リダイレクト表示">
+									リダイレクト表示
+								</a>
+</li>
+</ul>
+</li>
+<li><a href="../concept/scope.html#リダイレクトスコープ">
+							リダイレクトスコープ
+						</a>
+</li>
+</ul>
+</div>
+<div class="section"><h3><a name="サブアプリケーション内の複数の画面に跨って状態を引き継ぐには"></a>
+サブアプリケーション内の複数の画面に跨って状態を引き継ぐには</h3>
+<p>
+					画面遷移の前後だけでなく，同一のサブアプリケーション内の画面を表示している間，
+					継続して状態を引き継ぐには， 画面遷移
+					<strong>元</strong>
+					ページクラスのプロパティに
+					<code>SubapplicationScope</code>
+					アノテーションを指定します．
+				</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@SubapplicationScope
+public String name;
+</pre>
+</div>
+<div class="sidebar">複数のプロパティをカンマ区切りで指定することができます．</div><h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String SUBAPPLICATION_SCOPE = &quot;name&quot;;
+public String name;
+</pre>
+</div>
+<p>
+					画面表示時，
+					<code>name</code>
+					プロパティは
+					<a href="../concept/scope.html#サブアプリケーションスコープ">
+						サブアプリケーションスコープ
+					</a>
+
+					に追加されます．
+				</p>
+<h4>関連項目</h4>
+<ul><li><a href="../concept/scope.html#サブアプリケーションスコープ">
+							サブアプリケーションスコープ
+						</a>
+</li>
+</ul>
+</div>
+<div class="section"><h3><a name="異なったサブアプリケーションに跨って状態を引き継ぐには"></a>
+異なったサブアプリケーションに跨って状態を引き継ぐには</h3>
+<p><a href="../concept/lifecycle.html#ポストバック_リダイレクト">
+						ポストバック (リダイレクト)
+					</a>
+
+					時のページクラスの状態 (プロパティの値) を， 異なったサブアプリケーションのページに
+					<a href="../concept/lifecycle.html#リダイレクト表示">
+						リダイレクト表示
+					</a>
+
+					するまで引き継ぐには， 画面遷移
+					<strong>元</strong>
+					ページクラスのプロパティに
+					<code>RedirectScope</code>
+					アノテーションを指定します．
+				</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@RedirectScope
+public String name;
+</pre>
+</div>
+<div class="sidebar">複数のプロパティをカンマ区切りで指定することができます．</div><h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String REDIRECT_SCOPE = &quot;name&quot;;
+public String name;
+</pre>
+</div>
+<p><a href="../concept/lifecycle.html#ポストバック_リダイレクト">
+						ポストバック (リダイレクト)
+					</a>
+
+					時，
+					<code>name</code>
+					プロパティは
+					<a href="../concept/scope.html#リダイレクトスコープ">
+						リダイレクトスコープ
+					</a>
+
+					に追加されます．
+				</p>
+<div class="caution"><div>注意事項</div><p><a href="../concept/scope.html#リダイレクトスコープ">
+							リダイレクトスコープ
+						</a>
+
+						は
+						<a href="../concept/lifecycle.html#リダイレクト表示">
+							リダイレクト表示
+						</a>
+
+						後に破棄されるため， 再読込を行うと状態は失われます． 再読込で状態を維持する必要がある場合は，
+						画面遷移
+						<strong>先</strong>
+						ページクラスのプロパティに
+						<a href="../concept/scope.html#ページスコープ">
+							ページスコープ
+						</a>
+
+						を指定してください． 詳細は「
+						<a href="#画面を表示したときの状態をサブミットされたときまで引き継ぐには">
+							画面を表示したときの状態をサブミットされたときまで引き継ぐには
+						</a>
+
+						」を参照してください．
+					</p>
+</div><h4>関連項目</h4>
+<ul><li><a href="../concept/page.html#ポストバック">ポストバック</a>
+</li>
+<li><a href="../concept/lifecycle.html#リクエストパターン">
+							リクエストパターン
+						</a>
+</li>
+<li><a href="../concept/lifecycle.html#リクエストパターンとライフサイクルメソッド">
+							リクエストパターンとライフサイクルメソッド
+						</a>
+<ul><li><a href="../concept/lifecycle.html#ポストバック_リダイレクト">
+									ポストバック (リダイレクト)
+								</a>
+</li>
+<li><a href="../concept/lifecycle.html#リダイレクト表示">
+									リダイレクト表示
+								</a>
+</li>
+</ul>
+</li>
+<li><a href="../concept/scope.html#リダイレクトスコープ">
+							リダイレクトスコープ
+						</a>
+</li>
+</ul>
+</div>
+<div class="section"><h3><a name="特定のサブミットボタンが押されたときは画面遷移で状態を引き継がないようにするには"></a>
+特定のサブミットボタンが押されたときは画面遷移で状態を引き継がないようにするには</h3>
+<p>
+					画面遷移
+					<strong>元</strong>
+					のサブミットボタンに
+					<code>TakeOver</code>
+					アノテーションを指定して， 引き継ぎたいプロパティや引き継ぎたくないプロパティを指定します．
+				</p>
+<h5>例：遷移元ページクラス (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+public String foo;
+public String bar;
+public String baz;
+
+@TakeOver(type = TakeOverType.INCLUDE, properties = &quot;foo&quot;)
+public Class doSend() {
+    ...
+    return BarPage.class;
+}
+</pre>
+</div>
+<div class="sidebar">複数のプロパティをカンマ区切りで指定することができます．</div><h6>定数アノテーション</h6>
+<div class="source"><pre>
+public String foo;
+public String bar;
+public String baz;
+
+public static final String doSend_TAKE_OVER = &quot;type='include', properties='foo'&quot;);
+public Class doSend() {
+    ...
+    return BarPage.class;
+}
+</pre>
+</div>
+<h5>例：遷移先ページクラス (BarPage.java)</h5>
+<div class="source"><pre>
+public String foo;
+public String bar;
+public String baz;
+</pre>
+</div>
+<p><code>FooPage</code>
+					の
+					<code>doSend()</code>
+					から
+					<a href="../concept/lifecycle.html#ポストバック_リダイレクト">
+						ポストバック (リダイレクト)
+					</a>
+
+					で
+					<code>BarPage</code>
+					に画面遷移する場合，
+					<code>foo</code>
+					プロパティのみ引き継がれ，
+					<code>bar</code>
+					および
+					<code>baz</code>
+					プロパティは引き継がれません．
+				</p>
+<h4>関連項目</h4>
+<ul><li><a href="../concept/scope.html#TakeOverアノテーション">
+							TakeOverアノテーション
+						</a>
+</li>
+</ul>
+</div>
+<div class="section"><h3><a name="サブミットボタンが押されたときにサブアプリケーションスコープの状態を破棄するには"></a>
+サブミットボタンが押されたときにサブアプリケーションスコープの状態を破棄するには</h3>
+<p>
+					サブミットボタンの
+					<code>id</code>
+					属性を
+					<code>doFinish</code>
+					または
+					<code>doOnceFinish</code>
+					で始まるようにします．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;input type=&quot;submit&quot; id=&quot;doFinishCancel&quot; value=&quot;キャンセル&quot; /&gt;
+</pre>
+</div>
+<h5>例：ページクラスのメソッド (FooPage.java)</h5>
+<div class="source"><pre>
+public Class doFinishCancel() {
+    ...
+}
+</pre>
+</div>
+<h4>関連項目</h4>
+<ul><li><a href="../concept/scope.html#doFinishメソッド">
+							doFinish～()メソッド
+						</a>
+</li>
+</ul>
+</div>
+</div>
+
+</div><!-- article -->
+
+</div><!-- contents_center -->
+
+<div id="footer">
+<address>  &copy; Copyright
+  
+          2005-2008,
+    
+          The Seasar Foundation and the others. All rights reserved.
+      </address>
+<div class="line"><span class="hide">spacer</span></div>
+</div><!-- footer -->
+
+</div><!-- wrapper -->
+
+</body>
+</html>

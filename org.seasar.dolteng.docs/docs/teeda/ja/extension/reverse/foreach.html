@@ -1,0 +1,1454 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta http-equiv="Content-Language" content="ja" /> 
+<meta http-equiv="Content-Style-Type" content="text/css" /> 
+<title>Teeda - Extension - 逆引きリファレンス - 繰り返し</title>
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/main.css" media="screen,projection" />
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/print.css" media="print" />
+<link href="../../css/maven-base.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/maven-theme.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/prettify.css" type="text/css" rel="stylesheet" media="screen" />
+<script type="text/javascript" src="../../js/prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+
+<div id="wrapper">
+
+<div id="header">
+
+<div class="line"><span class="hide">spacer</span></div>
+
+<div id="logo"><h1 id="h01" class="hide">The Seasar Foundation Project Site</h1><img src="http://www.seasar.org/images/seasar_logo_blue.gif" alt="The Seasar Foundation" width="390" height="180" /></div>
+
+<div id="tool">
+
+<h2><a href="http://search.seasar.org/">Site Search</a></h2>
+
+<form id="search" action="http://search.seasar.org/">
+<div>
+	<input id="search_phrase" type="text" name="phrase" size="20" />
+	<input type="hidden" name="perpage" value="30" />
+	<input type="hidden" name="enc" value="UTF-8" />
+	<input id="search_go" type="submit" value="Search" />
+</div>
+</form>
+
+<h2>Teeda Banner</h2>
+
+<p><a href="http://teeda.seasar.org/teeda_banner.png"><img src="http://teeda.seasar.org/teeda_banner.png" alt="Teeda Banner" title="Teeda Banner" width="146" height="33" /></a></p>
+
+</div>
+
+<div id="navi">
+<p><a href="../../../en/">English</a> | <a href="../../../ja/">Japanese</a></p>
+</div>
+
+</div><!-- header -->
+
+<div id="contents_left">
+           
+  
+
+  
+    
+  
+  
+                   <h2>About</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">ホーム</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../license.html">ライセンス</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../downloads.html">ダウンロード</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../changelog.html">変更履歴</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../roadmap.html">ロードマップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://ml.seasar.org/mailman/listinfo/seasar-user">メーリングリスト</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://www.seasar.org/issues/browse/TEEDA">トラッキング</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://svn.seasar.org/browse/?root=teeda">SVN リポジトリブラウザ</a>
+        </li>
+          </ul>
+          <h2>General</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../env.html">環境</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../setup.html">開発環境のセットアップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../deploy.html">実行環境へのデプロイ</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://www.seasar.org/wiki/index.php?FAQ%2FTeeda">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../presentations.html">プレゼンテーション資料</a>
+        </li>
+          </ul>
+          <h2>Teeda Core</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_core.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../example.html">サンプル解説</a>
+        </li>
+          </ul>
+          <h2>Teeda Extension</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../extension/index.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/firststep/index.html">ファーストステップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/tutorial/index.html">チュートリアル</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/example.html">サンプル解説</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/concept/index.html">概念</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+            
+            
+      
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="../../extension/reverse/index.html">逆引きリファレンス</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/output.html">出力</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/link.html">リンク</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/input.html">入力フォーム</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/validation.html">バリデーション</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/convert.html">コンバート</a>
+        </li>
+                  
+    <li class="none">
+              <strong>繰り返し</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/condition.html">条件制御</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/layout.html">レイアウト</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/transition.html">画面遷移と状態</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/preview.html">プレビュー</a>
+        </li>
+              </ul>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/reference/index.html">リファレンス</a>
+              </li>
+          </ul>
+          <h2>Teeda Ajax</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_ajax.html">概要</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../kumu.html">Kumu</a>
+              </li>
+          </ul>
+          <h2>プロジェクト文書</h2>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-info.html">プロジェクト情報</a>
+              </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-reports.html">プロジェクトレポート</a>
+              </li>
+          </ul>
+          <h2>モジュール</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Teeda</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-core/ja/index.html">Teeda Core</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-extension/ja/index.html">Teeda Extension</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-ajax/ja/index.html">Teeda Ajax</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-tiger/ja/index.html">Teeda Tiger</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy" name="poweredBy">
+            <img alt="Built by Maven" src="../../images/logos/maven-feather.png" />
+          </a>
+                       
+  
+
+  
+    
+  
+  
+  </div><!-- contents_left -->
+
+<div id="contents_center">
+
+<div id="article">
+<div class="section"><h2><a name="繰り返し"></a>
+繰り返し</h2>
+<ul><li><a href="#繰り返し出力">繰り返し出力</a>
+<ul><li><a href="#リスト項目を繰り返し出力するには">
+								リスト項目を繰り返し出力するには
+							</a>
+</li>
+<li><a href="#テーブルの行を繰り返し出力するには">
+								テーブルの行を繰り返し出力するには
+							</a>
+</li>
+<li><a href="#テーブルの列を繰り返し出力するには">
+								テーブルの列を繰り返し出力するには
+							</a>
+</li>
+<li><a href="#任意の要素を繰り返し出力するには">
+								任意の要素を繰り返し出力するには
+							</a>
+</li>
+</ul>
+</li>
+<li><a href="#ネストした繰り返し">ネストした繰り返し</a>
+<ul><li><a href="#ネストした繰り返しを使うには_その1">
+								ネストした繰り返しを使うには (その1)
+							</a>
+</li>
+<li><a href="#ネストした繰り返しを使うには_その2">
+								ネストした繰り返しを使うには (その2)
+							</a>
+</li>
+</ul>
+</li>
+<li><a href="#入力フォーム">入力フォーム</a>
+<ul><li><a href="#繰り返しの中で入力項目を使うには">
+								繰り返しの中で入力項目を使うには
+							</a>
+</li>
+<li><a href="#"></a>
+</li>
+</ul>
+</li>
+<li><a href="#インデックス">インデックス</a>
+<ul><li><a href="#テーブルの偶数行と奇数行で背景色を変えるには">
+								テーブルの偶数行と奇数行で背景色を変えるには
+							</a>
+</li>
+<li><a href="#テーブルでrowspanを使うには">
+								テーブルでrowspanを使うには
+							</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section"><h2><a name="繰り返し出力"></a>
+繰り返し出力</h2>
+<div class="section"><h3><a name="リスト項目を繰り返し出力するには"></a>
+リスト項目を繰り返し出力するには</h3>
+<p><code>&lt;ul&gt;</code>
+					，
+					<code>&lt;ol&gt;</code>
+					，
+					<code>&lt;dl&gt;</code>
+					要素のいずれかに
+					<code>id</code>
+					属性を付け，
+					<code>Items</code>
+					で終わる値とします． その内容に
+					<code>&lt;li&gt;</code>
+					，
+					<code>&lt;dt&gt;</code>
+					，
+					<code>&lt;dd&gt;</code>
+					要素を記述します．
+				</p>
+<p><code>&lt;li&gt;</code>
+					，
+					<code>&lt;dt&gt;</code>
+					，
+					<code>&lt;dd&gt;</code>
+					要素の内容 (子孫) には，
+					<code>&lt;span&gt;</code>
+					要素や
+					<code>&lt;div&gt;</code>
+					要素を使ってテキストを動的に出力することができます．
+				</p>
+<p>
+					ページクラスに
+					<code>&lt;ul&gt;</code>
+					要素等の
+					<code>id</code>
+					属性と同じ名前で， 型が配列または
+					<code>java.util.List</code>
+					のプロパティ (
+					<code>xxxItems</code>
+					) を用意し，表示する情報を設定します．
+				</p>
+<div class="sidebar">
+					これらのプロパティはTeedaが繰り返し中に値を設定します．
+				</div><p><code>xxxItems</code>
+					プロパティの要素と同じ型で，末尾の
+					<code>Items</code>
+					を取り除いた名前のプロパティ (
+					<code>xxx</code>
+					) を用意します．
+					<code>xxx</code>
+					プロパティがDtoまたは
+					<code>java.util.Map</code>
+					の場合は，Dtoのプロパティと同じ名前と型 (
+					<code>Map</code>
+					の場合はキーと同じ名前で値と同じ型) のプロパティをページクラスにも持たせます．
+				</p>
+<p>
+					レンダリング時，
+					<code>Items</code>
+					プロパティの要素数分，リスト項目が繰り返し表示されます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;ul id=&quot;nameItems&quot;&gt;
+    &lt;li&gt;&lt;span id=&quot;name&quot;&gt;dummy&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public String[] nameItems;
+public String name; //Teedaが設定
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>nameItems</code>
+					プロパティが
+					<code>&quot;Teeda&quot;</code>
+					，
+					<code>&quot;SAStruts&quot;</code>
+					，
+					<code>&quot;Cubby&quot;</code>
+					， を要素とする配列の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+&lt;ul id=&quot;nameItems&quot;&gt;
+    &lt;li&gt;&lt;span id=&quot;name&quot;&gt;Teeda&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span id=&quot;name&quot;&gt;SAStruts&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span id=&quot;name&quot;&gt;Cubby&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="テーブルの行を繰り返し出力するには"></a>
+テーブルの行を繰り返し出力するには</h3>
+<p><code>&lt;table&gt;</code>
+					要素または
+					<code>&lt;tbody&gt;</code>
+					要素のいずれかに
+					<code>id</code>
+					属性を付け，
+					<code>Items</code>
+					で終わる値とします． その内容に
+					<code>&lt;tr&gt;</code>
+					要素を記述します．
+				</p>
+<p><code>&lt;tr&gt;</code>
+					要素の内容 (子孫) には，
+					<code>&lt;span&gt;</code>
+					要素や
+					<code>&lt;div&gt;</code>
+					要素を使ってテキストを動的に出力することができます．
+				</p>
+<p>
+					ページクラスに
+					<code>&lt;tbody&gt;</code>
+					要素等の
+					<code>id</code>
+					属性と同じ名前で， 型が配列または
+					<code>java.util.List</code>
+					のプロパティ (
+					<code>xxxItems</code>
+					) を用意し，表示する情報を設定します．
+				</p>
+<div class="sidebar">
+					これらのプロパティはTeedaが繰り返し中に値を設定します．
+				</div><p><code>xxxItems</code>
+					プロパティの要素と同じ型で，末尾の
+					<code>Items</code>
+					を取り除いた名前のプロパティ (
+					<code>xxx</code>
+					) を用意します．
+					<code>xxx</code>
+					プロパティがDtoまたは
+					<code>java.util.Map</code>
+					の場合は，Dtoのプロパティと同じ名前と型 (
+					<code>Map</code>
+					の場合はキーと同じ名前で値と同じ型) のプロパティをページクラスにも持たせます．
+				</p>
+<p>
+					レンダリング時，
+					<code>Items</code>
+					プロパティの要素数分，行が繰り返し表示されます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;table&gt;
+    &lt;tbody id=&quot;specItems&quot;&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;span id=&quot;shortName&quot;&gt;dummy&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span id=&quot;fullName&quot;&gt;dummy&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public List&lt;SpecDto&gt; specItems;
+public SpecDto spec;     //Teedaが設定
+public String shortName; //Teedaが設定
+public String fullName;  //Teedaが設定
+</pre>
+</div>
+<h5>例：Dtoのプロパティ (SpecDto.java)</h5>
+<div class="source"><pre>
+public String shortName;
+public String fullName;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>specItems</code>
+					プロパティが 3つの
+					<code>SpecDto</code>
+					を要素とする
+					<code>List</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+&lt;table&gt;
+    &lt;tbody id=&quot;specItems&quot;&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;span id=&quot;shortName&quot;&gt;JSF&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span id=&quot;fullName&quot;&gt;JavaServer Faces&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;span id=&quot;shortName&quot;&gt;EJB&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span id=&quot;fullName&quot;&gt;Enterprise JavaBeans&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;span id=&quot;shortName&quot;&gt;JPA&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span id=&quot;fullName&quot;&gt;Java Persistence API&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="テーブルの列を繰り返し出力するには"></a>
+テーブルの列を繰り返し出力するには</h3>
+<p><code>&lt;tr&gt;</code>
+					要素に
+					<code>id</code>
+					属性を付け，
+					<code>Items</code>
+					で終わる値とします． その内容に
+					<code>&lt;td&gt;</code>
+					要素または
+					<code>&lt;th&gt;</code>
+					要素を記述します．
+				</p>
+<p><code>&lt;td&gt;</code>
+					要素または
+					<code>&lt;th&gt;</code>
+					要素の内容 (子孫) には，
+					<code>&lt;span&gt;</code>
+					要素や
+					<code>&lt;div&gt;</code>
+					要素を使ってテキストを動的に出力することができます．
+				</p>
+<p>
+					ページクラスに
+					<code>&lt;tr&gt;</code>
+					要素の
+					<code>id</code>
+					属性と同じ名前で， 型が配列または
+					<code>java.util.List</code>
+					のプロパティ (
+					<code>xxxItems</code>
+					) を用意し，表示する情報を設定します．
+				</p>
+<div class="sidebar">
+					これらのプロパティはTeedaが繰り返し中に値を設定します．
+				</div><p><code>xxxItems</code>
+					プロパティの要素と同じ型で，末尾の
+					<code>Items</code>
+					を取り除いた名前のプロパティ (
+					<code>xxx</code>
+					) を用意します．
+					<code>xxx</code>
+					プロパティがDtoまたは
+					<code>java.util.Map</code>
+					の場合は，Dtoのプロパティと同じ名前と型 (
+					<code>Map</code>
+					の場合はキーと同じ名前で値と同じ型) のプロパティをページクラスにも持たせます．
+				</p>
+<p>
+					レンダリング時，
+					<code>Items</code>
+					プロパティの要素数分，列が繰り返し表示されます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;table&gt;
+    &lt;tbody&gt;
+        &lt;tr id=&quot;productItems&quot;&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public List&lt;Map&gt; productItems;
+public Map product; //Teedaが設定
+public String name; //Teedaが設定
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>productItems</code>
+					プロパティが 3つの
+					<code>Map</code>
+					を要素とする
+					<code>List</code>
+					で，要素の
+					<code>Map</code>
+					は
+					<code>&quot;name&quot;</code>
+					をキーとするマッピングを含む場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+&lt;table&gt;
+    &lt;tbody&gt;
+        &lt;tr id=&quot;productItems&quot;&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;Teeda&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;SAStruts&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;Cubby&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="任意の要素を繰り返し出力するには"></a>
+任意の要素を繰り返し出力するには</h3>
+<p><code>&lt;span&gt;</code>
+					要素または
+					<code>&lt;div&gt;</code>
+					要素に
+					<code>id</code>
+					属性を付け，
+					<code>Items</code>
+					で終わる値とします． その内容に任意の要素を記述します．
+				</p>
+<p><code>&lt;span&gt;</code>
+					要素または
+					<code>&lt;div&gt;</code>
+					要素の内容 (子孫) には，
+					<code>&lt;span&gt;</code>
+					要素や
+					<code>&lt;div&gt;</code>
+					要素を使ってテキストを動的に出力することができます．
+				</p>
+<p>
+					ページクラスに
+					<code>&lt;span&gt;</code>
+					要素または
+					<code>&lt;div&gt;</code>
+					要素の
+					<code>id</code>
+					属性と同じ名前で， 型が配列または
+					<code>java.util.List</code>
+					のプロパティ (
+					<code>xxxItems</code>
+					) を用意し，表示する情報を設定します．
+				</p>
+<div class="sidebar">
+					これらのプロパティはTeedaが繰り返し中に値を設定します．
+				</div><p><code>xxxItems</code>
+					プロパティの要素と同じ型で，末尾の
+					<code>Items</code>
+					を取り除いた名前のプロパティ (
+					<code>xxx</code>
+					) を用意します．
+					<code>xxx</code>
+					プロパティがDtoまたは
+					<code>java.util.Map</code>
+					の場合は，Dtoのプロパティと同じ名前と型 (
+					<code>Map</code>
+					の場合はキーと同じ名前で値と同じ型) のプロパティをページクラスにも持たせます．
+				</p>
+<p>
+					レンダリング時，
+					<code>Items</code>
+					プロパティの要素数分，リスト項目が繰り返し表示されます．
+				</p>
+<div class="sidebar"><a href="../reference/xhtml.html#Teeda_Extension拡張属性">
+						Teeda Extension拡張属性
+					</a>
+
+					を使用するには
+					<code>&lt;html&gt;</code>
+					要素で
+					<a href="../reference/xhtml.html#te名前空間">te名前空間</a>
+
+					を宣言する必要があります．
+				</div><p>
+					デフォルトでは，
+					<code>id</code>
+					属性に
+					<code>～Items</code>
+					を指定した
+					<code>&lt;span&gt;</code>
+					要素または
+					<code>&lt;div&gt;</code>
+					要素の開始タグおよび終了タグはレンダリングされません． タグをレンダリングするには
+					<code>te:omittag</code>
+					属性に
+					<code>false</code>
+					を指定します．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;div id=&quot;nameItems&quot;&gt;
+    &lt;span id=&quot;name&quot; /&gt;&lt;br /&gt;
+&lt;/div&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public String[] nameItems;
+public String name; //Teedaが設定
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>nameItems</code>
+					プロパティが
+					<code>&quot;Teeda&quot;</code>
+					，
+					<code>&quot;SAStruts&quot;</code>
+					，
+					<code>&quot;Cubby&quot;</code>
+					， を要素とする配列の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+
+    &lt;span id=&quot;name&quot; &gt;Teeda&lt;/span&gt;&lt;br /&gt;
+    &lt;span id=&quot;name&quot; &gt;SAStruts&lt;/span&gt;&lt;br /&gt;
+    &lt;span id=&quot;name&quot; &gt;Cubby&lt;/span&gt;&lt;br /&gt;
+
+</pre>
+</div>
+</div>
+</div>
+<div class="section"><h2><a name="ネストした繰り返し"></a>
+ネストした繰り返し</h2>
+<div class="section"><h3><a name="ネストした繰り返しを使うには_その1"></a>
+ネストした繰り返しを使うには (その1)</h3>
+<div class="sidebar">同様の方法で何重にでも繰り返しをネストすることができます．</div><p>
+					外側の繰り返しの要素に
+					<code>id</code>
+					属性を付け，
+					<code>ItemsItems</code>
+					で終わる値 (
+					<code>xxxItemsItems</code>
+					) とします． 内側の繰り返しの要素に
+					<code>id</code>
+					属性を付け， 外側の繰り返し要素の
+					<code>id</code>
+					属性の値から最後の
+					<code>Items</code>
+					を取り除いた値 (
+					<code>xxxItems</code>
+					) とします．
+				</p>
+<p>
+					ページクラスに外側の繰り返し要素の
+					<code>id</code>
+					属性と同じ名前 (
+					<code>xxxItemsItems</code>
+					) で， 型が配列の配列または
+					<code>java.util.List</code>
+					の
+					<code>List</code>
+					のプロパティを用意し，表示する情報を設定します．
+				</p>
+<div class="sidebar">
+					これらのプロパティはTeedaが繰り返し中に値を設定します．
+				</div><p><code>xxxItemsItems</code>
+					プロパティの要素と同じ型 (配列または
+					<code>List</code>
+					) で，末尾の
+					<code>Items</code>
+					を取り除いたプロパティ (
+					<code>xxxItems</code>
+					) と，その要素と同じ型で 末尾の
+					<code>Items</code>
+					を取り除いたプロパティ (
+					<code>xxx</code>
+					) を用意します．
+					<code>xxx</code>
+					プロパティがDtoまたは
+					<code>java.util.Map</code>
+					の場合は，Dtoのプロパティと同じ名前と型 (
+					<code>Map</code>
+					の場合はキーと同じ名前で値と同じ型) のプロパティをページクラスにも持たせます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;table&gt;
+    &lt;tbody id=&quot;nameItemsItems&quot;&gt;
+        &lt;tr id=&quot;nameItems&quot;&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;dummy&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public String[][] nameItemsItems;
+public String[] nameItems; //Teedaが設定
+public String name;        //Teedaが設定
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>nameItemsItems</code>
+					プロパティの値が
+				</p>
+<div class="source"><pre>
+{ { &quot;A1&quot;, &quot;A2&quot;}, { &quot;B1&quot;, &quot;B2&quot;} }
+</pre>
+</div>
+<p>の場合，レンダリング結果は次のようになります．</p>
+<div class="source"><pre>
+&lt;table&gt;
+    &lt;tbody id=&quot;nameItemsItems&quot;&gt;
+        &lt;tr id=&quot;nameItems&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;A1&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;A2&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr id=&quot;nameItems&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;B1&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;B2&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="ネストした繰り返しを使うには_その2"></a>
+ネストした繰り返しを使うには (その2)</h3>
+<div class="sidebar">同様の方法で何重にでも繰り返しをネストすることができます．</div><p>
+					外側の繰り返しの要素に
+					<code>id</code>
+					属性を付け，
+					<code>Items</code>
+					で終わる値 (
+					<code>xxxItems</code>
+					) とします． 内側の繰り返しの要素にも
+					<code>id</code>
+					属性を付け，
+					<code>Items</code>
+					で終わる値 (
+					<code>yyyItems</code>
+					) とします．
+				</p>
+<p>
+					ページクラスに外側の繰り返し要素の
+					<code>id</code>
+					属性と同じ名前 (
+					<code>xxxItems</code>
+					) で， 型が配列または
+					<code>java.util.List</code>
+					のプロパティを用意します． 要素型はDtoまたは
+					<code>java.util.Map</code>
+					とし，内側の繰り返し要素の
+					<code>id</code>
+					属性と同じ名前 (
+					<code>yyyItems</code>
+					) で， 型が配列または
+					<code>java.util.List</code>
+					のプロパティ (またはキー) を用意します．
+				</p>
+<div class="sidebar">
+					これらのプロパティはTeedaが繰り返し中に値を設定します．
+				</div><p><code>xxxItems</code>
+					プロパティの要素と同じ型 (Dtoまたは
+					<code>Map</code>
+					) と同じ型で末尾の
+					<code>Items</code>
+					を取り除いたプロパティ (
+					<code>xxx</code>
+					) および，
+					<code>yyyItems</code>
+					の要素と同じ型で末尾の
+					<code>Items</code>
+					を取り除いたプロパティ (
+					<code>yyy</code>
+					) を用意します．
+					<code>xxx</code>
+					および
+					<code>yyy</code>
+					プロパティがDtoまたは
+					<code>java.util.Map</code>
+					の場合は，Dtoのプロパティと同じ名前と型 (
+					<code>Map</code>
+					の場合はキーと同じ名前で値と同じ型) のプロパティをページクラスにも持たせます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;table&gt;
+    &lt;tbody id=&quot;rowItems&quot;&gt;
+        &lt;tr id=&quot;colItems&quot;&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;dummy&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public List&lt;RowDto&gt; rowItems;
+public RowDto row;            //Teedaが設定
+public List&lt;ColDto&gt; colItems; //Teedaが設定
+public ColDto col;            //Teedaが設定 
+public String name;           //Teedaが設定
+</pre>
+</div>
+<h5>例：行の情報を持つRowDtoのプロパティ (RowDto.java)</h5>
+<div class="source"><pre>
+public List&lt;ColDto&gt; colItems;
+</pre>
+</div>
+<h5>例：列の情報を持つColDtoのプロパティ (ColDto.java)</h5>
+<div class="source"><pre>
+public String name;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<div class="source"><pre>
+&lt;table&gt;
+    &lt;tbody id=&quot;rowItems&quot;&gt;
+        &lt;tr id=&quot;colItems&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;A1&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;A2&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr id=&quot;colItems&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;B1&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;B2&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+</div>
+</div>
+<div class="section"><h2><a name="入力フォーム"></a>
+入力フォーム</h2>
+<div class="section"><h3><a name="繰り返しの中で入力項目を使うには"></a>
+繰り返しの中で入力項目を使うには</h3>
+<div class="sidebar">
+					ネストした繰り返しの場合，内側の繰り返し要素に対応する隠しフィールドは必要ありません．
+				</div><p>
+					テンプレートHTMLに，繰り返しの要素に付けた
+					<code>id</code>
+					属性の名前 (
+					<code>xxxItems</code>
+					) の末尾に
+					<code>Save</code>
+					を付けた
+					<a href="input.html#隠しフィールドにシリアライズしたオブジェクトを保存するには">
+						隠しフィールド
+					</a>
+
+					を用意します． このフィールドは， 繰り返しの要素より前に記述する必要があります．
+				</p>
+<p>
+					繰り返しの中で
+					<code>&lt;input&gt;</code>
+					要素や
+					<code>&lt;textarea&gt;</code>
+					等を使うことができます．
+				</p>
+<p>
+					ページクラスの繰り返し用のプロパティ (
+					<code>xxxItems</code>
+					) の要素型はDtoとします．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;form id=&quot;form&quot;&gt;
+    &lt;input type=&quot;hidden&quot; id=&quot;nameItemsSave&quot; /&gt;
+    &lt;table&gt;
+        &lt;tbody id=&quot;productItems&quot;&gt;
+            &lt;tr&gt;
+                &lt;td&gt;名前&lt;/td&gt;
+                &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;name&quot; /&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;input type=&quot;submit&quot; id=&quot;doSubmit&quot; value=&quot;Submit&quot; /&gt;
+&lt;/form&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public List&lt;ProductDto&gt; productItems;
+public NameDto product; //Teedaが設定
+public String name;     //Teedaが設定
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>productItems</code>
+					プロパティが3つの要素を持つ
+					<code>List</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+&lt;form id=&quot;form&quot; name=&quot;form&quot; method=&quot;post&quot; action=&quot;...&quot;&gt;
+    &lt;input type=&quot;hidden&quot; id=&quot;productItemsSave&quot; name=&quot;form:nameItemsSave&quot; value=&quot;...&quot; /&gt;
+    &lt;table&gt;
+        &lt;tbody id=&quot;productItems&quot;&gt;
+            &lt;tr&gt;
+                &lt;td&gt;名前&lt;/td&gt;
+                &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;form:nameItems:0:name&quot; value=&quot;&quot; /&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;名前&lt;/td&gt;
+                &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;form:nameItems:1:name&quot; value=&quot;&quot; /&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;名前&lt;/td&gt;
+                &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;form:nameItems:2:name&quot; value=&quot;&quot; /&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;input type=&quot;submit&quot; id=&quot;doSubmit&quot; name=&quot;form:doSubmit&quot; value=&quot;Submit&quot; /&gt;
+&lt;/form&gt;
+</pre>
+</div>
+<p>
+					テキストフィールドに入力してフォームをサブミットすると，
+					<code>productItems</code>
+					の対応する要素 (
+					<code>ProductDto</code>
+					の
+					<code>name</code>
+					プロパティ) に入力した値が設定された状態で
+					<code>doSubmit()</code>
+					メソッドが呼び出されます．
+				</p>
+<div class="caution"><div>注意点</div><p>
+						繰り返しの中に入力項目がチェックボックス一つだけの場合，
+						未選択の項目がリクエストパラメータに含まれないため，
+						<code>xxxItems</code>
+						の要素数が正しく復元されない場合があります． そのような場合は繰り返しの中に
+						<a href="input.html#隠しフィールドを使うには">隠しフィールド</a>
+
+						を含めるようにしてください．
+					</p>
+</div></div>
+</div>
+<div class="section"><h2><a name="インデックス"></a>
+インデックス</h2>
+<div class="section"><h3><a name="テーブルの偶数行と奇数行で背景色を変えるには"></a>
+テーブルの偶数行と奇数行で背景色を変えるには</h3>
+<div class="sidebar">このプロパティはTeedaが繰り返し中に値を設定します．</div><p><a href="output.html#属性値を動的に出力するには">ダイナミックプロパティ</a>
+
+					の中でインデックスを参照します．
+				</p>
+<p>
+					ページクラスに，繰り返しの要素に付けた
+					<code>id</code>
+					属性の値 (
+					<code>xxxItems</code>
+					) の末尾の
+					<code>Items</code>
+					を
+					<code>Index</code>
+					に置き換えた名前 (
+					<code>xxxIndex</code>
+					) で， 型が
+					<code>int</code>
+					のプロパティを用意します．
+				</p>
+<div class="sidebar">インデックスは0から始まります．</div><p>
+					レンダリング時，繰り返しの中で参照されるダイナミックプロパティのgetterメソッドの中で
+					<code>xxxIndex</code>
+					を参照することにより，現在のインデックスを得ることができます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;table&gt;
+    &lt;tbody id=&quot;nameItems&quot;&gt;
+        &lt;tr id=&quot;row&quot; class=&quot;dummy&quot;&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot; /&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public String[] nameItems;
+public String name;   //Teedaが設定
+public int nameIndex; //Teedaが設定
+
+public String getRowStyleClass() {
+    return (nameIndex + 1) % 2 == 0 ? &quot;even&quot; : &quot;odd&quot;;
+}
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>nameItems</code>
+					プロパティが
+					<code>&quot;Teeda&quot;</code>
+					，
+					<code>&quot;SAStruts&quot;</code>
+					，
+					<code>&quot;Cubby&quot;</code>
+					， を要素とする配列の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+&lt;table&gt;
+    &lt;tbody id=&quot;nameItems&quot;&gt;
+        &lt;tr id=&quot;row&quot; class=&quot;odd&quot;&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;Teeda&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr id=&quot;row&quot; class=&quot;even&quot;&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;SAStruts&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr id=&quot;row&quot; class=&quot;odd&quot;&gt;
+            &lt;td&gt;&lt;span id=&quot;name&quot;&gt;Cubby&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<div class="sidebar"><a href="output.html#属性値を動的に出力するには">ダイナミックプロパティ</a>
+
+					で
+					<code>class</code>
+					属性を扱う場合は
+					<var>id</var>
+					+
+					<code>StyleClass</code>
+					というプロパティ名になります．
+				</div><p><code>&lt;tr&gt;</code>
+					要素の
+					<code>class</code>
+					属性には，
+					<code>getRowStyleClass()</code>
+					メソッドの戻り値がレンダリングされます．
+					<code>getRowStyleClass()</code>
+					メソッドは
+					<code>nameIndex</code>
+					を参照して， 奇数行なら
+					<code>&quot;odd&quot;</code>
+					，偶数行なら
+					<code>&quot;even&quot;</code>
+					を返します．
+				</p>
+</div>
+<div class="section"><h3><a name="テーブルでrowspanを使うには"></a>
+テーブルでrowspanを使うには</h3>
+<div class="sidebar"><code>id</code>
+					属性が
+					<code>is</code>
+					で始まる要素の詳細は「
+					<a href="condition.html">条件制御</a>
+
+					」を参照してください．
+				</div><p><code>&lt;td&gt;</code>
+					要素の表示／非表示を制御するために，
+					<code>id</code>
+					属性を
+					<code>is</code>
+					で始まる値を指定し，
+					<code>rowspan</code>
+					属性を指定します．
+				</p>
+<p>
+					ページクラスに，繰り返しの要素に付けた
+					<code>id</code>
+					属性の値 (
+					<code>xxxItems</code>
+					) の末尾の
+					<code>Items</code>
+					を
+					<code>Index</code>
+					に置き換えた名前 (
+					<code>xxxIndex</code>
+					) で， 型が
+					<code>int</code>
+					のプロパティを用意します．
+				</p>
+<div class="sidebar">インデックスは0から始まります．</div><p><code>&lt;td&gt;</code>
+					要素の
+					<code>id</code>
+					属性と同じ名前のメソッド
+					<code>isXxx()</code>
+					の中でインデックスを参照して，
+					<code>&lt;td&gt;</code>
+					要素を表示する場合は
+					<code>true</code>
+					，表示しない場合は
+					<code>false</code>
+					を返します．
+				</p>
+<div class="sidebar"><code>id</code>
+					属性が
+					<code>is</code>
+					で始まる場合，ダイナミックプロパティは
+					<code>id</code>
+					属性から先頭の
+					<code>is</code>
+					を除いた値に属性名を加えた名前の プロパティ名となります．
+				</div><p><code>&lt;td&gt;</code>
+					要素の
+					<code>rowspan</code>
+					属性に対応するダイナミックプロパティのgetterメソッド
+					<code>getXxxRowspan()</code>
+					メソッドを用意します． メソッドの中でインデックスを参照して，
+					<code>&lt;td&gt;</code>
+					要素を表示する場合の
+					<code>rowspan</code>
+					属性の値を返します． このgetterメソッドは，
+					<code>isXxx()</code>
+					メソッドが
+					<code>true</code>
+					を返した場合のみ呼び出されます．
+				</p>
+<div class="sidebar">
+					テーブルの2行目はモックでレンダリングされません． 詳細は
+					<a href="preview.html#プレビュー時のみ要素を表示するには">
+						プレビュー時のみ要素を表示するには
+					</a>
+
+					を参照してください．
+				</div><h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;table&gt;
+    &lt;tbody id=&quot;productItems&quot;&gt;
+        &lt;tr&gt;
+            &lt;td id=&quot;isCategory&quot; rowspan=&quot;2&quot;&gt;
+                &lt;span id=&quot;categoryName&quot;&gt;dummy&lt;/span&gt;
+            &lt;/td&gt;
+            &lt;td&gt;&lt;span id=&quot;productName&quot;&gt;dummy&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr id=&quot;mockRow&quot;&gt;
+            &lt;td&gt;dummy&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public productDto[] productItems;
+public String categoryName; //Teedaが設定
+public String productName;  //Teedaが設定
+public int productIndex;    //Teedaが設定
+
+public boolean isCategory() {
+    //最初の行なら&lt;td&gt;を表示する
+    if (productIndex == 0) {
+        return true;
+    }
+    //現在のカテゴリ名が直前の行と異なる場合は&lt;td&gt;を表示する
+    return !categoryName.equals(productItems[productIndex - 1].categoryName);
+}
+
+public String getCategoryRowspan() {
+    //現在のカテゴリ名と同じカテゴリ名が連続する行数を返す
+    int rowspan = 1;
+    for (int i = productIndex + 1; i &lt; productItems.length; ++i) {
+        if (!categoryName.equals(productItems[i].categoryName)) {
+            break;
+        }
+        ++rowspan;
+    }
+    return rowspan;
+}
+</pre>
+</div>
+<h5>例：Dtoのプロパティ (ProductDto.java)</h5>
+<div class="source"><pre>
+public String categoryName;
+public String productName;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>productItems</code>
+					が以下の要素を持っている場合，
+				</p>
+<table class="bodyTable"><tr class="a"><th>categoryName</th>
+<th>productName</th>
+</tr>
+<tr class="b"><td>プレゼンテーション</td>
+<td>Teeda</td>
+</tr>
+<tr class="a"><td>プレゼンテーション</td>
+<td>SAStruts</td>
+</tr>
+<tr class="b"><td>プレゼンテーション</td>
+<td>Cubby</td>
+</tr>
+<tr class="a"><td>パーシステンス</td>
+<td>Kuina-Dao</td>
+</tr>
+<tr class="b"><td>パーシステンス</td>
+<td>S2Dao</td>
+</tr>
+</table>
+<p>レンダリング結果は次のようになります．</p>
+<div class="source"><pre>
+&lt;table&gt;
+    &lt;tbody id=&quot;productItems&quot;&gt;
+        &lt;tr&gt;
+            &lt;td id=&quot;isCategory&quot; rowspan=&quot;3&quot;&gt;
+                &lt;span id=&quot;categoryName&quot;&gt;プレゼンテーション&lt;/span&gt;
+            &lt;/td&gt;
+            &lt;td&gt;&lt;span id=&quot;productName&quot;&gt;Teeda&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;span id=&quot;productName&quot;&gt;SAStruts&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;span id=&quot;productName&quot;&gt;Cubby&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td id=&quot;isCategory&quot; rowspan=&quot;2&quot;&gt;
+                &lt;span id=&quot;categoryName&quot;&gt;パーシステンス&lt;/span&gt;
+            &lt;/td&gt;
+            &lt;td&gt;&lt;span id=&quot;productName&quot;&gt;Kuina-Dao&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;span id=&quot;productName&quot;&gt;S2Dao&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<p><code>id</code>
+					属性が
+					<code>isCategory</code>
+					の
+					<code>&lt;td&gt;</code>
+					要素は， 最初の行または， カテゴリ名が直前の行のカテゴリ名と異なる場合のみ表示されます．
+					<code>&lt;td&gt;</code>
+					要素が表示される場合は， 同じカテゴリ名の行数が
+					<code>rowspan</code>
+					属性の値となります．
+				</p>
+<h4>関連項目</h4>
+<ul><li><a href="condition.html">条件制御</a>
+<ul><li><a href="condition.html#条件が成立した場合だけ要素を出力するには">
+									条件が成立した場合だけ要素を出力するには
+								</a>
+</li>
+</ul>
+</li>
+<li><a href="preview.html">プレビュー</a>
+<ul><li><a href="preview.html#プレビューでレイアウトを確認にするには">
+									プレビューでレイアウトを確認にするには
+								</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+</div><!-- article -->
+
+</div><!-- contents_center -->
+
+<div id="footer">
+<address>  &copy; Copyright
+  
+          2005-2008,
+    
+          The Seasar Foundation and the others. All rights reserved.
+      </address>
+<div class="line"><span class="hide">spacer</span></div>
+</div><!-- footer -->
+
+</div><!-- wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta http-equiv="Content-Language" content="ja" /> 
+<meta http-equiv="Content-Style-Type" content="text/css" /> 
+<title>Kuina-Dao - Kuina-Daoファーストステップ・ガイド - スタンドアロン編</title>
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/main.css" media="screen,projection" />
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/print.css" media="print" />
+<link href="../css/maven-base.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../css/maven-theme.css" type="text/css" rel="stylesheet" media="screen" />
+</head>
+
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+
+<div class="line"><span class="hide">spacer</span></div>
+
+<div id="logo"><h1 id="h01" class="hide">The Seasar Foundation Project Site</h1><img src="http://www.seasar.org/images/seasar_logo_blue.gif" alt="The Seasar Foundation" width="390" height="180" /></div>
+
+<div id="tool">
+
+<h2><a href="http://search.seasar.org/">Site Search</a></h2>
+
+<form id="search" action="http://search.seasar.org/">
+<div>
+	<input id="search_phrase" type="text" name="phrase" size="20" />
+	<input type="hidden" name="perpage" value="30" />
+	<input type="hidden" name="enc" value="UTF-8" />
+	<input id="search_go" type="submit" value="Search" />
+</div>
+</form>
+
+<h2>Seasar Banner</h2>
+
+<p><a href="http://www.seasar.org/images/seasar_banner.gif"><img src="http://www.seasar.org/images/seasar_banner.gif" alt="Seasar Banner" title="Seasar Banner" width="146" height="33" /></a></p>
+
+</div>
+
+<div id="navi">
+<p><a href="../en/">English</a> | <a href="../ja/">Japanese</a></p>
+</div>
+
+</div><!-- header -->
+
+<div id="contents_left">
+           
+  
+
+  
+    
+  
+  
+                   <h2>About</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">ホーム</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">ライセンス</a>
+        </li>
+              
+    <li class="none">
+              <a href="../downloads.html">ダウンロード</a>
+        </li>
+              
+    <li class="none">
+              <a href="../changelog.html">Changelog</a>
+        </li>
+          </ul>
+          <h2>ドキュメント</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../install.html">インストール</a>
+        </li>
+              
+    <li class="none">
+              <a href="../sc2007spring_Aa1_Kuina.pdf">Kuina-Dao入門(PDF)</a>
+        </li>
+              
+    <li class="none">
+              <a href="../firststep/index.html">ファーストステップ・ガイド</a>
+        </li>
+              
+    <li class="none">
+              <a href="../user_guide/index.html">ユーザ・ガイド</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../apidocs/index.html">Javadoc</a>
+        </li>
+          </ul>
+          <h2>プロジェクト文書</h2>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../project-info.html">プロジェクト情報</a>
+              </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy" name="poweredBy">
+            <img alt="Built by Maven" src="../images/logos/maven-feather.png" />
+          </a>
+                       
+  
+
+  
+    
+  
+  
+  </div><!-- contents_left -->
+
+<div id="contents_center">
+
+<div id="article">
+<div class="section"><h2><a name="スタンドアロン編"></a>
+スタンドアロン編</h2>
+<p>
+				Eclipseプラグイン「Dolteng」を使用すると簡単にKuina-Daoを試すことができます．
+				動画版は<a href="standalone-movie.html">こちら</a>
+．
+			</p>
+<ul><li><a href="#Kuina-Daoプロジェクトの作成">Kuina-Daoプロジェクトの作成</a>
+</li>
+<li><a href="#H2 Database Engineの起動">H2 Database Engineの起動</a>
+</li>
+<li><a href="#サンプルデータベースの確認">サンプルデータベースの確認</a>
+</li>
+<li><a href="#DatabaseViewの表示">DatabaseViewの表示</a>
+</li>
+<li><a href="#DeptエンティティとDeptDaoの作成">DeptエンティティとDeptDaoの作成</a>
+</li>
+<li><a href="#DeptDaoTestの作成と実行">DeptDaoTestの作成と実行</a>
+</li>
+<li><a href="#EmpエンティティとEmpDaoの作成">EmpエンティティとEmpDaoの作成</a>
+</li>
+<li><a href="#EmpとDeptの関連の設定">EmpとDeptの関連の設定</a>
+</li>
+<li><a href="#EmpDaoにメソッド追加">EmpDaoにメソッド追加</a>
+</li>
+<li><a href="#EmpDaoTestの作成と実行">EmpDaoTestの作成と実行</a>
+</li>
+<li><a href="#SQLを確認する">SQLを確認する</a>
+</li>
+<li><a href="#FETCH JOINを使用する">FETCH JOINを使用する</a>
+</li>
+</ul>
+</div>
+<div class="section"><h2><a name="Kuina-Daoプロジェクトの作成"></a>
+Kuina-Daoプロジェクトの作成</h2>
+<p>
+				Doltengを使用してKuina-Dao用の新規Javaプロジェクトを作成しましょう．
+			</p>
+<ul><li>メニューから「File」－「New」－「Project」を選択してください．</li>
+<li>「New」ウィザードが開きます．</li>
+<li>「Chura」－「Chura Project」を選択して「Next」ボタンを押下してください．</li>
+</ul>
+<img src="../images/firststep/standalone01.gif" /><ul><li>「Create a Chura Project」ページが表示されます．</li>
+<li>「Project name」に&quot;<code>kuina-example</code>&quot;と入力してください．</li>
+<li>「Root Package Name」に&quot;<code>kuina.example</code>&quot;と入力してください．</li>
+<li>「Project Type」で「Kuina-Dao Only」を選択してください．</li>
+<li>「Finish」ボタンを押下してください．</li>
+</ul>
+<img src="../images/firststep/standalone02.gif" /><p><code>kuina-example</code>プロジェクトが作成されます．
+				Kuina-Daoを使用するために必要なJarファイルは全て揃っています．
+				また，サンプル用のデータベースも作成されています．
+			</p>
+<img src="../images/firststep/standalone03.gif" /><p>
+				ここでプロジェクトをビルドしておきます．
+			</p>
+<ul><li><code>kuina-example</code>プロジェクトを選択して右クリック「Build Project」を選択してください．</li>
+</ul>
+</div>
+<div class="section"><h2><a name="H2_Database_Engineの起動"></a>
+H2 Database Engineの起動</h2>
+<p>
+				DbLauncherを使用して<a href="http://www.h2database.com/" class="externalLink">H2 Database Engine</a>
+を起動します．
+			</p>
+<ul><li>「<code>kuina-example</code>」プロジェクトを右クリックして「H2」－「Start H2 Server」を選択してください．</li>
+<li>「<code>kuina-example</code>」プロジェクトにH2が起動したことを示す緑三角のマーカが表示されます．</li>
+<li>「Console」ビューにH2のメッセージが表示されます．</li>
+</ul>
+<img src="../images/firststep/standalone04.gif" /></div>
+<div class="section"><h2><a name="サンプルデータベースの確認"></a>
+サンプルデータベースの確認</h2>
+<p>
+				H2のサンプルのデータベースを確認しましょう．
+			</p>
+<ul><li>「<code>kuina-example</code>」プロジェクトを右クリックして「H2」－「View Database Manager」を選択してください．</li>
+<li>WebブラウザにH2のログイン画面が表示されます．</li>
+<li>「JDBC URL」が&quot;<code>jdbc:h2:tcp://localhost:9092/demo</code>&quot;を入力してください．</li>
+<li>「接続」ボタンを押下してください．</li>
+</ul>
+<img src="../images/firststep/standalone05.gif" /><ul><li>Webブラウザに「H2 Console」画面が表示されます．</li>
+<li>左のペインにDoltengが作成したテーブル<code>DEPT</code>と<code>EMP</code>が表示されています．</li>
+</ul>
+<img src="../images/firststep/standalone06.gif" /><ul><li>左のペインで&quot;<code>DEPT</code>&quot;をクリックしてください．</li>
+<li>「SQLステートメント」テキストエリアに&quot;<code>SELECT * FROM DEPT</code>&quot;が入力されます．</li>
+<li>「実行」ボタンを押下するとSQLが実行されます．</li>
+</ul>
+<img src="../images/firststep/standalone07.gif" /></div>
+<div class="section"><h2><a name="DatabaseViewの表示"></a>
+DatabaseViewの表示</h2>
+<p>
+				DoltengでテーブルからエンティティクラスやDaoインタフェースを生成するために「DatabaseView」ビューを表示します．
+			</p>
+<ul><li>メニューから「Window」－「Show View」－「Other」を選択してください．</li>
+<li>「Show View」ダイアログが開きます．</li>
+<li>「Dolteng」－「DatabaseView」を選択してください．</li>
+<li>「OK」ボタンを押下してください．</li>
+</ul>
+<img src="../images/firststep/standalone08.gif" /><p>
+				「DatabaseView」ビューが表示されます．
+				「kuina-example」－「jdbc.dicon」－「PUBLIC」を開くとサンプルデータベースに含まれる2つのテーブル
+				<code>DEPT</code>と<code>EMP</code>を確認することができます．
+			</p>
+<img src="../images/firststep/standalone09.gif" /></div>
+<div class="section"><h2><a name="DeptエンティティとDeptDaoの作成"></a>
+DeptエンティティとDeptDaoの作成</h2>
+<p>
+				Doltengを使用してエンティティとDaoを生成しましょう．
+			</p>
+<ul><li>「DatabaseView」で「<code>DEPT</code>」テーブルを右クリックして「New Dao or Entity」を選択してください．</li>
+<li>「New Entity」ウィザードが開きます．</li>
+<li>「Finish」ボタンを押下してください．</li>
+</ul>
+<img src="../images/firststep/standalone10.gif" /><p>
+				エンティティクラス<code>Dept</code>およびDaoインタフェース<code>DeptDao</code>が生成されます．
+				<code>DeptDao</code>には基本的なメソッドが定義済みなのですぐに使うことができます．
+			</p>
+<img src="../images/firststep/standalone11.gif" /></div>
+<div class="section"><h2><a name="DeptDaoTestの作成と実行"></a>
+DeptDaoTestの作成と実行</h2>
+<p><a href="../user_guide/query.html#主キーによる検索">主キーを指定して
+				<code>Dept</code>を検索する</a>
+テストクラスを作成しましょう．
+			</p>
+<ul><li><code>src/test/java</code>フォルダにある<code>kuina.example.dao</code>パッケージを選択して
+				「New」－「Class」を選択してください．</li>
+<li>「Name」に&quot;<code>DeptDaoTest</code>&quot;と入力します．</li>
+<li>「Superclass」に&quot;<code>org.seasar.extension.unit.S2TestCase</code>&quot;を入力します．</li>
+<li>「Finish」ボタンを押下します．</li>
+</ul>
+<img src="../images/firststep/standalone12.gif" /><p>
+				作成されたテストクラスにフィールドとメソッドを追加してください．
+			</p>
+<div class="source"><pre>
+public class DeptDaoTest extends S2TestCase {
+
+	DeptDao deptDao;
+
+	@Override
+	protected void setUp() throws Exception {
+		super.setUp();
+		include(&quot;app.dicon&quot;);
+	}
+
+	public void testFindTx() throws Exception {
+		Dept dept = deptDao.find(1);
+		assertEquals(&quot;ACCOUNTING&quot;, dept.getDeptName());
+	}
+}
+</pre>
+</div>
+<p>
+				テストを実行してください．
+			</p>
+<p>
+				グリーンバーが表示されれば成功です．
+				「<a href="../user_guide/diigu.html">Diigu</a>
+で処理されていません。クリーンビルドしてください。」という
+				メッセージが表示されてテストが失敗した場合は，プロジェクトをクリーンビルドして再度テストを実行してください．
+			</p>
+<img src="../images/firststep/standalone13.gif" /></div>
+<div class="section"><h2><a name="EmpエンティティとEmpDaoの作成"></a>
+EmpエンティティとEmpDaoの作成</h2>
+<ul><li>「DatabaseView」で「<code>EMP</code>」テーブルを右クリックして「New Dao or Entity」を選択してください．</li>
+<li>「New Entity」ウィザードが開きます．</li>
+<li>「Finish」ボタンを押下してください．</li>
+</ul>
+<img src="../images/firststep/standalone14.gif" /><p>
+				エンティティクラス<code>Emp</code>およびDaoインタフェース<code>EmpDao</code>が生成されます．
+			</p>
+</div>
+<div class="section"><h2><a name="EmpとDeptの関連の設定"></a>
+EmpとDeptの関連の設定</h2>
+<p>
+				EmpとDeptの間に関連を設定しましょう．
+			</p>
+<ul><li><code>Emp</code>クラスのフィールド<code>deptId</code>と
+				メソッド<code>getDeptId()/setDeptId(Integer)</code>を削除してください．</li>
+<li><code>Emp</code>クラスに関連のフィールド及びgetter/seterメソッドを追加してください．</li>
+</ul>
+<div class="source"><pre>
+	@ManyToOne
+	@JoinColumn(name = &quot;DEPT_ID&quot;)
+	private Dept dept;
+
+	public Dept getDept() {
+		return dept;
+	}
+
+	public void setDept(Dept dept) {
+		this.dept = dept;
+	}
+</pre>
+</div>
+<ul><li><code>Dept</code>クラスに関連のフィールド及びgetter/seterメソッドを追加してください．</li>
+</ul>
+<div class="source"><pre>
+	@OneToMany(mappedBy = &quot;dept&quot;)
+	private List&lt;Emp&gt; employees;
+
+	public List&lt;Emp&gt; getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(List&lt;Emp&gt; employees) {
+		this.employees = employees;
+	}
+</pre>
+</div>
+</div>
+<div class="section"><h2><a name="EmpDaoにメソッド追加"></a>
+EmpDaoにメソッド追加</h2>
+<p>
+				Kuina-Daoでは，メソッドを定義するだけである程度複雑な問い合わせも可能です．
+				部署名を指定して従業員を検索するメソッドを追加しましょう．
+			</p>
+<ul><li><code>EmpDao</code>に次のメソッドを追加してください．</li>
+</ul>
+<div class="source"><pre>
+	public List&lt;Emp&gt; findByDeptName(String dept$deptName);
+</pre>
+</div>
+<p>
+				このように，<a href="../user_guide/query.html#引数を条件とする検索">問い合わせ条件を引数の名前で指定</a>
+します．
+				ここでは，<code>$</code>で区切ることで
+				<a href="../user_guide/query.html#関連を表す引数名およびDTOのプロパティ名">関連先エンティティの
+				プロパティを問い合わせ条件</a>
+としています．
+			</p>
+</div>
+<div class="section"><h2><a name="EmpDaoTestの作成と実行"></a>
+EmpDaoTestの作成と実行</h2>
+<p>
+				EmpDaoをテストするためのクラスを作成しましょう．
+			</p>
+<ul><li><code>src/test/java</code>フォルダにある<code>kuina.example.dao</code>パッケージを選択して
+				「New」－「Class」を選択してください．</li>
+<li>「Name」に&quot;<code>EmpDaoTest</code>&quot;と入力してください．</li>
+<li>「Superclass」に&quot;<code>org.seasar.extension.unit.S2TestCase</code>&quot;を入力します．</li>
+<li>「Finish」ボタンを押下してください．</li>
+</ul>
+<img src="../images/firststep/standalone15.gif" /><ul><li>作成されたテストクラスにフィールドとメソッドを追加してください．</li>
+</ul>
+<div class="source"><pre>
+	EmpDao empDao;
+
+	@Override
+	protected void setUp() throws Exception {
+		super.setUp();
+		include(&quot;app.dicon&quot;);
+	}
+
+	public void testFindByDeptNameTx() throws Exception {
+		List&lt;Emp&gt; empList = empDao.findByDeptName(&quot;ACCOUNTING&quot;);
+		assertEquals(3, empList.size());
+		for (Emp emp : empList) {
+			System.out.println(emp.getEmpName() + &quot; : &quot;
+					+ emp.getDept().getDeptName());
+		}
+	}
+</pre>
+</div>
+<p>
+				テストを実行してください．
+			</p>
+<p>
+				グリーンバーが表示されれば成功です．
+				「<a href="../user_guide/diigu.html">Diigu</a>
+で処理されていません。クリーンビルドしてください。」という
+				メッセージが表示されてテストが失敗した場合はクリーンビルドして再度テストを実行してください．
+			</p>
+</div>
+<div class="section"><h2><a name="SQLを確認する"></a>
+SQLを確認する</h2>
+<p>
+				実行されるSQLを確認しましょう．
+			</p>
+<ul><li><code>src/main/resources</code>フォルダにある<code>log4j.properties</code>ファイルに
+				以下の内容を追加してください．</li>
+</ul>
+<div class="source"><pre>
+log4j.category.org.hibernate=DEBUG, C
+log4j.additivity.org.hibernate=false
+</pre>
+</div>
+<p><code>EmpDaoTest</code>を実行してください．
+				「Console」ビューに次のようにSQLが表示されます．
+			</p>
+<div class="source"><pre>
+DEBUG 2007-06-02 06:12:26,812 [main] 
+    select
+        emp0_.id as id1_,
+        emp0_.EMP_NO as EMP2_1_,
+        emp0_.EMP_NAME as EMP3_1_,
+        emp0_.MGR_ID as MGR4_1_,
+        emp0_.hiredate as hiredate1_,
+        emp0_.sal as sal1_,
+        emp0_.VERSION_NO as VERSION7_1_,
+        emp0_.DEPT_ID as DEPT8_1_ 
+    from
+        Emp emp0_ 
+    inner join
+        Dept dept1_ 
+            on emp0_.DEPT_ID=dept1_.id 
+    where
+        dept1_.DEPT_NAME=?
+
+DEBUG 2007-06-02 06:12:26,921 [main] 
+    select
+        dept0_.id as id0_0_,
+        dept0_.DEPT_NO as DEPT2_0_0_,
+        dept0_.DEPT_NAME as DEPT3_0_0_,
+        dept0_.loc as loc0_0_,
+        dept0_.VERSION_NO as VERSION5_0_0_ 
+    from
+        Dept dept0_ 
+    where
+        dept0_.id=?
+</pre>
+</div>
+<p>
+				SQLが2回発行されています．
+				最初のSQLではEMP表のカラムだけを取得しています．
+				テストメソッドが部門名を表示しようとするとDEPT表のカラムが取得されます．
+				このように，関連をたどることで遅延フェッチが行われるのがJPAの特徴です．
+			</p>
+</div>
+<div class="section"><h2><a name="FETCH_JOINを使用する"></a>
+FETCH JOINを使用する</h2>
+<p>
+				遅延フェッチによってSQLが何回も発行されてしまうことを防ぎたい場合はFETCH JOINを使うことができます．
+				Kuina-DaoではアノテーションによってFETCH JOINすることを指定できます．
+			</p>
+<ul><li><code>EmpDao</code>の<code>findByDeptName(String)</code>メソッドに
+				<a href="../user_guide/annotation.xml#@FetchJoinアノテーション"><code>@FetchJoin</code>アノテーション</a>
+を
+				付加してください．</li>
+</ul>
+<div class="source"><pre>
+	@FetchJoin(&quot;dept&quot;)
+	public List&lt;Emp&gt; findByDeptName(String dept$deptName);
+</pre>
+</div>
+<p><code>EmpDaoTest</code>を実行してください．
+				「Console」ビューに次のようにSQLが表示されます．
+			</p>
+<div class="source"><pre>
+DEBUG 2007-06-02 06:19:04,609 [main] 
+    select
+        emp0_.id as id1_0_,
+        dept1_.id as id0_1_,
+        emp0_.EMP_NO as EMP2_1_0_,
+        emp0_.EMP_NAME as EMP3_1_0_,
+        emp0_.MGR_ID as MGR4_1_0_,
+        emp0_.hiredate as hiredate1_0_,
+        emp0_.sal as sal1_0_,
+        emp0_.VERSION_NO as VERSION7_1_0_,
+        emp0_.DEPT_ID as DEPT8_1_0_,
+        dept1_.DEPT_NO as DEPT2_0_1_,
+        dept1_.DEPT_NAME as DEPT3_0_1_,
+        dept1_.loc as loc0_1_,
+        dept1_.VERSION_NO as VERSION5_0_1_ 
+    from
+        Emp emp0_ 
+    inner join
+        Dept dept1_ 
+            on emp0_.DEPT_ID=dept1_.id 
+    where
+        dept1_.DEPT_NAME=?
+</pre>
+</div>
+<p>
+				発行されるSQLが1回になりました．
+			</p>
+</div>
+
+</div><!-- article -->
+
+</div><!-- contents_center -->
+
+<div id="footer">
+<address>  &copy; Copyright
+  
+          2006-2008,
+    
+          The Seasar Foundation and the others. All rights reserved.
+      </address>
+<div class="line"><span class="hide">spacer</span></div>
+</div><!-- footer -->
+
+</div><!-- wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,1564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta http-equiv="Content-Language" content="ja" /> 
+<meta http-equiv="Content-Style-Type" content="text/css" /> 
+<title>Teeda - Extension - 逆引きリファレンス - バリデーション</title>
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/main.css" media="screen,projection" />
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/print.css" media="print" />
+<link href="../../css/maven-base.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/maven-theme.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/prettify.css" type="text/css" rel="stylesheet" media="screen" />
+<script type="text/javascript" src="../../js/prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+
+<div id="wrapper">
+
+<div id="header">
+
+<div class="line"><span class="hide">spacer</span></div>
+
+<div id="logo"><h1 id="h01" class="hide">The Seasar Foundation Project Site</h1><img src="http://www.seasar.org/images/seasar_logo_blue.gif" alt="The Seasar Foundation" width="390" height="180" /></div>
+
+<div id="tool">
+
+<h2><a href="http://search.seasar.org/">Site Search</a></h2>
+
+<form id="search" action="http://search.seasar.org/">
+<div>
+	<input id="search_phrase" type="text" name="phrase" size="20" />
+	<input type="hidden" name="perpage" value="30" />
+	<input type="hidden" name="enc" value="UTF-8" />
+	<input id="search_go" type="submit" value="Search" />
+</div>
+</form>
+
+<h2>Teeda Banner</h2>
+
+<p><a href="http://teeda.seasar.org/teeda_banner.png"><img src="http://teeda.seasar.org/teeda_banner.png" alt="Teeda Banner" title="Teeda Banner" width="146" height="33" /></a></p>
+
+</div>
+
+<div id="navi">
+<p><a href="../../../en/">English</a> | <a href="../../../ja/">Japanese</a></p>
+</div>
+
+</div><!-- header -->
+
+<div id="contents_left">
+           
+  
+
+  
+    
+  
+  
+                   <h2>About</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">ホーム</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../license.html">ライセンス</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../downloads.html">ダウンロード</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../changelog.html">変更履歴</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../roadmap.html">ロードマップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://ml.seasar.org/mailman/listinfo/seasar-user">メーリングリスト</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://www.seasar.org/issues/browse/TEEDA">トラッキング</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://svn.seasar.org/browse/?root=teeda">SVN リポジトリブラウザ</a>
+        </li>
+          </ul>
+          <h2>General</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../env.html">環境</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../setup.html">開発環境のセットアップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../deploy.html">実行環境へのデプロイ</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://www.seasar.org/wiki/index.php?FAQ%2FTeeda">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../presentations.html">プレゼンテーション資料</a>
+        </li>
+          </ul>
+          <h2>Teeda Core</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_core.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../example.html">サンプル解説</a>
+        </li>
+          </ul>
+          <h2>Teeda Extension</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../extension/index.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/firststep/index.html">ファーストステップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/tutorial/index.html">チュートリアル</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/example.html">サンプル解説</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/concept/index.html">概念</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+            
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="../../extension/reverse/index.html">逆引きリファレンス</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/output.html">出力</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/link.html">リンク</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/input.html">入力フォーム</a>
+        </li>
+                  
+    <li class="none">
+              <strong>バリデーション</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/convert.html">コンバート</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/foreach.html">繰り返し</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/condition.html">条件制御</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/layout.html">レイアウト</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/transition.html">画面遷移と状態</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/preview.html">プレビュー</a>
+        </li>
+              </ul>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/reference/index.html">リファレンス</a>
+              </li>
+          </ul>
+          <h2>Teeda Ajax</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_ajax.html">概要</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../kumu.html">Kumu</a>
+              </li>
+          </ul>
+          <h2>プロジェクト文書</h2>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-info.html">プロジェクト情報</a>
+              </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-reports.html">プロジェクトレポート</a>
+              </li>
+          </ul>
+          <h2>モジュール</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Teeda</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-core/ja/index.html">Teeda Core</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-extension/ja/index.html">Teeda Extension</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-ajax/ja/index.html">Teeda Ajax</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-tiger/ja/index.html">Teeda Tiger</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy" name="poweredBy">
+            <img alt="Built by Maven" src="../../images/logos/maven-feather.png" />
+          </a>
+                       
+  
+
+  
+    
+  
+  
+  </div><!-- contents_left -->
+
+<div id="contents_center">
+
+<div id="article">
+<div class="section"><h2><a name="バリデーション"></a>
+バリデーション</h2>
+<ul><li><a href="#ベーシック">ベーシック</a>
+<ul><li><a href="#必須項目が入力されたかチェックするには">
+								必須項目が入力されたかチェックするには
+							</a>
+</li>
+<li><a href="#特定のサブミットボタンが押されたときだけチェックするには">
+								特定のサブミットボタンが押されたときだけチェックするには
+							</a>
+</li>
+</ul>
+</li>
+<li><a href="#文字列のバリデーション">文字列のバリデーション</a>
+<ul><li><a href="#文字列の長さを文字数でチェックするには">
+								文字列の長さを文字数でチェックするには
+							</a>
+</li>
+<li><a href="#文字列の長さをバイト数でチェックするには">
+								文字列の長さをバイト数でチェックするには
+							</a>
+</li>
+<li><a href="#文字列が正規表現にマッチするかチェックするには">
+								文字列が正規表現にマッチするかチェックするには
+							</a>
+</li>
+<li><a href="#文字列がメールアドレスかチェックするには">
+								文字列がメールアドレスかチェックするには
+							</a>
+</li>
+<li><a href="#文字列がURLかチェックするには">
+								文字列がURLかチェックするには
+							</a>
+</li>
+</ul>
+</li>
+<li><a href="#数値のバリデーション">数値のバリデーション</a>
+<ul><li><a href="#数値の桁数をチェックするには">数値の桁数をチェックするには</a>
+</li>
+<li><a href="#数値が範囲内かチェックするには">
+								数値が範囲内かチェックするには
+							</a>
+</li>
+</ul>
+</li>
+<li><a href="#複数の項目に跨ったバリデーション">複数の項目に跨ったバリデーション</a>
+<ul><li><a href="#a2つの入力項目が等しいかチェックするには">
+								2つの入力項目が等しいかチェックするには
+							</a>
+</li>
+<li><a href="#a2つの入力項目の大小関係をチェックするには">
+								2つの入力項目の大小関係をチェックするには
+							</a>
+</li>
+</ul>
+</li>
+<li><a href="#動的なバリデーション">動的なバリデーション</a>
+<ul><li><a href="#ダイナミックバリデータを使用するには">
+								ダイナミックバリデータを使用するには
+							</a>
+</li>
+<li><a href="#複数のバリデータを使用するには">
+								複数のバリデータを使用するには
+							</a>
+</li>
+<li><a href="#getValidatorメソッドの中でリクエストパラメータを参照するには">
+								get～Validator()メソッドの中でリクエストパラメータを参照するには
+							</a>
+</li>
+<li><a href="#doメソッドでバリデーションするには">
+								do～()メソッドでバリデーションするには
+							</a>
+</li>
+</ul>
+</li>
+<li><a href="#メッセージ">メッセージ</a>
+<ul><li><a href="#メッセージを表示するには">メッセージを表示するには</a>
+</li>
+<li><a href="#グローバルなメッセージを表示するには">
+								グローバルなメッセージを表示するには
+							</a>
+</li>
+<li><a href="#全てのメッセージを一カ所にまとめて表示するには">
+								全てのメッセージを一カ所にまとめて表示するには
+							</a>
+</li>
+<li><a href="#メッセージの文言を変更するには">
+								メッセージの文言を変更するには
+							</a>
+</li>
+<li><a href="#特定のコンポーネントだけメッセージを変更するには">
+								特定のコンポーネントだけメッセージを変更するには
+							</a>
+</li>
+<li><a href="#エラーとなった項目が目立つようにするには">
+								エラーとなった項目が目立つようにするには
+							</a>
+</li>
+<li><a href="#項目名を日本語で表示するには">項目名を日本語で表示するには</a>
+</li>
+<li><a href="#項目名をプロパティファイルから表示するには">
+								項目名をプロパティファイルから表示するには
+							</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section"><h2><a name="ベーシック"></a>
+ベーシック</h2>
+<div class="section"><h3><a name="必須項目が入力されたかチェックするには"></a>
+必須項目が入力されたかチェックするには</h3>
+<p>
+					必須項目であるページクラスのプロパティにアノテーションで
+					<code>TRequiredValidator</code>
+					を指定します．
+				</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@Required
+public String name;
+</pre>
+</div>
+<h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String name_TRequiredValidator = &quot;&quot;;
+public String name;
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，ブラウザで値が入力されないとバリデーションでエラーとなります．
+				</p>
+</div>
+<div class="section"><h3><a name="特定のサブミットボタンが押されたときだけチェックするには"></a>
+特定のサブミットボタンが押されたときだけチェックするには</h3>
+<div class="sidebar">
+					本ドキュメントで紹介する多くのバリデータには
+					<code>target</code>
+					属性があります (
+					<a href="#複数のバリデータを使用するには">ValidatorChain</a>
+
+					を除きます)．
+				</div><p>
+					アノテーションの
+					<code>target</code>
+					属性でチェック対象となるサブミットボタンの
+					<code>id</code>
+					属性の値を指定します．複数の値をカンマ (
+					<code>','</code>
+					) 区切りで列挙することができます．
+				</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@Required(target = &quot;doNext&quot;)
+public String name;
+</pre>
+</div>
+<h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String name_TRequiredValidator = &quot;target='doNext'&quot;;
+public String name;
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，
+					<code>doNext</code>
+					ボタンが押されたときだけ
+					<code>name</code>
+					フィールドが入力されているかチェックが行われます．
+				</p>
+</div>
+</div>
+<div class="section"><h2><a name="文字列のバリデーション"></a>
+文字列のバリデーション</h2>
+<div class="section"><h3><a name="文字列の長さを文字数でチェックするには"></a>
+文字列の長さを文字数でチェックするには</h3>
+<p>
+					ページクラスのプロパティにアノテーションで
+					<code>TLengthValidator</code>
+					を指定します．
+					<code>minimum</code>
+					属性で最低の長さを，
+					<code>maximum</code>
+					属性で最大の長さを設定します． どちらかの指定を省略することもできます．
+				</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@Length(minimum = 3, maximum = 5)
+public String name;
+</pre>
+</div>
+<h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String name_TLengthValidator = &quot;minimum=3, maximun=5&quot;;
+public String name;
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，入力された文字列が3～5文字でなければバリデーションでエラーとなります．
+				</p>
+</div>
+<div class="section"><h3><a name="文字列の長さをバイト数でチェックするには"></a>
+文字列の長さをバイト数でチェックするには</h3>
+<p>
+					ページクラスのプロパティにアノテーションで
+					<code>TByteLengthValidator</code>
+					を指定します．
+					<code>minimum</code>
+					属性で最低のバイト数を，
+					<code>maximum</code>
+					属性で最大のバイト数を設定します． どちらかの指定を省略することもできます．
+				</p>
+<p><code>charSet</code>
+					属性で文字列からバイト列に変換するエンコーディングを設定することもできます．
+					省略するとプラットフォームデフォルトのエンコーディングが使われます．
+				</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@ByteLength(minimum = 5, maximum = 10)
+public String name;
+</pre>
+</div>
+<h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String name_TByteLengthValidator = &quot;minimum=5, maximun=10&quot;;
+public String name;
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時， 入力された文字列をプラットフォームデフォルトのエンコーディングで変換したバイト列の長さが，
+					5～10バイトでなければバリデーションでエラーとなります．
+				</p>
+</div>
+<div class="section"><h3><a name="文字列が正規表現にマッチするかチェックするには"></a>
+文字列が正規表現にマッチするかチェックするには</h3>
+<p>
+					ページクラスのプロパティにアノテーションで
+					<code>TRegularExpressionValidator</code>
+					を指定し，
+					<code>pattern</code>
+					属性で正規表現を設定します．
+				</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@RegularExpression(pattern = &quot;\\w{6,10}&quot;)
+public String password;
+</pre>
+</div>
+<h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String password_TRegularExpressionValidator = &quot;pattern='\\w{6,10}'&quot;;
+public String password;
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，入力された文字列が正規表現にマッチしなければバリデーションでエラーとなります．
+				</p>
+</div>
+<div class="section"><h3><a name="文字列がメールアドレスかチェックするには"></a>
+文字列がメールアドレスかチェックするには</h3>
+<p>
+					ページクラスのプロパティにアノテーションで
+					<code>EmailValidator</code>
+					を指定します．
+					<code>pattern</code>
+					属性でメールアドレスとして受け入れる正規表現を設定することができます． 省略した場合のデフォルトは
+				</p>
+<div class="source"><pre>
+^\p{ASCII}+@(([-a-z0-9]+\.)*[a-z]+|\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])
+</pre>
+</div>
+<p>です．</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@Email
+public String mailAddress;
+</pre>
+</div>
+<h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String name_EmailValidator = &quot;&quot;;
+public String mailAddress;
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，入力された文字列がメールアドレスにマッチしなければバリデーションでエラーとなります．
+				</p>
+</div>
+<div class="section"><h3><a name="文字列がURLかチェックするには"></a>
+文字列がURLかチェックするには</h3>
+<p>
+					ページクラスのプロパティにアノテーションで
+					<code>UrlValidator</code>
+					を指定します．
+					<code>pattern</code>
+					属性でメールアドレスとして受け入れる正規表現を設定することができます． 省略した場合のデフォルトは
+				</p>
+<div class="source"><pre>
+https?:\/\/[-_.!~*'()a-zA-Z0-9;/?:@&amp;=+$,%#]+
+</pre>
+</div>
+<p>です．</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@Url
+public String url;
+</pre>
+</div>
+<h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String url_UrlValidator = &quot;&quot;;
+public String url;
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，入力された文字列がURLにマッチしなければバリデーションでエラーとなります．
+				</p>
+</div>
+</div>
+<div class="section"><h2><a name="数値のバリデーション"></a>
+数値のバリデーション</h2>
+<div class="section"><h3><a name="数値の桁数をチェックするには"></a>
+数値の桁数をチェックするには</h3>
+<div class="sidebar">このバリデータは入力値を文字列のままチェックします．</div><p>
+					ページクラスのプロパティにアノテーションで
+					<code>TNumberLengthValidator</code>
+					を指定します．
+					<code>integralMin</code>
+					属性で整数部の最低の長さを，
+					<code>integralMax</code>
+					属性で整数部の最大の長さを設定します．
+					<code>fractionMin</code>
+					属性で小数部の最低の長さを，
+					<code>fractionMax</code>
+					属性で小数部の最大の長さを設定します． いずれかの指定を省略することもできます．
+				</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@NumberLength(fractionMin = 2, fractionMax = 2)
+public BigDecimal exchangeRate;
+</pre>
+</div>
+<h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String exchangeRate_TNumberLengthValidator = &quot;fractionMin=2, fractionMax=2&quot;;
+public BigDecimal exchangeRate;
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，入力された数値の小数部が2桁でなければバリデーションでエラーとなります．
+				</p>
+</div>
+<div class="section"><h3><a name="数値が範囲内かチェックするには"></a>
+数値が範囲内かチェックするには</h3>
+<p>
+					ページクラスのプロパティにアノテーションで
+					<code>TLongRangeValidator</code>
+					(整数の場合) または
+					<code>TDoubleRangeValidator</code>
+					(実数の場合) を指定します．
+					<code>minimum</code>
+					属性で最低の値を，
+					<code>maximum</code>
+					属性で最大の値を設定します． いずれかの指定を省略することもできます．
+				</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@LongRange(minimum = 0, maximum = 100)
+public int score;
+</pre>
+</div>
+<h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String score_TLongRangeValidator = &quot;minimum=0, maximum=100&quot;;
+public int score;
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，入力された数値が0～100の範囲内でなければバリデーションでエラーとなります．
+				</p>
+</div>
+</div>
+<div class="section"><h2><a name="複数の項目に跨ったバリデーション"></a>
+複数の項目に跨ったバリデーション</h2>
+<div class="section"><h3><a name="a2つの入力項目が等しいかチェックするには"></a>
+2つの入力項目が等しいかチェックするには</h3>
+<p>
+					テンプレートHTML上で
+					<strong>後から出てくる入力項目</strong>
+					に対応するページクラスのプロパティに， アノテーションで
+					<code>TEqualValidator</code>
+					を指定します．
+					<code>targetId</code>
+					属性で， 比較対象となる入力項目のプロパティ名を指定します．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+パスワード
+&lt;input type=&quot;password&quot; id=&quot;pwd1&quot; /&gt;&lt;br /&gt;
+パスワード
+(再確認)&lt;input type=&quot;password&quot; id=&quot;pwd2&quot; /&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+public String pwd1;
+
+@Equal(targetId = &quot;pwd1&quot;)
+public String pwd2;
+</pre>
+</div>
+<h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String pwd2_TEqualValidator = &quot;targetId='pwd1'&quot;;
+public String pwd1;
+public String pwd2;
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，
+					<code>pwd1</code>
+					と
+					<code>pwd2</code>
+					に入力された値が異なると，バリデーションでエラーとなります．
+				</p>
+</div>
+<div class="section"><h3><a name="a2つの入力項目の大小関係をチェックするには"></a>
+2つの入力項目の大小関係をチェックするには</h3>
+<div class="sidebar">
+					大小関係をチェックできるのは，プロパティの型が
+					<code>java.lang.Comparable</code>
+					インタフェースを実装している場合だけです．
+				</div><p>
+					テンプレートHTML上で
+					<strong>後から出てくる入力項目</strong>
+					に対応するページクラスのプロパティに， 以下のアノテーションのいずれかを指定します
+					(括弧内はTigerアノテーションの名前)．
+				</p>
+<dl><dt><code>TGreaterValidator</code>
+						(
+						<code>@Greater</code>
+						)
+					</dt>
+<dd>アノテーションの付けられた項目が比較対象より大きいことをチェックします．</dd>
+<dt><code>TGreaterEqualValidator</code>
+						(
+						<code>@GreaterEqual</code>
+						)
+					</dt>
+<dd>
+						アノテーションの付けられた項目が比較対象より大きいか， または等しいことをチェックします．
+					</dd>
+<dt><code>TLessValidator</code>
+						(
+						<code>@Less</code>
+						)
+					</dt>
+<dd>アノテーションの付けられた項目が比較対象より小さいことをチェックします．</dd>
+<dt><code>TLessEqualValidator</code>
+						(
+						<code>@LessEqual</code>
+						)
+					</dt>
+<dd>
+						アノテーションの付けられた項目が比較対象より小さいか， または等しいことをチェックします．
+					</dd>
+</dl>
+<p><code>targetId</code>
+					属性で， 比較対象となる入力項目のプロパティ名を指定します．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+開始 &lt;input type=&quot;text&quot; id=&quot;from&quot; /&gt;&lt;br /&gt;
+終了 &lt;input type=&quot;text&quot; id=&quot;to&quot; /&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+public Integer from;
+
+@GreaterEqual(targetId = &quot;from&quot;)
+public Integer to;
+</pre>
+</div>
+<h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String to_TGreaterEqualValidator = &quot;targetId='from'&quot;;
+public Integer from;
+public Integer to;
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，
+					<code>to</code>
+					に入力された値が
+					<code>from</code>
+					に入力された値より小さいと，バリデーションでエラーとなります．
+				</p>
+</div>
+</div>
+<div class="section"><h2><a name="動的なバリデーション"></a>
+動的なバリデーション</h2>
+<p>
+				実行時に動的に作成したバリデータを適用するすることができます．
+				この機能は「ダイナミックバリデータ」と呼ばれます．
+			</p>
+<div class="section"><h3><a name="ダイナミックバリデータを使用するには"></a>
+ダイナミックバリデータを使用するには</h3>
+<p>
+					ダイナミックバリデータを適用するプロパティに対応する
+					<code>get</code>
+					+
+					<var>プロパティ名</var>
+					+
+					<code>Validator()</code>
+					という名前の
+					<code>public</code>
+					メソッドを作成します． 引数はなく，戻り値の型は
+					<code>javax.faces.validator.Validator</code>
+					とします．
+				</p>
+<p><code>get～Validator()</code>
+					メソッドでは，リクエストパラメータやセッションの状態を参照して
+					<code>Validator</code>
+					を作成して返すことができます．
+				</p>
+<div class="caution"><div>注意事項</div><p><code>get～Validator()</code>
+						は PROCESS_VALIDATION フェーズで呼び出されるため，
+						ページクラスのプロパティにはリクエストパラメータの値が反映されていません． JSF
+						とページクラスのライフサイクルについては「
+						<a href="../concept/lifecycle.html#JSFライフサイクルとの関係">
+							JSFライフサイクルとの関係
+						</a>
+
+						」を参照してください．
+					</p>
+</div><p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，
+					<code>get～Validator()</code>
+					メソッドが返した
+					<code>Validator</code>
+					によってバリデーションが行われます．
+				</p>
+<h5>例：ページクラス (FooPage.java)</h5>
+<div class="source"><pre>
+public String name;
+
+public Validator getNameValidator() {
+    Validator validator = new TLengthValidator();
+    validator.setMinimum(...);
+    validator.setMaximum(...);
+    return validator;
+}
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，
+					<code>name</code>
+					プロパティのバリデーションは
+					<code>getNameValidator()</code>
+					メソッドが返した
+					<code>TLengthValidator</code>
+					によって行われます．
+				</p>
+</div>
+<div class="section"><h3><a name="複数のバリデータを使用するには"></a>
+複数のバリデータを使用するには</h3>
+<code>javax.faces.internal.ValidatorChain</code>
+				を使います．
+				<code>ValidatorChain</code>
+				の
+				<code>add(Validator validator)</code>
+				メソッドで適用したいバリデータを追加します． バリデータは追加された順に適用されます．
+				<h5>例：ページクラス (FooPage.java)</h5>
+<div class="source"><pre>
+public String name;
+
+public Validator getNameValidator() {
+    ValidatorChain validatorChain = new ValidatorChain();
+    validatorChain.add(...);
+    validatorChain.add(...);
+    ...
+    return validatorChain;
+}
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="getValidatorメソッドの中でリクエストパラメータを参照するには"></a>
+get～Validator()メソッドの中でリクエストパラメータを参照するには</h3>
+<p>
+					ページクラスに名前が
+					<code>param</code>
+					で型が
+					<code>java.util.Map</code>
+					のプロパティを用意します． Seasar2によってこのプロパティにリクエストパラメータを含む
+					<code>Map</code>
+					が設定されます．
+				</p>
+<p><code>get～Validator()</code>
+					メソッドの中で，
+					<code>param</code>
+					プロパティからパラメータ名をキーとしてパラメータ値を取得することができます．
+				</p>
+<p>リクエストパラメータの名前は基本的に</p>
+<ul><li><var>&lt;form&gt;要素のid</var>
+						 +
+						<code>':'</code>
+						+
+						<var>&lt;input&gt;要素等のid</var></li>
+</ul>
+<p>という形になります．</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;form id=&quot;form&quot;&gt;
+    &lt;input type=&quot;text&quot; id=&quot;name&quot;/&gt;
+    ...
+&lt;/form&gt;
+</pre>
+</div>
+<h5>例：パラメータ名</h5>
+<div class="source"><pre>
+form:name
+</pre>
+</div>
+<p><a href="layout.html">レイアウト</a>
+
+					を使っている場合は
+					<code>&lt;includeChildBody&gt;</code>
+					要素や
+					<code>&lt;include&gt;</code>
+					要素の
+					<code>id</code>
+					属性の値が前に付加され，
+				</p>
+<ul><li><var>&lt;includeChildBody&gt;要素等のid</var>
+						 +
+						<code>':'</code>
+						+
+						<var>&lt;form&gt;要素のid</var>
+						 +
+						<code>':'</code>
+						+
+						<var>&lt;input&gt;要素等のid</var></li>
+</ul>
+<p>となります．</p>
+<h5>例：テンプレートHTML (layout.html)</h5>
+<div class="source"><pre>
+    &lt;te:includeChildBody id=&quot;layoutChildBody&quot;/&gt;
+</pre>
+</div>
+<h5>例：パラメータ名</h5>
+<div class="source"><pre>
+layoutChildBody:form:name
+</pre>
+</div>
+<p><a href="foreach.html">forEach</a>
+
+					を使っている場合は，
+					<code>&lt;tbody&gt;</code>
+					要素等の
+					<code>id</code>
+					属性の値と繰り返しのインデックスが付加され，
+				</p>
+<ul><li>
+						[
+						<var>&lt;includeChildBody&gt;要素等のid</var>
+						 +
+						<code>':'</code>
+						+ ]
+						<var>&lt;form&gt;要素のid</var>
+						 +
+						<code>':'</code>
+						+
+						<var>forEachのid</var>
+						 +
+						<code>':'</code>
+						+
+						<var>forEachのインデックス</var>
+						 +
+						<code>':'</code>
+						+
+						<var>&lt;input&gt;要素等のid</var></li>
+</ul>
+<p>となります．</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;form id=&quot;form&quot;&gt;
+    &lt;table id=&quot;employeeItems&quot;&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;input type=&quot;text&quot; id=&quot;name&quot;/&gt;
+                &lt;/td&gt;
+                ...
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/form&gt;
+</pre>
+</div>
+<h5>例：パラメータ名</h5>
+<div class="source"><pre>
+layoutChildBody:form:employeeItems:0:name
+</pre>
+</div>
+<p>
+					forEachがネストすると， そのたびにforEachの
+					<code>id</code>
+					属性の値と繰り返しのインデックスが付加されます．
+				</p>
+</div>
+<div class="section"><h3><a name="doメソッドでバリデーションするには"></a>
+do～()メソッドでバリデーションするには</h3>
+<p>
+					より複雑な相関チェックや， DBアクセスが必要な場合など，
+					<code>Validator</code>
+					によるバリデーションでは不十分な場合は
+					<a href="../concept/lifecycle.html#doメソッド"><code>do～()</code>
+						メソッド
+					</a>
+
+					でバリデーションを行うことができます．
+				</p>
+<div class="caution"><div>注意点</div><p>
+						画面の入力項目に対応付けられたページクラスのプロパティの値を変更すると，
+						表示される画面の内容は変更後のプロパティの値になってしまいます．
+						バリデーションが完了するまでは，
+						画面に対応付けられたプロパティを変更しないようにする必要があります．
+					</p>
+</div><p><code>do～()</code>
+					メソッドでバリデーション違反を検出した場合に メッセージを設定するには， ページクラスに
+					<code>
+						org.seasar.teeda.extension.util.FacesMessageHelper
+					</code>
+					型のプロパティを用意します．
+				</p>
+<p><code>FacesMessageHelper</code>
+					には以下のメソッドがあります．
+				</p>
+<ul><li>
+						FATALレベル
+						<ul><li><code>
+									void addFatalMessage(String
+									messageId)
+								</code></li>
+<li><code>
+									void addFatalMessage(String
+									messageId, Object[] args)
+								</code></li>
+<li><code>
+									void addFatalMessage(String
+									clientId, String messageId)
+								</code></li>
+<li><code>
+									void addFatalMessage(String
+									clientId, String messageId, Object[]
+									args)
+								</code></li>
+</ul>
+</li>
+<li>
+						ERRORレベル
+						<ul><li><code>
+									void addErrorMessage(String
+									messageId)
+								</code></li>
+<li><code>
+									void addErrorMessage(String
+									messageId, Object[] args)
+								</code></li>
+<li><code>
+									void addErrorMessage(String
+									clientId, String messageId)
+								</code></li>
+<li><code>
+									void addErrorMessage(String
+									clientId, String messageId, Object[]
+									args)
+								</code></li>
+</ul>
+</li>
+<li>
+						WARNレベル
+						<ul><li><code>
+									void addWarnMessage(String
+									messageId)
+								</code></li>
+<li><code>
+									void addWarnMessage(String
+									messageId, Object[] args)
+								</code></li>
+<li><code>
+									void addWarnMessage(String clientId,
+									String messageId)
+								</code></li>
+<li><code>
+									void addWarnMessage(String clientId,
+									String messageId, Object[] args)
+								</code></li>
+</ul>
+</li>
+<li>
+						INFOレベル
+						<ul><li><code>
+									void addInfoMessage(String
+									messageId)
+								</code></li>
+<li><code>
+									void addInfoMessage(String
+									messageId, Object[] args)
+								</code></li>
+<li><code>
+									void addInfoMessage(String clientId,
+									String messageId)
+								</code></li>
+<li><code>
+									void addInfoMessage(String clientId,
+									String messageId, Object[] args)
+								</code></li>
+</ul>
+</li>
+</ul>
+<p><code>messageId</code>
+					には，
+					<a href="../reference/resource.html#メッセージリソース">
+						メッセージリソース
+					</a>
+
+					ファイルに定義したキーを指定します．
+				</p>
+<p>
+					特定の入力項目 (プロパティ) に関連付けられたメッセージを設定するには，
+					<code>clientId</code>
+					を指定します． 指定する値は
+					<a href="#getValidatorメソッドの中でリクエストパラメータを参照するには">
+						get～Validator()メソッドの中でリクエストパラメータを参照するには
+					</a>
+
+					のリクエストパラメータ名と同じです．
+				</p>
+<p><code>clientId</code>
+					を指定したメッセージは
+					<a href="#メッセージを表示するには">メッセージを表示するには</a>
+
+					で設定したエリアに出力されます．
+					<code>clientId</code>
+					を指定しなかったメッセージは
+					<a href="#グローバルなメッセージを表示するには">グローバルなメッセージを表示するには</a>
+
+					で設定したエリアに出力されます．
+				</p>
+</div>
+</div>
+<div class="section"><h2><a name="メッセージ"></a>
+メッセージ</h2>
+<div class="section"><h3><a name="メッセージを表示するには"></a>
+メッセージを表示するには</h3>
+<p>
+					バリデーション対象の
+					<code>&lt;input&gt;</code>
+					要素等の
+					<code>id</code>
+					属性の値 +
+					<code>&quot;Message&quot;</code>
+					を
+					<code>id</code>
+					属性とする
+					<code>&lt;span&gt;</code>
+					要素を記述します．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;intpu type=&quot;text&quot; id=&quot;name&quot; /&gt;
+&lt;span id=&quot;nameMessage&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，バリデーションでエラーになると次のように表示されます．
+				</p>
+<div class="source"><pre>
+&lt;intpu type=&quot;text&quot; id=&quot;name&quot; name=&quot;form:name&quot; class=&quot;onTeedaError&quot; /&gt;
+&lt;span id=&quot;nameMessage&quot;&gt;値を入力してください(name)&lt;/span&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="グローバルなメッセージを表示するには"></a>
+グローバルなメッセージを表示するには</h3>
+<p>
+					相関チェックによるエラーメッセージなど， 特定の入力項目に属さないメッセージを表示するには，
+					<code>id</code>
+					属性が
+					<code>&quot;messages&quot;</code>
+					の
+					<code>&lt;span&gt;</code>
+					要素を記述します．
+				</p>
+<p>
+					グローバルなメッセージがある場合，
+					<code>&lt;span&gt;</code>
+					要素は
+					<code>&lt;ul&gt;</code>
+					要素に置き換えられ，個々のメッセージが
+					<code>&lt;li&gt;</code>
+					要素として出力されます．
+				</p>
+<p>
+					グローバルなメッセージがない場合，
+					<code>&lt;span&gt;</code>
+					要素も
+					<code>&lt;ul&gt;</code>
+					要素も出力されません． このため，
+					<code>&lt;span&gt;</code>
+					要素の外側に
+					<code>&lt;div&gt;</code>
+					要素を記述することを推奨します．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;div&gt;
+    &lt;span id=&quot;messages&quot; /&gt;
+&lt;/div&gt;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，バリデーションでエラーになると次のように表示されます．
+				</p>
+<div class="source"><pre>
+&lt;div&gt;
+    &lt;ul id=&quot;messages&quot;&gt;
+        &lt;li&gt;&quot;to&quot;の値は&quot;form&quot;よりも大きくなくてはいけません。&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="全てのメッセージを一カ所にまとめて表示するには"></a>
+全てのメッセージを一カ所にまとめて表示するには</h3>
+<p><code>id</code>
+					属性が
+					<code>&quot;allMessages&quot;</code>
+					の
+					<code>&lt;span&gt;</code>
+					要素を記述します．
+				</p>
+<p>
+					メッセージがある場合，
+					<code>&lt;span&gt;</code>
+					要素は
+					<code>&lt;ul&gt;</code>
+					要素に置き換えられ，個々のメッセージが
+					<code>&lt;li&gt;</code>
+					要素として出力されます．
+				</p>
+<p>
+					表示するメッセージがない場合，
+					<code>&lt;span&gt;</code>
+					要素も
+					<code>&lt;ul&gt;</code>
+					要素も出力されません． このため，
+					<code>&lt;span&gt;</code>
+					要素の外側に
+					<code>&lt;div&gt;</code>
+					要素を記述することを推奨します．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;div&gt;
+    &lt;span id=&quot;allMessages&quot; /&gt;
+&lt;/div&gt;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，バリデーションでエラーになると次のように表示されます．
+				</p>
+<div class="source"><pre>
+&lt;div&gt;
+    &lt;ul id=&quot;allMessages&quot;&gt;
+        &lt;li&gt;値を入力してください(name)&lt;/li&gt;
+        &lt;li&gt;&quot;to&quot;の値は&quot;form&quot;よりも大きくなくてはいけません。&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="メッセージの文言を変更するには"></a>
+メッセージの文言を変更するには</h3>
+<p>
+					以下から変更したいメッセージを探し，同じキーを持つ独自のメッセージを
+					<code>appMessage.propertyes</code>
+					(日本語のメッセージは
+					<code>appMessages_ja.properties</code>
+					) に定義します．
+				</p>
+<iframe src="../Messages_ja.html" width="100%" height="300px" align="right"></iframe><div style="clear: both"> </div><div class="sidebar">
+					日本語は実際にはUnicodeエスケープで記述します．
+				</div><h5>例：メッセージリソースファイル (appMessage_ja.properties)</h5>
+<div class="source"><pre>
+javax.faces.component.UIInput.REQUIRED_detail={0}は必須です
+</pre>
+</div>
+<h4>関連項目</h4>
+<ul><li><a href="../reference/resource.html#メッセージリソース">
+							メッセージリソース
+						</a>
+</li>
+</ul>
+</div>
+<div class="section"><h3><a name="特定のコンポーネントだけメッセージを変更するには"></a>
+特定のコンポーネントだけメッセージを変更するには</h3>
+<p>
+					バリデーションのアノテーションに独自のメッセージIDを指定し， それをキーとするメッセージを
+					<code>appErrorMessage.propertyes</code>
+					(日本語のメッセージは
+					<code>appErrorMessages_ja.properties</code>
+					) に定義します．
+				</p>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<h6>Tigerアノテーション</h6>
+<div class="source"><pre>
+@Required(messageId = &quot;foo.name.required&quot;)
+public String name;
+</pre>
+</div>
+<h6>定数アノテーション</h6>
+<div class="source"><pre>
+public static final String name_TRequiredValidator = &quot;messageId='foo.name.required'&quot;;
+public String name;
+</pre>
+</div>
+<div class="sidebar">
+					日本語は実際にはUnicodeエスケープで記述します．
+				</div><h5>例：メッセージリソースファイル (appMessage_ja.properties)</h5>
+<div class="source"><pre>
+foo.name.required=名前は絶対入れてね
+</pre>
+</div>
+<h4>関連項目</h4>
+<ul><li><a href="../reference/resource.html#メッセージリソース">
+							メッセージリソース
+						</a>
+</li>
+</ul>
+</div>
+<div class="section"><h3><a name="エラーとなった項目が目立つようにするには"></a>
+エラーとなった項目が目立つようにするには</h3>
+<p>
+					エラーとなった要素は
+					<code>class</code>
+					属性に
+					<code>onTeedaError</code>
+					が追加されるので，CSSで背景を変えるなどして目立たせることができます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;style&gt;
+    .onTeedaError {
+        background-color: #FFCCCC;
+    }
+&lt;/style&gt;
+</pre>
+</div>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時， バリデーションでエラーになると，
+					テキストフィールドやテキストエリアの背景が設定した色で表示されます．
+				</p>
+</div>
+<div class="section"><h3><a name="項目名を日本語で表示するには"></a>
+項目名を日本語で表示するには</h3>
+<p>
+					バリデーション対象となる
+					<code>&lt;input&gt;</code>
+					要素等に
+					<code>title</code>
+					属性で項目名を指定します．
+				</p>
+<h5>例：テンプレートHTML (label_ja.properties)</h5>
+<div class="source"><pre>
+&lt;intpu type=&quot;text&quot; id=&quot;name&quot; title=&quot;名前&quot; /&gt;
+&lt;span id=&quot;nameMessage&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，バリデーションでエラーになると次のように表示されます．
+				</p>
+<div class="source"><pre>
+&lt;intpu type=&quot;text&quot; id=&quot;name&quot; name=&quot;form:name&quot; title=&quot;名前&quot; class=&quot;onTeedaError&quot; /&gt;
+&lt;span id=&quot;nameMessage&quot;&gt;値を入力してください(名前)&lt;/span&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="項目名をプロパティファイルから表示するには"></a>
+項目名をプロパティファイルから表示するには</h3>
+<p><a href="../reference/resource.html#ラベルリソース">
+						ラベルリソース
+					</a>
+
+					ファイルに
+					<var>pagename.id</var>
+					または
+					<var>id</var>
+					という名前のプロパティを定義します．
+					<var>id</var>
+					は， バリデーション対象となる
+					<code>&lt;input&gt;</code>
+					要素等の
+					<code>id</code>
+					属性の値です．
+				</p>
+<p>
+					あるいは，バリデーション対象となる
+					<code>&lt;input&gt;</code>
+					要素等に
+					<code>title</code>
+					属性を付け， その値を
+					<var>key</var>
+					+
+					<code>Label</code>
+					とします．
+					<a href="../reference/resource.html#ラベルリソース">
+						ラベルリソース
+					</a>
+
+					ファイルに
+					<var>pagename.key</var>
+					または
+					<var>key</var>
+					という名前のプロパティを定義します．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;intpu type=&quot;text&quot; id=&quot;name&quot; /&gt;
+&lt;span id=&quot;nameMessage&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<p>あるいは，</p>
+<div class="source"><pre>
+&lt;intpu type=&quot;text&quot; id=&quot;name&quot; title=&quot;nameLabel&quot; /&gt;
+&lt;span id=&quot;nameMessage&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<h5>例：ラベルリソースファイル (label_ja.properties)</h5>
+<div class="source"><pre>
+name=名前
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><a href="../concept/page.html#ポストバック">ポストバック</a>
+
+					時，バリデーションでエラーになると次のように表示されます．
+				</p>
+<div class="source"><pre>
+&lt;intpu type=&quot;text&quot; id=&quot;name&quot; name=&quot;form:name&quot; class=&quot;onTeedaError&quot; /&gt;
+&lt;span id=&quot;nameMessage&quot;&gt;値を入力してください(名前)&lt;/span&gt;
+</pre>
+</div>
+</div>
+</div>
+
+</div><!-- article -->
+
+</div><!-- contents_center -->
+
+<div id="footer">
+<address>  &copy; Copyright
+  
+          2005-2008,
+    
+          The Seasar Foundation and the others. All rights reserved.
+      </address>
+<div class="line"><span class="hide">spacer</span></div>
+</div><!-- footer -->
+
+</div><!-- wrapper -->
+
+</body>
+</html>

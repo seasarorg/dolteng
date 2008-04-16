@@ -1,0 +1,669 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta http-equiv="Content-Language" content="ja" /> 
+<meta http-equiv="Content-Style-Type" content="text/css" /> 
+<title>Teeda - Extension - 概念 - ライフサイクル</title>
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/main.css" media="screen,projection" />
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/print.css" media="print" />
+<link href="../../css/maven-base.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/maven-theme.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/prettify.css" type="text/css" rel="stylesheet" media="screen" />
+<script type="text/javascript" src="../../js/prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+
+<div id="wrapper">
+
+<div id="header">
+
+<div class="line"><span class="hide">spacer</span></div>
+
+<div id="logo"><h1 id="h01" class="hide">The Seasar Foundation Project Site</h1><img src="http://www.seasar.org/images/seasar_logo_blue.gif" alt="The Seasar Foundation" width="390" height="180" /></div>
+
+<div id="tool">
+
+<h2><a href="http://search.seasar.org/">Site Search</a></h2>
+
+<form id="search" action="http://search.seasar.org/">
+<div>
+	<input id="search_phrase" type="text" name="phrase" size="20" />
+	<input type="hidden" name="perpage" value="30" />
+	<input type="hidden" name="enc" value="UTF-8" />
+	<input id="search_go" type="submit" value="Search" />
+</div>
+</form>
+
+<h2>Teeda Banner</h2>
+
+<p><a href="http://teeda.seasar.org/teeda_banner.png"><img src="http://teeda.seasar.org/teeda_banner.png" alt="Teeda Banner" title="Teeda Banner" width="146" height="33" /></a></p>
+
+</div>
+
+<div id="navi">
+<p><a href="../../../en/">English</a> | <a href="../../../ja/">Japanese</a></p>
+</div>
+
+</div><!-- header -->
+
+<div id="contents_left">
+           
+  
+
+  
+    
+  
+  
+                   <h2>About</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">ホーム</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../license.html">ライセンス</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../downloads.html">ダウンロード</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../changelog.html">変更履歴</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../roadmap.html">ロードマップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://ml.seasar.org/mailman/listinfo/seasar-user">メーリングリスト</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://www.seasar.org/issues/browse/TEEDA">トラッキング</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://svn.seasar.org/browse/?root=teeda">SVN リポジトリブラウザ</a>
+        </li>
+          </ul>
+          <h2>General</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../env.html">環境</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../setup.html">開発環境のセットアップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../deploy.html">実行環境へのデプロイ</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://www.seasar.org/wiki/index.php?FAQ%2FTeeda">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../presentations.html">プレゼンテーション資料</a>
+        </li>
+          </ul>
+          <h2>Teeda Core</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_core.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../example.html">サンプル解説</a>
+        </li>
+          </ul>
+          <h2>Teeda Extension</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../extension/index.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/firststep/index.html">ファーストステップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/tutorial/index.html">チュートリアル</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/example.html">サンプル解説</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+            
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="../../extension/concept/index.html">概念</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../../extension/concept/page.html">ページモデル</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/concept/prg.html">PRGパターン</a>
+        </li>
+                  
+    <li class="none">
+              <strong>ライフサイクル</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/concept/scope.html">状態とスコープ</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/concept/layout.html">レイアウト</a>
+        </li>
+              </ul>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/reverse/index.html">逆引きリファレンス</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/reference/index.html">リファレンス</a>
+              </li>
+          </ul>
+          <h2>Teeda Ajax</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_ajax.html">概要</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../kumu.html">Kumu</a>
+              </li>
+          </ul>
+          <h2>プロジェクト文書</h2>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-info.html">プロジェクト情報</a>
+              </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-reports.html">プロジェクトレポート</a>
+              </li>
+          </ul>
+          <h2>モジュール</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Teeda</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-core/ja/index.html">Teeda Core</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-extension/ja/index.html">Teeda Extension</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-ajax/ja/index.html">Teeda Ajax</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-tiger/ja/index.html">Teeda Tiger</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy" name="poweredBy">
+            <img alt="Built by Maven" src="../../images/logos/maven-feather.png" />
+          </a>
+                       
+  
+
+  
+    
+  
+  
+  </div><!-- contents_left -->
+
+<div id="contents_center">
+
+<div id="article">
+<div class="section"><h2><a name="ライフサイクル"></a>
+ライフサイクル</h2>
+<ul><li><a href="#概要">概要</a>
+</li>
+<li><a href="#ライフサイクルメソッド">ライフサイクルメソッド</a>
+<ul><li><a href="#initializeメソッド">
+								initialize()メソッド
+							</a>
+</li>
+<li><a href="#doメソッド">do～()メソッド</a>
+</li>
+<li><a href="#prerenderメソッド">prerender()メソッド</a>
+</li>
+</ul>
+</li>
+<li><a href="#リクエストパターン">リクエストパターン</a>
+</li>
+<li><a href="#リクエストパターンとライフサイクルメソッド">
+						リクエストパターンとライフサイクルメソッド
+					</a>
+<ul><li><a href="#初期表示">初期表示</a>
+</li>
+<li><a href="#ポストバック_自画面表示">ポストバック (自画面表示)</a>
+</li>
+<li><a href="#ポストバック_リダイレクト">ポストバック (リダイレクト)</a>
+</li>
+<li><a href="#リダイレクト表示">リダイレクト表示</a>
+</li>
+</ul>
+</li>
+<li><a href="#画面遷移">画面遷移</a>
+</li>
+<li><a href="#JSFライフサイクルとの関係">JSFライフサイクルとの関係</a>
+</li>
+</ul>
+</div>
+<div class="section"><h2><a name="概要"></a>
+概要</h2>
+<p>
+				Teeda Extensionは， ブラウザからのリクエストに応じてページクラスのメソッドを呼び出します．
+				このメソッドをライフサイクルメソッドと呼びます．
+			</p>
+<p>ライフサイクルメソッドには次のものがあります．</p>
+<ul><li><code>initialize()</code></li>
+<li><code>do～()</code></li>
+<li><code>prerender()</code></li>
+</ul>
+</div>
+<div class="section"><h2><a name="ライフサイクルメソッド"></a>
+ライフサイクルメソッド</h2>
+<div class="section"><h3><a name="initializeメソッド"></a>
+initializeメソッド</h3>
+<p><code>initialize()</code>
+					メソッドは， 画面が最初に表示されるときや， 他の画面から遷移 (REDIRECT)
+					してきたときに呼び出されるメソッドです．
+				</p>
+<p><code>initialize()</code>
+					メソッドは次の規約に従います．
+				</p>
+<dl><dt>可視性</dt>
+<dd><code>public</code></dd>
+<dt>メソッド名</dt>
+<dd><code>initialize</code></dd>
+<dt>引数</dt>
+<dd>なし</dd>
+<dt>戻り値型</dt>
+<dd><code>Class</code>
+						，
+						<code>String</code>
+						または
+						<code>void</code>
+						のいずれか
+					</dd>
+</dl>
+<div class="source"><pre>
+public Class initialize() {
+    ...
+}
+</pre>
+</div>
+<p><code>initialize()</code>
+					メソッドは，
+					<a href="page.html#ポストバック">ポストバック</a>
+
+					では呼び出されません．
+				</p>
+</div>
+<div class="section"><h3><a name="doメソッド"></a>
+do～()メソッド</h3>
+<p><code>do～()</code>
+					メソッドは， フォームがサブミットされた場合 (
+					<a href="page.html#ポストバック">ポストバック</a>
+
+					) に呼び出されるメソッドです．
+				</p>
+<p><code>do～()</code>
+					メソッドは次の規約に従います．
+				</p>
+<dl><dt>可視性</dt>
+<dd><code>public</code></dd>
+<dt>メソッド名</dt>
+<dd><code>do</code>
+						で始まる
+					</dd>
+<dt>引数</dt>
+<dd>なし</dd>
+<dt>戻り値型</dt>
+<dd><code>Class</code>
+						，
+						<code>String</code>
+						または
+						<code>void</code>
+						のいずれか
+					</dd>
+</dl>
+<div class="source"><pre>
+public Class doUpdate() {
+    ...
+}
+</pre>
+</div>
+<p><code>do～()</code>
+					メソッドは， サブミットボタンに対応付けられ， 対応するボタンが押された場合のみ呼び出されます (
+					<a href="">詳細</a>
+
+					)．
+				</p>
+<div class="source"><pre>
+&lt;input type=&quot;submit&quot; id=&quot;doUpdate&quot; value=&quot;更新&quot; /&gt;
+</pre>
+</div>
+<p><code>do～()</code>
+					メソッドは， ポストバックでない場合や， バリデーションでエラーがあった場合は呼び出されません．
+				</p>
+</div>
+<div class="section"><h3><a name="prerenderメソッド"></a>
+prerender()メソッド</h3>
+<p><code>prerender()</code>
+					メソッドは， 画面が描画される直前に呼び出されるメソッドです．
+				</p>
+<p><code>prerender()</code>
+					メソッドは次の規約に従います．
+				</p>
+<dl><dt>可視性</dt>
+<dd><code>public</code></dd>
+<dt>メソッド名</dt>
+<dd><code>prerender</code></dd>
+<dt>引数</dt>
+<dd>なし</dd>
+<dt>戻り値型</dt>
+<dd><code>Class</code>
+						，
+						<code>String</code>
+						または
+						<code>void</code>
+						のいずれか
+					</dd>
+</dl>
+<div class="source"><pre>
+public Class prerender() {
+    ...
+}
+</pre>
+</div>
+<p><code>prerender()</code>
+					メソッドは， 画面遷移 (リダイレクト) する場合は呼び出されません．
+				</p>
+</div>
+</div>
+<div class="section"><h2><a name="リクエストパターン"></a>
+リクエストパターン</h2>
+<p>
+				Teeda Extensionでは， ブラウザから受け取ったリクエストの基本的な処理パターンが4つあります．
+			</p>
+<img src="../../images/extension/concept/lifecycle1.png" alt="リクエストパターン" /><dl><dt>初期表示</dt>
+<dd>ブックマークやリンクがクリックされたことによるリクエストです．</dd>
+<dt>ポストバック (自画面表示)</dt>
+<dd>
+					表示している画面のフォームがサブミットされたことによるリクエストです．
+					画面遷移せずに同じ画面を表示します．
+				</dd>
+<dt>ポストバック (リダイレクト)</dt>
+<dd>
+					表示している画面のフォームがサブミットされたことによるリクエストです．
+					do～()メソッドの戻り値で指定された画面に遷移 (リダイレクト) します．
+				</dd>
+<dt>リダイレクト表示</dt>
+<dd>リダイレクトによるリクエストです．</dd>
+</dl>
+</div>
+<div class="section"><h2><a name="リクエストパターンとライフサイクルメソッド"></a>
+リクエストパターンとライフサイクルメソッド</h2>
+<p><a href="#リクエストパターン">リクエストパターン</a>
+
+				ごとに， どのライフサイクルメソッドが呼び出されるかを説明します．
+			</p>
+<div class="section"><h3><a name="初期表示"></a>
+初期表示</h3>
+<p>
+					初期表示では，
+					<code>initialize()</code>
+					および
+					<code>prerender()</code>
+					メソッドが呼び出されます．
+				</p>
+<img src="../../images/extension/concept/lifecycle2.png" alt="初期表示" /></div>
+<div class="section"><h3><a name="ポストバック_自画面表示"></a>
+ポストバック (自画面表示)</h3>
+<p>
+					ポストバック (自画面表示) では，
+					<code>do～()</code>
+					メソッドおよび
+					<code>prerender()</code>
+					メソッドが呼び出されます．
+				</p>
+<img src="../../images/extension/concept/lifecycle3.png" alt="ポストバック (自画面表示)" /><p>
+					バリデーションでエラーがあった場合は
+					<code>prerender()</code>
+					メソッドだけが呼び出されます．
+				</p>
+</div>
+<div class="section"><h3><a name="ポストバック_リダイレクト"></a>
+ポストバック (リダイレクト)</h3>
+<p>
+					ポストバック (リダイレクト) では，
+					<code>do～()</code>
+					メソッドのみが呼び出されます．
+					<code>do～()</code>
+					メソッドの戻り値で指定された画面へリダイレクトします．
+				</p>
+<img src="../../images/extension/concept/lifecycle4.png" alt="ポストバック (リダイレクト)" /><p>
+					バリデーションでエラーがあった場合は
+					<a href="#ポストバック_自画面表示">ポストバック(自画面表示)</a>
+
+					になります．
+				</p>
+</div>
+<div class="section"><h3><a name="リダイレクト表示"></a>
+リダイレクト表示</h3>
+<p>
+					リダイレクト表示では，
+					<code>initialize()</code>
+					および
+					<code>prerender()</code>
+					メソッドが呼び出されます．
+				</p>
+<img src="../../images/extension/concept/lifecycle5.png" alt="リダイレクト表示" /></div>
+</div>
+<div class="section"><h2><a name="画面遷移"></a>
+画面遷移</h2>
+<p>
+				ライフサイクルメソッドは，戻り値型を
+				<code>Class</code>
+				または
+				<code>String</code>
+				型にすることができます (間違いにくさやリファクタリングのしやすさから
+				<code>Class</code>
+				型を推奨します)．
+			</p>
+<div class="source"><pre>
+public class FooPage {
+    ...
+    public Class doSubmit() {
+        ...
+        return NextPage.class;
+    }
+}
+</pre>
+</div>
+<p>
+				次画面のページクラスまたはそのコンポーネント名を戻り値とすることで， その画面に遷移 (リダイレクト) します．
+			</p>
+<p>
+				戻り値が
+				<code>null</code>
+				だと画面遷移 (リダイレクト) しないで直接自画面を表示します．
+			</p>
+<p>
+				戻り値をそのページクラス自身 (またはそのコンポーネント名) にすると，
+				リダイレクトして同じページを表示します． この場合は遷移先が現在の画面と同じというだけで，
+				画面遷移として扱われます．
+			</p>
+<div class="source"><pre>
+public class FooPage {
+    ...
+    public Class doSubmit() {
+        ...
+        return FooPage.class;
+    }
+}
+</pre>
+</div>
+<p>
+				画面遷移 (リダイレクト) しない場合は戻り値の型を
+				<code>void</code>
+				にすることもできます．
+			</p>
+<div class="source"><pre>
+public class FooPage {
+    ...
+    public void initialize() {
+        ...
+    }
+}
+</pre>
+</div>
+</div>
+<div class="section"><h2><a name="JSFライフサイクルとの関係"></a>
+JSFライフサイクルとの関係</h2>
+<p>
+				JSFのライフサイクルと，
+				ページクラスのライフサイクルメソッドおよびsetter/getterメソッド呼び出しの関係は，
+				以下のようになります．
+			</p>
+<img src="../../images/extension/concept/lifecycle6.png" alt="JSFライフサイクルとの関係" /></div>
+
+</div><!-- article -->
+
+</div><!-- contents_center -->
+
+<div id="footer">
+<address>  &copy; Copyright
+  
+          2005-2008,
+    
+          The Seasar Foundation and the others. All rights reserved.
+      </address>
+<div class="line"><span class="hide">spacer</span></div>
+</div><!-- footer -->
+
+</div><!-- wrapper -->
+
+</body>
+</html>

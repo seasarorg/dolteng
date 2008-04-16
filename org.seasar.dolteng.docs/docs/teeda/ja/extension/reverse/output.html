@@ -1,0 +1,993 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta http-equiv="Content-Language" content="ja" /> 
+<meta http-equiv="Content-Style-Type" content="text/css" /> 
+<title>Teeda - Extension - 逆引きリファレンス - 出力</title>
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/main.css" media="screen,projection" />
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/print.css" media="print" />
+<link href="../../css/maven-base.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/maven-theme.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../../css/prettify.css" type="text/css" rel="stylesheet" media="screen" />
+<script type="text/javascript" src="../../js/prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+
+<div id="wrapper">
+
+<div id="header">
+
+<div class="line"><span class="hide">spacer</span></div>
+
+<div id="logo"><h1 id="h01" class="hide">The Seasar Foundation Project Site</h1><img src="http://www.seasar.org/images/seasar_logo_blue.gif" alt="The Seasar Foundation" width="390" height="180" /></div>
+
+<div id="tool">
+
+<h2><a href="http://search.seasar.org/">Site Search</a></h2>
+
+<form id="search" action="http://search.seasar.org/">
+<div>
+	<input id="search_phrase" type="text" name="phrase" size="20" />
+	<input type="hidden" name="perpage" value="30" />
+	<input type="hidden" name="enc" value="UTF-8" />
+	<input id="search_go" type="submit" value="Search" />
+</div>
+</form>
+
+<h2>Teeda Banner</h2>
+
+<p><a href="http://teeda.seasar.org/teeda_banner.png"><img src="http://teeda.seasar.org/teeda_banner.png" alt="Teeda Banner" title="Teeda Banner" width="146" height="33" /></a></p>
+
+</div>
+
+<div id="navi">
+<p><a href="../../../en/">English</a> | <a href="../../../ja/">Japanese</a></p>
+</div>
+
+</div><!-- header -->
+
+<div id="contents_left">
+           
+  
+
+  
+    
+  
+  
+                   <h2>About</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">ホーム</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../license.html">ライセンス</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../downloads.html">ダウンロード</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../changelog.html">変更履歴</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../roadmap.html">ロードマップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://ml.seasar.org/mailman/listinfo/seasar-user">メーリングリスト</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://www.seasar.org/issues/browse/TEEDA">トラッキング</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://svn.seasar.org/browse/?root=teeda">SVN リポジトリブラウザ</a>
+        </li>
+          </ul>
+          <h2>General</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../env.html">環境</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../setup.html">開発環境のセットアップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../deploy.html">実行環境へのデプロイ</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://www.seasar.org/wiki/index.php?FAQ%2FTeeda">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../presentations.html">プレゼンテーション資料</a>
+        </li>
+          </ul>
+          <h2>Teeda Core</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_core.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../example.html">サンプル解説</a>
+        </li>
+          </ul>
+          <h2>Teeda Extension</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../extension/index.html">概要</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/firststep/index.html">ファーストステップ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/tutorial/index.html">チュートリアル</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../extension/example.html">サンプル解説</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/concept/index.html">概念</a>
+              </li>
+              
+                
+              
+            
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="../../extension/reverse/index.html">逆引きリファレンス</a>
+                <ul>
+                  
+    <li class="none">
+              <strong>出力</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/link.html">リンク</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/input.html">入力フォーム</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/validation.html">バリデーション</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/convert.html">コンバート</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/foreach.html">繰り返し</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/condition.html">条件制御</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/layout.html">レイアウト</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/transition.html">画面遷移と状態</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../../extension/reverse/preview.html">プレビュー</a>
+        </li>
+              </ul>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../extension/reference/index.html">リファレンス</a>
+              </li>
+          </ul>
+          <h2>Teeda Ajax</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../teeda_ajax.html">概要</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../kumu.html">Kumu</a>
+              </li>
+          </ul>
+          <h2>プロジェクト文書</h2>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-info.html">プロジェクト情報</a>
+              </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../../project-reports.html">プロジェクトレポート</a>
+              </li>
+          </ul>
+          <h2>モジュール</h2>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Teeda</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-core/ja/index.html">Teeda Core</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-extension/ja/index.html">Teeda Extension</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-ajax/ja/index.html">Teeda Ajax</a>
+        </li>
+              
+    <li class="none">
+              <a href="../../../teeda-tiger/ja/index.html">Teeda Tiger</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy" name="poweredBy">
+            <img alt="Built by Maven" src="../../images/logos/maven-feather.png" />
+          </a>
+                       
+  
+
+  
+    
+  
+  
+  </div><!-- contents_left -->
+
+<div id="contents_center">
+
+<div id="article">
+<div class="section"><h2><a name="出力"></a>
+出力</h2>
+<ul><li><a href="#ボディ">ボディ</a>
+<ul><li><a href="#テキストを動的に出力するには">テキストを動的に出力するには</a>
+</li>
+<li><a href="#特殊文字をエスケープしないで出力するには">
+								特殊文字をエスケープしないで出力するには
+							</a>
+</li>
+<li><a href="#タグを出力したくない場合には">タグを出力したくない場合には</a>
+</li>
+<li><a href="#リクエストやセッションの属性値をボディに出力するには">
+								リクエストやセッションの属性値をボディに出力するには
+							</a>
+</li>
+<li><a href="#プロパティファイルの内容をボディに出力するには">
+								プロパティファイルの内容をボディに出力するには
+							</a>
+</li>
+<li><a href="#同じ情報を複数の場所に出力するには">
+								同じ情報を複数の場所に出力するには
+							</a>
+</li>
+</ul>
+</li>
+<li><a href="#属性">属性</a>
+<ul><li><a href="#属性値を動的に出力するには">属性値を動的に出力するには</a>
+</li>
+<li><a href="#プロパティファイルの内容を属性に出力するには">
+								プロパティファイルの内容を属性に出力するには
+							</a>
+</li>
+</ul>
+</li>
+<li><a href="#ヘッダ">ヘッダ</a>
+<ul><li><a href="#タイトルを動的に出力するには">タイトルを動的に出力するには</a>
+</li>
+<li><a href="#リクエストやセッションの属性値をタイトルに出力するには">
+								リクエストやセッションの属性値をタイトルに出力するには
+							</a>
+</li>
+<li><a href="#プロパティファイルの内容をタイトルに出力するには">
+								プロパティファイルの内容をタイトルに出力するには
+							</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section"><h2><a name="ボディ"></a>
+ボディ</h2>
+<div class="section"><h3><a name="テキストを動的に出力するには"></a>
+テキストを動的に出力するには</h3>
+<p>
+					ボディ内のテキストを出力したい位置に
+					<code>&lt;span&gt;</code>
+					要素を記述して
+					<code>id</code>
+					属性を付け， その値と同じ名前のプロパティをページクラスに用意します．
+				</p>
+<p>
+					レンダリング時，
+					<code>&lt;span&gt;</code>
+					要素の内容はプロパティの値に置き換えられます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;span id=&quot;name&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public String name;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>name</code>
+					プロパティの値が
+					<code>&quot;Teeda&quot;</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+&lt;span id=&quot;name&quot;&gt;Teeda&lt;/span&gt;
+</pre>
+</div>
+<p><code>name</code>
+					プロパティの値が
+					<code>&quot;&lt;b&gt;Teeda&lt;/b&gt;&quot;</code>
+					の場合，
+					<code>'&lt;'</code>
+					や
+					<code>'&gt;'</code>
+					はエスケープされ， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+&lt;span id=&quot;name&quot;&gt;&amp;lt;b&amp;gt;Teeda&amp;lt;/b&amp;gt;&lt;/span&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="特殊文字をエスケープしないで出力するには"></a>
+特殊文字をエスケープしないで出力するには</h3>
+<div class="sidebar"><a href="../reference/xhtml.html#Teeda_Extension拡張属性">
+						Teeda Extension拡張属性
+					</a>
+
+					を使用するには
+					<code>&lt;html&gt;</code>
+					要素で
+					<a href="../reference/xhtml.html#te名前空間">te名前空間</a>
+
+					を宣言する必要があります．
+				</div><p><code>&lt;span&gt;</code>
+					要素の
+					<code>te:escape</code>
+					属性に
+					<code>false</code>
+					を指定します．
+				</p>
+<p>レンダリング時， プロパティの内容はエスケープされません．</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;span id=&quot;name&quot; te:escape=&quot;false&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>name</code>
+					プロパティの値が
+					<code>&quot;&lt;b&gt;Teeda&lt;/b&gt;&quot;</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+&lt;span id=&quot;name&quot;&gt;&lt;b&gt;Teeda&lt;/b&gt;&lt;/span&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="タグを出力したくない場合には"></a>
+タグを出力したくない場合には</h3>
+<div class="sidebar"><a href="../reference/xhtml.html#Teeda_Extension拡張属性">
+						Teeda Extension拡張属性
+					</a>
+
+					を使用するには
+					<code>&lt;html&gt;</code>
+					要素で
+					<a href="../reference/xhtml.html#te名前空間">te名前空間</a>
+
+					を宣言する必要があります．
+				</div><p><code>&lt;span&gt;</code>
+					要素の
+					<code>te:omittag</code>
+					属性に
+					<code>true</code>
+					を指定します．
+				</p>
+<p>
+					レンダリング時，
+					<code>&lt;span&gt;</code>
+					要素の開始タグおよび終了タグはレンダリングされません．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;span id=&quot;name&quot; te:omittag=&quot;true&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>name</code>
+					プロパティの値が
+					<code>&quot;Teeda&quot;</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+Teeda
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="リクエストやセッションの属性値をボディに出力するには"></a>
+リクエストやセッションの属性値をボディに出力するには</h3>
+<p><code>&lt;span&gt;</code>
+					要素の
+					<code>id</code>
+					属性を次のように指定します．
+				</p>
+<dl><dt>リクエストの属性を出力する場合</dt>
+<dd><code>'requestScope_'</code>
+						+
+						<var>attributeName</var></dd>
+<dt>セッションの属性を出力する場合</dt>
+<dd><code>'sessionScope_'</code>
+						+
+						<var>attributeName</var></dd>
+<dt>アプリケーションコンテキストの属性を出力する場合</dt>
+<dd><code>'applicationScope_'</code>
+						+
+						<var>attributeName</var></dd>
+</dl>
+<p>
+					レンダリング時，
+					<code>&lt;span&gt;</code>
+					要素の内容はリクエストやセッション，アプリケーションスコープの属性値に置き換えられます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;span id=&quot;sessionScope_name&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p>
+					セッションの
+					<code>name</code>
+					属性の値が
+					<code>&quot;Teeda&quot;</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+&lt;span id=&quot;sessionScope_userName&quot;&gt;Teeda&lt;/span&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="プロパティファイルの内容をボディに出力するには"></a>
+プロパティファイルの内容をボディに出力するには</h3>
+<div class="sidebar">
+					ページクラスに
+					<code>id</code>
+					と同じ名前のプロパティがある場合はそちらが優先されます． 「
+					<a href="#テキストを動的に出力するには">テキストを動的に出力するには</a>
+
+					」を参照してください．
+				</div><p><code>&lt;span&gt;</code>
+					要素または
+					<code>&lt;div&gt;</code>
+					要素または
+					<code>&lt;caption&gt;</code>
+					要素に
+					<code>id</code>
+					属性を付け， その値を
+					<var>key</var>
+					+
+					<code>Label</code>
+					とします．
+					<a href="../reference/resource.html#ラベルリソース">
+						ラベルリソース
+					</a>
+
+					ファイルに
+					<var>pagename.key</var>
+					または
+					<var>key</var>
+					という名前のプロパティを定義します．
+				</p>
+<p>
+					レンダリング時， 要素の内容は
+					<a href="../reference/resource.html#ラベルリソース">
+						ラベルリソース
+					</a>
+
+					ファイルの値に置き換えられます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;span id=&quot;nameLabel&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<h5>例：ラベルリソースファイル (label_ja.properties)</h5>
+<div class="source"><pre>
+foo.name=Teeda
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p>レンダリング結果は次のようになります．</p>
+<div class="source"><pre>
+&lt;span id=&quot;nameLabel&quot;&gt;Teeda&lt;/span&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="同じ情報を複数の場所に出力するには"></a>
+同じ情報を複数の場所に出力するには</h3>
+<div class="sidebar">
+					HTMLの仕様で
+					<code>id</code>
+					属性の値はページ内でユニークでなくてはなりません．
+				</div><p><code>id</code>
+					属性の値に
+					<code>'-'</code>
+					+
+					<var>suffix</var>
+					を付加します． 要素の内容は
+					<code>'-'</code>
+					から後ろを取り除いたプロパティ名やリクエスト／セッション等の属性，あるいはラベルに対応付けられます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;span id=&quot;name-1&quot;&gt;dummy&lt;/span&gt;
+・・・
+&lt;span id=&quot;name-2&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public String name;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>name</code>
+					プロパティの値が
+					<code>&quot;Teeda&quot;</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+&lt;span id=&quot;name-1&quot;&gt;Teeda&lt;/span&gt;
+・・・
+&lt;span id=&quot;name-2&quot;&gt;Teeda&lt;/span&gt;
+</pre>
+</div>
+</div>
+</div>
+<div class="section"><h2><a name="属性"></a>
+属性</h2>
+<div class="section"><h3><a name="属性値を動的に出力するには"></a>
+属性値を動的に出力するには</h3>
+<div class="sidebar">この機能は「ダイナミックプロパティ」と呼ばれます．</div><p>
+					動的に値を出力したい属性を持つ要素に
+					<code>id</code>
+					属性を付け，
+					<var>id</var>
+					+
+					<var>attribute</var>
+					という名前のプロパティをページクラスに用意します． ただし，
+					<var>attribute</var>
+					は値を動的に出力したい属性名の先頭を大文字にした名前です．
+				</p>
+<p><code>id</code>
+					属性にハイフン ('-') が含まれている場合は， ハイフンを取り除いた
+					<var>id</var>
+					+
+					<var>attribute</var>
+					というプロパティに対応付けられます． 例えば
+					<code>id</code>
+					属性が
+					<code>foo-1</code>
+					で， 属性が
+					<code>title</code>
+					の場合は，
+					<code>foo1Title</code>
+					というプロパティに対応付けられます．
+				</p>
+<p>
+					ただし，属性が
+					<code>value</code>
+					の場合は， ハイフン
+					<strong>以降</strong>
+					を取り除いた
+					<code>id</code>
+					+
+					<var>attribute</var>
+					というプロパティに対応付けられます． 例えば
+					<code>id</code>
+					属性が
+					<code>foo-1</code>
+					で， 属性が
+					<code>value</code>
+					の場合は，
+					<code>fooTitle</code>
+					というプロパティに対応付けられます．
+				</p>
+<p>レンダリング時， 属性の値は対応するプロパティの値に置き換えられます．</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;span id=&quot;foo&quot; style=&quot;dummy&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public String fooStyle;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>fooStyle</code>
+					プロパティの値が
+					<code>&quot;display: none;&quot;</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+&lt;span id=&quot;foo&quot; style=&quot;display: none;&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<div class="caution"><div>注意点</div><p><code>class</code>
+						属性の値を動的に出力する場合は，
+						<var>id</var>
+						+
+						<code>StyleClass</code>
+						という名前のプロパティをページクラスに用意します．
+					</p>
+<p>
+						例えば，
+						<var>id</var>
+						属性の値が
+						<code>foo</code>
+						であれば，
+						<code>fooStyleClass</code>
+						という名前のプロパティをページクラスに用意します．
+					</p>
+</div></div>
+<div class="section"><h3><a name="プロパティファイルの内容を属性に出力するには"></a>
+プロパティファイルの内容を属性に出力するには</h3>
+<div class="sidebar">
+					ページクラスに
+					<var>id</var>
+					+
+					<var>attribute</var>
+					というプロパティがある場合はダイナミックプロパティが優先されます． 「
+					<a href="#属性値を動的に出力するには">属性値を動的に出力するには</a>
+
+					」を参照してください．
+				</div><p>
+					要素に
+					<code>id</code>
+					属性を付け，プロパティファイルの内容を出力したい属性の値を
+					<var>key</var>
+					+
+					<code>Label</code>
+					とします．
+					<a href="../reference/resource.html#ラベルリソース">
+						ラベルリソース
+					</a>
+
+					ファイルに
+					<var>pagename.key</var>
+					または
+					<var>key</var>
+					という名前のプロパティを定義します．
+				</p>
+<p>
+					レンダリング時， 属性の値は
+					<a href="../reference/resource.html#ラベルリソース">
+						ラベルリソース
+					</a>
+
+					ファイルの値に置き換えられます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;img id=&quot;barImg&quot; src=&quot;../image/bar.png&quot; alt=&quot;barImgLabel&quot; /&gt;
+</pre>
+</div>
+<h5>例：ラベルリソースファイル (label_ja.properties)</h5>
+<div class="source"><pre>
+foo.barImg=概念図
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p>レンダリング結果は次のようになります．</p>
+<div class="source"><pre>
+&lt;img id=&quot;barImg&quot; src=&quot;../image/bar.png&quot; alt=&quot;概念図&quot; /&gt;
+</pre>
+</div>
+<p><a href="input.html#サブミットボタン">サブミットボタン</a>
+
+					の
+					<code>value</code>
+					属性の場合は，
+					<a href="../reference/resource.html#ラベルリソース">
+						ラベルリソース
+					</a>
+
+					ファイルに
+					<var>pagename.id</var>
+					または
+					<var>id</var>
+					という名前のプロパティがあれば， それが属性値として使われます． このルールは，
+					<code>value</code>
+					属性の値が
+					<var>key</var>
+					+
+					<code>Label</code>
+					の場合でも， 優先的に適用されます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;input type=&quot;submit&quot; id=&quot;doSubmit&quot; value=&quot;dummyLabel&quot; /&gt;
+</pre>
+</div>
+<h5>例：ラベルリソースファイル (label_ja.properties)</h5>
+<div class="source"><pre>
+foo.doSubmit=送信
+foo.dummy=ダミー
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p>レンダリング結果は次のようになります．</p>
+<div class="source"><pre>
+&lt;input type=&quot;submit&quot; id=&quot;doSubmit&quot; value=&quot;送信&quot; /&gt;
+</pre>
+</div>
+</div>
+</div>
+<div class="section"><h2><a name="ヘッダ"></a>
+ヘッダ</h2>
+<div class="section"><h3><a name="タイトルを動的に出力するには"></a>
+タイトルを動的に出力するには</h3>
+<p><code>&lt;title&gt;</code>
+					要素に
+					<code>id</code>
+					属性を付け， その値に
+					<code>Value</code>
+					を付加した名前のプロパティをページクラスに用意します．
+				</p>
+<p>
+					レンダリング時，
+					<code>&lt;title&gt;</code>
+					要素の内容はプロパティの値に置き換えられます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;title id=&quot;title&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<h5>例：ページクラスのプロパティ (FooPage.java)</h5>
+<div class="source"><pre>
+public String titleValue;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p><code>titleValue</code>
+					プロパティの値が
+					<code>&quot;Teeda&quot;</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+&lt;title id=&quot;title&quot;&gt;Teeda&lt;/title&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="リクエストやセッションの属性値をタイトルに出力するには"></a>
+リクエストやセッションの属性値をタイトルに出力するには</h3>
+<p><code>&lt;title&gt;</code>
+					要素の
+					<code>id</code>
+					属性を次のように指定します．
+				</p>
+<dl><dt>リクエストの属性を出力する場合</dt>
+<dd><code>'requestScope_'</code>
+						+
+						<var>attributeName</var></dd>
+<dt>セッションの属性を出力する場合</dt>
+<dd><code>'sessionScope_'</code>
+						+
+						<var>attributeName</var></dd>
+<dt>アプリケーションコンテキストの属性を出力する場合</dt>
+<dd><code>'applicationScope_'</code>
+						+
+						<var>attributeName</var></dd>
+</dl>
+<p>
+					レンダリング時，
+					<code>&lt;title&gt;</code>
+					要素の内容はリクエストやセッション，アプリケーションスコープの属性値に置き換えられます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;title id=&quot;sessionScope_name&quot;&gt;dummy&lt;/title&gt;
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p>
+					セッションの
+					<code>name</code>
+					属性の値が
+					<code>&quot;Teeda&quot;</code>
+					の場合， レンダリング結果は次のようになります．
+				</p>
+<div class="source"><pre>
+&lt;title id=&quot;sessionScope_userName&quot;&gt;Teeda&lt;/title&gt;
+</pre>
+</div>
+</div>
+<div class="section"><h3><a name="プロパティファイルの内容をタイトルに出力するには"></a>
+プロパティファイルの内容をタイトルに出力するには</h3>
+<p><code>&lt;title&gt;</code>
+					要素に
+					<code>id</code>
+					属性を付け，
+					<a href="../reference/resource.html#ラベルリソース">
+						ラベルリソース
+					</a>
+
+					ファイルに
+					<var>pagename.id</var>
+					または
+					<var>id</var>
+					という名前のプロパティを定義します．
+				</p>
+<p>
+					レンダリング時，
+					<code>&lt;title&gt;</code>
+					要素の内容は
+					<a href="../reference/resource.html#ラベルリソース">
+						ラベルリソース
+					</a>
+
+					ファイルの値に置き換えられます．
+				</p>
+<h5>例：テンプレートHTML (foo.html)</h5>
+<div class="source"><pre>
+&lt;title id=&quot;title&quot;&gt;dummy&lt;/span&gt;
+</pre>
+</div>
+<h5>例：ラベルリソースファイル (label_ja.properties)</h5>
+<div class="source"><pre>
+foo.title=Teeda
+</pre>
+</div>
+<h5>例：レンダリング結果</h5>
+<p>レンダリング結果は次のようになります．</p>
+<div class="source"><pre>
+&lt;span id=&quot;title&quot;&gt;Teeda&lt;/span&gt;
+</pre>
+</div>
+</div>
+</div>
+
+</div><!-- article -->
+
+</div><!-- contents_center -->
+
+<div id="footer">
+<address>  &copy; Copyright
+  
+          2005-2008,
+    
+          The Seasar Foundation and the others. All rights reserved.
+      </address>
+<div class="line"><span class="hide">spacer</span></div>
+</div><!-- footer -->
+
+</div><!-- wrapper -->
+
+</body>
+</html>
