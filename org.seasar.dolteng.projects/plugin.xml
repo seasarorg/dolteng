@@ -551,7 +551,7 @@
       <contextProperty name="testLibSrcPath" value="lib/sources" />
       <contextProperty name="webAppRoot" value="src/main/webapp" />
       <handler type="default" resourceLoader="composite">
-        <entry kind="file" path="${webAppRoot}/Main.mxml" />
+        <entry kind="file" path="src/main/flex/Main.mxml" />
         <entry path="${webAppRoot}/${packagePath}/dto" />
         <entry path="${webAppRoot}/${packagePath}/web" />
         <entry kind="file" path="${mainResourcePath}/amf3.dicon" />
