@@ -7,7 +7,6 @@
 	<persistence-unit name="persistenceUnit" transaction-type="JTA">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<jta-data-source>jdbc/dataSource</jta-data-source>
-		<non-jta-data-source>jdbc/nonJtaDataSource</non-jta-data-source>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="openjpa.ManagedRuntime" value="org.seasar.openjpa.ee.S2ManagedRuntime"/>
