@@ -15,16 +15,10 @@
  */
 package org.seasar.dolteng.projects.wizard;
 
-import static org.seasar.dolteng.eclipse.Constants.CTX_APP_TYPE_PACKAGING;
-import static org.seasar.dolteng.eclipse.Constants.CTX_JAVA_VERSION_NUMBER;
-import static org.seasar.dolteng.eclipse.Constants.CTX_JAVA_VERSION_NUMBER2;
-import static org.seasar.dolteng.eclipse.Constants.CTX_JAVA_VM_NAME;
-import static org.seasar.dolteng.eclipse.Constants.CTX_JRE_CONTAINER;
-import static org.seasar.dolteng.eclipse.Constants.CTX_PACKAGE_NAME;
-import static org.seasar.dolteng.eclipse.Constants.CTX_PACKAGE_PATH;
-import static org.seasar.dolteng.eclipse.Constants.CTX_PROJECT_NAME;
+import static org.seasar.dolteng.eclipse.Constants.*;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -77,6 +71,18 @@ import org.seasar.framework.util.StringUtil;
  * 
  */
 public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
+
+    private static final String JREGROUP_LINK_DESCRIPTION = getMessagesKey(
+            "NewJavaProjectWizardPageOne_JREGroup_link_description",
+            "JavaProjectWizardFirstPage_JREGroup_link_description");
+
+    private static final String JREGROUP_LINK_COMPLIANCE = getMessagesKey(
+            "NewJavaProjectWizardPageOne_JREGroup_specific_compliance",
+            "JavaProjectWizardFirstPage_JREGroup_specific_compliance");
+
+    private static final String JREGROUP_SPECIFIC_EE = getMessagesKey(
+            "NewJavaProjectWizardPageOne_JREGroup_specific_EE",
+            "JavaProjectWizardFirstPage_JREGroup_specific_EE");
 
     private ProjectBuildConfigResolver resolver = new ProjectBuildConfigResolver();
 
@@ -160,14 +166,16 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
         Link preferenceLink = new Link(group, SWT.NONE);
         preferenceLink.setFont(group.getFont());
         preferenceLink
-                .setText(NewWizardMessages.JavaProjectWizardFirstPage_JREGroup_link_description);
+                .setText(JREGROUP_LINK_DESCRIPTION);
         preferenceLink.setLayoutData(new GridData(GridData.END,
                 GridData.CENTER, false, false));
         preferenceLink.addSelectionListener(new SelectionListener() {
             /*
              * (non-Javadoc)
              * 
-             * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+             * @see
+             * org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse
+             * .swt.events.SelectionEvent)
              */
             public void widgetSelected(SelectionEvent e) {
                 widgetDefaultSelected(e);
@@ -176,7 +184,9 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
             /*
              * (non-Javadoc)
              * 
-             * @see org.eclipse.swt.events.SelectionListener#widgetDefaultSelected(org.eclipse.swt.events.SelectionEvent)
+             * @see
+             * org.eclipse.swt.events.SelectionListener#widgetDefaultSelected
+             * (org.eclipse.swt.events.SelectionEvent)
              */
             public void widgetDefaultSelected(SelectionEvent e) {
                 String jreID = BuildPathSupport.JRE_PREF_PAGE_ID;
@@ -189,11 +199,11 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
                 JREUtils.clear();
                 projectJreCombo.removeAll();
                 projectJreCombo.setItems(JREUtils.getInstalledVmNames());
-                projectJreCombo.select(projectJreCombo.getItemCount()-1);
-                
+                projectJreCombo.select(projectJreCombo.getItemCount() - 1);
+
                 eeJreCombo.removeAll();
                 eeJreCombo.setItems(JREUtils.getExecutionEnvironmentNames());
-                eeJreCombo.select(eeJreCombo.getItemCount()-1);
+                eeJreCombo.select(eeJreCombo.getItemCount() - 1);
             }
 
         });
@@ -201,7 +211,7 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
         useProjectJre = new Button(group, SWT.RADIO);
         useProjectJre.setLayoutData(new GridData());
         useProjectJre
-                .setText(NewWizardMessages.JavaProjectWizardFirstPage_JREGroup_specific_compliance);
+                .setText(JREGROUP_LINK_COMPLIANCE);
         useProjectJre.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
@@ -217,7 +227,7 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
         projectJreCombo.setLayoutData(gd);
         projectJreCombo.setItems(JREUtils.getInstalledVmNames());
         projectJreCombo.setVisibleItemCount(10);
-        projectJreCombo.select(projectJreCombo.getItemCount()-1);
+        projectJreCombo.select(projectJreCombo.getItemCount() - 1);
         projectJreCombo.setEnabled(false);
         projectJreCombo.addSelectionListener(new SelectionAdapter() {
             @Override
@@ -229,7 +239,7 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
         useEEJre = new Button(group, SWT.RADIO);
         useEEJre.setLayoutData(new GridData());
         useEEJre
-                .setText(NewWizardMessages.JavaProjectWizardFirstPage_JREGroup_specific_EE);
+                .setText(JREGROUP_SPECIFIC_EE);
         useEEJre.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
@@ -243,7 +253,7 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
         eeJreCombo.setLayoutData(new GridData());
         eeJreCombo.setItems(JREUtils.getExecutionEnvironmentNames());
         eeJreCombo.setVisibleItemCount(10);
-        eeJreCombo.select(eeJreCombo.getItemCount()-1);
+        eeJreCombo.select(eeJreCombo.getItemCount() - 1);
         eeJreCombo.setEnabled(false);
         eeJreCombo.addSelectionListener(new SelectionAdapter() {
             @Override
@@ -328,7 +338,7 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
                 facetCheck.addListener(SWT.Selection, new Listener() {
                     public void handleEvent(Event event) {
                         updateDirectories();
-                        // facetChecks.setToolTipText(getFacetDesc(facetChecks));
+                        //facetChecks.setToolTipText(getFacetDesc(facetChecks));
                         displayLegacyTypeGuidance();
                     }
                 });
@@ -371,7 +381,7 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
     private void refreshFacetChecks() {
         for (Button facetCheck : facetChecks) {
             FacetConfig fc = getFacetConfig(facetCheck);
-            
+
             if (getApplicationType().isDisabled(fc)
                     || fc.getJres().contains(getJavaVersionNumber()) == false) {
                 facetCheck.setSelection(false);
@@ -388,11 +398,11 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
             if (getApplicationType().isDisabled(fc)) {
                 continue;
             }
-            
+
             if (fc.getJres().contains(getJavaVersionNumber()) == false) {
                 continue;
             }
-            
+
             String categoryKey = fc.getCategory();
             if (category == null) {
                 if (categoryKey == null
@@ -445,33 +455,36 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
 
     @Override
     protected boolean validatePage() {
-        if(super.validatePage() == false) {
+        if (super.validatePage() == false) {
             return false;
         }
-        
+
         DoltengCommonPreferences pref = DoltengCore.getPreferences();
-        if(pref.isDownloadOnline() && ! new File(pref.getMavenReposPath()).exists()) {
-            setErrorMessage("Maven Local Repository Directory is not found: " + pref.getMavenReposPath());
+        if (pref.isDownloadOnline()
+                && !new File(pref.getMavenReposPath()).exists()) {
+            setErrorMessage("Maven Local Repository Directory is not found: "
+                    + pref.getMavenReposPath());
             setPageComplete(false);
             return false;
         }
-        
+
         String packageName = getRootPackageName();
         if (StringUtil.isEmpty(packageName)) {
             setErrorMessage(Messages.PACKAGE_NAME_IS_EMPTY);
             setPageComplete(false);
             return false;
         }
-        
-        IStatus pkgNameStatus = JavaConventions.validatePackageName(packageName);
+
+        IStatus pkgNameStatus = JavaConventions
+                .validatePackageName(packageName);
         if (pkgNameStatus.getSeverity() == IStatus.ERROR
                 || pkgNameStatus.getSeverity() == IStatus.WARNING) {
-            setErrorMessage(NLS.bind(Messages.INVALID_PACKAGE_NAME, pkgNameStatus
-                    .getMessage()));
+            setErrorMessage(NLS.bind(Messages.INVALID_PACKAGE_NAME,
+                    pkgNameStatus.getMessage()));
             setPageComplete(false);
             return false;
         }
-        
+
         setErrorMessage(null);
         setMessage(null);
         return true;
@@ -523,14 +536,15 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
         } else if (useEEJre.getSelection()) {
             name = eeJreCombo.getText();
         }
-        return JREUtils.getJavaVersionNumber(name, JREUtils.VersionLength.SHORT);
+        return JREUtils
+                .getJavaVersionNumber(name, JREUtils.VersionLength.SHORT);
     }
 
     private String getJavaVersionNumber2() {
         String javaVersion = getJavaVersionNumber();
-        if("1.5".equals(javaVersion)) {
+        if ("1.5".equals(javaVersion)) {
             javaVersion = "5.0";
-        } else if("1.6".equals(javaVersion)) {
+        } else if ("1.6".equals(javaVersion)) {
             javaVersion = "6.0";
         }
         return javaVersion;
@@ -696,5 +710,21 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
         ctx.put("appType", getApplicationType().getId());
 
         return ctx;
+    }
+
+    static String getMessagesKey(String... fieldNames) {
+        try {
+            Field f = null;
+            for (final String name : fieldNames) {
+                try {
+                    f = NewWizardMessages.class.getField(name);
+                    break;
+                } catch (NoSuchFieldException ignore) {
+                }
+            }
+            return f == null ? null : (String) f.get(null);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
