@@ -131,8 +131,8 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
         super.createControl(parent);
         Composite composite = (Composite) getControl();
 
-        createJreContainerGroup(composite);
         createBasicSettingsGroup(composite);
+        createJreContainerGroup(composite);
         createFacetSettingsGroup(composite);
 
         refreshFacets();
@@ -270,6 +270,17 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
         group.setText(Labels.WIZARD_PAGE_CHURA_BASIC_SETTINGS);
 
         Label label = new Label(group, SWT.NONE);
+        label.setText(Labels.WIZARD_PAGE_CHURA_ROOT_PACKAGE);
+        label.setFont(parent.getFont());
+
+        rootPkgName = new Text(group, SWT.BORDER);
+        GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+        gd.widthHint = 250;
+        rootPkgName.setLayoutData(gd);
+        rootPkgName.setFont(parent.getFont());
+        rootPkgName.addListener(SWT.Modify, validateListener);
+
+        label = new Label(group, SWT.NONE);
         label.setText(Labels.WIZARD_PAGE_CHURA_TYPE_SELECTION);
         label.setFont(parent.getFont());
         applicationType = new Combo(group, SWT.BORDER | SWT.READ_ONLY);
@@ -283,17 +294,6 @@ public class ChuraProjectWizardPage extends WizardNewProjectCreationPage {
                 refreshFacets();
             }
         });
-
-        label = new Label(group, SWT.NONE);
-        label.setText(Labels.WIZARD_PAGE_CHURA_ROOT_PACKAGE);
-        label.setFont(parent.getFont());
-
-        rootPkgName = new Text(group, SWT.BORDER);
-        GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-        gd.widthHint = 250;
-        rootPkgName.setLayoutData(gd);
-        rootPkgName.setFont(parent.getFont());
-        rootPkgName.addListener(SWT.Modify, validateListener);
     }
 
     private void createFacetSettingsGroup(Composite parent) {
