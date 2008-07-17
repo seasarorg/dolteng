@@ -481,6 +481,9 @@
         <entry kind="file" path="${libPath}/sa-struts-1.0.0.jar" maven="org.seasar.sastruts,sa-struts,1.0.0" />
         <entry kind="file" path="${testLibPath}/geronimo-jsp_2.0_spec-1.0.jar" maven="org.apache.geronimo.specs,geronimo-jsp_2.0_spec,1.0"/>
       </handler>
+      <handler type="dolteng" resourceLoader="composite">
+        <entry kind="file" path=".settings/dolteng.sastruts.pref" />
+      </handler>
       <handler type="appDicon">
         <include path="j2ee.dicon" />
         <component name="actionMessagesThrowsInterceptor" class="org.seasar.struts.interceptor.ActionMessagesThrowsInterceptor"/>
