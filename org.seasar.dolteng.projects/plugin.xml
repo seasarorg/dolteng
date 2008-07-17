@@ -483,7 +483,6 @@
       </handler>
       <handler type="appDicon">
         <include path="j2ee.dicon" />
-        <include path="s2jdbc.dicon" />
         <component name="actionMessagesThrowsInterceptor" class="org.seasar.struts.interceptor.ActionMessagesThrowsInterceptor"/>
       </handler>
       <handler type="customizerDicon">
