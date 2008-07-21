@@ -1,0 +1,12 @@
+defaultPackage=${packageName}.action
+duplicateIdAttribute=1
+eclipse.preferences.version=1
+invalidIdAttribute=1
+javaClassSuffix=Action
+javaSourcePath=${mainJavaPath}
+missingIdAttribute=1
+namespaces.0=m\:http\://mayaa.seasar.org
+notexistIdAttribute=1
+replaceRule.0=*\t<m\:echo id\="$id"></m\:echo>
+undefineIdAttribute=1
+webRootPath=${webAppRoot}
