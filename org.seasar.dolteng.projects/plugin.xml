@@ -676,7 +676,7 @@
         <entry kind="file" path="${libPath}/geronimo-interceptor_3.0_spec-1.0.jar" maven="org.apache.geronimo.specs,geronimo-interceptor_3.0_spec,1.0" />
         <entry kind="file" path="${libPath}/geronimo-jpa_3.0_spec-1.0.jar" maven="org.apache.geronimo.specs,geronimo-jpa_3.0_spec,1.0" />
         <entry kind="file" path="${libPath}/kuina-dao-1.0.2.jar" maven="org.seasar.kuina,kuina-dao,1.0.2" />
-        <entry kind="file" path="${testLibPath}/junit-4.3.1.jar" maven="junit,junit,4.3.1" />
+        <entry kind="file" path="${testLibPath}/junit-4.4.jar" maven="junit,junit,4.4" />
       </handler>
       <handler type="diigu" resourceLoader="composite" />
       <handler type="dolteng" resourceLoader="composite">
