@@ -788,6 +788,9 @@
         <entry kind="file" path="${libPath}/geronimo-annotation_1.0_spec-1.0.jar" maven="org.apache.geronimo.specs,geronimo-annotation_1.0_spec,1.0" />
         <entry kind="file" path="${libPath}/geronimo-jpa_3.0_spec-1.0.jar" maven="org.apache.geronimo.specs,geronimo-jpa_3.0_spec,1.0" />
       </handler>
+      <handler type="dolteng" resourceLoader="composite">
+        <entry kind="file" path=".settings/dolteng.s2jdbc.pref" />
+      </handler>
       <handler type="appDicon">
         <include path="s2jdbc.dicon" />
       </handler>
