@@ -1,0 +1,5 @@
+ConventionDiconPath=/${mainResourcePath}/convention.dicon
+MainJavaPath=/${mainJavaPath}
+WebContentsRoot=/${webAppRoot}
+eclipse.preferences.version=1
+

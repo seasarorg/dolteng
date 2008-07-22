@@ -69,6 +69,9 @@
     <resourceHandler
         class="org.seasar.dolteng.projects.handler.impl.MatatabiHandler"
         name="matatabi"/>
+    <resourceHandler
+        class="org.seasar.dolteng.projects.handler.impl.SAStrutsPluginHandler"
+        name="sastrutsplugin"/>
   </extension>
   <extension
       point="org.eclipse.ui.newWizards">
@@ -486,6 +489,9 @@
       </handler>
       <handler type="dolteng" resourceLoader="composite">
         <entry kind="file" path=".settings/dolteng.sastruts.pref" />
+      </handler>
+      <handler type="sastrutsplugin" resourceLoader="composite">
+        <entry kind="file" path=".settings/sastrutsplugin.pref" />
       </handler>
       <handler type="appDicon">
         <include path="j2ee.dicon" />
