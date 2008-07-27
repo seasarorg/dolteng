@@ -1,0 +1,7 @@
+namespaces.1=s\:http://sastruts.seasar.org
+namespaces.2=f\:http://sastruts.seasar.org/functions
+namespaces.3=bean\:http://jakarta.apache.org/struts/tags-bean
+namespaces.4=html\:http://jakarta.apache.org/struts/tags-html
+namespaces.5=c\:http://java.sun.com/jsp/jstl/core
+namespaces.6=fmt\:http://java.sun.com/jstl/fmt
+namespaces.7=fn\:http://java.sun.com/jsp/jstl/functions
