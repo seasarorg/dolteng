@@ -91,7 +91,7 @@ public class MavenResourceLoader extends CompositeResourceLoader {
         final Artifact artifact;
         Properties prop = new Properties();
         prop.setProperty("repositories", StringUtils.join(remoteRepos, ","));
-        prop.setProperty("localrepository", "file://" + localReposPath);
+        prop.setProperty("localrepository", "file:///" + localReposPath);
 
         RepositoryManager mgr = RepositoryManager.getInstance(true, prop);
         artifact = new Artifact(groupId, artifactId, version, mgr);
