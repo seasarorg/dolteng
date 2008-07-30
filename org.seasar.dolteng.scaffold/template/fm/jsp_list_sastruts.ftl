@@ -32,7 +32,7 @@
 </#list>
 		<td><a href="show?<#list mappings as mapping><#if mapping.isPrimaryKey() = true>${mapping.javaFieldName}=<#noparse>${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}&</#noparse></#if></#list>"> show </a></td>
 		<td><a href="edit?<#list mappings as mapping><#if mapping.isPrimaryKey() = true>${mapping.javaFieldName}=<#noparse>${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}&</#noparse></#if></#list>"> edit </a></td>
-		<td><a onclick="return confirm('delete OK?');" href="delete?<#list mappings as mapping><#if mapping.isPrimaryKey() = true>${mapping.javaFieldName}=<#noparse>${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}&</#noparse></#if></#list>">delete</a></td>
+		<td><a onclick="return confirm('delete OK?');" href="delete?<#list mappings as mapping><#if mapping.isPrimaryKey() = true || isVersionColumn(mapping) = true>${mapping.javaFieldName}=<#noparse>${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}&</#noparse></#if></#list>">delete</a></td>
 	</tr>
 </c:forEach>
 
