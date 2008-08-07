@@ -242,6 +242,10 @@
 				override="false"
 				outputpath="${javasrcroot}/${rootpackagepath}/${entitypackagename}/"
 				outputname="${table_capitalize}.java" />
+			<template path="template/fm/java_service_abstract_s2jdbc.ftl"
+                override="false"
+                outputpath="${javasrcroot}/${rootpackagepath}/${servicepackagename}/"
+                outputname="AbstractService.java" />
 			<template path="template/fm/java_service_s2jdbc.ftl"
 				override="false"
 				outputpath="${javasrcroot}/${rootpackagepath}/${servicepackagename}/"
@@ -252,24 +256,24 @@
 				outputname="${table_capitalize}${actionsuffix}.java" />
 			<template path="template/fm/java_form_sastruts.ftl"
 				override="false"
-				outputpath="${javasrcroot}/${rootpackagepath}/${dtopackagename}/"
-				outputname="${table_capitalize}${dtosuffix}.java" />
+				outputpath="${javasrcroot}/${rootpackagepath}/form/"
+				outputname="${table_capitalize}Form.java" />
 			<template path="template/fm/html_css.ftl" override="false"
 				outputpath="${webcontentsroot}/css/" outputname="global.css" />
 			<template path="template/fm/jsp_list_sastruts.ftl" override="false"
-				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
+				outputpath="${webcontentsroot}/WEB-INF/${viewrootpath}/${table}/"
 				outputname="list.jsp" />
 			<template path="template/fm/jsp_create_sastruts.ftl"
 				override="false"
-				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
+				outputpath="${webcontentsroot}/WEB-INF/${viewrootpath}/${table}/"
 				outputname="create.jsp" />
 			<template path="template/fm/jsp_edit_sastruts.ftl"
 				override="false"
-				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
+				outputpath="${webcontentsroot}/WEB-INF/${viewrootpath}/${table}/"
 				outputname="edit.jsp" />
 			<template path="template/fm/jsp_show_sastruts.ftl"
 				override="false"
-				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
+				outputpath="${webcontentsroot}/WEB-INF/${viewrootpath}/${table}/"
 				outputname="show.jsp" />
 		</templates>
 	</extension>

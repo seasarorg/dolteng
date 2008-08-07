@@ -11,27 +11,35 @@
 
 <html:errors/>
 
-<form action="update" >
-
+<s:form>
+<#list mappings as mapping>
+    <#if mapping.isPrimaryKey() = true || isVersionColumn(mapping) = true>
+        <#noparse>
+            <input type="hidden" value="${</#noparse>${mapping.javaFieldName}<#noparse>}" name="</#noparse>${mapping.javaFieldName}<#noparse>" />
+        </#noparse>
+    </#if>
+</#list>
 <table class="tablebg">
 <#list mappings as mapping>
+    <#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 	<tr>
 		<td> ${mapping.javaFieldName} </td>
 		<td>
 			<#noparse>
-				<input type="text" value="${f:h(</#noparse>${mapping.javaFieldName}<#noparse>)}" name="</#noparse>${mapping.javaFieldName}<#noparse>" />
+				<input type="text" value="${</#noparse>${mapping.javaFieldName}<#noparse>}" name="</#noparse>${mapping.javaFieldName}<#noparse>" />
 			</#noparse>
 		</td>	
 	</tr>
+	</#if>
 </#list>
 
 </table>
 
 <input type="submit" name="update" value="UPDATE" />
-</form>
+</s:form>
 <br/><br/>
 
-<a href="list">list page</a>
+<s:link href="/${configs.table}/">list page</s:link>
 
 <body>
 </html>

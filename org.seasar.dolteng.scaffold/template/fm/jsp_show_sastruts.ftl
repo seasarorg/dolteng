@@ -15,24 +15,24 @@
 
 <table class="tablebg">
 <#list mappings as mapping>
+    <#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 	<tr>
 		<td> ${mapping.javaFieldName} </td>
 		<td>
-			<#noparse> <c:out value="${</#noparse>${mapping.javaFieldName}<#noparse>}" /> </#noparse>
+			<#noparse>${f:h(</#noparse>${mapping.javaFieldName}<#noparse>)}</#noparse>
 		</td>	
 	</tr>
+	</#if>
 </#list>
 
 </table>
 
 </form>
 
-<a href="edit?<#list mappings as mapping><#if mapping.isPrimaryKey() = true>${mapping.javaFieldName}=<#noparse>${f:h(</#noparse>${mapping.javaFieldName}<#noparse>)}&</#noparse></#if></#list>">edit</a>
+<s:link href="edit<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/${f:h(</#noparse>${mapping.javaFieldName}<#noparse>)}</#noparse></#if></#list>"> edit </s:link>
 
 
 <br/><br/>
-
-<a href="list">list page</a>
-
+<s:link href="/${configs.table}/">list page</s:link>
 <body>
 </html>

@@ -17,22 +17,27 @@
 <tr style="background-color:pink">
 
 <#list mappings as mapping>
+    <#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 	<th>${mapping.javaFieldName}</th>
+	</#if>
 </#list>
 <th></th><th></th><th></th>
 </tr>
+
+<#noparse><c:forEach var="e" varStatus="s" items="${</#noparse>${configs.table}Items<#noparse>}"></#noparse>
 <#noparse>
-<c:forEach var="e" varStatus="s" items="${recordList}">
 	<tr style="background-color:${s.index %2 == 0 ? 'white' : 'aqua'}">
 </#noparse>
 <#list mappings as mapping>
+    <#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 		<td>
-			<#noparse><c:out value="${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}" /></#noparse>
+			<#noparse>${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}</#noparse>
 		</td>
+	</#if>
 </#list>
-		<td><a href="show?<#list mappings as mapping><#if mapping.isPrimaryKey() = true>${mapping.javaFieldName}=<#noparse>${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}&</#noparse></#if></#list>"> show </a></td>
-		<td><a href="edit?<#list mappings as mapping><#if mapping.isPrimaryKey() = true>${mapping.javaFieldName}=<#noparse>${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}&</#noparse></#if></#list>"> edit </a></td>
-		<td><a onclick="return confirm('delete OK?');" href="delete?<#list mappings as mapping><#if mapping.isPrimaryKey() = true || isVersionColumn(mapping) = true>${mapping.javaFieldName}=<#noparse>${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}&</#noparse></#if></#list>">delete</a></td>
+		<td><s:link href="show<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}</#noparse></#if></#list>"> show </s:link></td>
+		<td><s:link href="edit<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}</#noparse></#if></#list>"> edit </s:link></td>
+		<td><s:link onclick="return confirm('delete OK?');" href="delete<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}</#noparse></#if><#if isVersionColumn(mapping) = true><#noparse>/${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}</#noparse></#if></#list>">delete</s:link></td>
 	</tr>
 </c:forEach>
 

@@ -16,49 +16,30 @@ import java.util.List;
 
 import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.table_capitalize};
 import ${configs.rootpackagename}.${configs.servicepackagename}.${configs.table_capitalize}${configs.servicesuffix};
-import ${configs.rootpackagename}.${configs.dtopackagename}.${configs.table_capitalize}${configs.dtosuffix};
+import ${configs.rootpackagename}.form.${configs.table_capitalize}Form;
 
 public class ${configs.table_capitalize}${configs.actionsuffix} {
 
 	@ActionForm
-	public ${configs.table_capitalize}${configs.dtosuffix} ${configs.table}${configs.dtosuffix};
+	public ${configs.table_capitalize}Form ${configs.table}Form;
+	
+	public List<${configs.table_capitalize}> ${configs.table}Items;
 	
 	public ${configs.table_capitalize}${configs.servicesuffix} ${configs.table}${configs.servicesuffix};
 	
 
-	@Execute(validator=false)
+	@Execute(validator = false)
 	public String index(){
-	
 		return list();
 	}
 
-	@Execute(validator=false)
+	@Execute(validator = false)
 	public String list(){
-	
-		List<${configs.table_capitalize}> list = ${configs.table}${configs.servicesuffix}.findAll();
-
-		${configs.table}${configs.dtosuffix}.recordList = new ArrayList<${configs.table_capitalize}${configs.dtosuffix}>();
-	
-		for(${configs.table_capitalize} entity : list){
-			
-			${configs.table_capitalize}${configs.dtosuffix} dto 
-					= Beans.createAndCopy(${configs.table_capitalize}${configs.dtosuffix}.class, entity)
-							.dateConverter("yyyy/MM/dd",new String[]{
-<#list mappings as mapping>
-	<#if mapping.isDate() = true>
-								"${mapping.javaFieldName}",
-	</#if>						
-</#list>
-								})
-							.execute();
-							
-			${configs.table}${configs.dtosuffix}.recordList.add(dto);
-		}
-	
+		${configs.table}Items = ${configs.table}${configs.servicesuffix}.findAll();
 		return "list.jsp";
 	}
 	
-	@Execute(validator=false)
+	@Execute(validator = false, urlPattern="show<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>")
 	public String show(){
 	
 		loadEntity();
@@ -66,7 +47,7 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
 		return "show.jsp";
 	}
 	
-	@Execute(validator=false)
+	@Execute(validator = false, urlPattern="edit<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>")
 	public String edit(){
 	
 		loadEntity();
@@ -80,40 +61,21 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
 		return "create.jsp";
 	}
 	
-	@Execute(validator=false)
+	@Execute(validator=false, urlPattern="delete<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if><#if isVersionColumn(mapping) = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>", redirect = true)
 	public String delete(){
 	
-		${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}${configs.dtosuffix})
+		${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form)
 			.execute();
 		
 		${configs.table}${configs.servicesuffix}.delete(entity);
 		
-		return list();
+		return "/${configs.table}/";
 	}
 	
 	
-	private void loadEntity(){
-	
-		BeanMap conditions = new BeanMap();
-		
-<#list mappings as mapping>
-	<#if mapping.isPrimaryKey() = true>
-		conditions.put("${mapping.javaFieldName}", ${configs.table}${configs.dtosuffix}.${mapping.javaFieldName});
-	</#if>
-</#list>
-
-		List<${configs.table_capitalize}> resultList = ${configs.table}${configs.servicesuffix}.findByCondition(conditions);
-
-		if(resultList.size() == 0){
-			
-			throw new NoResultException(); 
-		}else if(resultList.size() > 1){
-			throw new SNonUniqueResultException(SqlLogRegistryLocator.getInstance().getLast().getCompleteSql()); 
-		}
-
-		${configs.table_capitalize} entity = resultList.get(0);
-		
-		Beans.copy(entity, ${configs.table}${configs.dtosuffix})
+	protected void loadEntity(){
+		${configs.table_capitalize} entity = ${configs.table}${configs.servicesuffix}.findById(${createFormPkeyMethodCallArgsCopy("${configs.table}Form")});
+		Beans.copy(entity, ${configs.table}Form)
 			.dateConverter("yyyy/MM/dd",new String[]{
 <#list mappings as mapping>
 	<#if mapping.isDate() = true>
@@ -125,26 +87,26 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
 	}
 	
 	
-	@Execute(input="create.jsp", validate="validateInsert")
+	@Execute(input="create.jsp", validate="validateInsert", redirect = true)
 	public String insert(){
 		
-		${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}${configs.dtosuffix})
+		${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form)
 			.execute();
 		
 		${configs.table}${configs.servicesuffix}.insert(entity);
 		
-		return list();
+		return "/${configs.table}/";
 	}
 	
-	@Execute(input="create.jsp", validate="validateUpdate")
+	@Execute(input="create.jsp", validate="validateUpdate", redirect = true)
 	public String update(){
 		
-		${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}${configs.dtosuffix})
+		${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form)
 			.execute();
 		
 		${configs.table}${configs.servicesuffix}.update(entity);
 		
-		return list();
+		return "/${configs.table}/";
 	}
 	
 	
