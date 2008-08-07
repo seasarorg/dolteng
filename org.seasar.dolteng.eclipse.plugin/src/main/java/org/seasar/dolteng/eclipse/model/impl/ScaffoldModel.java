@@ -298,6 +298,32 @@ public class ScaffoldModel implements RootModel {
     public String createPkeyMethodCallArgs() {
         return createPkeyMethodCallArgs(false);
     }
+    
+    public String createFormPkeyMethodCallArgsCopy(String formName) {
+        return createFormPkeyMethodCallArgsCopy(formName, false);
+    }
+    
+    public String createFormPkeyMethodCallArgsCopy(String formName, boolean includeVersion) {
+        StringBuffer stb = new StringBuffer();
+        boolean is = false;
+        for (EntityMappingRow row : mappings) {
+            if (row.isPrimaryKey()
+                    || (includeVersion && NamingUtil.isVersionNo(row
+                            .getSqlColumnName()))) {
+                stb.append(formName);
+                stb.append('.');
+                stb.append(row.getJavaFieldName());
+                stb.append(',');
+                stb.append(' ');
+                is = true;
+            }
+        }
+        if (is) {
+            stb.setLength(stb.length() - 2);
+        }
+        return stb.toString();
+    }
+
 
     public String createPkeyMethodCallArgsCopy(boolean includeVersion) {
         StringBuffer stb = new StringBuffer();
