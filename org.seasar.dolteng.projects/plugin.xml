@@ -110,43 +110,12 @@
         <entry kind="file" path="licenses/LICENSE.ognl.txt" />
         <entry kind="file" path="licenses/LICENSE.was_uow.html" />
         <entry kind="file" path="licenses/NOTICE.txt" />
-        <entry path="${mainJavaPath}/${packagePath}/dao" />
-        <entry path="${mainJavaPath}/${packagePath}/dto" />
-        <entry path="${mainJavaPath}/${packagePath}/dxo" />
-        <entry path="${mainJavaPath}/${packagePath}/entity" />
-        <entry path="${mainJavaPath}/${packagePath}/helper" />
-        <entry path="${mainJavaPath}/${packagePath}/converter" />
-        <entry path="${mainJavaPath}/${packagePath}/interceptor" />
-        <entry path="${mainJavaPath}/${packagePath}/logic" />
-        <entry path="${mainJavaPath}/${packagePath}/service" />
-        <entry path="${mainJavaPath}/${packagePath}/validator" />
-        <entry path="${mainJavaPath}/${packagePath}/web" />
-        <entry path="${mainResourcePath}/${packagePath}/dao" />
-        <entry path="${mainResourcePath}/${packagePath}/dto" />
-        <entry path="${mainResourcePath}/${packagePath}/dxo" />
-        <entry path="${mainResourcePath}/${packagePath}/entity" />
-        <entry path="${mainResourcePath}/${packagePath}/helper" />
-        <entry path="${mainResourcePath}/${packagePath}/converter" />
-        <entry path="${mainResourcePath}/${packagePath}/interceptor" />
-        <entry path="${mainResourcePath}/${packagePath}/logic" />
-        <entry path="${mainResourcePath}/${packagePath}/service" />
-        <entry path="${mainResourcePath}/${packagePath}/validator" />
-        <entry path="${mainResourcePath}/${packagePath}/web" />
         <entry kind="file" path="${mainResourcePath}/convention.dicon" />
         <entry kind="file" path="${mainResourcePath}/env_ut.txt" />
         <entry kind="file" path="${mainResourcePath}/env.txt" />
         <entry kind="file" path="${mainResourcePath}/jdbc.dicon" />
         <entry kind="file" path="${mainResourcePath}/log4j.properties" />
         <entry kind="file" path="${mainResourcePath}/s2container.dicon" />
-        <entry path="${testJavaPath}/${packagePath}/dao" />
-        <entry path="${testJavaPath}/${packagePath}/dto" />
-        <entry path="${testJavaPath}/${packagePath}/dxo" />
-        <entry path="${testJavaPath}/${packagePath}/entity" />
-        <entry path="${testJavaPath}/${packagePath}/helper" />
-        <entry path="${testJavaPath}/${packagePath}/interceptor" />
-        <entry path="${testJavaPath}/${packagePath}/logic" />
-        <entry path="${testJavaPath}/${packagePath}/service" />
-        <entry path="${testJavaPath}/${packagePath}/validator" />
         <entry path="${testResourcePath}/" />
       </handler>
       <handler type="classpath" resourceLoader="maven">
@@ -211,7 +180,7 @@
         </handler>
       </if>
     </facet>
-    <facet id="web" name="Web First">
+    <facet id="web" name="Web First" extends="base">
       <handler type="default" resourceLoader="composite">
         <entry path="${mainResourcePath}/${packagePath}/web" />
         <entry path="${mainJavaPath}/${packagePath}/web" />
@@ -287,6 +256,32 @@
       <contextProperty name="testLibPath" value="lib" />
       <contextProperty name="testLibSrcPath" value="lib/sources" />
       <handler type="default" resourceLoader="composite">
+        <entry path="${mainJavaPath}/${packagePath}/dto" />
+        <entry path="${mainJavaPath}/${packagePath}/helper" />
+        <entry path="${mainJavaPath}/${packagePath}/converter" />
+        <entry path="${mainJavaPath}/${packagePath}/logic" />
+        <entry path="${mainJavaPath}/${packagePath}/service" />
+        <entry path="${mainJavaPath}/${packagePath}/validator" />
+        <entry path="${mainJavaPath}/${packagePath}/web" />
+        <entry path="${mainResourcePath}/${packagePath}/dto" />
+        <entry path="${mainResourcePath}/${packagePath}/converter" />
+        <entry path="${mainResourcePath}/${packagePath}/helper" />
+        <entry path="${mainResourcePath}/${packagePath}/logic" />
+        <entry path="${mainResourcePath}/${packagePath}/service" />
+        <entry path="${mainResourcePath}/${packagePath}/validator" />
+        <entry path="${mainResourcePath}/${packagePath}/web" />
+        <entry kind="file" path="${mainResourcePath}/convention.dicon" />
+        <entry kind="file" path="${mainResourcePath}/env_ut.txt" />
+        <entry kind="file" path="${mainResourcePath}/env.txt" />
+        <entry kind="file" path="${mainResourcePath}/jdbc.dicon" />
+        <entry kind="file" path="${mainResourcePath}/log4j.properties" />
+        <entry kind="file" path="${mainResourcePath}/s2container.dicon" />
+        <entry path="${testJavaPath}/${packagePath}/dto" />
+        <entry path="${testJavaPath}/${packagePath}/converter" />
+        <entry path="${testJavaPath}/${packagePath}/helper" />
+        <entry path="${testJavaPath}/${packagePath}/logic" />
+        <entry path="${testJavaPath}/${packagePath}/service" />
+        <entry path="${testJavaPath}/${packagePath}/validator" />
         <entry kind="file" path="${mainJavaPath}/${packagePath}/web/error/ErrorPage.java" />
         <entry kind="file" path="${mainResourcePath}/appMessages.properties" />
         <entry kind="file" path="${mainResourcePath}/appMessages_ja.properties" />
@@ -448,20 +443,24 @@
       <contextProperty name="libSrcPath" value="src/main/webapp/WEB-INF/lib/sources" />
       <handler type="default" resourceLoader="composite">
         <entry path="${mainJavaPath}/${packagePath}/action" />
+        <entry path="${mainJavaPath}/${packagePath}/form" />
         <entry path="${testJavaPath}/${packagePath}/action" />
+        <entry path="${testJavaPath}/${packagePath}/form" />
         <entry path="${mainResourcePath}/${packagePath}/action" />
+        <entry path="${mainResourcePath}/${packagePath}/form" />
         <entry kind="file" path="${mainJavaPath}/${packagePath}/action/IndexAction.java" />
         <entry kind="file" path="${webAppRoot}/WEB-INF/web.xml" />
         <entry kind="file" path="${webAppRoot}/WEB-INF/struts-config.xml" />
         <entry kind="file" path="${webAppRoot}/WEB-INF/validator-rules.xml" />
-        <entry kind="file" path="${webAppRoot}/start.jsp" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/view/index.jsp" />
         <entry kind="file" path="${mainResourcePath}/application.properties" />
         <entry kind="file" path="${mainResourcePath}/application_ja.properties" />
-        <entry kind="file" path="${webAppRoot}/common/common.jsp" />
-        <entry kind="file" path="${webAppRoot}/common/footer.jsp" />
-        <entry kind="file" path="${webAppRoot}/common/header.jsp" />
-        <entry kind="file" path="${webAppRoot}/common/layout.jsp" />
-        <entry kind="file" path="${webAppRoot}/common/menu.jsp" />
+        <entry kind="file" path="${mainResourcePath}/creator.dicon" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/view/common/common.jsp" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/view/common/footer.jsp" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/view/common/header.jsp" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/view/common/layout.jsp" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/view/common/menu.jsp" />
       </handler>
       <handler type="classpath" resourceLoader="maven">
         <entry kind="file" path="${libPath}/commons-beanutils-1.7.0.jar" maven="commons-beanutils,commons-beanutils,1.7.0" />
@@ -484,7 +483,7 @@
         <entry kind="file" path="${libPath}/antlr-2.7.7.jar" maven="antlr,antlr,2.7.7" />
         <entry kind="file" path="${libPath}/commons-validator-1.2.0.jar" maven="commons-validator,commons-validator,1.2.0" />
         <entry kind="file" path="${libPath}/commons-io-1.3.2.jar" maven="commons-io,commons-io,1.3.2" />
-        <entry kind="file" path="${libPath}/sa-struts-1.0.2.jar" maven="org.seasar.sastruts,sa-struts,1.0.2" />
+        <entry kind="file" path="${libPath}/sa-struts-1.0.4-rc1.jar" maven="org.seasar.sastruts,sa-struts,1.0.4-rc1" />
         <entry kind="file" path="${testLibPath}/geronimo-jsp_2.0_spec-1.0.jar" maven="org.apache.geronimo.specs,geronimo-jsp_2.0_spec,1.0"/>
       </handler>
       <handler type="dolteng" resourceLoader="composite">
@@ -512,6 +511,10 @@
             <arg><component class="org.seasar.struts.customizer.ActionCustomizer"/></arg>
           </initMethod>
         </component>
+        
+        <component name="formCustomizer" class="org.seasar.framework.container.customizer.CustomizerChain">
+        </component>
+        
         <component name="serviceCustomizer" class="org.seasar.framework.container.customizer.CustomizerChain">
           <initMethod name="addAspectCustomizer">
             <arg>"aop.traceInterceptor"</arg>
@@ -566,7 +569,7 @@
         <entry kind="file" path="${libPath}/antlr-2.7.7.jar" maven="antlr,antlr,2.7.7" />
         <entry kind="file" path="${libPath}/commons-validator-1.2.0.jar" maven="commons-validator,commons-validator,1.2.0" />
         <entry kind="file" path="${libPath}/commons-io-1.3.2.jar" maven="commons-io,commons-io,1.3.2" />
-        <entry kind="file" path="${libPath}/sa-struts-1.0.2.jar" maven="org.seasar.sastruts,sa-struts,1.0.2" />
+        <entry kind="file" path="${libPath}/sa-struts-1.0.3.jar" maven="org.seasar.sastruts,sa-struts,1.0.3" />
         <entry kind="file" path="${testLibPath}/geronimo-jsp_2.0_spec-1.0.jar" maven="org.apache.geronimo.specs,geronimo-jsp_2.0_spec,1.0"/>
       </handler>
       <handler type="dolteng" resourceLoader="composite">
@@ -777,6 +780,27 @@
         extends="base"
         displayOrder="PE01"
         description="%facetDesc.S2Dao">
+      <handler type="default" resourceLoader="composite">
+        <entry path="${mainJavaPath}/${packagePath}/dao" />
+        <entry path="${mainJavaPath}/${packagePath}/dto" />
+        <entry path="${mainJavaPath}/${packagePath}/dxo" />
+        <entry path="${mainJavaPath}/${packagePath}/entity" />
+        <entry path="${mainResourcePath}/${packagePath}/dao" />
+        <entry path="${mainResourcePath}/${packagePath}/dto" />
+        <entry path="${mainResourcePath}/${packagePath}/dxo" />
+        <entry path="${mainResourcePath}/${packagePath}/entity" />
+        <entry kind="file" path="${mainResourcePath}/convention.dicon" />
+        <entry kind="file" path="${mainResourcePath}/env_ut.txt" />
+        <entry kind="file" path="${mainResourcePath}/env.txt" />
+        <entry kind="file" path="${mainResourcePath}/jdbc.dicon" />
+        <entry kind="file" path="${mainResourcePath}/log4j.properties" />
+        <entry kind="file" path="${mainResourcePath}/s2container.dicon" />
+        <entry path="${testJavaPath}/${packagePath}/dao" />
+        <entry path="${testJavaPath}/${packagePath}/dto" />
+        <entry path="${testJavaPath}/${packagePath}/dxo" />
+        <entry path="${testJavaPath}/${packagePath}/entity" />
+        <entry path="${testResourcePath}/" />
+      </handler>
       <handler type="classpath" resourceLoader="maven">
         <entry kind="file" path="${libPath}/s2-dao-1.0.48.jar" maven="org.seasar.dao,s2-dao,1.0.48" />
       </handler>
@@ -839,8 +863,27 @@
       <contextProperty name="mainOutPath" value="target/classes" />
       -->
       <handler type="default" resourceLoader="composite">
+        <entry path="${mainJavaPath}/${packagePath}/dao" />
+        <entry path="${mainJavaPath}/${packagePath}/dto" />
+        <entry path="${mainJavaPath}/${packagePath}/dxo" />
+        <entry path="${mainJavaPath}/${packagePath}/entity" />
+        <entry path="${mainResourcePath}/${packagePath}/dao" />
+        <entry path="${mainResourcePath}/${packagePath}/dto" />
+        <entry path="${mainResourcePath}/${packagePath}/dxo" />
+        <entry path="${mainResourcePath}/${packagePath}/entity" />
+        <entry kind="file" path="${mainResourcePath}/convention.dicon" />
+        <entry kind="file" path="${mainResourcePath}/env_ut.txt" />
+        <entry kind="file" path="${mainResourcePath}/env.txt" />
+        <entry kind="file" path="${mainResourcePath}/jdbc.dicon" />
+        <entry kind="file" path="${mainResourcePath}/log4j.properties" />
+        <entry kind="file" path="${mainResourcePath}/s2container.dicon" />
         <entry kind="file" path="${mainResourcePath}/META-INF/services/javax.xml.parsers.SAXParserFactory" />
         <entry kind="file" path="${testResourcePath}/s2junit4.dicon" />
+        <entry path="${testJavaPath}/${packagePath}/dao" />
+        <entry path="${testJavaPath}/${packagePath}/dto" />
+        <entry path="${testJavaPath}/${packagePath}/dxo" />
+        <entry path="${testJavaPath}/${packagePath}/entity" />
+        <entry path="${testResourcePath}/" />
       </handler>
       <handler type="classpath" resourceLoader="maven">
         <entry kind="file" path="${libPath}/antlr-2.7.6.jar" maven="antlr,antlr,2.7.6" />
@@ -959,6 +1002,15 @@
         displayOrder="PE06"
         description="%facetDesc.S2JDBC">
       <handler type="default" resourceLoader="composite">
+        <entry path="${mainJavaPath}/${packagePath}/dto" />
+        <entry path="${mainJavaPath}/${packagePath}/entity" />
+        <entry path="${mainJavaPath}/${packagePath}/service" />
+        <entry path="${mainResourcePath}/${packagePath}/dto" />
+        <entry path="${mainResourcePath}/${packagePath}/entity" />
+        <entry path="${mainResourcePath}/${packagePath}/service" />
+        <entry path="${testJavaPath}/${packagePath}/dto" />
+        <entry path="${testJavaPath}/${packagePath}/entity" />
+        <entry path="${testJavaPath}/${packagePath}/service" />
         <entry kind="file" path="${mainResourcePath}/s2jdbc.dicon" />
       </handler>
       <handler type="classpath" resourceLoader="maven">
@@ -1190,7 +1242,9 @@
         name="Web Application"
         packaging="war">
       <default facet="teedaPage,s2dao,sysdeo"/>
+      <!--
       <first facet="web"/>
+      -->
     </applicationtype>
     <applicationtype
         id="org.seasar.app.jms"
