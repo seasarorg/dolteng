@@ -182,11 +182,11 @@
 			<template path="template/fm/html_list.ftl" override="true"
 				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
 				outputname="${table}List.html" />
-			<template path="template/fm/html_edit_kuinadao.ftl"
+			<template path="template/fm/html_edit.ftl"
 				override="true"
 				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
 				outputname="${table}Edit.html" />
-			<template path="template/fm/html_confirm_kuinadao.ftl"
+			<template path="template/fm/html_confirm.ftl"
 				override="true"
 				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
 				outputname="${table}Confirm.html" />

@@ -1120,9 +1120,10 @@
         extends="base"
         root="template/s2rmi">
       <if jre="1.4,1.5,1.6" />
-      <!-- TODO S2RMI Baseプロジェクトの設定 -->
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="${mainResourcePath}/app_aop.dicon" />
+        <entry path="${mainJavaPath}/${packagePath}/service" />
+        <entry path="${testJavaPath}/${packagePath}/service" />
       </handler>
       <handler type="classpath" resourceLoader="maven">
         <entry kind="file" path="${libPath}/s2remoting-1.1.1.jar" maven="org.seasar.remoting,s2remoting,1.1.1" />
@@ -1144,10 +1145,11 @@
         extends="s2rmi"
         root="template/s2rmi/server">
       <if jre="1.4,1.5,1.6" />
-      <!-- TODO S2RMI Serverプロジェクトの設定 -->
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="${mainResourcePath}/s2rmi.dicon" />
         <entry kind="file" path="${testJavaPath}/${packagePath}/Main.java" />
+        <entry path="${mainJavaPath}/${packagePath}/service/impl" />
+        <entry path="${testJavaPath}/${packagePath}/service/impl" />
       </handler>
       <handler type="classpath" resourceLoader="maven">
         <entry kind="file" path="${libPath}/s2rmi-server-1.1.2.jar" maven="org.seasar.rmi,s2rmi-server,1.1.2" />
@@ -1165,7 +1167,6 @@
         displayOrder="_02"
         description="%facetDesc.S2RMIc">
       <if jre="1.4,1.5,1.6" />
-      <!-- TODO S2RMI Clientプロジェクトの設定 -->
       <handler type="creatorDicon">
         <component name="connectorCreator" class="org.seasar.remoting.common.creator.ConnectorCreator"/>
       </handler>

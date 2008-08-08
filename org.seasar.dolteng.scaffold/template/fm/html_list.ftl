@@ -13,7 +13,7 @@
 		<tr>
 <#list mappings as mapping>
     <#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
-			<th<#if mapping.isNumeric() = true> class="right"</#if>><label id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</label></th>
+			<th<#if mapping.isNumeric() = true> class="right"</#if>><span id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</span></th>
     </#if>
 </#list>
 		</tr>

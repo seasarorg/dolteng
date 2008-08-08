@@ -34,14 +34,11 @@ public class ${configs.table_capitalize}Confirm${configs.pagesuffix} extends Abs
 	}
 
 	@TakeOver(type = TakeOverType.NEVER)
-	public Class doCreate() {
-		get${configs.table_capitalize}${configs.servicesuffix}().persist(this);
-		return ${configs.table_capitalize}List${configs.pagesuffix}.class;
-	}
-
-	@TakeOver(type = TakeOverType.NEVER)
-	public Class doUpdate() {
+	public Class doFinish() {
 		switch(getCrudType()) {
+			case CrudType.CREATE:
+				get${configs.table_capitalize}${configs.servicesuffix}().persist(this);
+				break;
 			case CrudType.UPDATE:
 				get${configs.table_capitalize}${configs.servicesuffix}().update(this);
 				break;

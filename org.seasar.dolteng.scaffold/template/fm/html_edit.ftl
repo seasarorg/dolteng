@@ -19,7 +19,7 @@
 <#list mappings as mapping>
 <#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 <tr>
-    <td><label id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</label></td>
+	<td><span id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</span></td>
 	<td><#if mapping.isPrimaryKey() = true><div id="isCreate<#if 0 &lt; pkcount>-${pkcount-1}</#if>">
 			<input type="text" id="${mapping.javaFieldName}"<#if mapping.isDate() = true> class="T_date"</#if>/>
 		</div>

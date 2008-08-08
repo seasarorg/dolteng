@@ -19,7 +19,7 @@
 <#list mappings as mapping>
 <#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 <tr>
-    <td><label id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</label></td>
+	<td><span id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</span></td>
 	<td><span id="${mapping.javaFieldName}">${mapping.javaFieldName}</span><input type="hidden" id="${mapping.javaFieldName}-hidden" /></td>
 	<td><span id="${mapping.javaFieldName}Message"></span></td>
 </tr>
