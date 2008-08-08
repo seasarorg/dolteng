@@ -34,6 +34,7 @@ import org.seasar.framework.util.BooleanConversionUtil;
 public class ScaffoldConfig implements ScaffoldDisplay {
 
     private IConfigurationElement templates;
+    
 
     protected ScaffoldConfig(IConfigurationElement templates) {
         this.templates = templates;
@@ -105,6 +106,27 @@ public class ScaffoldConfig implements ScaffoldDisplay {
      */
     public int compareTo(ScaffoldDisplay o) {
         return o == null ? 0 : this.getName().compareTo(o.getName());
+    }
+
+    /* (non-Javadoc)
+     * @see org.seasar.dolteng.eclipse.model.ScaffoldDisplay#getModelFactory()
+     */
+    public ScaffoldModelFactory getModelFactory() {
+
+        try {
+            Object modelFactoryInfo = templates.getAttribute("scaffoldModelFactory");
+            
+            if(modelFactoryInfo != null){
+                Object modelFactory = templates
+                        .createExecutableExtension("scaffoldModelFactory");
+                if (modelFactory instanceof ScaffoldModelFactory) {
+                    return (ScaffoldModelFactory) modelFactory;    
+                }
+            }
+        } catch (CoreException e) {
+            DoltengCore.log(e);
+        }
+        return new DefaultScaffoldModelFactory();
     }
 
 }

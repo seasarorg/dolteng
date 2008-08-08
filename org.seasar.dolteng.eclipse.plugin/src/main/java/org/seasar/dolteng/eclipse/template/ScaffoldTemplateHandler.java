@@ -29,7 +29,6 @@ import org.seasar.dolteng.core.template.TemplateConfig;
 import org.seasar.dolteng.core.template.TemplateHandler;
 import org.seasar.dolteng.eclipse.DoltengCore;
 import org.seasar.dolteng.eclipse.convention.NamingConventionMirror;
-import org.seasar.dolteng.eclipse.model.impl.ScaffoldModel;
 import org.seasar.dolteng.eclipse.model.impl.TableNode;
 import org.seasar.dolteng.eclipse.nls.Messages;
 import org.seasar.dolteng.eclipse.preferences.DoltengPreferences;
@@ -52,7 +51,7 @@ public class ScaffoldTemplateHandler extends AbstractTemplateHandler implements
 
     public ScaffoldTemplateHandler(ScaffoldConfig config, IProject project,
             TableNode node, IProgressMonitor monitor) {
-        super(project, monitor, new ScaffoldModel(createVariables(node
+        super(project, monitor, config.getModelFactory().createScaffoldModel(createVariables(node
                 .getMetaData().getName(), project), node));
         this.config = config;
     }
