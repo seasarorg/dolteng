@@ -62,7 +62,7 @@ public class ${configs.table_capitalize}Confirm${configs.pagesuffix} extends Abs
 	}
 
 <#list mappings as mapping>
-<#if mapping.isNullable() = false>
+<#if mapping.isNullable() = false && mapping.isPrimaryKey() = false>
 <#if isTigerResource() = true>
 	@Override
 	@Required

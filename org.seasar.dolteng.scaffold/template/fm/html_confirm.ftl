@@ -7,16 +7,23 @@
 </head>
 <body>
 <form id="${configs.table_capitalize}ConfirmForm"><input type="hidden" id="crudType" />
+<#list mappings as mapping>
+    <#if mapping.isPrimaryKey() = true || isVersionColumn(mapping) = true>
+        <input type="hidden" id="${mapping.javaFieldName}" />
+    </#if>
+</#list>
 <div>
 <span id="messages"></span>
 </div>
 <table class="tablebg">
 <#list mappings as mapping>
+<#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 <tr>
     <td><label id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</label></td>
 	<td><span id="${mapping.javaFieldName}">${mapping.javaFieldName}</span><input type="hidden" id="${mapping.javaFieldName}-hidden" /></td>
 	<td><span id="${mapping.javaFieldName}Message"></span></td>
 </tr>
+</#if>
 </#list>
 </table>
 <div id="isComeFromList">
@@ -26,10 +33,10 @@
 </div>
 <div id="isNotComeFromList">
 	<input type="button" id="jump${configs.table_capitalize}Edit" value="Previous"
-		onclick="location.href='${configs.table_capitalize}Edit.html'" style="display: none;"/>
+		onclick="location.href='${configs.table}Edit.html'" style="display: none;"/>
 </div>
 <div id="isNotRead">
-<input type="button" id="doFinish" value="Finish" onclick="location.href='${configs.table_capitalize}List.html'" />
+<input type="button" id="doFinish" value="Finish" onclick="location.href='${configs.table}List.html'" />
 </div>
 </form>
 </body></html>

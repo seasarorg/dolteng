@@ -69,33 +69,11 @@ td, th {
     top:145px;
 }
 .tablebg {
-  background-color: #EEF3FB;
-}
-.oddRow {
-  background-color: #FFFFFF;
-}
-.evenRow {
-  background-color: #EEF3FB;
-}
-.gridHeader {
-	background-color: green;
-	color: white;
-	font-weight: bold;
-	overflow: hidden;
-}
-.gridTable {
-	background-color: black;
-}
-.gridCell {
-	height: 25px;
-}
-.gridCellEdit {
-	border-width: 1px;
-	background-color: #FFC0CB;
+  background-color: #EEFF8B;
 }
 .row_odd {
-	background-color: white;
+    background-color: #EEFF8B;
 }
 .row_even {
-  background-color: #EEF3FB;
+  background-color: white;
 }

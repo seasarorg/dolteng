@@ -58,11 +58,11 @@ public class ${configs.table_capitalize}Confirm${configs.pagesuffix} extends Abs
 	}
 	
 	public boolean isComeFromList() {
-		return getCrudType() == CrudType.READ || getCrudType() == CrudType.DELETE;
-	}
+        return getCrudType() == CrudType.READ || getCrudType() == CrudType.DELETE;
+    }
 
 <#list mappings as mapping>
-<#if mapping.isNullable() = false>
+<#if mapping.isNullable() = false && mapping.isPrimaryKey() = false>
 <#if isTigerResource() = true>
 	@Override
 	@Required
@@ -100,6 +100,6 @@ public class ${configs.table_capitalize}Confirm${configs.pagesuffix} extends Abs
 	}
 
 	public String getDoFinishValue() {
-		return getLabelHelper().getLabelValue(CrudType.toString(getCrudType()));
-	}
+        return labelHelper.getLabelValue(CrudType.toString(getCrudType()));
+    }
 }

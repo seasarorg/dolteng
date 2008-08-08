@@ -2,6 +2,8 @@ package ${configs.rootpackagename}.${configs.entitypackagename};
 
 <#if isTigerResource() = true>
 import org.seasar.dao.annotation.tiger.Bean;
+import org.seasar.dao.annotation.tiger.Id;
+import org.seasar.dao.annotation.tiger.IdType;
 </#if>
 ${getImports()}
 
@@ -15,6 +17,9 @@ public class ${configs.table_capitalize} {
 
 </#if>
 <#list mappings as mapping>
+    <#if mapping.isPrimaryKey() = true>
+    @Id(IdType.IDENTITY)
+    </#if>
 	private ${getJavaClassName(mapping)} ${mapping.javaFieldName};
 
 </#list>

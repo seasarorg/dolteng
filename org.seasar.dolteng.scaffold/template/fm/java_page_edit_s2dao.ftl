@@ -31,7 +31,7 @@ public class ${configs.table_capitalize}Edit${configs.pagesuffix} extends Abstra
 	}
 
 <#list mappings as mapping>
-<#if mapping.isNullable() = false>
+<#if mapping.isNullable() = false && mapping.isPrimaryKey() = false>
 <#if isTigerResource() = true>
 	@Override
 	@Required

@@ -7,11 +7,17 @@
 </head>
 <body>
 <form id="${configs.table_capitalize}EditForm"><input type="hidden" id="crudType" />
+<#list mappings as mapping>
+    <#if mapping.isPrimaryKey() = true || isVersionColumn(mapping) = true>
+        <input type="hidden" id="${mapping.javaFieldName}" />
+    </#if>
+</#list>
 <div>
 <span id="messages"></span>
 </div>
 <table class="tablebg"><#assign pkcount=0>
 <#list mappings as mapping>
+<#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 <tr>
     <td><label id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</label></td>
 	<td><#if mapping.isPrimaryKey() = true><div id="isCreate<#if 0 &lt; pkcount>-${pkcount-1}</#if>">
@@ -22,12 +28,13 @@
 		</div><#assign pkcount=pkcount + 1><#else><input type="text" id="${mapping.javaFieldName}"<#if mapping.isDate() = true> class="T_date"</#if>/></#if></td>
 	<td><span id="${mapping.javaFieldName}Message"></span></td>
 </tr>
+</#if>
 </#list>
 </table>
 <input type="button" id="jump${configs.table_capitalize}List" value="Previous"
-	onclick="location.href='${configs.table_capitalize}List.html'"/>
+	onclick="location.href='${configs.table}List.html'"/>
 <div id="isNotRead">
 <input type="button" id="go${configs.table_capitalize}Confirm" value="Confirm"
-	onclick="location.href='${configs.table_capitalize}Confirm.html'"/></div>
+	onclick="location.href='${configs.table}Confirm.html'"/></div>
 </form>
 </body></html>

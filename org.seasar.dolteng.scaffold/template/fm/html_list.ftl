@@ -8,22 +8,22 @@
 <body>
 <form id="${configs.table_capitalize}ListForm">
 <input type="button" id="doCreate" value="Create" onclick="location.href='${configs.table}Edit.html'"/><br/>
-<table id="${configs.table}GridXY" height="200px" border="1">
-	<colgroup>
-		<col span="1" width="60px" class="T_leftFixed" />
-	</colgroup>
+<table border="1" class="tablebg">
 	<thead>
-		<tr height="50px">
+		<tr>
 <#list mappings as mapping>
+    <#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 			<th<#if mapping.isNumeric() = true> class="right"</#if>><label id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</label></th>
+    </#if>
 </#list>
-			<th><br/></th>
 		</tr>
 	</thead>
-	<tbody>
-		<tr class="row_even">
+	<tbody id="${configs.table}Items">
+		<tr id="${configs.table}Row" class="row_even">
 <#list mappings as mapping>
+    <#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 			<td<#if mapping.isNumeric() = true> class="right"</#if>><span id="${mapping.javaFieldName}">${mapping.javaFieldName}</span></td>
+    </#if>
 </#list>
 			<td><a id="go${configs.table_capitalize}Edit-edit" href="${configs.table}Edit.html?fixed_crudType=2${createPkeyLink(true)}">Edit</a>
 			<a id="go${configs.table_capitalize}Confirm" href="${configs.table}Confirm.html?fixed_crudType=3${createPkeyLink(true)}">Delete</a>
