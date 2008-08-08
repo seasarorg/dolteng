@@ -1,2 +1,2 @@
-baseDir=/${projectName}/${webAppRoot}/WEB-INF/classes/data
+baseDir=/${projectName}/src/main/resources/data
 initDB=/${projectName}/src/main/resources/data
