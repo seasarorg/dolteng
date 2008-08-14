@@ -41,6 +41,9 @@ public class NewQueryDtoWizardPage extends NewClassWizardPage {
 
     private QueryDtoMappingPage mappingPage;
 
+    /**
+     * 
+     */
     public NewQueryDtoWizardPage(QueryDtoMappingPage mappingPage) {
         super();
         this.mappingPage = mappingPage;
@@ -51,7 +54,6 @@ public class NewQueryDtoWizardPage extends NewClassWizardPage {
      * 
      * @see org.eclipse.jdt.ui.wizards.NewTypeWizardPage#createType(org.eclipse.core.runtime.IProgressMonitor)
      */
-    @Override
     protected void createTypeMembers(IType type, ImportsManager imports,
             IProgressMonitor monitor) throws CoreException {
 
@@ -61,12 +63,16 @@ public class NewQueryDtoWizardPage extends NewClassWizardPage {
         List<EntityMappingRow> rows = mappingPage.getMappingRows();
         for (EntityMappingRow meta : rows) {
             if (meta.isGenerate()) {
+                boolean isPublic = mappingPage.getUsePublicField();
                 IField field = createField(type, imports, meta,
-                        new SubProgressMonitor(monitor, 1), lineDelimiter);
-                createGetter(type, imports, meta, field,
-                        new SubProgressMonitor(monitor, 1), lineDelimiter);
-                createSetter(type, imports, meta, field,
-                        new SubProgressMonitor(monitor, 1), lineDelimiter);
+                        new SubProgressMonitor(monitor, 1), lineDelimiter,
+                        isPublic);
+                if (isPublic == false) {
+                    createGetter(type, imports, meta, field,
+                            new SubProgressMonitor(monitor, 1), lineDelimiter);
+                    createSetter(type, imports, meta, field,
+                            new SubProgressMonitor(monitor, 1), lineDelimiter);
+                }
             }
         }
 
@@ -75,7 +81,7 @@ public class NewQueryDtoWizardPage extends NewClassWizardPage {
 
     protected IField createField(IType type, ImportsManager imports,
             EntityMappingRow meta, IProgressMonitor monitor,
-            String lineDelimiter) throws CoreException {
+            String lineDelimiter, boolean isPublic) throws CoreException {
 
         String className = meta.getJavaClassName();
 
@@ -89,7 +95,11 @@ public class NewQueryDtoWizardPage extends NewClassWizardPage {
                 stb.append(lineDelimiter);
             }
         }
-        stb.append("private ");
+        if (isPublic) {
+            stb.append("public ");
+        } else {
+            stb.append("private ");
+        }
         stb.append(imports.addImport(className));
         stb.append(' ');
         stb.append(meta.getJavaFieldName());
@@ -99,6 +109,14 @@ public class NewQueryDtoWizardPage extends NewClassWizardPage {
         return type.createField(stb.toString(), null, false, monitor);
     }
 
+    /**
+     * @param type
+     * @param imports
+     * @param meta
+     * @param field
+     * @param monitor
+     * @param lineDelimiter
+     */
     protected void createGetter(IType type, ImportsManager imports,
             EntityMappingRow meta, IField field, IProgressMonitor monitor,
             String lineDelimiter) throws CoreException {
@@ -151,6 +169,10 @@ public class NewQueryDtoWizardPage extends NewClassWizardPage {
         type.createMethod(stb.toString(), null, false, monitor);
     }
 
+    /**
+     * @param field
+     * @return
+     */
     private static boolean useThisForFieldAccess(IField field) {
         boolean useThis = Boolean.valueOf(
                 PreferenceConstants.getPreference(
@@ -159,6 +181,14 @@ public class NewQueryDtoWizardPage extends NewClassWizardPage {
         return useThis;
     }
 
+    /**
+     * @param type
+     * @param imports
+     * @param meta
+     * @param field
+     * @param monitor
+     * @param lineDelimiter
+     */
     protected void createSetter(IType type, ImportsManager imports,
             EntityMappingRow meta, IField field, IProgressMonitor monitor,
             String lineDelimiter) throws CoreException {

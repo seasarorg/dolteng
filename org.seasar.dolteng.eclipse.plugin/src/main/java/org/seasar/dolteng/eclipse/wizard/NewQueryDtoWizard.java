@@ -47,8 +47,6 @@ import org.seasar.framework.util.ClassUtil;
  */
 public class NewQueryDtoWizard extends Wizard implements INewWizard {
 
-    public static final String NAME = NewQueryDtoWizard.class.getName();
-
     private IWorkbench workbench;
 
     private IStructuredSelection selection;
@@ -65,7 +63,7 @@ public class NewQueryDtoWizard extends Wizard implements INewWizard {
     public NewQueryDtoWizard() {
         super();
         setNeedsProgressMonitor(true);
-        setDialogSettings(DoltengCore.getDefault().getDialogSettings().getSection(NAME));
+        setDialogSettings(DoltengCore.getDialogSettings());
     }
 
     /*
@@ -73,7 +71,6 @@ public class NewQueryDtoWizard extends Wizard implements INewWizard {
      * 
      * @see org.eclipse.jface.wizard.Wizard#addPages()
      */
-    @Override
     public void addPages() {
         configPage = new ConnectionWizardPage();
         mappingPage = new QueryDtoMappingPage();
@@ -114,11 +111,10 @@ public class NewQueryDtoWizard extends Wizard implements INewWizard {
      * 
      * @see org.eclipse.jface.wizard.Wizard#performFinish()
      */
-    @Override
     public boolean performFinish() {
         IRunnableWithProgress progress = new IRunnableWithProgress() {
             public void run(IProgressMonitor monitor)
-                    throws InvocationTargetException {
+                    throws InvocationTargetException, InterruptedException {
                 try {
                     if (monitor == null) {
                         monitor = new NullProgressMonitor();
@@ -137,7 +133,7 @@ public class NewQueryDtoWizard extends Wizard implements INewWizard {
         try {
             if (finishPage(progress)) {
                 JavaUI.openInEditor(mainPage.getCreatedType());
-//                DoltengCore.saveDialogSettings(getDialogSettings());
+                DoltengCore.saveDialogSettings(getDialogSettings());
                 return true;
             }
         } catch (Exception e) {
@@ -177,7 +173,6 @@ public class NewQueryDtoWizard extends Wizard implements INewWizard {
      * 
      * @see org.eclipse.jface.wizard.Wizard#getNextPage(org.eclipse.jface.wizard.IWizardPage)
      */
-    @Override
     public IWizardPage getNextPage(IWizardPage page) {
         IWizardPage next = super.getNextPage(page);
         if (page instanceof ConnectionWizardPage
