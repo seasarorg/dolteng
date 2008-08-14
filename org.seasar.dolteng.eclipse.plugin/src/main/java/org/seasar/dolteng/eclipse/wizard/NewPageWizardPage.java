@@ -206,23 +206,6 @@ public class NewPageWizardPage extends NewClassWizardPage {
         return label;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.eclipse.jdt.ui.wizards.NewClassWizardPage#setVisible(boolean)
-     */
-    @Override
-    public void setVisible(boolean visible) {
-        super.setVisible(visible);
-        if (visible && this.preferences != null) {
-            if (Constants.DAO_TYPE_UUJI.equals(this.preferences.getDaoType())) {
-                this.separateAction = false;
-                this.pageActionSeparate.setSelection(false);
-                this.pageActionSeparate.setEnabled(false);
-            }
-        }
-    }
-
     @Override
     protected void createTypeMembers(IType type, ImportsManager imports,
             IProgressMonitor monitor) throws CoreException {

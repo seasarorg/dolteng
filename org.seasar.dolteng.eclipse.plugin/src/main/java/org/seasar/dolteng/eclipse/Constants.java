@@ -213,8 +213,6 @@ public final class Constants {
 
     public static final String DAO_TYPE_S2DAO = "S2Dao";
 
-    public static final String DAO_TYPE_UUJI = "Uuji";
-
     public static final String DAO_TYPE_S2JDBC = "S2JDBC";
 
     public static final String ERROR_TYPE_KUINA_NAME = "name";

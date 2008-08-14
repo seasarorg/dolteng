@@ -25,7 +25,9 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.ui.JavaUI;
+import org.eclipse.jdt.ui.wizards.NewClassWizardPage;
 import org.eclipse.jdt.ui.wizards.NewInterfaceWizardPage;
+import org.eclipse.jdt.ui.wizards.NewTypeWizardPage;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizard;
@@ -65,7 +67,7 @@ public class NewDaoWithEntityWizard extends Wizard implements INewWizard {
 
     private EntityMappingPage mappingPage;
 
-    private NewInterfaceWizardPage daoWizardPage;
+    private NewTypeWizardPage daoWizardPage;
 
     private TableNode currentSelection;
 
@@ -85,7 +87,7 @@ public class NewDaoWithEntityWizard extends Wizard implements INewWizard {
         pageFactories.put(Constants.DAO_TYPE_S2DAO, DEFAULT_FACTORY);
         pageFactories.put(Constants.DAO_TYPE_KUINADAO,
                 new KuinaDaoWizardPageFactory());
-        pageFactories.put(Constants.DAO_TYPE_UUJI, new UujiWizardPageFactory());
+        pageFactories.put(Constants.DAO_TYPE_S2JDBC, new S2JDBCWizardPageFactory());
     }
 
     private interface WizardPageFactory {
@@ -95,7 +97,7 @@ public class NewDaoWithEntityWizard extends Wizard implements INewWizard {
         NewEntityWizardPage createNewEntityWizardPage(
                 EntityMappingPage mappingPage);
 
-        NewInterfaceWizardPage createDaoWizardPage(
+        NewTypeWizardPage createDaoWizardPage(
                 NewEntityWizardPage entityWizardPage,
                 EntityMappingPage mappingPage);
     }
@@ -105,7 +107,7 @@ public class NewDaoWithEntityWizard extends Wizard implements INewWizard {
             return new EntityMappingPage(currentSelection, true);
         }
 
-        public NewInterfaceWizardPage createDaoWizardPage(
+        public NewTypeWizardPage createDaoWizardPage(
                 NewEntityWizardPage entityWizardPage,
                 EntityMappingPage mappingPage) {
             return new NewDaoWizardPage(entityWizardPage, mappingPage);
@@ -122,7 +124,7 @@ public class NewDaoWithEntityWizard extends Wizard implements INewWizard {
             return new EntityMappingPage(currentSelection, false);
         }
 
-        public NewInterfaceWizardPage createDaoWizardPage(
+        public NewTypeWizardPage createDaoWizardPage(
                 NewEntityWizardPage entityWizardPage,
                 EntityMappingPage mappingPage) {
             return new KuinaDaoWizardPage(entityWizardPage, mappingPage);
@@ -134,20 +136,20 @@ public class NewDaoWithEntityWizard extends Wizard implements INewWizard {
         }
     }
 
-    private static class UujiWizardPageFactory implements WizardPageFactory {
+    private static class S2JDBCWizardPageFactory implements WizardPageFactory {
         public EntityMappingPage createMappingPage(TableNode currentSelection) {
-            return new EntityMappingPage(currentSelection, false);
+            return new EntityMappingPage(currentSelection, true);
         }
 
-        public NewInterfaceWizardPage createDaoWizardPage(
+        public NewTypeWizardPage createDaoWizardPage(
                 NewEntityWizardPage entityWizardPage,
                 EntityMappingPage mappingPage) {
-            return new UujiWizardPage(mappingPage);
+            return null;
         }
 
         public NewEntityWizardPage createNewEntityWizardPage(
                 EntityMappingPage mappingPage) {
-            return null;
+            return new S2JDBCEntityWizardPage(mappingPage);
         }
     }
 
@@ -169,7 +171,9 @@ public class NewDaoWithEntityWizard extends Wizard implements INewWizard {
             addPage(this.entityWizardPage);
             addPage(this.mappingPage);
         }
-        addPage(this.daoWizardPage);
+        if (this.daoWizardPage != null) {
+            addPage(this.daoWizardPage);
+        }
 
         String typeName = createDefaultTypeName();
         if (this.entityWizardPage != null) {
@@ -178,14 +182,22 @@ public class NewDaoWithEntityWizard extends Wizard implements INewWizard {
             this.entityWizardPage.setCurrentSelection(this
                     .getCurrentSelection());
         }
-        this.daoWizardPage.init(getSelection());
+        if (this.daoWizardPage != null) {
+            if (this.daoWizardPage instanceof NewInterfaceWizardPage) {
+                ((NewInterfaceWizardPage)this.daoWizardPage).init(getSelection());
+            } else if (this.daoWizardPage instanceof NewClassWizardPage) {
+                ((NewClassWizardPage)this.daoWizardPage).init(getSelection());
+            }
+        }
 
         ProjectNode pn = (ProjectNode) getCurrentSelection().getRoot();
         IJavaProject javap = pn.getJavaProject();
         DoltengPreferences pref = DoltengCore.getPreferences(javap);
         if (pref != null) {
             NamingConvention nc = pref.getNamingConvention();
-            this.daoWizardPage.setTypeName(typeName + nc.getDaoSuffix(), true);
+            if (this.daoWizardPage != null) {
+                this.daoWizardPage.setTypeName(typeName + nc.getDaoSuffix(), true);
+            }
             IPackageFragmentRoot root = ProjectUtil
                     .getDefaultSrcPackageFragmentRoot(javap);
             if (root != null) {
@@ -243,8 +255,10 @@ public class NewDaoWithEntityWizard extends Wizard implements INewWizard {
                     if (entityWizardPage != null) {
                         entityWizardPage.createType(monitor);
                     }
-                    daoWizardPage.createType(monitor);
-                } catch (CoreException e) {
+                    if (daoWizardPage != null) {
+                        daoWizardPage.createType(monitor);
+                    }
+                } catch (Exception e) {
                     DoltengCore.log(e);
                     throw new InvocationTargetException(e);
                 }
@@ -255,8 +269,14 @@ public class NewDaoWithEntityWizard extends Wizard implements INewWizard {
                 if (entityWizardPage != null) {
                     JavaUI.openInEditor(entityWizardPage.getCreatedType());
                 }
-                JavaUI.openInEditor(daoWizardPage.getCreatedType());
+                if (daoWizardPage != null) {
+                    JavaUI.openInEditor(daoWizardPage.getCreatedType());
+                }
                 DoltengCore.saveDialogSettings(getDialogSettings());
+                ProjectNode pn = (ProjectNode) getCurrentSelection().getRoot();
+                IJavaProject javap = pn.getJavaProject();
+                DoltengPreferences pref = DoltengCore.getPreferences(javap);
+                pref.getRawPreferences().save();
                 return true;
             }
         } catch (Exception e) {

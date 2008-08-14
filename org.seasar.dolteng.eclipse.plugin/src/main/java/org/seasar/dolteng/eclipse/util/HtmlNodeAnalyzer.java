@@ -136,9 +136,6 @@ public class HtmlNodeAnalyzer {
                         }
                     }
                 }
-                if (Constants.DAO_TYPE_UUJI.equals(pref.getDaoType())) {
-                    result = "java.util.Map[]";
-                }
             }
         } catch (JavaModelException e) {
             DoltengCore.log(e);
