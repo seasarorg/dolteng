@@ -60,6 +60,8 @@ public class DoltengPreferencesImpl implements DoltengPreferences {
     private static final String WST_PLUGIN_PREF = ".settings/org.eclipse.wst.common.component";
 
     private static final String FLEX_BUILDER_PLUGIN_PREF = ".actionScriptProperties";
+    
+    private static final String DEFAULT_WEBCONENT_ROOT = "src/main/webapp";
 
     private IProject project;
 
@@ -124,6 +126,9 @@ public class DoltengPreferencesImpl implements DoltengPreferences {
                     .findMember(WST_PLUGIN_PREF));
             if (file != null) {
                 readFromWST(file);
+            } else {
+                this.store.setValue(Constants.PREF_WEBCONTENTS_ROOT, DEFAULT_WEBCONENT_ROOT);
+                this.store.setValue(Constants.PREF_SERVLET_PATH, project.getName());
             }
             file = ResourcesUtil.toFile(this.project
                     .findMember(FLEX_BUILDER_PLUGIN_PREF));
