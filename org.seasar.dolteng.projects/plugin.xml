@@ -223,7 +223,7 @@
         <entry kind="file" path=".settings/org.eclipse.jst.common.project.facet.core.prefs" />
       </handler>
       <handler type="classpathCounteract" resourceLoader="composite">
-        <entry output="${testOutPath}" path="${webAppRoot}/view" />
+        <entry output="${testOutPath}" path="${webAppRoot}" />
       </handler>
     </facet>
     <facet id="WTP25" name="WTP (Servlet 2.5)"

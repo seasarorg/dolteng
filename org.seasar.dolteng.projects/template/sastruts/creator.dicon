@@ -9,4 +9,5 @@
 	<component class="org.seasar.framework.container.creator.ServiceCreator"/>
 	<component class="org.seasar.framework.container.creator.DtoCreator"/>
 	<component class="org.seasar.framework.container.creator.InterceptorCreator"/>
+	<component class="org.seasar.framework.container.creator.DaoCreator"/>
 </components>
