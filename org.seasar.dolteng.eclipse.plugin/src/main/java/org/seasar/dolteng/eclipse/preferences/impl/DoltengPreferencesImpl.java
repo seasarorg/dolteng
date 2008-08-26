@@ -156,6 +156,9 @@ public class DoltengPreferencesImpl implements DoltengPreferences {
         String rootDir = (String) XPath.getValue(doc.getDocumentElement(),
                 "//wb-module/wb-resource[@deploy-path='/']/@source-path");
         if (StringUtil.isEmpty(rootDir) == false) {
+            if (rootDir.startsWith("/")) {
+                rootDir = rootDir.substring(1);
+            }
             this.store.setValue(Constants.PREF_WEBCONTENTS_ROOT, rootDir);
         }
 
@@ -164,6 +167,9 @@ public class DoltengPreferencesImpl implements DoltengPreferences {
         if (StringUtil.isEmpty(path)) {
             this.store.setValue(Constants.PREF_SERVLET_PATH, "");
         } else {
+            if (!path.startsWith("/")) {
+                path = "/" + path;
+            }
             this.store.setValue(Constants.PREF_SERVLET_PATH, path);
         }
     }
@@ -330,8 +336,7 @@ public class DoltengPreferencesImpl implements DoltengPreferences {
      */
     public ConnectionConfig[] getAllOfConnectionConfig() {
         Collection<ConnectionConfig> list = this.connections.values();
-        return list.toArray(new ConnectionConfig[list
-                .size()]);
+        return list.toArray(new ConnectionConfig[list.size()]);
     }
 
     /*
