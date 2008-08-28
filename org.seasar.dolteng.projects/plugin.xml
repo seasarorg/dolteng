@@ -187,7 +187,7 @@
         <entry path="${testJavaPath}/${packagePath}/web" />
       </handler>
     </facet>
-    <facet id="standalone" name="Standalone First">
+    <facet id="standalone" name="Standalone First"
         extends="base">
       <contextProperty name="libPath" value="lib" />
       <contextProperty name="libSrcPath" value="lib/sources" />
@@ -1194,6 +1194,9 @@
   <extension
       point="org.seasar.dolteng.eclipse.projectType">
     <viewtype
+        id="org.seasar.view.none"
+        name="None"/>
+    <viewtype
         id="org.seasar.view.teeda"
         name="Teeda"/>
     <viewtype
@@ -1215,6 +1218,9 @@
         id="org.seasar.view.struts2+mayaa"
         name="Struts2+Mayaa"/>
 
+    <daotype
+        id="org.seasar.dao.none"
+        name="None"/>
     <daotype
         id="org.seasar.dao.kuina-dao"
         name="Kuina-Dao"/>
@@ -1251,7 +1257,6 @@
         id="org.seasar.app.jms"
         name="S2JMS-Inbound Application"
         packaging="jar">
-      <default facet="s2jmsOut"/>
       <first facet="s2jmsInFirst"/>
       <last facet="s2jmsInLast"/>
       <disable category="org.seasar.category.presentation"/>
