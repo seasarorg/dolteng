@@ -53,6 +53,11 @@ version="2.4">
             <param-value>false</param-value>
         </init-param>
     </filter>
+    
+    <filter>
+        <filter-name>requestDumpFilter</filter-name>
+        <filter-class>org.seasar.extension.filter.RequestDumpFilter</filter-class>
+    </filter>
         
     <filter-mapping>
         <filter-name>encodingfilter</filter-name>
@@ -79,6 +84,14 @@ version="2.4">
         <filter-name>routingfilter</filter-name>
         <url-pattern>/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>requestDumpFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
     
     <servlet>
