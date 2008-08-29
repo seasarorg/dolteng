@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.console.consolePatternMatchListeners">
+      <consolePatternMatchListener
+            class="org.seasar.dolteng.console.anchor.HttpPatternMatchListener"
+            flags="CASE_INSENSITIVE"
+            id="org.seasar.dolteng.console.anchor.http"
+            regex="https?://.*">
+         <enablement></enablement>
+      </consolePatternMatchListener>
+   </extension>
+
+</plugin>
