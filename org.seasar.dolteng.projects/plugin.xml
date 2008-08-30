@@ -190,7 +190,7 @@
     <facet id="standalone" name="Standalone First"
         extends="base">
       <contextProperty name="libPath" value="lib" />
-      <contextProperty name="libSrcPath" value="lib/sources" />
+      <contextProperty name="libSrcPath" value="libsrc" /><!-- 効果なし -->
       <contextProperty name="mainOutPath" value="target/classes" />
     </facet>
 
@@ -252,9 +252,9 @@
       <contextProperty name="testResourcePath" value="src/test/resources" />
       <contextProperty name="mainOutPath" value="src/main/webapp/WEB-INF/classes" />
       <contextProperty name="libPath" value="src/main/webapp/WEB-INF/lib" />
-      <contextProperty name="libSrcPath" value="src/main/webapp/WEB-INF/lib" />
+      <contextProperty name="libSrcPath" value="src/main/webapp/WEB-INF/libsrc" /><!-- 効果なし -->
       <contextProperty name="testLibPath" value="lib" />
-      <contextProperty name="testLibSrcPath" value="lib/sources" />
+      <contextProperty name="testLibSrcPath" value="libsrc" /><!-- 効果なし -->
       <handler type="default" resourceLoader="composite">
         <entry path="${mainJavaPath}/${packagePath}/dto" />
         <entry path="${mainJavaPath}/${packagePath}/helper" />
@@ -440,7 +440,9 @@
       <contextProperty name="mainOutPath" value="src/main/webapp/WEB-INF/classes" />
       <contextProperty name="webAppRoot" value="src/main/webapp" />
       <contextProperty name="libPath" value="src/main/webapp/WEB-INF/lib" />
-      <contextProperty name="libSrcPath" value="src/main/webapp/WEB-INF/libsrc" />
+      <contextProperty name="libSrcPath" value="src/main/webapp/WEB-INF/libsrc" /><!-- 効果なし -->
+      <contextProperty name="testLibPath" value="lib" />
+      <contextProperty name="testLibSrcPath" value="libsrc" /><!-- 効果なし -->
       <handler type="default" resourceLoader="composite">
         <entry path="${mainJavaPath}/${packagePath}/action" />
         <entry path="${mainJavaPath}/${packagePath}/form" />
@@ -534,7 +536,9 @@
       <contextProperty name="mainOutPath" value="src/main/webapp/WEB-INF/classes" />
       <contextProperty name="webAppRoot" value="src/main/webapp" />
       <contextProperty name="libPath" value="src/main/webapp/WEB-INF/lib" />
-      <contextProperty name="libSrcPath" value="src/main/webapp/WEB-INF/lib/sources" />
+      <contextProperty name="libSrcPath" value="src/main/webapp/WEB-INF/libsrc" /><!-- 効果なし -->
+      <contextProperty name="testLibPath" value="lib" />
+      <contextProperty name="testLibSrcPath" value="libsrc" /><!-- 効果なし -->
       <handler type="default" resourceLoader="composite">
         <entry path="${mainJavaPath}/${packagePath}/action" />
         <entry path="${testJavaPath}/${packagePath}/action" />
@@ -645,9 +649,9 @@
       <contextProperty name="testResourcePath" value="src/test/resources" />
       <contextProperty name="mainOutPath" value="src/main/webapp/WEB-INF/classes" />
       <contextProperty name="libPath" value="src/main/webapp/WEB-INF/lib" />
-      <contextProperty name="libSrcPath" value="src/main/webapp/WEB-INF/lib/sources" />
+      <contextProperty name="libSrcPath" value="src/main/webapp/WEB-INF/libsrc" /><!-- 効果なし -->
       <contextProperty name="testLibPath" value="lib" />
-      <contextProperty name="testLibSrcPath" value="lib/sources" />
+      <contextProperty name="testLibSrcPath" value="libsrc" /><!-- 効果なし -->
       <contextProperty name="webAppRoot" value="src/main/webapp" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="src/main/flex/Main.mxml" />
@@ -886,11 +890,6 @@
     <facet id="kuina" name="Kuina Base"
         extends="base"
         root="template/kuina">
-      <!--
-      <contextProperty name="libPath" value="lib" />
-      <contextProperty name="libSrcPath" value="lib/sources" />
-      <contextProperty name="mainOutPath" value="target/classes" />
-      -->
       <handler type="default" resourceLoader="composite">
         <entry path="${mainJavaPath}/${packagePath}/dao" />
         <entry path="${mainJavaPath}/${packagePath}/dto" />
@@ -1056,7 +1055,7 @@
         root="template/s2jms/inbound">
       <if jre="1.5,1.6" />
       <contextProperty name="libPath" value="lib" />
-      <contextProperty name="libSrcPath" value="lib/sources" />
+      <contextProperty name="libSrcPath" value="libsrc" /><!-- 効果なし -->
       <contextProperty name="mainOutPath" value="target/classes" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="${mainResourcePath}/jms-inbound.dicon" />
