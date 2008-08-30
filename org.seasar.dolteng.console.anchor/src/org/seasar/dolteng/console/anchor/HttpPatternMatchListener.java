@@ -15,17 +15,14 @@ public class HttpPatternMatchListener implements IPatternMatchListenerDelegate {
 
 	protected TextConsole console;
 	
-	@Override
 	public void connect(TextConsole console) {
 		this.console = console;
 	}
 
-	@Override
 	public void disconnect() {
 		this.console = null;
 	}
 
-	@Override
 	public void matchFound(PatternMatchEvent event) {
 		try {
 			IDocument doc = this.console.getDocument();
@@ -46,7 +43,6 @@ public class HttpPatternMatchListener implements IPatternMatchListenerDelegate {
 			this.url = url;
 		}
 
-		@Override
 		public void linkActivated() {
 			try {
 				IWorkbenchBrowserSupport support = PlatformUI.getWorkbench()
@@ -71,11 +67,9 @@ public class HttpPatternMatchListener implements IPatternMatchListenerDelegate {
 			}
 		}
 
-		@Override
 		public void linkEntered() {
 		}
 
-		@Override
 		public void linkExited() {
 		}
 	}
