@@ -541,8 +541,11 @@
       <contextProperty name="testLibSrcPath" value="libsrc" /><!-- 効果なし -->
       <handler type="default" resourceLoader="composite">
         <entry path="${mainJavaPath}/${packagePath}/action" />
+        <entry path="${mainJavaPath}/${packagePath}/form" />
         <entry path="${testJavaPath}/${packagePath}/action" />
+        <entry path="${testJavaPath}/${packagePath}/form" />
         <entry path="${mainResourcePath}/${packagePath}/action" />
+        <entry path="${mainResourcePath}/${packagePath}/form" />
         <entry kind="file" path="${mainJavaPath}/${packagePath}/action/IndexAction.java" />
         <entry kind="file" path="${webAppRoot}/WEB-INF/web.xml" />
         <entry kind="file" path="${webAppRoot}/WEB-INF/struts-config.xml" />
@@ -589,6 +592,9 @@
         <include path="j2ee.dicon" />
         <component name="actionMessagesThrowsInterceptor" class="org.seasar.struts.interceptor.ActionMessagesThrowsInterceptor"/>
       </handler>
+      <handler type="creatorDicon">      
+        <component name="formCreator" class="org.seasar.struts.creator.FormCreator"/>
+      </handler>
       <handler type="customizerDicon">
         <component name="actionCustomizer" class="org.seasar.framework.container.customizer.CustomizerChain">
           <initMethod name="addAspectCustomizer">
@@ -604,6 +610,10 @@
             <arg><component class="org.seasar.struts.customizer.ActionCustomizer"/></arg>
           </initMethod>
         </component>
+
+        <component name="formCustomizer" class="org.seasar.framework.container.customizer.CustomizerChain">
+        </component>
+
         <component name="serviceCustomizer" class="org.seasar.framework.container.customizer.CustomizerChain">
           <initMethod name="addAspectCustomizer">
             <arg>"aop.traceInterceptor"</arg>
