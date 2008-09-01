@@ -17,7 +17,7 @@ import org.seasar.eclipse.common.util.LogUtil;
 public class Activator extends Plugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.seasar.dolteng.console.anchor";
+	public static final String PLUGIN_ID = "org.seasar.dolteng.console.linker";
 
 	// The shared instance
 	private static Activator plugin;
@@ -39,7 +39,8 @@ public class Activator extends Plugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		ExtensionAcceptor.accept(PLUGIN_ID, IDBASEDURL,
+		ExtensionAcceptor.accept(context.getBundle().getSymbolicName(),
+				IDBASEDURL,
 				new ExtensionAcceptor.ExtensionVisitor() {
 					@Override
 					public void visit(IConfigurationElement e) {
