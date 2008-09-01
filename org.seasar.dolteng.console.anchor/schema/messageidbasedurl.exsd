@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.seasar.dolteng.console.anchor">
+<schema targetNamespace="org.seasar.dolteng.console.linker">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.seasar.dolteng.console.anchor" id="messageidbasedurl" name="messageidbasedurl"/>
+         <meta.schema plugin="org.seasar.dolteng.console.linker" id="messageidbasedurl" name="messageidbasedurl"/>
       </appInfo>
       <documentation>
       </documentation>

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Console Anchor
-Bundle-SymbolicName: org.seasar.dolteng.console.anchor;singleton:=true
+Bundle-SymbolicName: org.seasar.dolteng.console.linker;singleton:=true
 Bundle-Version: 0.0.1
 Bundle-Activator: org.seasar.dolteng.console.anchor.Activator
 Require-Bundle: org.eclipse.core.runtime,

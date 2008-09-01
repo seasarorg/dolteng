@@ -19,7 +19,7 @@
       </consolePatternMatchListener>
    </extension>
    <extension
-         point="org.seasar.dolteng.console.anchor.messageidbasedurl">
+         point="org.seasar.dolteng.console.linker.messageidbasedurl">
       <systemToUrl
             baseUrl="http://www.seasar.org/wiki/index.php?"
             systemName="SSR">
