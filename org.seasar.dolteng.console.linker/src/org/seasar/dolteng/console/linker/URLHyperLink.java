@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.seasar.dolteng.console.anchor;
+package org.seasar.dolteng.console.linker;
 
 import java.net.URL;
 

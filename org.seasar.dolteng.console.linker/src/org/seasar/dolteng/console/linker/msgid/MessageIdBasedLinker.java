@@ -1,11 +1,11 @@
-package org.seasar.dolteng.console.anchor.msgid;
+package org.seasar.dolteng.console.linker.msgid;
 
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.ui.console.IHyperlink;
 import org.eclipse.ui.console.IPatternMatchListenerDelegate;
 import org.eclipse.ui.console.PatternMatchEvent;
 import org.eclipse.ui.console.TextConsole;
-import org.seasar.dolteng.console.anchor.Activator;
+import org.seasar.dolteng.console.linker.Activator;
 
 public class MessageIdBasedLinker implements IPatternMatchListenerDelegate {
 

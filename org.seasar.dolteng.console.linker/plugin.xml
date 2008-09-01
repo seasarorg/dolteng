@@ -5,15 +5,15 @@
    <extension
          point="org.eclipse.ui.console.consolePatternMatchListeners">
       <consolePatternMatchListener
-            class="org.seasar.dolteng.console.anchor.HttpPatternMatchListener"
+            class="org.seasar.dolteng.console.linker.HttpPatternMatchListener"
             flags="CASE_INSENSITIVE"
-            id="org.seasar.dolteng.console.anchor.http"
+            id="org.seasar.dolteng.console.linker.http"
             regex="https?://.*">
          <enablement></enablement>
       </consolePatternMatchListener>
       <consolePatternMatchListener
-            class="org.seasar.dolteng.console.anchor.msgid.MessageIdBasedLinker"
-            id="org.seasar.dolteng.console.anchor.msgId"
+            class="org.seasar.dolteng.console.linker.msgid.MessageIdBasedLinker"
+            id="org.seasar.dolteng.console.linker.msgId"
             regex="\[[DIWEF](\w|-|_)*\d{4}\]">
          <enablement></enablement>
       </consolePatternMatchListener>
