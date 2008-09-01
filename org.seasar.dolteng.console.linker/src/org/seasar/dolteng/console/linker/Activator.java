@@ -8,8 +8,8 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.ui.console.IHyperlink;
 import org.osgi.framework.BundleContext;
-import org.seasar.dolteng.eclipse.util.LogUtil;
 import org.seasar.eclipse.common.util.ExtensionAcceptor;
+import org.seasar.eclipse.common.util.LogUtil;
 
 /**
  * The activator class controls the plug-in life cycle
