@@ -69,7 +69,7 @@ governing permissions and limitations under the License.
          version="0.30.0"/>
 
    <plugin
-         id="org.seasar.dolteng.console.anchor"
+         id="org.seasar.dolteng.console.linker"
          download-size="0"
          install-size="0"
          version="0.0.1"
