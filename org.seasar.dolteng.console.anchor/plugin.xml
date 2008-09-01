@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
+   <extension-point id="messageidbasedurl" name="messageidbasedurl" schema="schema/messageidbasedurl.exsd"/>
    <extension
          point="org.eclipse.ui.console.consolePatternMatchListeners">
       <consolePatternMatchListener
@@ -10,6 +11,19 @@
             regex="https?://.*">
          <enablement></enablement>
       </consolePatternMatchListener>
+      <consolePatternMatchListener
+            class="org.seasar.dolteng.console.anchor.msgid.MessageIdBasedLinker"
+            id="org.seasar.dolteng.console.anchor.msgId"
+            regex="\[[DIWEF](\w|-|_)*\d{4}\]">
+         <enablement></enablement>
+      </consolePatternMatchListener>
+   </extension>
+   <extension
+         point="org.seasar.dolteng.console.anchor.messageidbasedurl">
+      <systemToUrl
+            baseUrl="http://www.seasar.org/wiki/index.php?"
+            systemName="SSR">
+      </systemToUrl>
    </extension>
 
 </plugin>
