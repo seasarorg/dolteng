@@ -96,7 +96,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>gateway</servlet-name>
-        <url-pattern>/flex/gateway</url-pattern>
+        <url-pattern>/bin/gateway</url-pattern>
     </servlet-mapping>    
     <servlet-mapping>
         <servlet-name>gateway</servlet-name>
