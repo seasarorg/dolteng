@@ -663,10 +663,11 @@
       <contextProperty name="testLibPath" value="lib" />
       <contextProperty name="testLibSrcPath" value="libsrc" /><!-- 効果なし -->
       <contextProperty name="webAppRoot" value="src/main/webapp" />
+      <contextProperty name="flexSrcPath" value="src/main/flex" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="src/main/flex/Main.mxml" />
-        <entry path="${webAppRoot}/${packagePath}/dto" />
-        <entry path="${webAppRoot}/${packagePath}/web" />
+        <entry path="src/main/flex/${packagePath}/dto" />
+        <entry path="src/main/flex/${packagePath}/web" />
         <entry kind="file" path="${mainResourcePath}/amf3.dicon" />
         <entry kind="file" path="${mainResourcePath}/remoting_amf3.dicon" />
         <entry kind="file" path="${webAppRoot}/WEB-INF/web.xml" />
@@ -688,12 +689,12 @@
       <handler type="flexbuilder" resourceLoader="composite">
         <entry kind="file" path=".actionScriptProperties" />
         <entry kind="file" path=".flexProperties" />
-        <entry kind="file" path="${webAppRoot}/html-template/AC_OETags.js" />
-        <entry kind="file" path="${webAppRoot}/html-template/history.htm" />
-        <entry kind="file" path="${webAppRoot}/html-template/history.js" />
-        <entry kind="file" path="${webAppRoot}/html-template/history.swf" />
-        <entry kind="file" path="${webAppRoot}/html-template/index.template.html" />
-        <entry kind="file" path="${webAppRoot}/html-template/playerProductInstall.swf" />
+        <entry kind="file" path="html-template/AC_OETags.js" />
+        <entry kind="file" path="html-template/history.htm" />
+        <entry kind="file" path="html-template/history.js" />
+        <entry kind="file" path="html-template/history.swf" />
+        <entry kind="file" path="html-template/index.template.html" />
+        <entry kind="file" path="html-template/playerProductInstall.swf" />
         <entry kind="file" path="${libPath}/swc/s2flex2-components.swc" />
       </handler>
       <if jre="1.4" />
