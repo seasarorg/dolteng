@@ -19,6 +19,8 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Formatter;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +48,27 @@ import org.seasar.framework.util.StringUtil;
  * 
  */
 public class ScaffoldModel implements RootModel {
+
+    private static final Map<String, String> formPkeyArgsFormat = new HashMap<String, String>();
+    static {
+        formPkeyArgsFormat.put("boolean", "Boolean.parseBoolean(%1$s.%2$s), ");
+        formPkeyArgsFormat.put("java.lang.Boolean",
+                "Boolean.valueOf(%1$s.%2$s), ");
+        formPkeyArgsFormat.put("double", "Double.parseDouble(%1$s.%2$s), ");
+        formPkeyArgsFormat.put("java.lang.Double",
+                "Double.valueOf(%1$s.%2$s), ");
+        formPkeyArgsFormat.put("float", "Float.parseDouble(%1$s.%2$s), ");
+        formPkeyArgsFormat.put("java.lang.Float", "Float.valueOf(%1$s.%2$s), ");
+        formPkeyArgsFormat.put("short", "Short.parseShort(%1$s.%2$s), ");
+        formPkeyArgsFormat.put("java.lang.Short", "Short.valueOf(%1$s.%2$s), ");
+        formPkeyArgsFormat.put("int", "Integer.parseInt(%1$s.%2$s), ");
+        formPkeyArgsFormat.put("java.lang.Integer",
+                "Integer.valueOf(%1$s.%2$s), ");
+        formPkeyArgsFormat.put("long", "Long.parseLong(%1$s.%2$s), ");
+        formPkeyArgsFormat.put("java.lang.Long", "Long.valueOf(%1$s.%2$s), ");
+        formPkeyArgsFormat.put("java.math.BigDecimal",
+                "new java.math.BigDecimal(%1$s.%2$s), ");
+    }
 
     private String typeName;
 
@@ -120,7 +143,9 @@ public class ScaffoldModel implements RootModel {
     /*
      * (non-Javadoc)
      * 
-     * @see org.seasar.dolteng.eclipse.model.impl.RootModel#setNamingConvention(org.seasar.framework.convention.NamingConvention)
+     * @see
+     * org.seasar.dolteng.eclipse.model.impl.RootModel#setNamingConvention(org
+     * .seasar.framework.convention.NamingConvention)
      */
     public void setNamingConvention(NamingConvention namingConvention) {
         this.namingConvention = namingConvention;
@@ -298,23 +323,27 @@ public class ScaffoldModel implements RootModel {
     public String createPkeyMethodCallArgs() {
         return createPkeyMethodCallArgs(false);
     }
-    
+
     public String createFormPkeyMethodCallArgsCopy(String formName) {
         return createFormPkeyMethodCallArgsCopy(formName, false);
     }
-    
-    public String createFormPkeyMethodCallArgsCopy(String formName, boolean includeVersion) {
+
+    public String createFormPkeyMethodCallArgsCopy(String formName,
+            boolean includeVersion) {
         StringBuffer stb = new StringBuffer();
         boolean is = false;
         for (EntityMappingRow row : mappings) {
             if (row.isPrimaryKey()
                     || (includeVersion && NamingUtil.isVersionNo(row
                             .getSqlColumnName()))) {
-                stb.append(formName);
-                stb.append('.');
-                stb.append(row.getJavaFieldName());
-                stb.append(',');
-                stb.append(' ');
+                String type = row.getJavaClassName();
+                String format = formPkeyArgsFormat.get(type);
+                if (format == null) {
+                    format = "%1$s.%2$s, ";
+                }
+                Formatter formatter = new Formatter(stb);
+                formatter.format(format, formName, row.getJavaFieldName());
+                formatter.close();
                 is = true;
             }
         }
@@ -323,7 +352,6 @@ public class ScaffoldModel implements RootModel {
         }
         return stb.toString();
     }
-
 
     public String createPkeyMethodCallArgsCopy(boolean includeVersion) {
         StringBuffer stb = new StringBuffer();

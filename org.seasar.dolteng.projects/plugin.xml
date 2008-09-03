@@ -877,6 +877,7 @@
       <handler type="default" resourceLoader="composite">
         <entry path="${mainJavaPath}/${packagePath}/dto" />
         <entry path="${mainJavaPath}/${packagePath}/entity" />
+        <entry path="${mainJavaPath}/${packagePath}/condition" />
         <entry path="${mainJavaPath}/${packagePath}/service" />
         <entry path="${mainResourcePath}/${packagePath}/dto" />
         <entry path="${mainResourcePath}/${packagePath}/entity" />
@@ -885,10 +886,13 @@
         <entry path="${testJavaPath}/${packagePath}/entity" />
         <entry path="${testJavaPath}/${packagePath}/service" />
         <entry kind="file" path="${mainResourcePath}/s2jdbc.dicon" />
+        <entry kind="file" path="s2jdbc-gen-build.xml" />
       </handler>
       <handler type="classpath" resourceLoader="maven">
         <entry kind="file" path="${libPath}/geronimo-annotation_1.0_spec-1.0.jar" maven="org.apache.geronimo.specs,geronimo-annotation_1.0_spec,1.0" />
         <entry kind="file" path="${libPath}/geronimo-jpa_3.0_spec-1.0.jar" maven="org.apache.geronimo.specs,geronimo-jpa_3.0_spec,1.0" />
+        <entry kind="file" path="${testLibPath}/s2jdbc-gen-0.9.0.jar" maven="org.seasar.container,s2jdbc-gen,0.9.0" />
+      	<entry kind="file" path="${testLibPath}/freemarker-2.3.13.jar" maven="freemarker,freemarker,2.3.13" />
       </handler>
       <handler type="dolteng" resourceLoader="composite">
         <entry kind="file" path=".settings/dolteng.s2jdbc.pref" />

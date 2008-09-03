@@ -27,7 +27,8 @@ import org.seasar.framework.util.StringUtil;
  */
 public class ScriptingUtil {
 
-    public static String resolveString(String string, Map<String, String> context) {
+    public static String resolveString(String string,
+            Map<String, String> context) {
         String result = "";
         if (StringUtil.isEmpty(string) == false) {
             Pattern p = Pattern.compile("\\$\\{[^\\$\\{\\}]*\\}");
@@ -37,6 +38,10 @@ public class ScriptingUtil {
             while (index < stb.length() && m.find(index)) {
                 String s = m.group();
                 String v = toString(context.get(s.substring(2, s.length() - 1)));
+                if (StringUtil.isEmpty(v)) {
+                    index = m.start() + s.length();
+                    continue;
+                }
                 index = m.start() + v.length();
                 stb.replace(m.start(), m.end(), v);
                 m = p.matcher(stb);

@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.Properties;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.preference.IPersistentPreferenceStore;
@@ -69,7 +70,8 @@ public class DoltengHandler extends DefaultHandler {
         try {
             monitor.setTaskName(Messages
                     .bind(Messages.ADD_NATURE_OF, "Dolteng"));
-            ProjectUtil.addNature(builder.getProjectHandle(),
+            IProject project = builder.getProjectHandle();
+            ProjectUtil.addNature(project,
                     Constants.ID_NATURE);
             ProgressMonitorUtil.isCanceled(monitor, 1);
             IPersistentPreferenceStore store = new ScopedPreferenceStore(
@@ -91,6 +93,7 @@ public class DoltengHandler extends DefaultHandler {
                     DoltengCore.log("missing ." + entry.getPath());
                 }
             }
+            project.getNature(Constants.ID_NATURE).configure();
             String viewType = store.getString(Constants.PREF_VIEW_TYPE);
             if (Constants.VIEW_TYPE_FLEX2.equals(viewType)) {
                 ProjectUtil.addNature(builder.getProjectHandle(),

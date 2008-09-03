@@ -1,0 +1,143 @@
+<project name="${projectName}-s2jdbc-gen" default="gen-ddl" basedir=".">
+
+  <property name="classpathdir" value="${mainOutPath}"/>
+  <property name="rootpackagename" value="${packageName}"/>
+  <property name="entitypackagename" value="entity"/>
+  <property name="javafiledestdir" value="${mainJavaPath}"/>
+  <property name="testjavafiledestdir" value="${testJavaPath}"/>
+  <property name="javafileencoding" value="UTF-8"/>
+  <property name="env" value="ut"/>
+  <property name="jdbcmanagername" value="jdbcManager"/>
+
+  <path id="classpath">
+    <pathelement location="${classpathdir}"/>
+    <fileset dir="${libPath}"/>
+    <fileset dir="${testLibPath}"/>
+  </path>
+
+  <taskdef resource="s2jdbc-gen-task.properties" classpathref="classpath"/>
+
+  <target name="gen-entity">
+    <gen-entity
+      rootpackagename="${rootpackagename}"
+      entitypackagename="${entitypackagename}"
+      javafiledestdir="${javafiledestdir}"
+      javafileencoding="${javafileencoding}"
+      env="${env}"
+      jdbcmanagername="${jdbcmanagername}"
+      classpathref="classpath"
+    />
+    <javac 
+      srcdir="${javafiledestdir}"
+      destdir="${classpathdir}"
+      encoding="${javafileencoding}"
+      fork="true"
+      debug="on"
+      classpathref="classpath">
+      <include name="${rootpackagename}/${entitypackagename}/**"/>
+    </javac>
+    <gen-test
+      classpathdir="${classpathdir}"
+      rootpackagename="${rootpackagename}"
+      entitypackagename="${entitypackagename}"
+      javafiledestdir="${testjavafiledestdir}"
+      javafileencoding="${javafileencoding}"
+      env="${env}"
+      jdbcmanagername="${jdbcmanagername}"
+      classpathref="classpath"
+    />
+    <gen-condition
+      classpathdir="${classpathdir}"
+      rootpackagename="${rootpackagename}"
+      entitypackagename="${entitypackagename}"
+      javafiledestdir="${javafiledestdir}"
+      javafileencoding="${javafileencoding}"
+      env="${env}"
+      jdbcmanagername="${jdbcmanagername}"
+      classpathref="classpath"
+    />
+    <gen-names
+      classpathdir="${classpathdir}"
+      rootpackagename="${rootpackagename}"
+      entitypackagename="${entitypackagename}"
+      javafiledestdir="${javafiledestdir}"
+      javafileencoding="${javafileencoding}"
+      env="${env}"
+      jdbcmanagername="${jdbcmanagername}"
+      classpathref="classpath"
+    />
+    <gen-service
+      classpathdir="${classpathdir}"
+      rootpackagename="${rootpackagename}"
+      entitypackagename="${entitypackagename}"
+      javafiledestdir="${javafiledestdir}"
+      javafileencoding="${javafileencoding}"
+      env="${env}"
+      jdbcmanagername="${jdbcmanagername}"
+      classpathref="classpath"
+    />
+  </target>
+
+  <target name="gen-ddl">
+    <gen-ddl
+      classpathdir="${classpathdir}"
+      rootpackagename="${rootpackagename}"
+      entitypackagename="${entitypackagename}"
+      env="${env}"
+      jdbcmanagername="${jdbcmanagername}"
+      classpathref="classpath"
+    />
+    <gen-test
+      classpathdir="${classpathdir}"
+      rootpackagename="${rootpackagename}"
+      entitypackagename="${entitypackagename}"
+      javafiledestdir="${testjavafiledestdir}"
+      javafileencoding="${javafileencoding}"
+      env="${env}"
+      jdbcmanagername="${jdbcmanagername}"
+      classpathref="classpath"
+    />
+    <gen-condition
+      classpathdir="${classpathdir}"
+      rootpackagename="${rootpackagename}"
+      entitypackagename="${entitypackagename}"
+      javafiledestdir="${javafiledestdir}"
+      javafileencoding="${javafileencoding}"
+      env="${env}"
+      jdbcmanagername="${jdbcmanagername}"
+      classpathref="classpath"
+    />
+    <gen-names
+      classpathdir="${classpathdir}"
+      rootpackagename="${rootpackagename}"
+      entitypackagename="${entitypackagename}"
+      javafiledestdir="${javafiledestdir}"
+      javafileencoding="${javafileencoding}"
+      env="${env}"
+      jdbcmanagername="${jdbcmanagername}"
+      classpathref="classpath"
+    />
+    <gen-service
+      classpathdir="${classpathdir}"
+      rootpackagename="${rootpackagename}"
+      entitypackagename="${entitypackagename}"
+      javafiledestdir="${javafiledestdir}"
+      javafileencoding="${javafileencoding}"
+      env="${env}"
+      jdbcmanagername="${jdbcmanagername}"
+      classpathref="classpath"
+    />
+  </target>
+
+  <target name="migrate">
+    <migrate
+      classpathdir="${classpathdir}"
+      rootpackagename="${rootpackagename}"
+      entitypackagename="${entitypackagename}"
+      env="${env}"
+      jdbcmanagername="${jdbcmanagername}"
+      classpathref="classpath"
+    />
+  </target>
+
+</project>

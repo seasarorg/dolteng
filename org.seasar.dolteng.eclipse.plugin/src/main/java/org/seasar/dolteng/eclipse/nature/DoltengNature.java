@@ -82,7 +82,9 @@ public class DoltengNature implements DoltengProject, IProjectNature {
     /*
      * (non-Javadoc)
      * 
-     * @see org.eclipse.core.resources.IProjectNature#setProject(org.eclipse.core.resources.IProject)
+     * @see
+     * org.eclipse.core.resources.IProjectNature#setProject(org.eclipse.core
+     * .resources.IProject)
      */
     public void setProject(IProject project) {
         this.project = project;
@@ -132,6 +134,9 @@ public class DoltengNature implements DoltengProject, IProjectNature {
             if (Constants.DAO_TYPE_KUINADAO
                     .equals(this.preference.getDaoType())) {
                 this.registry = new KuinaTypeMappingRegistry();
+            } else if (Constants.DAO_TYPE_S2JDBC.equals(this.preference
+                    .getDaoType())) {
+                this.registry = new BasicTypeMappingRegistry();
             } else {
                 this.registry = new StandardTypeMappingRegistry();
             }
