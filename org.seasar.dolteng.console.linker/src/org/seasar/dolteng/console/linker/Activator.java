@@ -42,7 +42,6 @@ public class Activator extends Plugin {
 		ExtensionAcceptor.accept(context.getBundle().getSymbolicName(),
 				IDBASEDURL,
 				new ExtensionAcceptor.ExtensionVisitor() {
-					@Override
 					public void visit(IConfigurationElement e) {
 						if ("systemToUrl".equals(e.getName())) {
 							idbase.put(e.getAttribute("systemName"), e

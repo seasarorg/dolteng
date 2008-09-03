@@ -18,7 +18,6 @@ public class URLHyperLink implements IHyperlink {
 		this.url = url;
 	}
 
-	@Override
 	public void linkActivated() {
 		try {
 			IWorkbenchBrowserSupport support = PlatformUI.getWorkbench()
@@ -43,11 +42,9 @@ public class URLHyperLink implements IHyperlink {
 		}
 	}
 
-	@Override
 	public void linkEntered() {
 	}
 
-	@Override
 	public void linkExited() {
 	}
 }
