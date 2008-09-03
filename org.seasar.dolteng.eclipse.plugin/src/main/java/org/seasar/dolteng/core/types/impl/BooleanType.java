@@ -27,7 +27,7 @@ public class BooleanType implements TypeMapping {
 
     private static final int[] SQL_TYPES = new int[] { Types.BOOLEAN };
 
-    private static final String[] SQL_TYPENAMES = { "BOOLEAN", "bool" };
+    private static final String[] SQL_TYPENAMES = { "BOOLEAN", "bool", "bit" };
 
     /*
      * (non-Javadoc)
