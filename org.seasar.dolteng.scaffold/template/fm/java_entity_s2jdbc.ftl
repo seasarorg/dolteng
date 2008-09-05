@@ -33,5 +33,6 @@ public class ${configs.table_capitalize} {
 	@Column(name="${mapping.sqlColumnName}")
 </#if>
 	public ${getJavaClassName(mapping)} ${mapping.javaFieldName};
+
 </#list>
 }

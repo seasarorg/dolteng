@@ -9,6 +9,6 @@ public class ${configs.table_capitalize}Form {
 	
 <#list mappings as mapping>
 	public String ${mapping.javaFieldName};
-	
+
 </#list>
 }
