@@ -663,7 +663,6 @@
       <contextProperty name="testLibPath" value="lib" />
       <contextProperty name="testLibSrcPath" value="libsrc" /><!-- 効果なし -->
       <contextProperty name="webAppRoot" value="src/main/webapp" />
-      <contextProperty name="flexSrcPath" value="src/main/flex" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="src/main/flex/Main.mxml" />
         <entry path="src/main/flex/${packagePath}/dto" />

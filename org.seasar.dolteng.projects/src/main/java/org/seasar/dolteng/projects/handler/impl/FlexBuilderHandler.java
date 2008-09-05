@@ -17,6 +17,7 @@ package org.seasar.dolteng.projects.handler.impl;
 
 import java.util.regex.Pattern;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -76,6 +77,8 @@ public class FlexBuilderHandler extends DefaultHandler {
                 builder.getConfigContext().put("DOCUMENTS", "${DOCUMENTS}");
 
                 super.handle(builder, monitor);
+                IProject project = builder.getProjectHandle();
+                project.getNature(Constants.ID_NATURE).configure(); // reconfigure
             }
         } catch (Exception e) {
             DoltengCore.log(e);

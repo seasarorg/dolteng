@@ -93,7 +93,7 @@ public class DoltengHandler extends DefaultHandler {
                     DoltengCore.log("missing ." + entry.getPath());
                 }
             }
-            project.getNature(Constants.ID_NATURE).configure();
+            project.getNature(Constants.ID_NATURE).configure(); // reconfigure
             String viewType = store.getString(Constants.PREF_VIEW_TYPE);
             if (Constants.VIEW_TYPE_FLEX2.equals(viewType)) {
                 ProjectUtil.addNature(builder.getProjectHandle(),
