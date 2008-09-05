@@ -148,9 +148,6 @@ public class BasicTypeMappingRegistry implements TypeMappingRegistry {
      */
     public TypeMapping toJavaClass(ColumnMetaData meta) {
         TypeMapping tm = null;
-        if (meta.isPrimaryKey() || meta.isNullable() == false) {
-            tm = find(this.primitiveTypes, meta.getSqlTypeName());
-        }
         if (tm == null) {
             tm = find(this.sqlTypes, meta.getSqlTypeName());
         }
