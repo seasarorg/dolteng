@@ -66,7 +66,6 @@ public class ChuraProjectWizardDirectoryPage extends WizardPage {
         public void handleEvent(Event event) {
             boolean valid = validatePage();
             setPageComplete(valid);
-            System.out.println("validation: " + valid);
         }
     };
 
