@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
 <head>
@@ -10,8 +9,6 @@
 <body>
 
 <html:errors/>
-
-<form action="show" >
 
 <table class="tablebg">
 <#list mappings as mapping>
@@ -27,9 +24,7 @@
 
 </table>
 
-</form>
-
-<s:link href="edit<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/${f:h(</#noparse>${mapping.javaFieldName}<#noparse>)}</#noparse></#if></#list>"> edit </s:link>
+<s:link href="edit<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/${</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>"> edit </s:link>
 
 
 <br/><br/>

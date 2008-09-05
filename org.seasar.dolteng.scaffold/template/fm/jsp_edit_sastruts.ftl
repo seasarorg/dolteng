@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
 <head>
@@ -14,9 +13,7 @@
 <s:form>
 <#list mappings as mapping>
     <#if mapping.isPrimaryKey() = true || isVersionColumn(mapping) = true>
-        <#noparse>
-            <input type="hidden" value="${</#noparse>${mapping.javaFieldName}<#noparse>}" name="</#noparse>${mapping.javaFieldName}<#noparse>" />
-        </#noparse>
+        <html:hidden property="${mapping.javaFieldName}" />
     </#if>
 </#list>
 <table class="tablebg">
@@ -25,9 +22,7 @@
 	<tr>
 		<td> ${mapping.javaFieldName} </td>
 		<td>
-			<#noparse>
-				<input type="text" value="${</#noparse>${mapping.javaFieldName}<#noparse>}" name="</#noparse>${mapping.javaFieldName}<#noparse>" />
-			</#noparse>
+		    <html:text property="${mapping.javaFieldName}" />
 		</td>	
 	</tr>
 	</#if>

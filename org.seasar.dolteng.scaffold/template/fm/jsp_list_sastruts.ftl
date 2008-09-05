@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
 <head>
@@ -10,8 +9,6 @@
 <body>
 
 <html:errors/>
-
-<form action="show" >
 
 <table border="1">
 <tr style="background-color:pink">
@@ -35,9 +32,9 @@
 		</td>
 	</#if>
 </#list>
-		<td><s:link href="show<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}</#noparse></#if></#list>"> show </s:link></td>
-		<td><s:link href="edit<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}</#noparse></#if></#list>"> edit </s:link></td>
-		<td><s:link onclick="return confirm('delete OK?');" href="delete<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}</#noparse></#if><#if isVersionColumn(mapping) = true><#noparse>/${f:h(e.</#noparse>${mapping.javaFieldName}<#noparse>)}</#noparse></#if></#list>">delete</s:link></td>
+		<td><s:link href="show<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/${e.</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>"> show </s:link></td>
+		<td><s:link href="edit<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/${e.</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>"> edit </s:link></td>
+		<td><s:link onclick="return confirm('delete OK?');" href="delete<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/${e.</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if><#if isVersionColumn(mapping) = true><#noparse>/${e.</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>">delete</s:link></td>
 	</tr>
 </c:forEach>
 

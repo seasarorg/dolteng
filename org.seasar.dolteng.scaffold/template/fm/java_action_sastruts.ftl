@@ -2,16 +2,12 @@ package ${configs.rootpackagename}.action;
 
 ${getImports()}
 
-import javax.persistence.NoResultException;
-import org.seasar.extension.jdbc.exception.SNonUniqueResultException;
+import javax.annotation.Resource;
 
 import org.apache.struts.action.ActionMessages;
 import org.seasar.framework.beans.util.Beans;
 import org.seasar.struts.annotation.ActionForm;
-import org.seasar.extension.jdbc.SqlLogRegistryLocator;
 import org.seasar.struts.annotation.Execute;
-import org.seasar.framework.beans.util.BeanMap;
-import java.util.ArrayList;
 import java.util.List;
 
 import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.table_capitalize};
@@ -20,60 +16,55 @@ import ${configs.rootpackagename}.form.${configs.table_capitalize}Form;
 
 public class ${configs.table_capitalize}${configs.actionsuffix} {
 
+    public List<${configs.table_capitalize}> ${configs.table}Items;
+    
 	@ActionForm
-	public ${configs.table_capitalize}Form ${configs.table}Form;
-	
-	public List<${configs.table_capitalize}> ${configs.table}Items;
-	
-	public ${configs.table_capitalize}${configs.servicesuffix} ${configs.table}${configs.servicesuffix};
-	
+	@Resource
+	protected ${configs.table_capitalize}Form ${configs.table}Form;
+
+	@ActionForm
+    @Resource
+	protected ${configs.table_capitalize}${configs.servicesuffix} ${configs.table}${configs.servicesuffix};
+
 
 	@Execute(validator = false)
-	public String index(){
+	public String index() {
 		return list();
 	}
 
 	@Execute(validator = false)
-	public String list(){
+	public String list() {
 		${configs.table}Items = ${configs.table}${configs.servicesuffix}.findAll();
 		return "list.jsp";
 	}
 	
-	@Execute(validator = false, urlPattern="show<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>")
-	public String show(){
-	
+	@Execute(validator = false, urlPattern = "show<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>")
+	public String show() {
 		loadEntity();
-	
 		return "show.jsp";
 	}
 	
-	@Execute(validator = false, urlPattern="edit<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>")
-	public String edit(){
-	
+	@Execute(validator = false, urlPattern = "edit<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>")
+	public String edit() {
 		loadEntity();
-		
 		return "edit.jsp";
 	}
 	
-	@Execute(validator=false)
-	public String create(){
-		
+	@Execute(validator = false)
+	public String create() {
 		return "create.jsp";
 	}
 	
-	@Execute(validator=false, urlPattern="delete<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if><#if isVersionColumn(mapping) = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>", redirect = true)
-	public String delete(){
-	
+	@Execute(validator = false, urlPattern = "delete<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if><#if isVersionColumn(mapping) = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>", redirect = true)
+	public String delete() {
 		${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form)
 			.execute();
-		
 		${configs.table}${configs.servicesuffix}.delete(entity);
-		
 		return "/${configs.table}/";
 	}
 	
 	
-	protected void loadEntity(){
+	protected void loadEntity() {
 		${configs.table_capitalize} entity = ${configs.table}${configs.servicesuffix}.findById(${createFormPkeyMethodCallArgsCopy("${configs.table}Form")});
 		Beans.copy(entity, ${configs.table}Form)
 			.dateConverter("yyyy/MM/dd",new String[]{
@@ -87,28 +78,21 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
 	}
 	
 	
-	@Execute(input="create.jsp", validate="validateInsert", redirect = true)
-	public String insert(){
-		
+	@Execute(input = "create.jsp", validate = "validateInsert", redirect = true)
+	public String insert() {
 		${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form)
 			.execute();
-		
 		${configs.table}${configs.servicesuffix}.insert(entity);
-		
 		return "/${configs.table}/";
 	}
 	
-	@Execute(input="create.jsp", validate="validateUpdate", redirect = true)
-	public String update(){
-		
+	@Execute(input = "create.jsp", validate = "validateUpdate", redirect = true)
+	public String update() {
 		${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form)
 			.execute();
-		
 		${configs.table}${configs.servicesuffix}.update(entity);
-		
 		return "/${configs.table}/";
 	}
-	
 	
 	public ActionMessages validateInsert() {
 	    ActionMessages errors = new ActionMessages();
