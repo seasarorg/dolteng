@@ -24,8 +24,8 @@ import junit.framework.TestCase;
 public class TeedaEmulatorTest extends TestCase {
 
     public void testSkipIds() throws Exception {
-        String[] ary = { "$aa", "a%p", "dd.", "allmessages", "messages",
-                "Messages", "hogeMessage", "goHoge", "jumpHoge", "isHoge","mockHoge" };
+        String[] ary = { "$aa", "a%p", "dd.", "allMessages", "messages",
+                "hogeMessage", "goHoge", "jumpHoge", "isHoge", "mockHoge" };
         for (String element : ary) {
             assertTrue(element, TeedaEmulator.MAPPING_SKIP_ID.matcher(element)
                     .matches());

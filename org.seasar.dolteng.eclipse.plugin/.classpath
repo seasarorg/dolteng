@@ -5,6 +5,8 @@
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/resources"/>
 	<classpathentry exported="true" kind="lib" path="template/jars/geronimo-jpa_3.0_spec-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="template/jars/geronimo-jta_1.1_spec-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="template/jars/geronimo-servlet_2.4_spec-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="template/jars/aopalliance-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="template/jars/log4j-1.2.13.jar"/>
 	<classpathentry exported="true" kind="lib" path="template/jars/ognl-2.6.9-patch-20070908.jar"/>

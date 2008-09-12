@@ -277,8 +277,12 @@ public class NamingConventionMirrorTest extends TestCase {
      * 'org.seasar.dolteng.core.convention.NamingConventionMirror.getRootPackageNames()'
      */
     public void testGetRootPackageNames() {
-        assertEquals(this.source.getRootPackageNames(), this.target
-                .getRootPackageNames());
+        String[] expected = this.source.getRootPackageNames();
+        String[] actual = this.target.getRootPackageNames();
+        assertEquals(expected.length, actual.length);
+        for (int i = 0; i < expected.length; ++i) {
+            assertEquals(expected[i], actual[i]);
+        }
     }
 
 }

@@ -26,7 +26,7 @@ import org.seasar.extension.unit.S2TestCase;
  * @author taichi
  * 
  */
-public class BasicDatabaseMetadataDaoTest extends S2TestCase {
+public abstract class BasicDatabaseMetadataDaoTest extends S2TestCase {
 
     private static final String PATH = "BasicDatabaseMetadataDaoTest.dicon";
 

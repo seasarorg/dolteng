@@ -28,8 +28,8 @@ public class KuinaEmulatorTest extends TestCase {
      * {@link org.seasar.dolteng.core.kuina.KuinaEmulator#isQueryPatterns(java.lang.String)}.
      */
     public void testIsQueryPatterns() {
-        assertTrue(KuinaEmulator.isQueryPatterns("orderBy"));
-        assertTrue(KuinaEmulator.isQueryPatterns("orderby"));
+        assertTrue(KuinaEmulator.isOrderbyPatterns("orderBy"));
+        assertTrue(KuinaEmulator.isOrderbyPatterns("orderby"));
         assertTrue(KuinaEmulator.isQueryPatterns("firstResult"));
         assertTrue(KuinaEmulator.isQueryPatterns("maxResults"));
     }
