@@ -1,16 +1,6 @@
 package org.seasar.dolteng.projects.wizard;
 
-import static org.seasar.dolteng.eclipse.Constants.CTX_LIB_PATH;
-import static org.seasar.dolteng.eclipse.Constants.CTX_LIB_SRC_PATH;
-import static org.seasar.dolteng.eclipse.Constants.CTX_MAIN_JAVA_PATH;
-import static org.seasar.dolteng.eclipse.Constants.CTX_MAIN_OUT_PATH;
-import static org.seasar.dolteng.eclipse.Constants.CTX_MAIN_RESOURCE_PATH;
-import static org.seasar.dolteng.eclipse.Constants.CTX_TEST_JAVA_PATH;
-import static org.seasar.dolteng.eclipse.Constants.CTX_TEST_LIB_PATH;
-import static org.seasar.dolteng.eclipse.Constants.CTX_TEST_LIB_SRC_PATH;
-import static org.seasar.dolteng.eclipse.Constants.CTX_TEST_OUT_PATH;
-import static org.seasar.dolteng.eclipse.Constants.CTX_TEST_RESOURCE_PATH;
-import static org.seasar.dolteng.eclipse.Constants.CTX_WEBAPP_ROOT;
+import static org.seasar.dolteng.eclipse.Constants.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -68,6 +58,8 @@ public class ChuraProjectWizardDirectoryPage extends WizardPage {
             setPageComplete(valid);
         }
     };
+
+    private Map<String, String> configureContext;
 
     protected boolean validatePage() {
         boolean valid = true;
@@ -181,7 +173,7 @@ public class ChuraProjectWizardDirectoryPage extends WizardPage {
      * @return コンテキスト情報
      */
     Map<String, String> getConfigureContext() {
-        Map<String, String> ctx = new HashMap<String, String>();
+        Map<String, String> ctx = new HashMap<String, String>(configureContext);
 
         ctx.put(CTX_LIB_PATH, libPath.getText());
         ctx.put(CTX_LIB_SRC_PATH, libSrcPath.getText());
@@ -205,6 +197,7 @@ public class ChuraProjectWizardDirectoryPage extends WizardPage {
      *            コンテキスト情報
      */
     void setConfigureContext(Map<String, String> ctx) {
+        configureContext = ctx;
         try {
             libPath.setText(getContextData(ctx, CTX_LIB_PATH));
             libSrcPath.setText(getContextData(ctx, CTX_LIB_SRC_PATH));
