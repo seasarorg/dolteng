@@ -18,7 +18,7 @@ package org.seasar.dolteng.eclipse;
 import org.eclipse.core.runtime.QualifiedName;
 
 /**
- * @author tai1
+ * @author taichi
  * 
  */
 public final class Constants {
