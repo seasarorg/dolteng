@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE provider
+    PUBLIC "-//The Seasar Foundation//DTD Mayaa Provider 1.0//EN"
+    "http://mayaa.seasar.org/dtd/mayaa-provider_1_0.dtd">
+<provider>
+	
+    <engine>
+        <parameter name="defaultSpecification" value="/WEB-INF/view/default.mayaa"/>
+    </engine>
+</provider>

@@ -550,10 +550,13 @@
         <entry kind="file" path="${webAppRoot}/WEB-INF/web.xml" />
         <entry kind="file" path="${webAppRoot}/WEB-INF/struts-config.xml" />
         <entry kind="file" path="${webAppRoot}/WEB-INF/validator-rules.xml" />
-        <entry kind="file" path="${webAppRoot}/index.html" />
-        <entry kind="file" path="${webAppRoot}/index.mayaa" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/view/index.html" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/view/index.mayaa" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/view/default.mayaa" />
         <entry kind="file" path="${mainResourcePath}/application.properties" />
         <entry kind="file" path="${mainResourcePath}/application_ja.properties" />
+        <entry kind="file" path="${mainResourcePath}/META-INF/org.seasar.mayaa.provider.ServiceProvider" />
+        <entry kind="file" path="${mainResourcePath}/META-INF/org.seasar.mayaa.source.PageSourceFactory" />
       </handler>
       <handler type="classpath" resourceLoader="maven">
         <entry kind="file" path="${libPath}/commons-beanutils-1.7.0.jar" maven="commons-beanutils,commons-beanutils,1.7.0" />

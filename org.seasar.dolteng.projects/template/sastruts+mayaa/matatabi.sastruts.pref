@@ -1,3 +1,4 @@
+webRootPath=${webAppRoot}/WEB-INF/view
 namespaces.1=s\:http://sastruts.seasar.org
 namespaces.2=f\:http://sastruts.seasar.org/functions
 namespaces.3=bean\:http://jakarta.apache.org/struts/tags-bean
