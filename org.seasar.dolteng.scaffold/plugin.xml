@@ -277,6 +277,63 @@
 				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
 				outputname="show.jsp" />
 		</templates>
+		<templates
+			enablement="org.seasar.dolteng.scaffold.enabler.SAStrutsMayaaEnabler"
+			id="5" name="SAStruts+Mayaa"
+			resourceLoader="org.seasar.dolteng.scaffold.ScaffoldResourceLoader"
+			scaffoldModelFactory="org.seasar.dolteng.scaffold.factory.SAStrutsMayaaScaffoldModelFactory">
+			<template path="template/fm/java_entity_s2jdbc.ftl"
+				override="false"
+				outputpath="${javasrcroot}/${rootpackagepath}/${entitypackagename}/"
+				outputname="${table_capitalize}.java" />
+			<template path="template/fm/java_service_abstract_s2jdbc.ftl"
+                override="false"
+                outputpath="${javasrcroot}/${rootpackagepath}/${servicepackagename}/"
+                outputname="AbstractService.java" />
+			<template path="template/fm/java_service_s2jdbc.ftl"
+				override="false"
+				outputpath="${javasrcroot}/${rootpackagepath}/${servicepackagename}/"
+				outputname="${table_capitalize}${servicesuffix}.java" />
+			<template path="template/fm/java_action_sastruts.ftl"
+				override="false"
+				outputpath="${javasrcroot}/${rootpackagepath}/${actionpackagename}/"
+				outputname="${table_capitalize}${actionsuffix}.java" />
+			<template path="template/fm/java_form_sastruts.ftl"
+				override="false"
+				outputpath="${javasrcroot}/${rootpackagepath}/${formpackagename}/"
+				outputname="${table_capitalize}${formsuffix}.java" />
+			<template path="template/fm/html_css.ftl" override="false"
+				outputpath="${webcontentsroot}/css/" outputname="global.css" />
+			<template path="template/fm/html_list_sastruts+mayaa.ftl" override="false"
+				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
+				outputname="list.html" />
+			<template path="template/fm/html_create_sastruts+mayaa.ftl"
+				override="false"
+				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
+				outputname="create.html" />
+			<template path="template/fm/html_edit_sastruts+mayaa.ftl"
+				override="false"
+				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
+				outputname="edit.html" />
+			<template path="template/fm/html_show_sastruts+mayaa.ftl"
+				override="false"
+				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
+				outputname="show.html" />
+			<template path="template/fm/mayaa_list_sastruts+mayaa.ftl" override="false"
+				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
+				outputname="list.mayaa" />
+			<template path="template/fm/mayaa_create_sastruts+mayaa.ftl"
+				override="false"
+				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
+				outputname="create.mayaa" />
+			<template path="template/fm/mayaa_edit_sastruts+mayaa.ftl"
+				override="false"
+				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
+				outputname="edit.mayaa" />
+			<template path="template/fm/mayaa_show_sastruts+mayaa.ftl"
+				override="false"
+				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
+				outputname="show.mayaa" />
+		</templates>
 	</extension>
-
 </plugin>

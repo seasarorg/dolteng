@@ -34,24 +34,24 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
 	@Execute(validator = false)
 	public String list() {
 		${configs.table}Items = ${configs.table}${configs.servicesuffix}.findAll();
-		return "list.jsp";
+		return "list.${configs.viewtemplateextension}";
 	}
 	
 	@Execute(validator = false, urlPattern = "show<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>")
 	public String show() {
 		loadEntity();
-		return "show.jsp";
+		return "show.${configs.viewtemplateextension}";
 	}
 	
 	@Execute(validator = false, urlPattern = "edit<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>")
 	public String edit() {
 		loadEntity();
-		return "edit.jsp";
+		return "edit.${configs.viewtemplateextension}";
 	}
 	
 	@Execute(validator = false)
 	public String create() {
-		return "create.jsp";
+		return "create.${configs.viewtemplateextension}";
 	}
 	
 	@Execute(validator = false, urlPattern = "delete<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if><#if isVersionColumn(mapping) = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>", redirect = true)
@@ -77,7 +77,7 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
 	}
 	
 	
-	@Execute(input = "create.jsp", validate = "validateInsert", redirect = true)
+	@Execute(input = "create.${configs.viewtemplateextension}", validate = "validateInsert", redirect = true)
 	public String insert() {
 		${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form)
 			.execute();
@@ -85,7 +85,7 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
 		return "/${configs.table}/";
 	}
 	
-	@Execute(input = "create.jsp", validate = "validateUpdate", redirect = true)
+	@Execute(input = "create.${configs.viewtemplateextension}", validate = "validateUpdate", redirect = true)
 	public String update() {
 		${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form)
 			.execute();

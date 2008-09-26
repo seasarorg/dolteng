@@ -21,6 +21,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
 /**
  * SAStruts専用のScaffoldModel
  * 
@@ -33,53 +34,58 @@ public class SAStrutsScaffoldModel extends ScaffoldModel {
 	public static final String CONTEXT_PARAM = "context-param";
 
 	public static final String SASTRUTS_VIEW_PREFIX = "sastruts.VIEW_PREFIX";
-    
-    public static final String PARAM_NAME = "param-name";
+
+	public static final String PARAM_NAME = "param-name";
 
 	public static final String PARAM_VALUE = "param-value";
-
 
 	/*
 	 * @see org.seasar.dolteng.eclipse.model.impl.ScaffoldModel
 	 */
-	public SAStrutsScaffoldModel(Map<String, String> configs, TableNode node) {
+	public SAStrutsScaffoldModel(Map<String, String> configs, TableNode node,
+			String viewTemplateExtension) {
 		super(configs, node);
-		
-		appendConfig(configs, node);
-		
+
+		appendConfig(configs, node, viewTemplateExtension);
+
 	}
-	
+
 	/**
 	 * コンフィグにSAStruts専用の設定を追加する
+	 * 
 	 * @param configs
 	 * @param node
+	 * @param viewTemplateExtension
 	 */
-	protected void appendConfig(Map<String, String> configs, TableNode node){
+	protected void appendConfig(Map<String, String> configs, TableNode node,
+			String viewTemplateExtension) {
 		ProjectNode n = (ProjectNode) node.getRoot();
-        IJavaProject project = n.getJavaProject();
-        
-        //NamingConventionに追加されるようならば削除する
-		configs.put(convertKey("FormPackageName"),"form");
-		configs.put(convertKey("FormSuffix"),"Form");
-		configs.put(convertKey("ActionPackageName"),"action");
+		IJavaProject project = n.getJavaProject();
+
+		// NamingConventionに追加されるようならば削除する
+		configs.put(convertKey("FormPackageName"), "form");
+		configs.put(convertKey("FormSuffix"), "Form");
+		configs.put(convertKey("ActionPackageName"), "action");
 		
-		//ここはSAStruts独特の処理
-		String webRootViewPrefix = 
-				getWebRootViewPrefix(project.getProject(), configs.get("webcontentsroot"));
-		
+		// ビューテンプレートの拡張子
+		configs.put(convertKey("ViewTemplateExtension"), viewTemplateExtension);
+
+		// ここはSAStruts独特の処理
+		String webRootViewPrefix = getWebRootViewPrefix(project.getProject(),
+				configs.get("webcontentsroot"));
+
 		if (!StringUtil.isEmpty(webRootViewPrefix)) {
-			if(webRootViewPrefix.startsWith("/")){
+			if (webRootViewPrefix.startsWith("/")) {
 				webRootViewPrefix = webRootViewPrefix.substring(1);
 			}
-			configs.put(convertKey("ViewRootPath"),webRootViewPrefix);
+			configs.put(convertKey("ViewRootPath"), webRootViewPrefix);
 		}
 	}
-	
-	//sa-struts-plugin参照
-	protected String getWebRootViewPrefix(IProject project,String webRoot) {
-		File webXmlFile = ((Path) project.getFile(
-				webRoot + WEB_INF_WEB_XML).getLocation())
-				.toFile();
+
+	// sa-struts-plugin参照
+	protected String getWebRootViewPrefix(IProject project, String webRoot) {
+		File webXmlFile = ((Path) project.getFile(webRoot + WEB_INF_WEB_XML)
+				.getLocation()).toFile();
 		if (webXmlFile.exists()) {
 			String viewPrefix = null;
 			try {
@@ -103,9 +109,8 @@ public class SAStrutsScaffoldModel extends ScaffoldModel {
 			return null;
 		}
 	}
-	
 
-	//sa-struts-plugin参照
+	// sa-struts-plugin参照
 	protected String getViewPrefix(File webXmlFile) throws SAXException,
 			IOException, ParserConfigurationException {
 		DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
@@ -136,8 +141,8 @@ public class SAStrutsScaffoldModel extends ScaffoldModel {
 		return null;
 	}
 
-    private static String convertKey(String key) {
-        return key.toLowerCase();
-    }
+	private static String convertKey(String key) {
+		return key.toLowerCase();
+	}
 
 }

@@ -8,16 +8,15 @@ import org.seasar.dolteng.eclipse.scaffold.ScaffoldModelFactory;
 import org.seasar.dolteng.scaffold.model.SAStrutsScaffoldModel;
 
 /**
- * SAStruts専用のScaffoldModelを作成するFactory
- * 
- * @author newta
+ * SAStruts+Mayaa専用のScaffoldModelを作成するFactory
+ * @author matobat
  */
-public class SAStrutsScaffoldModelFactory extends ScaffoldModelFactory {
+public class SAStrutsMayaaScaffoldModelFactory extends ScaffoldModelFactory {
 
 	@Override
 	public RootModel createScaffoldModel(Map<String, String> configs,
 			TableNode node) {
-
-		return new SAStrutsScaffoldModel(configs, node, "jsp");
+		
+		return new SAStrutsScaffoldModel(configs, node, "html");
 	}
 }
