@@ -22,7 +22,6 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
 	@Resource
 	protected ${configs.table_capitalize}Form ${configs.table}Form;
 
-	@ActionForm
     @Resource
 	protected ${configs.table_capitalize}${configs.servicesuffix} ${configs.table}${configs.servicesuffix};
 
