@@ -209,6 +209,8 @@ public final class Constants {
     
     public static final String VIEW_TYPE_SASTRUTS = "SA-Struts";
 
+    public static final String VIEW_TYPE_SASTRUTSMAYAA = "SA-Struts+Mayaa";
+
     public static final String DAO_TYPE_KUINADAO = "Kuina-Dao";
 
     public static final String DAO_TYPE_S2DAO = "S2Dao";
