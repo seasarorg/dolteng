@@ -134,9 +134,6 @@ public class DoltengNature implements DoltengProject, IProjectNature {
             if (Constants.DAO_TYPE_KUINADAO
                     .equals(this.preference.getDaoType())) {
                 this.registry = new KuinaTypeMappingRegistry();
-            } else if (Constants.DAO_TYPE_S2JDBC.equals(this.preference
-                    .getDaoType())) {
-                this.registry = new BasicTypeMappingRegistry();
             } else {
                 this.registry = new StandardTypeMappingRegistry();
             }
