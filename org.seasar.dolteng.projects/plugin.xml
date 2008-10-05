@@ -729,8 +729,6 @@
         <entry kind="file" path="src/main/flex/Main.mxml" />
         <entry path="src/main/flex/${packagePath}/dto" />
         <entry path="src/main/flex/${packagePath}/web" />
-        <entry kind="file" path="${mainResourcePath}/amf3.dicon" />
-        <entry kind="file" path="${mainResourcePath}/remoting_amf3.dicon" />
         <entry kind="file" path="${webAppRoot}/WEB-INF/web.xml" />
       </handler>
       <handler type="classpath" resourceLoader="maven">
