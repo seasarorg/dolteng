@@ -21,18 +21,18 @@ public class ${configs.table_capitalize} {
 
 <#list mappings as mapping>
 <#if mapping.isPrimaryKey() = true>
-	@Id
-	@GeneratedValue
+    @Id
+    @GeneratedValue
 <#elseif isVersionColumn(mapping) = true>
-	@Version
+    @Version
 </#if>
 <#if mapping.isDate() = true>
-	@Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
 </#if>
 <#if mapping.sqlColumnName.equalsIgnoreCase(mapping.javaFieldName) = false>
-	@Column(name="${mapping.sqlColumnName}")
+    @Column(name="${mapping.sqlColumnName}")
 </#if>
-	public ${getJavaClassName(mapping)} ${mapping.javaFieldName};
+    public ${getJavaClassName(mapping)} ${mapping.javaFieldName};
 
 </#list>
 }
