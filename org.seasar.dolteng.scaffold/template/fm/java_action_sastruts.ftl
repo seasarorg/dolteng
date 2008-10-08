@@ -27,11 +27,6 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
 
     @Execute(validator = false)
     public String index() {
-        return list();
-    }
-
-    @Execute(validator = false)
-    public String list() {
         ${configs.table}Items = ${configs.table}${configs.servicesuffix}.findAll();
         return "list.${configs.viewtemplateextension}";
     }
@@ -74,7 +69,7 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
             .execute();
     }
 	
-    @Execute(input = "create.${configs.viewtemplateextension}", validate = "validateInsert", redirect = true)
+    @Execute(input = "create.${configs.viewtemplateextension}", redirect = true)
     public String insert() {
         ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form)
             .execute();
@@ -82,21 +77,11 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
         return "/${configs.table}/";
     }
 	
-    @Execute(input = "create.${configs.viewtemplateextension}", validate = "validateUpdate", redirect = true)
+    @Execute(input = "create.${configs.viewtemplateextension}", redirect = true)
     public String update() {
         ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form)
             .execute();
         ${configs.table}${configs.servicesuffix}.update(entity);
         return "/${configs.table}/";
-    }
-	
-    public ActionMessages validateInsert() {
-        ActionMessages errors = new ActionMessages();
-        return errors;
-    }
-	
-    public ActionMessages validateUpdate() {
-        ActionMessages errors = new ActionMessages();
-        return errors;
     }
 }
