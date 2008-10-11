@@ -30,57 +30,43 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
         ${configs.table}Items = ${configs.table}${configs.servicesuffix}.findAll();
         return "list.${configs.viewtemplateextension}";
     }
-	
+
     @Execute(validator = false, urlPattern = "show<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>")
     public String show() {
-        loadEntity();
+        ${configs.table_capitalize} entity = ${configs.table}${configs.servicesuffix}.findById(${createFormPkeyMethodCallArgsCopy("${configs.table}Form")});
+        Beans.copy(entity, ${configs.table}Form).execute();
         return "show.${configs.viewtemplateextension}";
     }
-	
+
     @Execute(validator = false, urlPattern = "edit<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>")
     public String edit() {
-        loadEntity();
+        ${configs.table_capitalize} entity = ${configs.table}${configs.servicesuffix}.findById(${createFormPkeyMethodCallArgsCopy("${configs.table}Form")});
+        Beans.copy(entity, ${configs.table}Form).execute();
         return "edit.${configs.viewtemplateextension}";
     }
-	
+
     @Execute(validator = false)
     public String create() {
         return "create.${configs.viewtemplateextension}";
     }
-	
+
     @Execute(validator = false, urlPattern = "delete<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if><#if isVersionColumn(mapping) = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>", redirect = true)
     public String delete() {
-        ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form)
-            .execute();
+        ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form).execute();
         ${configs.table}${configs.servicesuffix}.delete(entity);
         return "/${configs.table}/";
     }
-	
-    protected void loadEntity() {
-        ${configs.table_capitalize} entity = ${configs.table}${configs.servicesuffix}.findById(${createFormPkeyMethodCallArgsCopy("${configs.table}Form")});
-        Beans.copy(entity, ${configs.table}Form)
-            .dateConverter("yyyy/MM/dd",new String[]{
-<#list mappings as mapping>
-	<#if mapping.isDate() = true>
-                "${mapping.javaFieldName}",
-	</#if>						
-</#list>
-                })
-            .execute();
-    }
-	
+
     @Execute(input = "create.${configs.viewtemplateextension}", redirect = true)
     public String insert() {
-        ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form)
-            .execute();
+        ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form).execute();
         ${configs.table}${configs.servicesuffix}.insert(entity);
         return "/${configs.table}/";
     }
-	
-    @Execute(input = "create.${configs.viewtemplateextension}", redirect = true)
+
+    @Execute(input = "edit.${configs.viewtemplateextension}", redirect = true)
     public String update() {
-        ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form)
-            .execute();
+        ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form).execute();
         ${configs.table}${configs.servicesuffix}.update(entity);
         return "/${configs.table}/";
     }
