@@ -175,8 +175,12 @@
       </handler>
       <if jre="1.4" root="template/jdt/1.4" />
       <if jre="1.5,1.6" root="template/jdt/1.5">
+        <handler type="default" resourceLoader="composite">
+          <entry kind="file" path="${testResourcePath}/s2junit4.dicon" />
+        </handler>
         <handler type="classpath" resourceLoader="maven">
           <entry kind="file" path="${libPath}/s2-tiger-2.4.30.jar" maven="org.seasar.container,s2-tiger,2.4.30" />
+          <entry kind="file" path="${testLibPath}/junit-4.4.jar" maven="junit,junit,4.4" />
         </handler>
       </if>
     </facet>
@@ -1026,7 +1030,6 @@
         <entry kind="file" path="${mainResourcePath}/log4j.properties" />
         <entry kind="file" path="${mainResourcePath}/s2container.dicon" />
         <entry kind="file" path="${mainResourcePath}/META-INF/services/javax.xml.parsers.SAXParserFactory" />
-        <entry kind="file" path="${testResourcePath}/s2junit4.dicon" />
         <entry path="${testJavaPath}/${packagePath}/dao" />
         <entry path="${testJavaPath}/${packagePath}/dto" />
         <entry path="${testJavaPath}/${packagePath}/dxo" />
@@ -1044,7 +1047,6 @@
         <entry kind="file" path="${libPath}/geronimo-interceptor_3.0_spec-1.0.jar" maven="org.apache.geronimo.specs,geronimo-interceptor_3.0_spec,1.0" />
         <entry kind="file" path="${libPath}/geronimo-jpa_3.0_spec-1.0.jar" maven="org.apache.geronimo.specs,geronimo-jpa_3.0_spec,1.0" />
         <entry kind="file" path="${libPath}/kuina-dao-1.0.2.jar" maven="org.seasar.kuina,kuina-dao,1.0.2" />
-        <entry kind="file" path="${testLibPath}/junit-4.4.jar" maven="junit,junit,4.4" />
       </handler>
       <handler type="diigu" resourceLoader="composite" />
       <handler type="dolteng" resourceLoader="composite">
