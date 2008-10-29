@@ -76,6 +76,7 @@
       jdbcmanagername="${jdbcmanagername}"
       classpathref="classpath"
     />
+    <refresh projectName="${projectName}"/>
   </target>
 
   <target name="gen-ddl">
@@ -127,6 +128,7 @@
       jdbcmanagername="${jdbcmanagername}"
       classpathref="classpath"
     />
+    <refresh projectName="${projectName}"/>
   </target>
 
   <target name="migrate">
@@ -138,6 +140,7 @@
       jdbcmanagername="${jdbcmanagername}"
       classpathref="classpath"
     />
+    <refresh projectName="${projectName}"/>
   </target>
 
 </project>
