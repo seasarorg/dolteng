@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.seasar.dolteng.eclipse_0.32.0.jar" id="org.seasar.dolteng.eclipse" version="0.32.0">
+   <feature url="features/org.seasar.dolteng.eclipse_0.33.0.jar" id="org.seasar.dolteng.eclipse" version="0.33.0">
       <category name="Dolteng"/>
    </feature>
-   <feature url="features/org.seasar.dolteng.eclipse.dependency_0.32.0.jar" id="org.seasar.dolteng.eclipse.dependency" version="0.32.0">
+   <feature url="features/org.seasar.dolteng.eclipse.dependency_0.33.0.jar" id="org.seasar.dolteng.eclipse.dependency" version="0.33.0">
       <category name="Dolteng"/>
    </feature>
    <category-def name="Dolteng" label="Dolteng"/>
