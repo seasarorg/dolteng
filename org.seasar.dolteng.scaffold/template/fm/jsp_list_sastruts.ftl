@@ -42,5 +42,5 @@
 <br/>
 <s:link href="create"> create new Object </s:link>
 
-<body>
+</body>
 </html>

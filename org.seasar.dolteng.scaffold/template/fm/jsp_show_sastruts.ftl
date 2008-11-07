@@ -29,5 +29,5 @@
 
 <br/><br/>
 <s:link href="/${configs.table}/">list page</s:link>
-<body>
+</body>
 </html>
