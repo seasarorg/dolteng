@@ -15,8 +15,10 @@
  */
 package org.seasar.dolteng.eclipse.util;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import jp.aonir.fuzzyxml.FuzzyXMLAttribute;
 import jp.aonir.fuzzyxml.FuzzyXMLDocument;
@@ -27,12 +29,16 @@ import jp.aonir.fuzzyxml.XPath;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.seasar.framework.util.InputStreamUtil;
 
 /**
  * @author taichi
  * 
  */
 public class FuzzyXMLUtil {
+
+    protected static Pattern encoding = Pattern
+            .compile("<\\?xml\\s+[^\\?>]*?encoding\\s*=\\s*\"(.*?)\"[^\\?>]*?\\?>");
 
     public static String getChildText(FuzzyXMLElement e) {
         return e.getValue().replaceAll("\"|\r|\n", "");
@@ -48,9 +54,10 @@ public class FuzzyXMLUtil {
 
     public static FuzzyXMLDocument parse(IFile file) throws IOException,
             CoreException {
+        byte[] bytes = InputStreamUtil.getBytes(file.getContents(true));
+        String encoding = getEncoding(bytes);
         FuzzyXMLParser parser = new FuzzyXMLParser();
-        FuzzyXMLDocument doc = parser.parse(new BufferedInputStream(file
-                .getContents(true)));
+        FuzzyXMLDocument doc = parser.parse(new String(bytes, encoding));
         return doc;
     }
 
@@ -70,6 +77,55 @@ public class FuzzyXMLUtil {
             }
         }
         return null;
+    }
+
+    public static String getEncoding(byte[] bytes) {
+        // from BOM
+        if (starts(bytes, new int[] { 0x00, 0x00, 0xFE, 0xFF })) {
+            return "UTF-32BE";
+        } else if (starts(bytes, new int[] { 0xFF, 0xFE, 0x00, 0x00 })) {
+            return "UTF-32LE";
+        } else if (starts(bytes, new int[] { 0xFE, 0xFF })) {
+            return "UTF-16BE";
+        } else if (starts(bytes, new int[] { 0xFF, 0xFE })) {
+            return "UTF-16LE";
+        } else if (starts(bytes, new int[] { 0xEF, 0xBB, 0xBF })) {
+            return "UTF-8";
+        }
+        // from '<'
+        if (starts(bytes, new int[] { 0x00, 0x00, 0x00, 0x3C })) {
+            return "UTF-32BE";
+        } else if (starts(bytes, new int[] { 0x3C, 0x00, 0x00, 0x00 })) {
+            return "UTF-32LE";
+        } else if (starts(bytes, new int[] { 0x00, 0x3C })) {
+            return "UTF-16BE";
+        } else if (starts(bytes, new int[] { 0x3C, 0x00 })) {
+            return "UTF-16LE";
+        }
+        // from XML Declaration
+        String str;
+        try {
+            str = new String(bytes, "ASCII");
+            Matcher matcher = encoding.matcher(str);
+            if (matcher.find()) {
+                return matcher.group(1);
+            }
+        } catch (UnsupportedEncodingException ignore) {
+        }
+        // default
+        return "UTF-8";
+    }
+
+    protected static boolean starts(byte[] array, int[] expected) {
+        if (array.length < expected.length) {
+            return false;
+        }
+        for (int i = 0; i < expected.length; ++i) {
+            if (array[i] != expected[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
