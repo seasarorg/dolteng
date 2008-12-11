@@ -3,13 +3,13 @@
 <repository name='file:/D:/koichik/workspaces/seasar/org.seasar.dolteng.eclipse.update/ - metadata' type='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='1.0.0'>
   <properties size='2'>
     <property name='p2.compressed' value='false'/>
-    <property name='p2.timestamp' value='1225360284963'/>
+    <property name='p2.timestamp' value='1228974896937'/>
   </properties>
   <references size='2'>
     <repository url='http://eclipse.seasar.org/updates/3.2/' type='1' options='0'/>
     <repository url='http://eclipse.seasar.org/updates/3.2/' type='0' options='0'/>
   </references>
-  <units size='34'>
+  <units size='42'>
     <unit id='org.seasar.dolteng.eclipse.dependency.feature.group' version='0.31.1' singleton='false'>
       <update id='org.seasar.dolteng.eclipse.dependency.feature.group' range='[0.0.0,0.31.1)' severity='0'/>
       <properties size='9'>
@@ -1411,7 +1411,7 @@
       <touchpointData size='1'>
         <instructions size='1'>
           <instruction key='manifest'>
-            Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: Dolteng Chura Project Creator&#xA;Bundle-Activator: org.seasar.dolteng.projects.Activator&#xA;Manifest-Version: 1.0&#xA;Bundle-Vendor: %plugin.author&#xA;Bundle-ClassPath: dolteng-projects.jar,lib/serializer.jar,lib/xalan-2.6.0.jar,lib/xpp3_min-1.1.3.4.O.jar,lib/xstream-1.2.1.jar&#xA;Bundle-SymbolicName: org.seasar.dolteng.projects;singleton:=true&#xA;Bundle-ManifestVersion: 2&#xA;Eclipse-LazyStart: true&#xA;Bundle-Version: 0.33.0&#xA;Bundle-Localization: plugin&#xA;Export-Package: org.seasar.dolteng.projects,org.seasar.dolteng.projects.handler,org.seasar.dolteng.projects.handler.impl,org.seasar.dolteng.projects.model,org.seasar.dolteng.projects.wizard&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.ui.ide,org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.jdt.core,org.eclipse.jdt.launching,org.eclipse.jdt.ui,org.seasar.dolteng.eclipse&#xA;
+            Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: Dolteng Chura Project Creator&#xA;Bundle-Activator: org.seasar.dolteng.projects.Activator&#xA;Manifest-Version: 1.0&#xA;Bundle-Vendor: %plugin.author&#xA;Bundle-ClassPath: dolteng-projects.jar,lib/serializer.jar,lib/xalan-2.6.0.jar,lib/xpp3_min-1.1.3.4.O.jar,lib/xstream-1.2.1.jar&#xA;Bundle-SymbolicName: org.seasar.dolteng.projects;singleton:=true&#xA;Bundle-ManifestVersion: 2&#xA;Eclipse-LazyStart: true&#xA;Bundle-Version: 0.33.0&#xA;Bundle-Localization: plugin&#xA;Export-Package: org.seasar.dolteng.projects,org.seasar.dolteng.projects.handler,org.seasar.dolteng.projects.handler.impl,org.seasar.dolteng.projects.model,org.seasar.dolteng.projects.wizard&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.ui.ide,org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.jdt.core,org.eclipse.jdt.launching,org.eclipse.jdt.ui,org.seasar.dolteng.eclipse
           </instruction>
         </instructions>
       </touchpointData>
@@ -1606,7 +1606,7 @@
       <touchpointData size='1'>
         <instructions size='1'>
           <instruction key='manifest'>
-            Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: %plugin.brand&#xA;Bundle-Activator: org.seasar.dolteng.eclipse.DoltengCore&#xA;Manifest-Version: 1.0&#xA;Bundle-Vendor: %plugin.author&#xA;Bundle-ClassPath: dolteng-core.jar,template/jars/aopalliance-1.0.jar,template/jars/commons-logging-1.1.jar,template/jars/commons-collections-3.1.jar,template/jars/log4j-1.2.13.jar,template/jars/ognl-2.6.9-patch-20070908.jar,template/jars/fuzzyxml-0.0.9.jar,template/jars/commons-jxpath-1.2.jar,template/jars/freemarker-2.3.8.jar,template/jars/javassist-3.4.ga.jar,template/jars/s2-extension-2.4.32.jar,template/jars/s2-framework-2.4.32.jar,template/jars/s2-tiger-2.4.32.jar,template/jars/metaas-0.5.jar,template/jars/antlr-2.7.6.jar,template/jars/antlr-20070101.jar,template/jars/stringtemplate-2.3b9.jar,template/jars/junit-3.8.2.jar,template/jars/kuina-dao-1.0.2.jar,template/jars/geronimo-jpa_3.0_spec-1.0.jar,template/jars/geronimo-jta_1.1_spec-1.0.jar,template/jars/geronimo-servlet_2.4_spec-1.0.jar,template/jars/h2-2008-03-29.jar,lib/commons-cli-1.0.jar,lib/commons-httpclient-2.0.2.jar,lib/commons-io-1.3.1.jar,lib/commons-lang-1.0.jar,lib/commons-logging-1.0.4.jar,lib/commons-vfs-1.0.jar,lib/jaxen-1.0-FCS.jar,lib/jdom-1.0.jar,lib/mvnbeans-1.0-SNAPSHOT.jar,lib/saxpath-1.0-FCS.jar&#xA;Bundle-SymbolicName: org.seasar.dolteng.eclipse; singleton:=true&#xA;Bundle-ManifestVersion: 2&#xA;Eclipse-LazyStart: true&#xA;Bundle-Version: 0.33.0&#xA;Bundle-Localization: plugin&#xA;Export-Package: org.h2,org.h2.api,org.h2.bnf,org.h2.command,org.h2.command.ddl,org.h2.command.dml,org.h2.compress,org.h2.constraint,org.h2.engine,org.h2.expression,org.h2.fulltext,org.h2.index,org.h2.jdbc,org.h2.jdbcx,org.h2.message,org.h2.result,org.h2.schema,org.h2.security,org.h2.server,org.h2.server.ftp,org.h2.server.web,org.h2.store,org.h2.table,org.h2.tools,org.h2.util,org.h2.value,org.seasar.dolteng.core.convention,org.seasar.dolteng.core.dao,org.seasar.dolteng.core.dao.impl,org.seasar.dolteng.core.entity,org.seasar.dolteng.core.entity.impl,org.seasar.dolteng.core.kuina,org.seasar.dolteng.core.teeda,org.seasar.dolteng.core.template,org.seasar.dolteng.core.template.impl,org.seasar.dolteng.core.types,org.seasar.dolteng.core.types.impl,org.seasar.dolteng.eclipse,org.seasar.dolteng.eclipse.action,org.seasar.dolteng.eclipse.ast,org.seasar.dolteng.eclipse.builder,org.seasar.dolteng.eclipse.convention,org.seasar.dolteng.eclipse.loader,org.seasar.dolteng.eclipse.loader.impl,org.seasar.dolteng.eclipse.marker,org.seasar.dolteng.eclipse.model,org.seasar.dolteng.eclipse.model.impl,org.seasar.dolteng.eclipse.nature,org.seasar.dolteng.eclipse.nls,org.seasar.dolteng.eclipse.operation,org.seasar.dolteng.eclipse.part,org.seasar.dolteng.eclipse.preferences,org.seasar.dolteng.eclipse.preferences.impl,org.seasar.dolteng.eclipse.scaffold,org.seasar.dolteng.eclipse.startup,org.seasar.dolteng.eclipse.template,org.seasar.dolteng.eclipse.util,org.seasar.dolteng.eclipse.viewer,org.seasar.dolteng.eclipse.viewer.impl,org.seasar.dolteng.eclipse.wigets,org.seasar.dolteng.eclipse.wizard,org.seasar.eclipse.common,org.seasar.eclipse.common.action,org.seasar.eclipse.common.launch,org.seasar.eclipse.common.preference,org.seasar.eclipse.common.util,org.seasar.eclipse.common.variable,org.seasar.eclipse.common.viewer,org.seasar.eclipse.common.wiget,org.seasar.extension.component,org.seasar.extension.component.impl,org.seasar.extension.dao,org.seasar.extension.dao.helper,org.seasar.extension.dao.helper.impl,org.seasar.extension.dataset,org.seasar.extension.dataset.impl,org.seasar.extension.dataset.states,org.seasar.extension.dataset.types,org.seasar.extension.datasource,org.seasar.extension.datasource.impl,org.seasar.extension.dbcp,org.seasar.extension.dbcp.impl,org.seasar.extension.dxo,org.seasar.extension.dxo.annotation,org.seasar.extension.dxo.annotation.impl,org.seasar.extension.dxo.builder,org.seasar.extension.dxo.builder.impl,org.seasar.extension.dxo.command,org.seasar.extension.dxo.command.impl,org.seasar.extension.dxo.converter,org.seasar.extension.dxo.converter.impl,org.seasar.extension.dxo.exception,org.seasar.extension.dxo.meta,org.seasar.extension.dxo.meta.impl,org.seasar.extension.dxo.util,org.seasar.extension.filter,org.seasar.extension.j2ee,org.seasar.extension.jdbc,org.seasar.extension.jdbc.impl,org.seasar.extension.jdbc.types,org.seasar.extension.jdbc.util,org.seasar.extension.jta,org.seasar.extension.jta.xa,org.seasar.extension.sql,org.seasar.extension.sql.context,org.seasar.extension.sql.node,org.seasar.extension.sql.parser,org.seasar.extension.timer,org.seasar.extension.tx,org.seasar.extension.unit,org.seasar.framework.aop,org.seasar.framework.aop.impl,org.seasar.framework.aop.interceptors,org.seasar.framework.aop.intertype,org.seasar.framework.aop.javassist,org.seasar.framework.aop.proxy,org.seasar.framework.autodetector,org.seasar.framework.autodetector.impl,org.seasar.framework.beans,org.seasar.framework.beans.factory,org.seasar.framework.beans.impl,org.seasar.framework.beans.util,org.seasar.framework.container,org.seasar.framework.container.assembler,org.seasar.framework.container.autoregister,org.seasar.framework.container.cooldeploy,org.seasar.framework.container.creator,org.seasar.framework.container.customizer,org.seasar.framework.container.deployer,org.seasar.framework.container.external,org.seasar.framework.container.external.portlet,org.seasar.framework.container.external.servlet,org.seasar.framework.container.factory,org.seasar.framework.container.filter,org.seasar.framework.container.hotdeploy,org.seasar.framework.container.impl,org.seasar.framework.container.ognl,org.seasar.framework.container.servlet,org.seasar.framework.container.util,org.seasar.framework.container.warmdeploy,org.seasar.framework.convention,org.seasar.framework.convention.impl,org.seasar.framework.env,org.seasar.framework.exception,org.seasar.framework.log,org.seasar.framework.message,org.seasar.framework.mock.portlet,org.seasar.framework.mock.servlet,org.seasar.framework.unit,org.seasar.framework.util,org.seasar.framework.xml&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.ui.ide,org.eclipse.ui.editors,org.eclipse.ui.workbench.texteditor,org.eclipse.core.filebuffers,org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.debug.core,org.eclipse.debug.ui,org.eclipse.jdt.core,org.eclipse.jdt.ui,org.eclipse.jdt.launching,org.eclipse.jface.text&#xA;
+            Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: %plugin.brand&#xA;Bundle-Activator: org.seasar.dolteng.eclipse.DoltengCore&#xA;Manifest-Version: 1.0&#xA;Bundle-Vendor: %plugin.author&#xA;Bundle-ClassPath: dolteng-core.jar,template/jars/aopalliance-1.0.jar,template/jars/commons-logging-1.1.jar,template/jars/commons-collections-3.1.jar,template/jars/log4j-1.2.13.jar,template/jars/ognl-2.6.9-patch-20070908.jar,template/jars/fuzzyxml-0.0.9.jar,template/jars/commons-jxpath-1.2.jar,template/jars/freemarker-2.3.8.jar,template/jars/javassist-3.4.ga.jar,template/jars/s2-extension-2.4.32.jar,template/jars/s2-framework-2.4.32.jar,template/jars/s2-tiger-2.4.32.jar,template/jars/metaas-0.5.jar,template/jars/antlr-2.7.6.jar,template/jars/antlr-20070101.jar,template/jars/stringtemplate-2.3b9.jar,template/jars/junit-3.8.2.jar,template/jars/kuina-dao-1.0.2.jar,template/jars/geronimo-jpa_3.0_spec-1.0.jar,template/jars/geronimo-jta_1.1_spec-1.0.jar,template/jars/geronimo-servlet_2.4_spec-1.0.jar,template/jars/h2-2008-03-29.jar,lib/commons-cli-1.0.jar,lib/commons-httpclient-2.0.2.jar,lib/commons-io-1.3.1.jar,lib/commons-lang-1.0.jar,lib/commons-logging-1.0.4.jar,lib/commons-vfs-1.0.jar,lib/jaxen-1.0-FCS.jar,lib/jdom-1.0.jar,lib/mvnbeans-1.0-SNAPSHOT.jar,lib/saxpath-1.0-FCS.jar&#xA;Bundle-SymbolicName: org.seasar.dolteng.eclipse; singleton:=true&#xA;Bundle-ManifestVersion: 2&#xA;Eclipse-LazyStart: true&#xA;Bundle-Version: 0.33.0&#xA;Bundle-Localization: plugin&#xA;Export-Package: org.h2,org.h2.api,org.h2.bnf,org.h2.command,org.h2.command.ddl,org.h2.command.dml,org.h2.compress,org.h2.constraint,org.h2.engine,org.h2.expression,org.h2.fulltext,org.h2.index,org.h2.jdbc,org.h2.jdbcx,org.h2.message,org.h2.result,org.h2.schema,org.h2.security,org.h2.server,org.h2.server.ftp,org.h2.server.web,org.h2.store,org.h2.table,org.h2.tools,org.h2.util,org.h2.value,org.seasar.dolteng.core.convention,org.seasar.dolteng.core.dao,org.seasar.dolteng.core.dao.impl,org.seasar.dolteng.core.entity,org.seasar.dolteng.core.entity.impl,org.seasar.dolteng.core.kuina,org.seasar.dolteng.core.teeda,org.seasar.dolteng.core.template,org.seasar.dolteng.core.template.impl,org.seasar.dolteng.core.types,org.seasar.dolteng.core.types.impl,org.seasar.dolteng.eclipse,org.seasar.dolteng.eclipse.action,org.seasar.dolteng.eclipse.ast,org.seasar.dolteng.eclipse.builder,org.seasar.dolteng.eclipse.convention,org.seasar.dolteng.eclipse.loader,org.seasar.dolteng.eclipse.loader.impl,org.seasar.dolteng.eclipse.marker,org.seasar.dolteng.eclipse.model,org.seasar.dolteng.eclipse.model.impl,org.seasar.dolteng.eclipse.nature,org.seasar.dolteng.eclipse.nls,org.seasar.dolteng.eclipse.operation,org.seasar.dolteng.eclipse.part,org.seasar.dolteng.eclipse.preferences,org.seasar.dolteng.eclipse.preferences.impl,org.seasar.dolteng.eclipse.scaffold,org.seasar.dolteng.eclipse.startup,org.seasar.dolteng.eclipse.template,org.seasar.dolteng.eclipse.util,org.seasar.dolteng.eclipse.viewer,org.seasar.dolteng.eclipse.viewer.impl,org.seasar.dolteng.eclipse.wigets,org.seasar.dolteng.eclipse.wizard,org.seasar.eclipse.common,org.seasar.eclipse.common.action,org.seasar.eclipse.common.launch,org.seasar.eclipse.common.preference,org.seasar.eclipse.common.util,org.seasar.eclipse.common.variable,org.seasar.eclipse.common.viewer,org.seasar.eclipse.common.wiget,org.seasar.extension.component,org.seasar.extension.component.impl,org.seasar.extension.dao,org.seasar.extension.dao.helper,org.seasar.extension.dao.helper.impl,org.seasar.extension.dataset,org.seasar.extension.dataset.impl,org.seasar.extension.dataset.states,org.seasar.extension.dataset.types,org.seasar.extension.datasource,org.seasar.extension.datasource.impl,org.seasar.extension.dbcp,org.seasar.extension.dbcp.impl,org.seasar.extension.dxo,org.seasar.extension.dxo.annotation,org.seasar.extension.dxo.annotation.impl,org.seasar.extension.dxo.builder,org.seasar.extension.dxo.builder.impl,org.seasar.extension.dxo.command,org.seasar.extension.dxo.command.impl,org.seasar.extension.dxo.converter,org.seasar.extension.dxo.converter.impl,org.seasar.extension.dxo.exception,org.seasar.extension.dxo.meta,org.seasar.extension.dxo.meta.impl,org.seasar.extension.dxo.util,org.seasar.extension.filter,org.seasar.extension.j2ee,org.seasar.extension.jdbc,org.seasar.extension.jdbc.impl,org.seasar.extension.jdbc.types,org.seasar.extension.jdbc.util,org.seasar.extension.jta,org.seasar.extension.jta.xa,org.seasar.extension.sql,org.seasar.extension.sql.context,org.seasar.extension.sql.node,org.seasar.extension.sql.parser,org.seasar.extension.timer,org.seasar.extension.tx,org.seasar.extension.unit,org.seasar.framework.aop,org.seasar.framework.aop.impl,org.seasar.framework.aop.interceptors,org.seasar.framework.aop.intertype,org.seasar.framework.aop.javassist,org.seasar.framework.aop.proxy,org.seasar.framework.autodetector,org.seasar.framework.autodetector.impl,org.seasar.framework.beans,org.seasar.framework.beans.factory,org.seasar.framework.beans.impl,org.seasar.framework.beans.util,org.seasar.framework.container,org.seasar.framework.container.assembler,org.seasar.framework.container.autoregister,org.seasar.framework.container.cooldeploy,org.seasar.framework.container.creator,org.seasar.framework.container.customizer,org.seasar.framework.container.deployer,org.seasar.framework.container.external,org.seasar.framework.container.external.portlet,org.seasar.framework.container.external.servlet,org.seasar.framework.container.factory,org.seasar.framework.container.filter,org.seasar.framework.container.hotdeploy,org.seasar.framework.container.impl,org.seasar.framework.container.ognl,org.seasar.framework.container.servlet,org.seasar.framework.container.util,org.seasar.framework.container.warmdeploy,org.seasar.framework.convention,org.seasar.framework.convention.impl,org.seasar.framework.env,org.seasar.framework.exception,org.seasar.framework.log,org.seasar.framework.message,org.seasar.framework.mock.portlet,org.seasar.framework.mock.servlet,org.seasar.framework.unit,org.seasar.framework.util,org.seasar.framework.xml&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.ui.ide,org.eclipse.ui.editors,org.eclipse.ui.workbench.texteditor,org.eclipse.core.filebuffers,org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.debug.core,org.eclipse.debug.ui,org.eclipse.jdt.core,org.eclipse.jdt.ui,org.eclipse.jdt.launching,org.eclipse.jface.text
           </instruction>
         </instructions>
       </touchpointData>
@@ -1667,7 +1667,7 @@
       <touchpointData size='1'>
         <instructions size='2'>
           <instruction key='manifest'>
-            Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Manifest-Version: 1.0&#xA;Bundle-Version: 0.33.0&#xA;Bundle-SymbolicName: org.seasar.dolteng.projects.dependencies1&#xA;Bundle-Localization: plugin&#xA;Bundle-ClassPath: dolteng-projects-dependencies1.jar&#xA;Bundle-Name: Chura Project Dependencies Holder1&#xA;Bundle-Vendor: %plugin.author&#xA;Eclipse-LazyStart: true&#xA;
+            Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Manifest-Version: 1.0&#xA;Bundle-Version: 0.33.0&#xA;Bundle-SymbolicName: org.seasar.dolteng.projects.dependencies1&#xA;Bundle-Localization: plugin&#xA;Bundle-ClassPath: dolteng-projects-dependencies1.jar&#xA;Bundle-Name: Chura Project Dependencies Holder1&#xA;Bundle-Vendor: %plugin.author&#xA;Eclipse-LazyStart: true
           </instruction>
           <instruction key='zipped'>
             true
@@ -1693,7 +1693,7 @@
       <touchpointData size='1'>
         <instructions size='2'>
           <instruction key='manifest'>
-            Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Manifest-Version: 1.0&#xA;Bundle-Version: 0.33.0&#xA;Bundle-SymbolicName: org.seasar.dolteng.projects.dependencies2&#xA;Bundle-Localization: plugin&#xA;Bundle-ClassPath: dolteng-projects-dependencies2.jar&#xA;Bundle-Name: Chura Project Dependencies Holder2&#xA;Bundle-Vendor: %plugin.author&#xA;Eclipse-LazyStart: true&#xA;
+            Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Manifest-Version: 1.0&#xA;Bundle-Version: 0.33.0&#xA;Bundle-SymbolicName: org.seasar.dolteng.projects.dependencies2&#xA;Bundle-Localization: plugin&#xA;Bundle-ClassPath: dolteng-projects-dependencies2.jar&#xA;Bundle-Name: Chura Project Dependencies Holder2&#xA;Bundle-Vendor: %plugin.author&#xA;Eclipse-LazyStart: true
           </instruction>
           <instruction key='zipped'>
             true
@@ -1777,10 +1777,472 @@
       <touchpointData size='1'>
         <instructions size='1'>
           <instruction key='manifest'>
-            Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Localization: plugin&#xA;Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.jdt.core,org.seasar.dolteng.eclipse&#xA;Bundle-Activator: org.seasar.dolteng.scaffold.Activator&#xA;Bundle-Name: Dolteng Scaffold Creator&#xA;Bundle-Version: 0.33.0&#xA;Bundle-Vendor: %plugin.author&#xA;Bundle-SymbolicName: org.seasar.dolteng.scaffold;singleton:=true&#xA;Bundle-ClassPath: dolteng-scaffold.jar&#xA;Manifest-Version: 1.0&#xA;Eclipse-LazyStart: true&#xA;
+            Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Localization: plugin&#xA;Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.jdt.core,org.seasar.dolteng.eclipse&#xA;Bundle-Activator: org.seasar.dolteng.scaffold.Activator&#xA;Bundle-Name: Dolteng Scaffold Creator&#xA;Bundle-Version: 0.33.0&#xA;Bundle-Vendor: %plugin.author&#xA;Bundle-SymbolicName: org.seasar.dolteng.scaffold;singleton:=true&#xA;Bundle-ClassPath: dolteng-scaffold.jar&#xA;Manifest-Version: 1.0&#xA;Eclipse-LazyStart: true
           </instruction>
         </instructions>
       </touchpointData>
+    </unit>
+    <unit id='org.seasar.dolteng.projects.dependencies1' version='0.34.0' singleton='false'>
+      <update id='org.seasar.dolteng.projects.dependencies1' range='[0.0.0,0.34.0)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='Chura Project Dependencies Holder1'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%plugin.author'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.projects.dependencies1' version='0.34.0'/>
+        <provided namespace='osgi.bundle' name='org.seasar.dolteng.projects.dependencies1' version='0.34.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.seasar.dolteng.projects.dependencies1' version='0.34.0'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Manifest-Version: 1.0&#xA;Bundle-Version: 0.34.0&#xA;Bundle-SymbolicName: org.seasar.dolteng.projects.dependencies1&#xA;Bundle-Localization: plugin&#xA;Bundle-ClassPath: dolteng-projects-dependencies1.jar&#xA;Bundle-Name: Chura Project Dependencies Holder1&#xA;Bundle-Vendor: %plugin.author&#xA;Eclipse-LazyStart: true&#xA;
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.seasar.dolteng.eclipse.dependency.feature.jar' version='0.34.0'>
+      <update id='org.seasar.dolteng.eclipse.dependency.feature.jar' range='[0.0.0,0.34.0)' severity='0'/>
+      <properties size='8'>
+        <property name='org.eclipse.equinox.p2.name' value='%plugin.brand'/>
+        <property name='org.eclipse.equinox.p2.description' value='Dolteng All In One Project'/>
+        <property name='org.eclipse.equinox.p2.description.url' value='http://s2container.seasar.org/'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%author'/>
+        <property name='ja.plugin.brand' value='Dolteng オフライン用依存ライブラリ (optional)'/>
+        <property name='ja.author' value='Seasarファウンデーション'/>
+        <property name='df_LT.plugin.brand' value='Dolteng Dependency for offline (optional)'/>
+        <property name='df_LT.author' value='the Seasar Foundation'/>
+      </properties>
+      <provides size='5'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.eclipse.dependency.feature.jar' version='0.34.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='org.seasar.dolteng.eclipse.dependency' version='0.34.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='ja' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='org.seasar.dolteng.eclipse.dependency' version='0.34.0'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+      <licenses size='1'>
+        <license url='http://www.apache.org/licenses/LICENSE-2.0'>
+          Copyright 2004-2007 the Seasar Foundation and the Others.&#xA;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#xA;you may not use this file except in compliance with the License.&#xA;You may obtain a copy of the License at&#xA;http://www.apache.org/licenses/LICENSE-2.0&#xA;Unless required by applicable law or agreed to in writing, software&#xA;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#xA;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, &#xA;either express or implied. See the License for the specific language&#xA;governing permissions and limitations under the License.
+        </license>
+      </licenses>
+      <copyright>
+        Copyright 2004-2007 the Seasar Foundation and the Others.
+      </copyright>
+    </unit>
+    <unit id='org.seasar.dolteng.eclipse.feature.jar' version='0.34.0'>
+      <update id='org.seasar.dolteng.eclipse.feature.jar' range='[0.0.0,0.34.0)' severity='0'/>
+      <properties size='8'>
+        <property name='org.eclipse.equinox.p2.name' value='%plugin.brand'/>
+        <property name='org.eclipse.equinox.p2.description' value='Dolteng All In One Project'/>
+        <property name='org.eclipse.equinox.p2.description.url' value='http://s2container.seasar.org/'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%author'/>
+        <property name='ja.plugin.brand' value='Dolteng Eclipse プラグイン'/>
+        <property name='ja.author' value='Seasarファウンデーション'/>
+        <property name='df_LT.plugin.brand' value='Dolteng Eclipse Plugin'/>
+        <property name='df_LT.author' value='the Seasar Foundation'/>
+      </properties>
+      <provides size='5'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.eclipse.feature.jar' version='0.34.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='org.seasar.dolteng.eclipse' version='0.34.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='ja' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='org.seasar.dolteng.eclipse' version='0.34.0'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+      <licenses size='1'>
+        <license url='http://www.apache.org/licenses/LICENSE-2.0'>
+          Copyright 2004-2007 the Seasar Foundation and the Others.&#xA;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#xA;you may not use this file except in compliance with the License.&#xA;You may obtain a copy of the License at&#xA;http://www.apache.org/licenses/LICENSE-2.0&#xA;Unless required by applicable law or agreed to in writing, software&#xA;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#xA;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, &#xA;either express or implied. See the License for the specific language&#xA;governing permissions and limitations under the License.
+        </license>
+      </licenses>
+      <copyright>
+        Copyright 2004-2007 the Seasar Foundation and the Others.
+      </copyright>
+    </unit>
+    <unit id='org.seasar.dolteng.scaffold' version='0.34.0'>
+      <update id='org.seasar.dolteng.scaffold' range='[0.0.0,0.34.0)' severity='0'/>
+      <properties size='4'>
+        <property name='ja.plugin.author' value='Seasarファウンデーション'/>
+        <property name='df_LT.plugin.author' value='the Seasar Foundation'/>
+        <property name='org.eclipse.equinox.p2.name' value='Dolteng Scaffold Creator'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%plugin.author'/>
+      </properties>
+      <provides size='5'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.scaffold' version='0.34.0'/>
+        <provided namespace='osgi.bundle' name='org.seasar.dolteng.scaffold' version='0.34.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='ja' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='4'>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.core' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.seasar.dolteng.eclipse' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.seasar.dolteng.scaffold' version='0.34.0'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Localization: plugin&#xA;Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.jdt.core,org.seasar.dolteng.eclipse&#xA;Bundle-Activator: org.seasar.dolteng.scaffold.Activator&#xA;Bundle-Name: Dolteng Scaffold Creator&#xA;Bundle-Version: 0.34.0&#xA;Bundle-Vendor: %plugin.author&#xA;Bundle-SymbolicName: org.seasar.dolteng.scaffold;singleton:=true&#xA;Bundle-ClassPath: dolteng-scaffold.jar&#xA;Manifest-Version: 1.0&#xA;Eclipse-LazyStart: true&#xA;
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.seasar.dolteng.projects' version='0.34.0'>
+      <update id='org.seasar.dolteng.projects' range='[0.0.0,0.34.0)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='Dolteng Chura Project Creator'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%plugin.author'/>
+      </properties>
+      <provides size='8'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.projects' version='0.34.0'/>
+        <provided namespace='osgi.bundle' name='org.seasar.dolteng.projects' version='0.34.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.projects' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.projects.handler' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.projects.handler.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.projects.model' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.projects.wizard' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='8'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.core' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.launching' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.seasar.dolteng.eclipse' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.seasar.dolteng.projects' version='0.34.0'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: Dolteng Chura Project Creator&#xA;Bundle-Activator: org.seasar.dolteng.projects.Activator&#xA;Manifest-Version: 1.0&#xA;Bundle-Vendor: %plugin.author&#xA;Bundle-ClassPath: dolteng-projects.jar,lib/serializer.jar,lib/xalan-2.6.0.jar,lib/xpp3_min-1.1.3.4.O.jar,lib/xstream-1.2.1.jar&#xA;Bundle-SymbolicName: org.seasar.dolteng.projects;singleton:=true&#xA;Bundle-ManifestVersion: 2&#xA;Eclipse-LazyStart: true&#xA;Bundle-Version: 0.34.0&#xA;Bundle-Localization: plugin&#xA;Export-Package: org.seasar.dolteng.projects,org.seasar.dolteng.projects.handler,org.seasar.dolteng.projects.handler.impl,org.seasar.dolteng.projects.model,org.seasar.dolteng.projects.wizard&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.ui.ide,org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.jdt.core,org.eclipse.jdt.launching,org.eclipse.jdt.ui,org.seasar.dolteng.eclipse&#xA;
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.seasar.dolteng.eclipse.dependency.feature.group' version='0.34.0' singleton='false'>
+      <update id='org.seasar.dolteng.eclipse.dependency.feature.group' range='[0.0.0,0.34.0)' severity='0'/>
+      <properties size='9'>
+        <property name='org.eclipse.equinox.p2.name' value='%plugin.brand'/>
+        <property name='org.eclipse.equinox.p2.description' value='Dolteng All In One Project'/>
+        <property name='org.eclipse.equinox.p2.description.url' value='http://s2container.seasar.org/'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%author'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+        <property name='ja.plugin.brand' value='Dolteng オフライン用依存ライブラリ (optional)'/>
+        <property name='ja.author' value='Seasarファウンデーション'/>
+        <property name='df_LT.plugin.brand' value='Dolteng Dependency for offline (optional)'/>
+        <property name='df_LT.author' value='the Seasar Foundation'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.eclipse.dependency.feature.group' version='0.34.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='ja' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='4'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.projects' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.projects.dependencies1' range='[0.34.0,0.34.0]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.projects.dependencies2' range='[0.33.0,0.33.0]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.eclipse.dependency.feature.jar' range='[0.34.0,0.34.0]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <licenses size='1'>
+        <license url='http://www.apache.org/licenses/LICENSE-2.0'>
+          Copyright 2004-2007 the Seasar Foundation and the Others.&#xA;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#xA;you may not use this file except in compliance with the License.&#xA;You may obtain a copy of the License at&#xA;http://www.apache.org/licenses/LICENSE-2.0&#xA;Unless required by applicable law or agreed to in writing, software&#xA;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#xA;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, &#xA;either express or implied. See the License for the specific language&#xA;governing permissions and limitations under the License.
+        </license>
+      </licenses>
+      <copyright>
+        Copyright 2004-2007 the Seasar Foundation and the Others.
+      </copyright>
+    </unit>
+    <unit id='org.seasar.dolteng.eclipse' version='0.34.0'>
+      <update id='org.seasar.dolteng.eclipse' range='[0.0.0,0.34.0)' severity='0'/>
+      <properties size='6'>
+        <property name='ja.plugin.author' value='Seasarファウンデーション'/>
+        <property name='ja.plugin.brand' value='Dolteng Eclipse プラグイン'/>
+        <property name='df_LT.plugin.author' value='the Seasar Foundation'/>
+        <property name='df_LT.plugin.brand' value='Dolteng Eclipse Plugin'/>
+        <property name='org.eclipse.equinox.p2.name' value='%plugin.brand'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%plugin.author'/>
+      </properties>
+      <provides size='156'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.eclipse' version='0.34.0'/>
+        <provided namespace='osgi.bundle' name='org.seasar.dolteng.eclipse' version='0.34.0'/>
+        <provided namespace='java.package' name='org.h2' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.api' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.bnf' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.command' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.command.ddl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.command.dml' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.compress' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.constraint' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.engine' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.expression' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.fulltext' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.index' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.jdbc' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.jdbcx' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.message' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.result' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.schema' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.security' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.server' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.server.ftp' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.server.web' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.store' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.table' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.tools' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.h2.value' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.core.convention' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.core.dao' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.core.dao.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.core.entity' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.core.entity.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.core.kuina' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.core.teeda' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.core.template' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.core.template.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.core.types' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.core.types.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.action' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.ast' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.builder' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.convention' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.loader' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.loader.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.marker' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.model' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.model.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.nature' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.nls' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.operation' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.part' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.preferences' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.preferences.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.scaffold' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.startup' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.template' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.viewer' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.viewer.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.wigets' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.dolteng.eclipse.wizard' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.eclipse.common' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.eclipse.common.action' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.eclipse.common.launch' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.eclipse.common.preference' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.eclipse.common.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.eclipse.common.variable' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.eclipse.common.viewer' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.eclipse.common.wiget' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.component' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.component.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dao' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dao.helper' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dao.helper.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dataset' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dataset.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dataset.states' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dataset.types' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.datasource' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.datasource.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dbcp' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dbcp.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dxo' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dxo.annotation' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dxo.annotation.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dxo.builder' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dxo.builder.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dxo.command' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dxo.command.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dxo.converter' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dxo.converter.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dxo.exception' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dxo.meta' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dxo.meta.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.dxo.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.filter' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.j2ee' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.jdbc' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.jdbc.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.jdbc.types' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.jdbc.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.jta' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.jta.xa' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.sql' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.sql.context' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.sql.node' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.sql.parser' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.timer' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.tx' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.extension.unit' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.aop' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.aop.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.aop.interceptors' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.aop.intertype' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.aop.javassist' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.aop.proxy' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.autodetector' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.autodetector.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.beans' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.beans.factory' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.beans.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.beans.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.assembler' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.autoregister' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.cooldeploy' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.creator' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.customizer' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.deployer' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.external' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.external.portlet' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.external.servlet' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.factory' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.filter' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.hotdeploy' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.ognl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.servlet' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.container.warmdeploy' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.convention' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.convention.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.env' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.exception' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.log' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.message' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.mock.portlet' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.mock.servlet' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.unit' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.seasar.framework.xml' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='ja' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='13'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.workbench.texteditor' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.filebuffers' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.debug.core' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.debug.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.core' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.launching' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jface.text' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.seasar.dolteng.eclipse' version='0.34.0'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: %plugin.brand&#xA;Bundle-Activator: org.seasar.dolteng.eclipse.DoltengCore&#xA;Manifest-Version: 1.0&#xA;Bundle-Vendor: %plugin.author&#xA;Bundle-ClassPath: dolteng-core.jar,template/jars/aopalliance-1.0.jar,template/jars/commons-logging-1.1.jar,template/jars/commons-collections-3.1.jar,template/jars/log4j-1.2.13.jar,template/jars/ognl-2.6.9-patch-20070908.jar,template/jars/fuzzyxml-0.0.9.jar,template/jars/commons-jxpath-1.2.jar,template/jars/freemarker-2.3.8.jar,template/jars/javassist-3.4.ga.jar,template/jars/s2-extension-2.4.33.jar,template/jars/s2-framework-2.4.33.jar,template/jars/s2-tiger-2.4.33.jar,template/jars/metaas-0.5.jar,template/jars/antlr-2.7.6.jar,template/jars/antlr-20070101.jar,template/jars/stringtemplate-2.3b9.jar,template/jars/junit-3.8.2.jar,template/jars/kuina-dao-1.0.2.jar,template/jars/geronimo-jpa_3.0_spec-1.0.jar,template/jars/geronimo-jta_1.1_spec-1.0.jar,template/jars/geronimo-servlet_2.4_spec-1.0.jar,template/jars/h2-2008-03-29.jar,lib/commons-cli-1.0.jar,lib/commons-httpclient-2.0.2.jar,lib/commons-io-1.3.1.jar,lib/commons-lang-1.0.jar,lib/commons-logging-1.0.4.jar,lib/commons-vfs-1.0.jar,lib/jaxen-1.0-FCS.jar,lib/jdom-1.0.jar,lib/mvnbeans-1.0-SNAPSHOT.jar,lib/saxpath-1.0-FCS.jar&#xA;Bundle-SymbolicName: org.seasar.dolteng.eclipse; singleton:=true&#xA;Bundle-ManifestVersion: 2&#xA;Eclipse-LazyStart: true&#xA;Bundle-Version: 0.34.0&#xA;Bundle-Localization: plugin&#xA;Export-Package: org.h2,org.h2.api,org.h2.bnf,org.h2.command,org.h2.command.ddl,org.h2.command.dml,org.h2.compress,org.h2.constraint,org.h2.engine,org.h2.expression,org.h2.fulltext,org.h2.index,org.h2.jdbc,org.h2.jdbcx,org.h2.message,org.h2.result,org.h2.schema,org.h2.security,org.h2.server,org.h2.server.ftp,org.h2.server.web,org.h2.store,org.h2.table,org.h2.tools,org.h2.util,org.h2.value,org.seasar.dolteng.core.convention,org.seasar.dolteng.core.dao,org.seasar.dolteng.core.dao.impl,org.seasar.dolteng.core.entity,org.seasar.dolteng.core.entity.impl,org.seasar.dolteng.core.kuina,org.seasar.dolteng.core.teeda,org.seasar.dolteng.core.template,org.seasar.dolteng.core.template.impl,org.seasar.dolteng.core.types,org.seasar.dolteng.core.types.impl,org.seasar.dolteng.eclipse,org.seasar.dolteng.eclipse.action,org.seasar.dolteng.eclipse.ast,org.seasar.dolteng.eclipse.builder,org.seasar.dolteng.eclipse.convention,org.seasar.dolteng.eclipse.loader,org.seasar.dolteng.eclipse.loader.impl,org.seasar.dolteng.eclipse.marker,org.seasar.dolteng.eclipse.model,org.seasar.dolteng.eclipse.model.impl,org.seasar.dolteng.eclipse.nature,org.seasar.dolteng.eclipse.nls,org.seasar.dolteng.eclipse.operation,org.seasar.dolteng.eclipse.part,org.seasar.dolteng.eclipse.preferences,org.seasar.dolteng.eclipse.preferences.impl,org.seasar.dolteng.eclipse.scaffold,org.seasar.dolteng.eclipse.startup,org.seasar.dolteng.eclipse.template,org.seasar.dolteng.eclipse.util,org.seasar.dolteng.eclipse.viewer,org.seasar.dolteng.eclipse.viewer.impl,org.seasar.dolteng.eclipse.wigets,org.seasar.dolteng.eclipse.wizard,org.seasar.eclipse.common,org.seasar.eclipse.common.action,org.seasar.eclipse.common.launch,org.seasar.eclipse.common.preference,org.seasar.eclipse.common.util,org.seasar.eclipse.common.variable,org.seasar.eclipse.common.viewer,org.seasar.eclipse.common.wiget,org.seasar.extension.component,org.seasar.extension.component.impl,org.seasar.extension.dao,org.seasar.extension.dao.helper,org.seasar.extension.dao.helper.impl,org.seasar.extension.dataset,org.seasar.extension.dataset.impl,org.seasar.extension.dataset.states,org.seasar.extension.dataset.types,org.seasar.extension.datasource,org.seasar.extension.datasource.impl,org.seasar.extension.dbcp,org.seasar.extension.dbcp.impl,org.seasar.extension.dxo,org.seasar.extension.dxo.annotation,org.seasar.extension.dxo.annotation.impl,org.seasar.extension.dxo.builder,org.seasar.extension.dxo.builder.impl,org.seasar.extension.dxo.command,org.seasar.extension.dxo.command.impl,org.seasar.extension.dxo.converter,org.seasar.extension.dxo.converter.impl,org.seasar.extension.dxo.exception,org.seasar.extension.dxo.meta,org.seasar.extension.dxo.meta.impl,org.seasar.extension.dxo.util,org.seasar.extension.filter,org.seasar.extension.j2ee,org.seasar.extension.jdbc,org.seasar.extension.jdbc.impl,org.seasar.extension.jdbc.types,org.seasar.extension.jdbc.util,org.seasar.extension.jta,org.seasar.extension.jta.xa,org.seasar.extension.sql,org.seasar.extension.sql.context,org.seasar.extension.sql.node,org.seasar.extension.sql.parser,org.seasar.extension.timer,org.seasar.extension.tx,org.seasar.extension.unit,org.seasar.framework.aop,org.seasar.framework.aop.impl,org.seasar.framework.aop.interceptors,org.seasar.framework.aop.intertype,org.seasar.framework.aop.javassist,org.seasar.framework.aop.proxy,org.seasar.framework.autodetector,org.seasar.framework.autodetector.impl,org.seasar.framework.beans,org.seasar.framework.beans.factory,org.seasar.framework.beans.impl,org.seasar.framework.beans.util,org.seasar.framework.container,org.seasar.framework.container.assembler,org.seasar.framework.container.autoregister,org.seasar.framework.container.cooldeploy,org.seasar.framework.container.creator,org.seasar.framework.container.customizer,org.seasar.framework.container.deployer,org.seasar.framework.container.external,org.seasar.framework.container.external.portlet,org.seasar.framework.container.external.servlet,org.seasar.framework.container.factory,org.seasar.framework.container.filter,org.seasar.framework.container.hotdeploy,org.seasar.framework.container.impl,org.seasar.framework.container.ognl,org.seasar.framework.container.servlet,org.seasar.framework.container.util,org.seasar.framework.container.warmdeploy,org.seasar.framework.convention,org.seasar.framework.convention.impl,org.seasar.framework.env,org.seasar.framework.exception,org.seasar.framework.log,org.seasar.framework.message,org.seasar.framework.mock.portlet,org.seasar.framework.mock.servlet,org.seasar.framework.unit,org.seasar.framework.util,org.seasar.framework.xml&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.ui.ide,org.eclipse.ui.editors,org.eclipse.ui.workbench.texteditor,org.eclipse.core.filebuffers,org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.debug.core,org.eclipse.debug.ui,org.eclipse.jdt.core,org.eclipse.jdt.ui,org.eclipse.jdt.launching,org.eclipse.jface.text&#xA;
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.seasar.dolteng.eclipse.feature.group' version='0.34.0' singleton='false'>
+      <update id='org.seasar.dolteng.eclipse.feature.group' range='[0.0.0,0.34.0)' severity='0'/>
+      <properties size='9'>
+        <property name='org.eclipse.equinox.p2.name' value='%plugin.brand'/>
+        <property name='org.eclipse.equinox.p2.description' value='Dolteng All In One Project'/>
+        <property name='org.eclipse.equinox.p2.description.url' value='http://s2container.seasar.org/'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%author'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+        <property name='ja.plugin.brand' value='Dolteng Eclipse プラグイン'/>
+        <property name='ja.author' value='Seasarファウンデーション'/>
+        <property name='df_LT.plugin.brand' value='Dolteng Eclipse Plugin'/>
+        <property name='df_LT.author' value='the Seasar Foundation'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.eclipse.feature.group' version='0.34.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='ja' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='14'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.ide' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.filebuffers' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.core' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.ui' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jface.text' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.eclipse' range='[0.34.0,0.34.0]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.projects' range='[0.34.0,0.34.0]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.scaffold' range='[0.34.0,0.34.0]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.docs' range='[0.30.0,0.30.0]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.console.linker' range='[0.0.1,0.0.1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.seasar.dolteng.eclipse.feature.jar' range='[0.34.0,0.34.0]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <licenses size='1'>
+        <license url='http://www.apache.org/licenses/LICENSE-2.0'>
+          Copyright 2004-2007 the Seasar Foundation and the Others.&#xA;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#xA;you may not use this file except in compliance with the License.&#xA;You may obtain a copy of the License at&#xA;http://www.apache.org/licenses/LICENSE-2.0&#xA;Unless required by applicable law or agreed to in writing, software&#xA;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#xA;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, &#xA;either express or implied. See the License for the specific language&#xA;governing permissions and limitations under the License.
+        </license>
+      </licenses>
+      <copyright>
+        Copyright 2004-2007 the Seasar Foundation and the Others.
+      </copyright>
     </unit>
   </units>
 </repository>
