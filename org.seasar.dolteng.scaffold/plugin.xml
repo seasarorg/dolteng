@@ -10,6 +10,12 @@
 				override="false"
 				outputpath="${javasrcroot}/${rootpackagepath}/${entitypackagename}/"
 				outputname="${table_capitalize}.java" />
+				
+			<template path="template/fm/java_pager_condition.ftl"
+				override="false"
+				outputpath="${javasrcroot}/${rootpackagepath}/${pagingpackagename}/"
+				outputname="${table_capitalize}PagerCondition.java" />
+			
 			<template path="template/fm/java_dao_s2dao.ftl"
 				override="false"
 				outputpath="${javasrcroot}/${rootpackagepath}/${daopackagename}/"
@@ -49,6 +55,16 @@
 				override="true"
 				outputpath="${resourceroot}/${rootpackagepath}/${subapplicationrootpackagename}/${table}/"
 				outputname="label.properties" />
+				
+			<template path="template/fm/resource_pager_sql.ftl"
+				override="true"
+				outputpath="${resourceroot}/${rootpackagepath}/${daopackagename}/"
+				outputname="${table_capitalize}${daosuffix}_findBy${orderbyString}PagerCondition.sql" />
+			<template path="template/fm/resource_pager_count_sql.ftl"
+				override="true"
+				outputpath="${resourceroot}/${rootpackagepath}/${daopackagename}/"
+				outputname="${table_capitalize}${daosuffix}_countBy${orderbyString}PagerCondition.sql" />
+
 			<template path="template/fm/html_css.ftl" override="false"
 				outputpath="${webcontentsroot}/css/" outputname="global.css" />
 			<template path="template/fm/html_list.ftl" override="true"
@@ -70,6 +86,12 @@
 				override="false"
 				outputpath="${javasrcroot}/${rootpackagepath}/${entitypackagename}/"
 				outputname="${table_capitalize}.java" />
+
+			<template path="template/fm/java_pager_condition.ftl"
+				override="false"
+				outputpath="${javasrcroot}/${rootpackagepath}/${pagingpackagename}/"
+				outputname="${table_capitalize}PagerCondition.java" />
+
 			<template path="template/fm/java_dao_s2dao.ftl"
 				override="false"
 				outputpath="${javasrcroot}/${rootpackagepath}/${daopackagename}/"
@@ -109,6 +131,16 @@
 				override="true"
 				outputpath="${resourceroot}/${rootpackagepath}/${subapplicationrootpackagename}/${table}/"
 				outputname="label.properties" />
+			
+			<template path="template/fm/resource_pager_sql.ftl"
+				override="true"
+				outputpath="${resourceroot}/${rootpackagepath}/${daopackagename}/"
+				outputname="${table_capitalize}${daosuffix}_findBy${orderbyString}PagerCondition.sql" />
+			<template path="template/fm/resource_pager_count_sql.ftl"
+				override="true"
+				outputpath="${resourceroot}/${rootpackagepath}/${daopackagename}/"
+				outputname="${table_capitalize}${daosuffix}_countBy${orderbyString}PagerCondition.sql" />
+			
 			<template path="template/fm/html_css.ftl" override="false"
 				outputpath="${webcontentsroot}/css/" outputname="global.css" />
 			<template path="template/fm/html_list.ftl" override="true"

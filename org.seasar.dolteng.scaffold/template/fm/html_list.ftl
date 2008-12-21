@@ -6,6 +6,25 @@
 </head>
 <body>
 <form id="${configs.table_capitalize}ListForm">
+
+<#if isSelectedExisted() = true>
+<table border="1" class="tablebg">
+<#list selectedColumnsMappings as selectedColumnsMapping>
+	<tr>
+		<th>${selectedColumnsMapping.javaFieldName?cap_first}</th>
+		<td><input type="text" id="text${selectedColumnsMapping.javaFieldName?cap_first}"/></td>
+	</tr>
+</#list>
+	<tr>
+		<th></th><td><input type="button" id="doRetrieve" value="retrieve"/></td>
+	</tr>
+</table>
+<input type="hidden" id="offset"/>
+</#if>
+
+
+
+
 <input type="button" id="doCreate" value="Create" onclick="location.href='${configs.table}Edit.html'"/><br/>
 <table border="1" class="tablebg">
 	<thead>
@@ -31,5 +50,51 @@
 		</tr>
 	</tbody>
 </table>
+
+
+<#if isSelectedExisted() = true>
+<table>
+	<tr>
+		<td>
+			<span id="totalNumber">totalNumber</span>Items
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span id="currentPageIndex">currentPageIndex</span>/<span id="totalPageIndex">totalPageIndex</span>
+		</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td>
+			<div id="isFirstPage">
+				<input type="button" id="doGoFirstPage" value="First Page"/>
+			</div>
+		</td>
+		<td>
+			<div id="isPreviousPage">
+				<input type="button" id="doGoPreviousPage" value="Previous Page"/>
+			</div>
+		</td>
+		<td>
+			<div id="isNextPage">
+				<input type="button" id="doGoNextPage" value="Next Page"/>
+			</div>
+		</td>
+		<td>
+			<div id="isLastPage">
+				<input type="button" id="doGoLastPage" value="Last Page"/>
+			</div>
+		</td>
+	</tr>
+</table>
+</#if>
+
+
+
+
+
+
 </form>
 </body></html>

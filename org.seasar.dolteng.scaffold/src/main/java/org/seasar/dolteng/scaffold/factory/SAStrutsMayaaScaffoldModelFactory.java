@@ -19,4 +19,22 @@ public class SAStrutsMayaaScaffoldModelFactory extends ScaffoldModelFactory {
 		
 		return new SAStrutsScaffoldModel(configs, node, "html");
 	}
+
+	@Override
+	public RootModel createScaffoldModel(Map<String, String> configs,
+			TableNode node, Map<Integer, String[]> selectedColumns) {
+		
+		return new SAStrutsScaffoldModel(configs, node, "html");
+	}
+
+    /* (non-Javadoc)
+     * @see org.seasar.dolteng.eclipse.scaffold.ScaffoldModelFactory#createScaffoldModel(java.util.Map, org.seasar.dolteng.eclipse.model.impl.TableNode)
+     */
+    @Override
+    public RootModel createScaffoldModel(Map<String, String> configs,
+            TableNode node, Map<Integer, String[]> selectedColumns,
+            String meisaiTableName, Map<Integer, String[]> meisaiColumns)
+    {
+		return new SAStrutsScaffoldModel(configs, node, "html");
+    }
 }

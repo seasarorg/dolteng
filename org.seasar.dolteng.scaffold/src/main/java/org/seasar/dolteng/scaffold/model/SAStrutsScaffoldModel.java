@@ -44,7 +44,7 @@ public class SAStrutsScaffoldModel extends ScaffoldModel {
 	 */
 	public SAStrutsScaffoldModel(Map<String, String> configs, TableNode node,
 			String viewTemplateExtension) {
-		super(configs, node);
+		super(configs, node, null);
 
 		appendConfig(configs, node, viewTemplateExtension);
 
