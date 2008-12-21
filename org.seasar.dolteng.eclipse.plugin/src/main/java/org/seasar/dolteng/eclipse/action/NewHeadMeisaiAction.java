@@ -33,28 +33,32 @@ import org.seasar.dolteng.eclipse.nls.Images;
 import org.seasar.dolteng.eclipse.nls.Labels;
 import org.seasar.dolteng.eclipse.preferences.DoltengPreferences;
 import org.seasar.dolteng.eclipse.scaffold.ScaffoldConfig;
+import org.seasar.dolteng.eclipse.scaffold.ScaffoldHeadMeisaiConfig;
 import org.seasar.dolteng.eclipse.template.DoltengTemplateExecutor;
+import org.seasar.dolteng.eclipse.template.HeadMeisaiTemplateHandler;
 import org.seasar.dolteng.eclipse.template.ScaffoldTemplateHandler;
 import org.seasar.dolteng.eclipse.util.SelectionUtil;
 import org.seasar.dolteng.eclipse.util.WorkbenchUtil;
 import org.seasar.dolteng.eclipse.wigets.OutputLocationDialog;
+import org.seasar.dolteng.eclipse.wigets.OutputLocationHeadMeisaiDialog;
 
 /**
- * @author taichi
+ * @author seiichi
  * 
  */
 @SuppressWarnings("unchecked")
-public class NewScaffoldAction extends Action {
+public class NewHeadMeisaiAction extends Action {
 
-    public static final String ID = NewScaffoldAction.class.getName();
+    public static final String ID = NewHeadMeisaiAction.class.getName();
+    
 
     private ISelectionProvider provider;
 
-    public NewScaffoldAction(ISelectionProvider provider) {
+    public NewHeadMeisaiAction(ISelectionProvider provider) {
         super();
         this.provider = provider;
         setId(ID);
-        setText(Labels.ACTION_SCAFFOLD_CREATION);
+        setText(Labels.ACTION_HEAD_MEISAI_CREATION);
         setImageDescriptor(Images.GENERATE_CODE);
     }
 
@@ -72,21 +76,21 @@ public class NewScaffoldAction extends Action {
             final IProject project = javap.getProject();
             DoltengPreferences pref = DoltengCore.getPreferences(project);
             if (pref != null) {
-                
-                // The information of the current node in database view is stored in "content".
-                // "content" is passed to "OutputLocationDialog".
-                final OutputLocationDialog dialog = new OutputLocationDialog(
+                // content に起動元のデータベースビューのカレントノードの情報が格納されています。
+                // content を OutputLocationDialog に渡してみます。
+                final OutputLocationHeadMeisaiDialog dialog = new OutputLocationHeadMeisaiDialog(
                         WorkbenchUtil.getShell(), javap, content);
                 if (dialog.open() == Dialog.OK) {
-                    final ScaffoldConfig config = dialog.getSelectedConfig();
+                    final ScaffoldHeadMeisaiConfig config = dialog.getSelectedConfig();
                     if (config != null) {
                         WorkspaceJob job = new WorkspaceJob(
                                 "Process Scaffold ....") {
                             @Override
                             public IStatus runInWorkspace(
                                     IProgressMonitor monitor) {
-                                ScaffoldTemplateHandler handler = new ScaffoldTemplateHandler(
-                                        config, project, content, monitor, dialog.getSelectedColumns());
+                                HeadMeisaiTemplateHandler handler = new HeadMeisaiTemplateHandler(
+                                        config, project, content, monitor, dialog.getSelectedColumns(),
+                                        dialog.getMeisaiTableName(), dialog.getMeisaiColumns());
                                 handler.setJavaSrcRoot(dialog.getRootPkg());
                                 handler.setRootPkg(dialog.getRootPkgName());
                                 TemplateExecutor executor = new DoltengTemplateExecutor(

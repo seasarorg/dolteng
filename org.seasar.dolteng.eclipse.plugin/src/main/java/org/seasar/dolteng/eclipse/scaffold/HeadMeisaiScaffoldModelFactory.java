@@ -26,7 +26,7 @@ import org.seasar.dolteng.eclipse.model.impl.TableNode;
  * デフォルトのScaffoldModelを作成する
  * @author newta
  */
-public class DefaultScaffoldModelFactory extends ScaffoldModelFactory {
+public class HeadMeisaiScaffoldModelFactory extends ScaffoldModelFactory {
 
     /* (non-Javadoc)
      * @see org.seasar.dolteng.eclipse.scaffold.ScaffoldModelFactory#createScaffoldModel(java.util.Map, org.seasar.dolteng.eclipse.model.impl.TableNode)
@@ -35,7 +35,7 @@ public class DefaultScaffoldModelFactory extends ScaffoldModelFactory {
     public RootModel createScaffoldModel(Map<String, String> configs,
             TableNode node)
     {
-        return new ScaffoldModel(configs, node, null);
+        return new HeadMeisaiScaffoldModel(configs, node, null, null, null);
     }
 
 
@@ -46,7 +46,7 @@ public class DefaultScaffoldModelFactory extends ScaffoldModelFactory {
     public RootModel createScaffoldModel(Map<String, String> configs,
             TableNode node, Map<Integer, String[]> selectedColumns)
     {
-        return new ScaffoldModel(configs, node, selectedColumns);
+        return new HeadMeisaiScaffoldModel(configs, node, selectedColumns, null, null);
     }
 
     /* (non-Javadoc)
@@ -57,6 +57,6 @@ public class DefaultScaffoldModelFactory extends ScaffoldModelFactory {
             TableNode node, Map<Integer, String[]> selectedColumns,
             String meisaiTableName, Map<Integer, String[]> meisaiColumns)
     {
-        return new ScaffoldModel(configs, node, selectedColumns);
+        return new HeadMeisaiScaffoldModel(configs, node, selectedColumns, meisaiTableName, meisaiColumns);
     }
 }

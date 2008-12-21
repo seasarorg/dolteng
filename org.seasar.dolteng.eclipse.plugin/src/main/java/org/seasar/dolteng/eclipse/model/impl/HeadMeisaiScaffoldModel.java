@@ -38,6 +38,7 @@ import org.seasar.dolteng.eclipse.convention.NamingUtil;
 import org.seasar.dolteng.eclipse.model.EntityMappingRow;
 import org.seasar.dolteng.eclipse.model.RootModel;
 import org.seasar.dolteng.eclipse.model.TreeContent;
+import org.seasar.dolteng.eclipse.part.DatabaseView;
 import org.seasar.dolteng.eclipse.util.NameConverter;
 import org.seasar.dolteng.eclipse.util.ProjectUtil;
 import org.seasar.framework.convention.NamingConvention;
@@ -45,10 +46,10 @@ import org.seasar.framework.util.ClassUtil;
 import org.seasar.framework.util.StringUtil;
 
 /**
- * @author taichi
+ * @author seiichi
  * 
  */
-public class ScaffoldModel implements RootModel {
+public class HeadMeisaiScaffoldModel implements RootModel {
 
     private static final Map<String, String> formPkeyArgsFormat = new HashMap<String, String>();
     static {
@@ -78,8 +79,17 @@ public class ScaffoldModel implements RootModel {
     private EntityMappingRow[] mappings;
     
     // 選択されたテーブルの列情報
-    private EntityMappingRow[] selectedColumnsMappings = new EntityMappingRow[0];
-        
+    private EntityMappingRow[] selectedColumnsMappings;
+    
+    // 明細テーブルの名前
+    private EntityMappingRow meisaiTableName;
+    
+    // 明細テーブルの列情報
+    private EntityMappingRow[] meisaiColumnsMappings;
+    
+    
+    
+    
     // 検索条件に付与するためのORDER BY句
     private String orderbyString;
     
@@ -110,18 +120,23 @@ public class ScaffoldModel implements RootModel {
 
     private IJavaProject project;
 
-    public ScaffoldModel(Map<String, String> configs, TableNode node, Map<Integer, String[]> selectedColumns) {
+    public HeadMeisaiScaffoldModel(Map<String, String> configs, TableNode node,
+            Map<Integer, String[]> selectedColumns,
+            String meisaiTableName, Map<Integer, String[]> meisaiColumns) {
         super();
         this.configs = configs;
         this.configs.put("pagingpackagename", "paging");
-        initialize(node, selectedColumns);
+        this.configs.put("dtopackagename", "dto");
+        initialize(node, selectedColumns, meisaiTableName, meisaiColumns);
     }
 
     @SuppressWarnings("unchecked")
-    protected void initialize(TableNode node, Map<Integer, String[]> selectedColumns) {
+    protected void initialize(TableNode node, Map<Integer, String[]> selectedColumns,
+            String meisaiTableName, Map<Integer, String[]> meisaiColumns) {
         ProjectNode n = (ProjectNode) node.getRoot();
         this.project = n.getJavaProject();
 
+        // データベースビューの起動元のテーブル情報を設定します。
         {
             List<TreeContent> columns = Arrays.asList(node.getChildren());
             Collections.sort(columns);
@@ -136,8 +151,8 @@ public class ScaffoldModel implements RootModel {
             setMappings((EntityMappingRow[]) rows.toArray(new EntityMappingRow[rows
                     .size()]));
         }
-
-        if (selectedColumns != null) {
+        
+        {
             // 選択されたテーブルの列情報を設定します。
             List<TreeContent> columns = Arrays.asList(node.getChildren());
             Collections.sort(columns);
@@ -157,35 +172,59 @@ public class ScaffoldModel implements RootModel {
             setSelectedColumnsMappings(
                     (EntityMappingRow[]) rows.toArray(
                             new EntityMappingRow[rows.size()]));
+                            
+            // 検索条件に付与するためのORDER BY句を作成します。
+            orderbyString = "";
+            orderbyStringColumn = "";
+            conditionArguments = "";
+            for (int i = 0; i < selectedColumnsMappings.length; i++) {
+                if (i > 0) {
+                    orderbyString += "And";
+                    orderbyStringColumn += ",";
+                    conditionArguments += ",";
+                }
+                orderbyString += camelize(selectedColumnsMappings[i].getSqlColumnName());
+                orderbyStringColumn += selectedColumnsMappings[i].getSqlColumnName();
+                conditionArguments += "\"" + "arg" + camelize(selectedColumnsMappings[i].getSqlColumnName()) + "\"";
+            }
+            
+            // 検索条件に与えるためのパラメータ
+            conditionParam = "";
+            conditionCallParam = "";
+            for (int i = 0; i < selectedColumnsMappings.length; i++) {
+                if (i > 0) {
+                    conditionParam += ", ";
+                    conditionCallParam += ", ";
+                }
+                conditionParam += selectedColumnsMappings[i].getJavaClassName() + " arg" + camelize(selectedColumnsMappings[i].getSqlColumnName());
+                conditionCallParam += "text" + camelize(selectedColumnsMappings[i].getSqlColumnName());
+            }
         }
         
-        // 検索条件に付与するためのORDER BY句を作成します。
-        orderbyString = "";
-        orderbyStringColumn = "";
-        conditionArguments = "";
-        for (int i = 0; i < selectedColumnsMappings.length; i++) {
-            if (i > 0) {
-                orderbyString += "And";
-                orderbyStringColumn += ",";
-                conditionArguments += ",";
-            }
-            orderbyString += camelize(selectedColumnsMappings[i].getSqlColumnName());
-            orderbyStringColumn += selectedColumnsMappings[i].getSqlColumnName();
-            conditionArguments += "\"" + "arg" + camelize(selectedColumnsMappings[i].getSqlColumnName()) + "\"";
+        // 明細
+        // 明細のテーブル名を設定します。
+        {
+            ColumnMetaData meta = new BasicColumnMetaData();
+            meta.setName(meisaiTableName);
+            setMeisaiTableName(createEntityMappingRow(meta));
         }
         
-        // 検索条件に与えるためのパラメータ
-        conditionParam = "";
-        conditionCallParam = "";
-        for (int i = 0; i < selectedColumnsMappings.length; i++) {
-            if (i > 0) {
-                conditionParam += ", ";
-                conditionCallParam += ", ";
+        // 明細のカラム情報を設定します。
+        {
+            List<TreeContent> columns = Arrays.asList(DatabaseView.getTableNode(meisaiTableName).getChildren());
+            Collections.sort(columns);
+            List rows = new ArrayList(columns.size());
+            for (TreeContent content : columns) {
+                if (content instanceof ColumnNode) {
+                    ColumnNode cn = (ColumnNode) content;
+                    ColumnMetaData meta = cn.getColumnMetaData();
+                    rows.add(createEntityMappingRow(meta));
+                }
             }
-            conditionParam += selectedColumnsMappings[i].getJavaClassName() + " arg" + camelize(selectedColumnsMappings[i].getSqlColumnName());
-            conditionCallParam += "text" + camelize(selectedColumnsMappings[i].getSqlColumnName());
+            setMeisaiColumnsMappings(
+                    (EntityMappingRow[]) 
+                    rows.toArray(new EntityMappingRow[rows.size()]));
         }
-
     }
     
     /**
@@ -293,6 +332,29 @@ public class ScaffoldModel implements RootModel {
     
     
     
+    public EntityMappingRow getMeisaiTableName() {
+        return meisaiTableName;
+    }
+    
+    public void setMeisaiTableName(EntityMappingRow meisaiTableName) {
+        this.meisaiTableName = meisaiTableName;
+    }
+    
+    
+    
+    
+    
+    
+    public EntityMappingRow[] getMeisaiColumnsMappings() {
+        return meisaiColumnsMappings;
+    }
+    
+    public void setMeisaiColumnsMappings(EntityMappingRow[] meisaiColumnsMappings) {
+        this.meisaiColumnsMappings = meisaiColumnsMappings;
+    }
+    
+    
+    
     
     
     
@@ -368,6 +430,11 @@ public class ScaffoldModel implements RootModel {
     
     
     
+    
+    
+    
+    
+    
     /**
      * 条件列が存在する場合は、trueを返却します。
      * @return 条件列が存在する場合は、true
@@ -382,6 +449,9 @@ public class ScaffoldModel implements RootModel {
     
     
     
+    
+    
+
 
     public String getImports() {
         Set<String> imports = new HashSet<String>();
@@ -624,4 +694,280 @@ public class ScaffoldModel implements RootModel {
     public boolean isVersionColumn(EntityMappingRow row) {
         return NamingUtil.isVersionNo(row.getSqlColumnName());
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public String createMeisaiPkeyMethodArgNames() {
+        if (isTigerResource()) {
+            return createMeisaiAnnotationArgNames();
+        }
+        return createMeisaiConstArgNames();
+    }
+    
+    private String createMeisaiAnnotationArgNames() {
+        List<EntityMappingRow> prows = new ArrayList<EntityMappingRow>();
+        for (EntityMappingRow row : meisaiColumnsMappings) {
+            if (row.isPrimaryKey()) {
+                prows.add(row);
+            }
+        }
+
+        StringBuffer stb = new StringBuffer();
+        if (0 < prows.size()) {
+            boolean is = 1 < prows.size();
+            if (is) {
+                stb.append('{');
+            }
+            for (EntityMappingRow row : prows) {
+                stb.append('"');
+                stb.append(row.getSqlColumnName());
+                stb.append('"');
+                stb.append(',');
+            }
+            stb.setLength(stb.length() - 1);
+            if (is) {
+                stb.append('}');
+            }
+        }
+        return stb.toString();
+    }
+
+    private String createMeisaiConstArgNames() {
+        StringBuffer stb = new StringBuffer();
+        boolean is = false;
+        stb.append('"');
+        for (EntityMappingRow row : meisaiColumnsMappings) {
+            if (row.isPrimaryKey()) {
+                stb.append(row.getSqlColumnName());
+                stb.append(',');
+                is = true;
+            }
+        }
+        if (is) {
+            stb.setLength(stb.length() - 1);
+        }
+        stb.append('"');
+        return stb.toString();
+    }
+    
+    public int countMeisaiPkeys() {
+        int result = 0;
+        for (EntityMappingRow row : meisaiColumnsMappings) {
+            if (row.isPrimaryKey()) {
+                result++;
+            }
+        }
+        return result;
+    }
+
+    public String createMeisaiPkeyMethodArgs() {
+        return createMeisaiPkeyMethodArgs(false);
+    }
+
+    public String createMeisaiPkeyMethodArgs(boolean includeVersion) {
+        StringBuffer stb = new StringBuffer();
+        boolean is = false;
+        for (EntityMappingRow row : meisaiColumnsMappings) {
+            if (row.isPrimaryKey()
+                    || (includeVersion && NamingUtil.isVersionNo(row
+                            .getSqlColumnName()))) {
+                String s = row.getJavaClassName();
+                if (s.startsWith("java.lang")) {
+                    s = ClassUtil.getShortClassName(s);
+                }
+                stb.append(s);
+                stb.append(' ');
+                stb.append(row.getJavaFieldName());
+                stb.append(',');
+                is |= true;
+            }
+        }
+        if (is) {
+            stb.setLength(stb.length() - 1);
+        }
+        return stb.toString();
+    }
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public String createHeadPkeyName() {
+        for (EntityMappingRow row : mappings) {
+            if (row.isPrimaryKey()) {
+                return row.getJavaFieldName();
+            }
+        }
+        return "pkey";
+    }
+
+    public String createMeisaiPkeyName() {
+        int i = 0;
+        for (EntityMappingRow row : meisaiColumnsMappings) {
+            if (row.isPrimaryKey()) {
+                if (i == 1) {
+                    return row.getJavaFieldName();
+                }
+                i++;
+            }
+        }
+        return "by";
+    }
+
+    public String createHeadMeisaiPkeyByName() {
+        for (EntityMappingRow row : meisaiColumnsMappings) {
+            if (row.isPrimaryKey()) {
+                return row.getJavaFieldName();
+            }
+        }
+        return "by";
+    }
+
+    public String createHeadMeisaiPkeyMethodArgs(boolean includeVersion) {
+        StringBuffer stb = new StringBuffer();
+        boolean is = false;
+        for (EntityMappingRow row : meisaiColumnsMappings) {
+            if (row.isPrimaryKey()
+                    || (includeVersion && NamingUtil.isVersionNo(row
+                            .getSqlColumnName()))) {
+                String s = row.getJavaClassName();
+                if (s.startsWith("java.lang")) {
+                    s = ClassUtil.getShortClassName(s);
+                }
+                stb.append(s);
+                stb.append(' ');
+                stb.append(row.getJavaFieldName());
+                stb.append(',');
+                is |= true;
+                break;
+            }
+        }
+        if (is) {
+            stb.setLength(stb.length() - 1);
+        }
+        return stb.toString();
+    }
+
+    public String createHeadMeisaiPkeyMethodArgNames() {
+        if (isTigerResource()) {
+            return createHeadMeisaiAnnotationArgNames();
+        }
+        return createHeadMeisaiConstArgNames();
+    }
+    
+    private String createHeadMeisaiAnnotationArgNames() {
+        List<EntityMappingRow> prows = new ArrayList<EntityMappingRow>();
+        for (EntityMappingRow row : meisaiColumnsMappings) {
+            if (row.isPrimaryKey()) {
+                prows.add(row);
+                break;
+            }
+        }
+
+        StringBuffer stb = new StringBuffer();
+        if (0 < prows.size()) {
+            boolean is = 1 < prows.size();
+            if (is) {
+                stb.append('{');
+            }
+            for (EntityMappingRow row : prows) {
+                stb.append('"');
+                stb.append(row.getSqlColumnName());
+                stb.append('"');
+                stb.append(',');
+            }
+            stb.setLength(stb.length() - 1);
+            if (is) {
+                stb.append('}');
+            }
+        }
+        return stb.toString();
+    }
+
+    private String createHeadMeisaiConstArgNames() {
+        StringBuffer stb = new StringBuffer();
+        boolean is = false;
+        stb.append('"');
+        for (EntityMappingRow row : meisaiColumnsMappings) {
+            if (row.isPrimaryKey()) {
+                stb.append(row.getSqlColumnName());
+                stb.append(',');
+                is = true;
+                break;
+            }
+        }
+        if (is) {
+            stb.setLength(stb.length() - 1);
+        }
+        stb.append('"');
+        return stb.toString();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
 }

@@ -33,4 +33,32 @@ public abstract class ScaffoldModelFactory {
      * @return templeteに渡されるmodel
      */
     public abstract RootModel createScaffoldModel(Map<String, String> configs, TableNode node);
+
+
+    /**
+     * ScaffoldModelを作成します
+     * @param configs
+     * @param node
+     * @param selectedColumns テーブル上の選択された列情報 Map<i, String[0]> に列名、Map<i, String[1]> に型
+     * @return templeteに渡されるmodel
+     */
+    public abstract RootModel createScaffoldModel(Map<String, String> configs, TableNode node, 
+            Map<Integer, String[]> selectedColumns);
+
+    
+    /**
+     * ScaffoldModelを作成します
+     * @param configs
+     * @param node
+     * @param selectedColumns テーブル上の選択された列情報 Map<i, String[0]> に列名、Map<i, String[1]> に型
+     * @param meisaiTableName 明細テーブルの名前
+     * @param meisaiColumns 明細テーブルの列情報
+     * 
+     * @return templeteに渡されるmodel
+     */
+    public abstract RootModel createScaffoldModel(Map<String, String> configs, TableNode node, 
+            Map<Integer, String[]> selectedColumns, 
+            String meisaiTableName, Map<Integer, String[]> meisaiColumns);
+
+
 }

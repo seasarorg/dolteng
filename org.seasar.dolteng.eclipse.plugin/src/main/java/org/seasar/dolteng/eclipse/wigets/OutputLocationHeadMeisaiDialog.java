@@ -46,6 +46,8 @@ import org.seasar.dolteng.eclipse.part.DatabaseView;
 import org.seasar.dolteng.eclipse.preferences.DoltengPreferences;
 import org.seasar.dolteng.eclipse.scaffold.ScaffoldConfig;
 import org.seasar.dolteng.eclipse.scaffold.ScaffoldConfigResolver;
+import org.seasar.dolteng.eclipse.scaffold.ScaffoldHeadMeisaiConfig;
+import org.seasar.dolteng.eclipse.scaffold.ScaffoldHeadMeisaiConfigResolver;
 import org.seasar.dolteng.eclipse.util.ProjectUtil;
 import org.seasar.framework.util.StringUtil;
 
@@ -55,10 +57,10 @@ import org.seasar.dolteng.core.dao.impl.BasicDatabaseMetadataDao;
 import org.seasar.dolteng.core.entity.ColumnMetaData;
 
 /**
- * @author taichi
+ * @author seiichi
  * 
  */
-public class OutputLocationDialog extends TitleAreaDialog {
+public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
 
     private IJavaProject javap;
 
@@ -66,27 +68,48 @@ public class OutputLocationDialog extends TitleAreaDialog {
 
     private String rootPkgName;
 
-    private ScaffoldConfigResolver resolver;
+    private ScaffoldHeadMeisaiConfigResolver resolver;
 
     private ScaffoldDisplay[] displaies;
 
     private Map<Integer, String> index2id;
 
-    private ScaffoldConfig selectedConfig;
+    private ScaffoldHeadMeisaiConfig selectedConfig;
     
-    // The current node in database view
-    // The current node is the table.
+    // 起動元のデータベースビューのカレントノード（テーブル情報）
     private TableNode current;
     
-    // The List component to show the columns of the current node in database view
+    // 現在のテーブル（起動元のデータベースビューのカレントノード）の列情報を表示するリストコンポーネント
     private org.eclipse.swt.widgets.List currentTableColumnsList = null;
-        
-    // The selected columns information on the table
-    // Map<i, String[0]> means column name.
-    // Map<i, String[1]> means database column type name.
+
+    // ヘッダ明細のうち明細に指定するテーブルの候補を表示するリストコンポーネント
+    private org.eclipse.swt.widgets.List meisaiTableList = null;
+
+    
+    
+    
+    
+    // テーブルの選択されている列情報
+    // Map<i, String[0]> に列名が格納されています。
+    // Map<i, String[1]> に型（データベースのカラムタイプ）が格納されています。
     private Map<Integer, String[]> selectedColumns;
     
-    public OutputLocationDialog(Shell parentShell, IJavaProject javap, TableNode current) {
+    
+    // 明細テーブルの名前
+    private String meisaiTableName;
+    
+    // 明細テーブルの列情報
+    // Map<i, String[0]> に列名が格納されています。
+    // Map<i, String[1]> に型（データベースのカラムタイプ）が格納されています。
+    private Map<Integer, String[]> meisaiColumns;
+    
+    
+    
+    
+    
+    
+    
+    public OutputLocationHeadMeisaiDialog(Shell parentShell, IJavaProject javap, TableNode current) {
         super(parentShell);
         this.javap = javap;
         this.rootPkg = ProjectUtil.getDefaultSrcPackageFragmentRoot(javap);
@@ -97,7 +120,7 @@ public class OutputLocationDialog extends TitleAreaDialog {
             this.rootPkgName = pref.getDefaultRootPackageName();
         }
         
-        this.resolver = new ScaffoldConfigResolver(this.javap.getProject());
+        this.resolver = new ScaffoldHeadMeisaiConfigResolver(this.javap.getProject());
         this.resolver.initialize();
         this.displaies = this.resolver.getScaffolds();
         this.index2id = new HashMap<Integer, String>(this.displaies.length);
@@ -115,7 +138,7 @@ public class OutputLocationDialog extends TitleAreaDialog {
         Composite composite = createMainLayout((Composite) super
                 .createDialogArea(parent));
 
-        setTitle(Messages.GENERATE_SCAFFOLD_CODES);
+        setTitle(Messages.GENERATE_HEAD_MEISAI_CODES);
                 
         createLabel(composite, Labels.PACKAGEFRAGMENT_ROOT);
         final Combo fragment = createCombo(composite, getPkgFragmentRoot());
@@ -158,8 +181,7 @@ public class OutputLocationDialog extends TitleAreaDialog {
             }
         });
         
-        // The current node in database view
-        // The current node is table.
+        // 起動元のデータベースビューのカレントノード（テーブル情報）
         TreeContent[] currentTable = current.getChildren();
         String[] dbcolumns = new String[currentTable.length];
         int i = 0;
@@ -167,8 +189,8 @@ public class OutputLocationDialog extends TitleAreaDialog {
             dbcolumns[i++] = column.getText();
         }
         
-        // The column information in the table of scaffold object are shown as the list box. 
-        createLabel(composite, current.getText() + "\nRetrieval\nCondition :" + "\n(Only for S2Dao)");
+        // Scaffold対象のテーブルの列情報を、リストボックスにて表示します。
+        createLabel(composite, current.getText() + "\nRetrieval\nCondition :");
         currentTableColumnsList = new org.eclipse.swt.widgets.List(
                 composite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL);
         currentTableColumnsList.setSize(10, 10);
@@ -186,21 +208,73 @@ public class OutputLocationDialog extends TitleAreaDialog {
                 }
             }
         });
+        //--------------------------------------------------------------------------
+        //--------------------------------------------------------------------------
+
+        // ヘッダ明細のうち明細に指定するテーブルの候補を、リストボックスにて表示します。
+        createLabel(composite, "Meisai\nTable:");
+        meisaiTableList = new org.eclipse.swt.widgets.List(
+                composite, SWT.BORDER | SWT.SINGLE | SWT.V_SCROLL | SWT.H_SCROLL);
+        meisaiTableList.setSize(10, 10);
+        meisaiTableList.setLayoutData(new GridData(SWT.LEFT));
+        meisaiTableList.setItems(DatabaseView.getAllTables());
+        meisaiTableList.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                String[] tmp = meisaiTableList.getSelection();
+                meisaiTableName = tmp[0];
+            }
+        });
+        //--------------------------------------------------------------------------
+        //--------------------------------------------------------------------------
         
         scaffolds.select(0);
         return composite;
     }
     
     /**
-     * The selected columns information on the table
-     * Map<i, String[0]> means column name.
-     * Map<i, String[1]> means database column type name.
+     * テーブル上の選択された列情報を取得します。
+     * Map<i, String[0]> に列名が格納されています。
+     * Map<i, String[1]> に型（データベースのカラムタイプ）が格納されています。
      * 
-     * @return The selected columns information on the table
+     * @return テーブル上の選択された列情報
      */
     public Map<Integer, String[]> getSelectedColumns() {
         return selectedColumns;
     }
+    
+    /**
+     * 明細テーブルの名前を取得します。
+     * @return
+     */
+    public String getMeisaiTableName() {
+        return meisaiTableName;
+    }
+    
+    /**
+     * 明細テーブルの列情報を取得します。
+     * Map<i, String[0]> に列名が格納されています。
+     * Map<i, String[1]> に型（データベースのカラムタイプ）が格納されています。
+     * 
+     * @return
+     */
+    public Map<Integer, String[]> getMeisaiColumns() {
+        return meisaiColumns;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     @Override
     protected Control createButtonBar(Composite parent) {
@@ -269,7 +343,7 @@ public class OutputLocationDialog extends TitleAreaDialog {
         return this.rootPkgName;
     }
 
-    public ScaffoldConfig getSelectedConfig() {
+    public ScaffoldHeadMeisaiConfig getSelectedConfig() {
         return this.selectedConfig;
     }
 }

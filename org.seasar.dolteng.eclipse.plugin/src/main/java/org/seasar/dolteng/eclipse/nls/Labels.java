@@ -228,6 +228,8 @@ public class Labels extends NLS {
     public static String JUMP_TO_CLASS;
 
     public static String ACTION_SCAFFOLD_CREATION;
+    
+    public static String ACTION_HEAD_MEISAI_CREATION;
 
     public static String ADD_DYNAMIC_PROPERTY_SELECT_ATTRIBUTE;
 

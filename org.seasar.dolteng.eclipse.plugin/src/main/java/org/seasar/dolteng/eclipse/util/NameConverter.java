@@ -33,4 +33,28 @@ public class NameConverter {
         return stb.toString();
 
     }
+
+    /**
+     * text に指定された文字列をパスカル形式に変換します。
+     * @param text 変換対象の文字列
+     * @return パスカル形式に変換された文字列
+     */
+    public static String camelize(String text) {
+        int length = text.length();
+        StringBuffer sb = new StringBuffer();
+        boolean isFirstChar = true;
+        for(int i = 0; i < length; i++) {
+            if(isFirstChar) {
+                sb.append(Character.toUpperCase(text.charAt(i)));
+                isFirstChar = false;
+            } else {
+                if(text.charAt(i) == '-' || text.charAt(i) == '_') {
+                    isFirstChar = true;
+                } else {
+                    sb.append(text.charAt(i));
+                }
+            }
+        }
+        return sb.toString();
+    }
 }

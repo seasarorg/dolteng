@@ -15,6 +15,12 @@
  */
 package org.seasar.dolteng.eclipse.part;
 
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -23,6 +29,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
@@ -32,21 +39,34 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.progress.WorkbenchJob;
+import org.seasar.dolteng.core.entity.ColumnMetaData;
+import org.seasar.dolteng.core.entity.FieldMetaData;
+import org.seasar.dolteng.core.entity.impl.BasicFieldMetaData;
+import org.seasar.dolteng.core.types.TypeMapping;
+import org.seasar.dolteng.core.types.TypeMappingRegistry;
 import org.seasar.dolteng.eclipse.Constants;
+import org.seasar.dolteng.eclipse.DoltengCore;
 import org.seasar.dolteng.eclipse.action.ActionRegistry;
 import org.seasar.dolteng.eclipse.action.ConnectionConfigAction;
 import org.seasar.dolteng.eclipse.action.DeleteConnectionConfigAction;
 import org.seasar.dolteng.eclipse.action.FindChildrenAction;
 import org.seasar.dolteng.eclipse.action.NewEntityAction;
+import org.seasar.dolteng.eclipse.action.NewHeadMeisaiAction;
 import org.seasar.dolteng.eclipse.action.NewScaffoldAction;
 import org.seasar.dolteng.eclipse.action.RefreshDatabaseViewAction;
+import org.seasar.dolteng.eclipse.model.EntityMappingRow;
 import org.seasar.dolteng.eclipse.model.TreeContent;
+import org.seasar.dolteng.eclipse.model.impl.BasicEntityMappingRow;
+import org.seasar.dolteng.eclipse.model.impl.ColumnNode;
+import org.seasar.dolteng.eclipse.model.impl.TableNode;
+import org.seasar.dolteng.eclipse.util.NameConverter;
 import org.seasar.dolteng.eclipse.util.ProgressMonitorUtil;
 import org.seasar.dolteng.eclipse.util.SelectionUtil;
 import org.seasar.dolteng.eclipse.util.WorkbenchUtil;
 import org.seasar.dolteng.eclipse.viewer.TableTreeContentProvider;
 import org.seasar.dolteng.eclipse.viewer.TableTreeViewer;
 import org.seasar.dolteng.eclipse.viewer.TreeContentUtil;
+import org.seasar.framework.util.StringUtil;
 
 /**
  * 
@@ -114,6 +134,118 @@ public class DatabaseView extends ViewPart {
         };
         job.schedule();
     }
+    
+    /**
+     * データベースビューのルートコンテンツを取得します。
+     * @return TreeContent[] データベースビューのルートコンテンツ
+     */
+    public static TreeContent[] getRootContent() {
+        IViewPart part = WorkbenchUtil.findView(Constants.ID_DATABASE_VIEW);
+        if (part instanceof DatabaseView) {
+            DatabaseView dv = (DatabaseView) part;
+            TreeContent[] roots = (TreeContent[]) dv.contentProvider.getElements(null);
+            return roots;
+        } else {
+            return null;
+        }
+    }
+    
+    /**
+     * データベースビューに表示されている全テーブルの中で、
+     * ユーザが手動で展開したテーブル名を取得します。
+     * @return
+     */
+    public static String[] getAllTables() {
+        int i = 0;
+        String[] tmp = null;
+        TreeContent[] roots = DatabaseView.getRootContent();
+        for (TreeContent root : roots) {
+            TreeContent[] projects = root.getChildren();
+            for (TreeContent project : projects) {
+                TreeContent[] tables = project.getChildren();
+                tmp = new String[tables.length];
+                for (TreeContent table : tables) {
+                    TreeContent[] columns = table.getChildren();
+                    if (columns.length > 0) tmp[i++] = table.getText();
+                }
+                break;
+            }
+            break;
+        }
+        
+        String[] allTables = new String[i];
+        for (int j = 0; j < i; j++) {
+            allTables[j] = tmp[j];
+        }
+        
+        return allTables;
+    }
+    
+    /**
+     * テーブル名で指定されたテーブル上の全列情報を取得します。
+     * @param tableName
+     * @return
+     */
+    public static String[] getAllColumns(String tableName) {
+        String[] allColumns = null;
+        TreeContent[] roots = DatabaseView.getRootContent();
+        for (TreeContent root : roots) {
+            TreeContent[] projects = root.getChildren();
+            for (TreeContent project : projects) {
+                TreeContent[] tables = project.getChildren();
+                for (TreeContent table : tables) {
+                    if (tableName.compareTo(table.getText()) == 0) {
+                        TreeContent[] columns = table.getChildren();
+                        allColumns = new String[columns.length]; int i = 0;
+                        for (TreeContent column : columns) {
+                            allColumns[i++] = column.getText();
+                        }
+                        break;
+                    }
+                }
+                break;
+            }
+            break;
+        }
+        return allColumns;
+    }
+    
+    /**
+     * テーブル名で指定されたテーブル上の全列情報を取得します。
+     * @param tableName
+     * @return
+     */
+    public static TableNode getTableNode(String tableName) {
+        TableNode node = null;
+        TreeContent[] roots = DatabaseView.getRootContent();
+        for (TreeContent root : roots) {
+            TreeContent[] projects = root.getChildren();
+            for (TreeContent project : projects) {
+                TreeContent[] tables = project.getChildren();
+                for (TreeContent table : tables) {
+                    if (tableName.compareTo(table.getText()) == 0) {
+                        node = (TableNode)table;
+                        System.out.println("nodeさ" + node.getText());
+                        break;
+                    }
+                }
+                break;
+            }
+            break;
+        }
+        return node;
+    }
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     public static void reloadView() {
         IViewPart part = WorkbenchUtil.findView(Constants.ID_DATABASE_VIEW);
@@ -129,8 +261,10 @@ public class DatabaseView extends ViewPart {
         this.registry.register(new ConnectionConfigAction(this.viewer));
         this.registry.register(new DeleteConnectionConfigAction(this.viewer));
         this.registry.register(new FindChildrenAction(this.viewer));
+        // 右クリック時に生成されるウィンドウの処理 at 2008.10.28
         this.registry.register(new NewEntityAction(this.viewer));
         this.registry.register(new NewScaffoldAction(this.viewer));
+        this.registry.register(new NewHeadMeisaiAction(this.viewer));
     }
 
     private void hookContextMenu() {

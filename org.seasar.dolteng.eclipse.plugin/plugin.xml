@@ -3,6 +3,7 @@
 <plugin>
    <extension-point id="scaffold" name="scaffold" schema="schema/scaffold.exsd"/>
    <extension-point id="projectType" name="projectType" schema="schema/projectType.exsd"/>
+   <extension-point id="headmeisai" name="headmeisai" schema="schema/headmeisai.exsd"/>
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer class="org.seasar.dolteng.eclipse.preferences.DoltengCommonPreferenceInitializer"/>

@@ -21,6 +21,7 @@ import org.eclipse.swt.graphics.Image;
 import org.seasar.dolteng.core.entity.TableMetaData;
 import org.seasar.dolteng.eclipse.action.ActionRegistry;
 import org.seasar.dolteng.eclipse.action.NewEntityAction;
+import org.seasar.dolteng.eclipse.action.NewHeadMeisaiAction;
 import org.seasar.dolteng.eclipse.action.NewScaffoldAction;
 import org.seasar.dolteng.eclipse.model.TreeContent;
 import org.seasar.dolteng.eclipse.nls.Images;
@@ -76,8 +77,10 @@ public class TableNode extends AbstractFactoryDependentNode {
     public void fillContextMenu(IMenuManager manager, ActionRegistry registry) {
         super.fillContextMenu(manager, registry);
         manager.add(new Separator());
+        // 右クリック時に生成されるウィンドウの処理 at 2008.10.28
         manager.add(registry.find(NewEntityAction.ID));
         manager.add(registry.find(NewScaffoldAction.ID));
+        manager.add(registry.find(NewHeadMeisaiAction.ID));
     }
 
     /*
