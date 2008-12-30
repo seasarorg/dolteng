@@ -114,6 +114,7 @@ public class ScaffoldModel implements RootModel {
         super();
         this.configs = configs;
         this.configs.put("pagingpackagename", "paging");
+        this.configs.put("dtopackagename", "dto");
         initialize(node, selectedColumns);
     }
 
@@ -374,6 +375,35 @@ public class ScaffoldModel implements RootModel {
      */
     public boolean isSelectedExisted() {
         if (selectedColumnsMappings != null && selectedColumnsMappings.length > 0) {
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * The suffix in the dto property is returned.
+     * @param typeName
+     * @return
+     */
+    public String getDtoSuffix(String typeName) {
+        if (typeName.compareTo("Integer") == 0 ||
+            typeName.compareTo("BigDecimal") == 0 ||
+            typeName.compareTo("Date") == 0 ||
+            typeName.compareTo("Timestamp") == 0) {
+            return "GE";
+        } else if (typeName.compareTo("String") == 0) {
+            return "LIKE";
+        }
+        return "";
+    }
+    
+    /**
+     * If the type of dto property is "String", true is returned.
+     * @param typeName
+     * @return
+     */
+    public boolean isDtoParameterLike(String typeName) {
+        if (typeName.compareTo("String") == 0) {
             return true;
         }
         return false;
