@@ -162,6 +162,12 @@
 				override="false"
 				outputpath="${javasrcroot}/${rootpackagepath}/${entitypackagename}/"
 				outputname="${table_capitalize}.java" />
+
+			<template path="template/fm/java_entity_dto_kuinadao.ftl"
+				override="false"
+				outputpath="${javasrcroot}/${rootpackagepath}/${dtopackagename}/"
+				outputname="${table_capitalize}Dto.java" />
+
 			<template path="template/fm/java_dao_kuinadao.ftl"
 				override="false"
 				outputpath="${javasrcroot}/${rootpackagepath}/${daopackagename}/"
