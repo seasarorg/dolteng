@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.ejb.Stateless;
 
 import ${configs.rootpackagename}.${configs.daopackagename}.${configs.table_capitalize}Dao;
+import ${configs.rootpackagename}.${configs.dtopackagename}.${configs.table_capitalize}Dto;
 import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.table_capitalize};
 import ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${configs.table}.Abstract${configs.table_capitalize}${configs.pagesuffix};
 import ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${configs.table}.${configs.table_capitalize}${configs.dxosuffix};
@@ -30,6 +31,10 @@ public class ${configs.table_capitalize}${configs.servicesuffix}${configs.implem
 	
 	public ${configs.table_capitalize} find(${createPkeyMethodArgs(true)}) {
 		return get${configs.table_capitalize}${configs.daosuffix}().find(${createPkeyMethodCallArgsCopy(true)});
+	}
+
+	public List<${configs.table_capitalize}> findBy${configs.table_capitalize}(${configs.table_capitalize}Dto ${configs.table}) {
+		return get${configs.table_capitalize}${configs.daosuffix}().findBy${configs.table_capitalize}(${configs.table});
 	}
 	
 	public void persist(Abstract${configs.table_capitalize}${configs.pagesuffix} page) {

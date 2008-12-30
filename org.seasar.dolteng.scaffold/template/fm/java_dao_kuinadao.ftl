@@ -2,6 +2,7 @@ package ${configs.rootpackagename}.${configs.daopackagename};
 
 import java.util.List;
 
+import ${configs.rootpackagename}.${configs.dtopackagename}.${configs.table_capitalize}Dto;
 import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.table_capitalize};
 
 public interface ${configs.table_capitalize}${configs.daosuffix} {
@@ -12,6 +13,8 @@ public interface ${configs.table_capitalize}${configs.daosuffix} {
 
 	public ${configs.table_capitalize} find(${createPkeyMethodArgs(true)});
 	
+	public List<${configs.table_capitalize}> findBy${configs.table_capitalize}(${configs.table_capitalize}Dto ${configs.table});
+
 	public void persist(${configs.table_capitalize} ${configs.table});
 
 	public ${configs.table_capitalize} merge(${configs.table_capitalize} ${configs.table});

@@ -7,6 +7,7 @@ import org.seasar.teeda.extension.annotation.convert.DateTimeConverter;
 import org.seasar.teeda.extension.annotation.takeover.TakeOver;
 
 </#if>
+import ${configs.rootpackagename}.${configs.dtopackagename}.${configs.table_capitalize}Dto;
 import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.table_capitalize};
 import ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.CrudType;
 
@@ -16,6 +17,23 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	
 	private int ${configs.table}Index;
 	
+<#if isSelectedExisted() = true>
+	<#list selectedColumnsMappings as selectedColumnsMapping>
+	public ${getJavaClassName(selectedColumnsMapping)} text${selectedColumnsMapping.javaFieldName?cap_first};
+
+	</#list>
+</#if>
+
+	public Integer offset;
+	
+	public Integer currentPageIndex;
+	
+	public Integer totalPageIndex;
+	
+	public Integer totalNumber;
+	
+	private int limit = 10;
+	
 	public ${configs.table_capitalize}List${configs.pagesuffix}() {
 	}
 	
@@ -24,9 +42,117 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	}
 	
 	public Class prerender() {
+		<#if isSelectedExisted() = true>
+		offset = ${configs.table}Index;
+		
+		${configs.table?cap_first}Dto dto = new ${configs.table?cap_first}Dto();
+		dto.setMaxResults(limit);
+		dto.setFirstResult(${configs.table}Index);
+		setCondition(dto);
+		${configs.table}Items = get${configs.table?cap_first}Service().findBy${configs.table?cap_first}(dto);
+			    
+		calculatePageIndex();
+		<#else>
 		${configs.table}Items = get${configs.table_capitalize}${configs.servicesuffix}().findAll();
+		</#if>
+		
 		return null;
 	}
+
+<#if isSelectedExisted() = true>
+	private void setCondition(${configs.table?cap_first}Dto dto) {
+	<#list selectedColumnsMappings as selectedColumnsMapping>
+		<#if isDtoParameterLike("${getJavaClassName(selectedColumnsMapping)}") = true>
+		if (text${selectedColumnsMapping.javaFieldName?cap_first} == null || text${selectedColumnsMapping.javaFieldName?cap_first}.length() == 0) {
+			dto.set${selectedColumnsMapping.javaFieldName?cap_first}_${getDtoSuffix("${getJavaClassName(selectedColumnsMapping)}")}(text${selectedColumnsMapping.javaFieldName?cap_first});
+		} else {
+			dto.set${selectedColumnsMapping.javaFieldName?cap_first}_${getDtoSuffix("${getJavaClassName(selectedColumnsMapping)}")}(text${selectedColumnsMapping.javaFieldName?cap_first} + "%");
+		}
+		<#else>
+		if (text${selectedColumnsMapping.javaFieldName?cap_first} != null) {
+			dto.set${selectedColumnsMapping.javaFieldName?cap_first}_${getDtoSuffix("${getJavaClassName(selectedColumnsMapping)}")}(text${selectedColumnsMapping.javaFieldName?cap_first});
+		}
+		</#if>
+	</#list>
+	}
+
+	public void calculatePageIndex() {
+		${configs.table?cap_first}Dto dto = new ${configs.table?cap_first}Dto();
+		dto.setMaxResults(Integer.MAX_VALUE);
+		dto.setFirstResult(0);
+		setCondition(dto);
+		List<${configs.table?cap_first}> tmp = get${configs.table?cap_first}Service().findBy${configs.table?cap_first}(dto);
+		totalNumber = tmp.size();
+		
+		currentPageIndex = offset/limit+1;
+		totalPageIndex = totalNumber/limit;
+		if (totalNumber%limit > 0) totalPageIndex++;
+	}
+	
+	public Class doRetrieve() {
+		return null;
+	}
+	
+	public Class doGoFirstPage() {
+		offset = 0;
+		${configs.table}Index = offset;
+		return null;
+	}
+	
+	public Class doGoPreviousPage() {
+		${configs.table}Index = offset;
+		if (${configs.table}Index - limit >= 0) {
+			${configs.table}Index -= limit;
+		}
+		return null;
+	}
+	  
+	public Class doGoNextPage() {
+		${configs.table}Index = offset;
+		${configs.table?cap_first}Dto dto = new ${configs.table?cap_first}Dto();
+		dto.setMaxResults(Integer.MAX_VALUE);
+		dto.setFirstResult(0);
+		setCondition(dto);
+		List<${configs.table?cap_first}> tmp = get${configs.table?cap_first}Service().findBy${configs.table?cap_first}(dto);
+		if (${configs.table}Index + limit < tmp.size()) {
+			${configs.table}Index += limit;
+		}
+		return null;
+	}
+	
+	public Class doGoLastPage() {
+		calculatePageIndex();		
+		offset = (totalPageIndex-1)*limit;
+		${configs.table}Index = offset;
+		return null;
+	}
+	
+	public boolean isFirstPage() {
+		if (offset == 0) {
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean isPreviousPage() {
+		return isFirstPage();
+	}
+	
+	public boolean isNextPage() {
+		if (currentPageIndex == totalPageIndex) {
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean isLastPage() {
+		return isNextPage();
+	}
+</#if>
+
+
+
+
 	
 	public String get${configs.table_capitalize}RowClass() {
 		if (get${configs.table_capitalize}Index() % 2 == 0) {
