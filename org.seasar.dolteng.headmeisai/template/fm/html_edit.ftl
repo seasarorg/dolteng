@@ -35,15 +35,15 @@
 
 
 
+<input type="hidden" id="${configs.meisaitable?uncap_first}ItemsSave"/>
 
-
-<table class="tablebg">
+<table id="meisai" class="tablebg">
 	<thead>
 		<tr>
 <#list meisaiColumnsMappings as mapping>
 	    <#if mapping.isPrimaryKey() = true || isVersionColumn(mapping) = true>
 	    <#else>
-	    <th><span id="meisai${mapping.javaFieldName?cap_first}Label">${mapping.javaFieldName?uncap_first}</span></th>
+	    <th colspan="2"><span id="meisai${mapping.javaFieldName?cap_first}Label">${mapping.javaFieldName?uncap_first}</span></th>
 	    </#if>
 </#list>
 		</tr>
@@ -55,6 +55,7 @@
 	    <input type="hidden" id="meisai${mapping.javaFieldName?cap_first}" />
 	    <#else>
 	    <td><input type="text" id="meisai${mapping.javaFieldName?cap_first}" /></td>
+	    <td><span id="meisai${mapping.javaFieldName?cap_first}Message"></span></td>
 	    </#if>
 </#list>
 		</tr>

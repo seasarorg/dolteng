@@ -21,7 +21,7 @@
 <#elseif mapping.isPrimaryKey() = true>
 <tr>
 	<td><span id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</span></td>
-	<td><input type="text" id="${mapping.javaFieldName}" readonly="true" /></td>
+	<td><span id="${mapping.javaFieldName}">${mapping.javaFieldName}</span><input type="hidden" id="${mapping.javaFieldName}-hidden"/></td>
 	<td><span id="${mapping.javaFieldName}Message"></span></td>
 </tr>
 </#if>
