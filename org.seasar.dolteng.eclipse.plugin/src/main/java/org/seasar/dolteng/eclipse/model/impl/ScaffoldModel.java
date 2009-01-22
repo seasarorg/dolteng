@@ -170,7 +170,7 @@ public class ScaffoldModel implements RootModel {
                 orderbyStringColumn += ",";
                 conditionArguments += ",";
             }
-            orderbyString += camelize(selectedColumnsMappings[i].getSqlColumnName());
+            orderbyString += camelize(selectedColumnsMappings[i].getJavaFieldName());
             orderbyStringColumn += selectedColumnsMappings[i].getSqlColumnName();
             conditionArguments += "\"" + "arg" + camelize(selectedColumnsMappings[i].getSqlColumnName()) + "\"";
         }
@@ -184,7 +184,7 @@ public class ScaffoldModel implements RootModel {
                 conditionCallParam += ", ";
             }
             conditionParam += selectedColumnsMappings[i].getJavaClassName() + " arg" + camelize(selectedColumnsMappings[i].getSqlColumnName());
-            conditionCallParam += "text" + camelize(selectedColumnsMappings[i].getSqlColumnName());
+            conditionCallParam += "text" + camelize(selectedColumnsMappings[i].getJavaFieldName());
         }
 
     }
