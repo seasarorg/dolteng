@@ -29,7 +29,6 @@ import java.util.Set;
 import org.eclipse.jdt.core.IJavaProject;
 import org.seasar.dolteng.core.entity.ColumnMetaData;
 import org.seasar.dolteng.core.entity.FieldMetaData;
-import org.seasar.dolteng.core.entity.impl.BasicColumnMetaData;
 import org.seasar.dolteng.core.entity.impl.BasicFieldMetaData;
 import org.seasar.dolteng.core.types.TypeMapping;
 import org.seasar.dolteng.core.types.TypeMappingRegistry;
@@ -170,9 +169,9 @@ public class ScaffoldModel implements RootModel {
                 orderbyStringColumn += ",";
                 conditionArguments += ",";
             }
-            orderbyString += camelize(selectedColumnsMappings[i].getJavaFieldName());
+            orderbyString += pascalize(selectedColumnsMappings[i].getSqlColumnName());
             orderbyStringColumn += selectedColumnsMappings[i].getSqlColumnName();
-            conditionArguments += "\"" + "arg" + camelize(selectedColumnsMappings[i].getSqlColumnName()) + "\"";
+            conditionArguments += "\"" + "arg" + pascalize(selectedColumnsMappings[i].getSqlColumnName()) + "\"";
         }
         
         // 検索条件に与えるためのパラメータ
@@ -183,36 +182,74 @@ public class ScaffoldModel implements RootModel {
                 conditionParam += ", ";
                 conditionCallParam += ", ";
             }
-            conditionParam += selectedColumnsMappings[i].getJavaClassName() + " arg" + camelize(selectedColumnsMappings[i].getSqlColumnName());
-            conditionCallParam += "text" + camelize(selectedColumnsMappings[i].getJavaFieldName());
+            conditionParam += selectedColumnsMappings[i].getJavaClassName() + " arg" + pascalize(selectedColumnsMappings[i].getSqlColumnName());
+            conditionCallParam += "text" + pascalize(selectedColumnsMappings[i].getSqlColumnName());
         }
 
     }
     
     /**
-     * text に指定された文字列をパスカル形式に変換します。
+     * text に指定された文字列をキャメル形式に変換します。
      * @param text 変換対象の文字列
-     * @return パスカル形式に変換された文字列
+     * @return キャメル形式に変換された文字列
      */
     private String camelize(String text) {
         int length = text.length();
         StringBuffer sb = new StringBuffer();
         boolean isFirstChar = true;
-        for(int i = 0; i < length; i++) {
-            if(isFirstChar) {
+        for (int i = 0; i < length; i++) {
+            if (isFirstChar && i == 0) {
+                sb.append(Character.toLowerCase(text.charAt(i)));
+                isFirstChar = false;
+            } else if (isFirstChar) {
                 sb.append(Character.toUpperCase(text.charAt(i)));
                 isFirstChar = false;
             } else {
                 if(text.charAt(i) == '-' || text.charAt(i) == '_') {
                     isFirstChar = true;
                 } else {
-                    sb.append(text.charAt(i));
+                    sb.append(Character.toLowerCase(text.charAt(i)));
                 }
             }
         }
         return sb.toString();
     }
 
+    /**
+     * text に指定された文字列をパスカル形式に変換します。
+     * @param text 変換対象の文字列
+     * @return パスカル形式に変換された文字列
+     */
+    private String pascalize(String text) {
+        int length = text.length();
+        StringBuffer sb = new StringBuffer();
+        boolean isFirstChar = true;
+        for (int i = 0; i < length; i++) {
+            if (isFirstChar) {
+                sb.append(Character.toUpperCase(text.charAt(i)));
+                isFirstChar = false;
+            } else {
+                if(text.charAt(i) == '-' || text.charAt(i) == '_') {
+                    isFirstChar = true;
+                } else {
+                    sb.append(Character.toLowerCase(text.charAt(i)));
+                }
+            }
+        }
+        return sb.toString();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private EntityMappingRow createEntityMappingRow(ColumnMetaData column) {
         FieldMetaData field = new BasicFieldMetaData();
         TypeMappingRegistry registry = DoltengCore
