@@ -4,7 +4,7 @@
 	<extension point="org.seasar.dolteng.eclipse.headmeisai">
 		<templates
 			enablement="org.seasar.dolteng.headmeisai.enabler.TeedaS2DaoEnabler"
-			id="0" name="Head Meisai Teeda + S2Dao (use public field)"
+			id="0" name="Master-Detail Teeda + S2Dao (use public field)"
 			resourceLoader="org.seasar.dolteng.headmeisai.ScaffoldResourceLoader">
 			
 			
