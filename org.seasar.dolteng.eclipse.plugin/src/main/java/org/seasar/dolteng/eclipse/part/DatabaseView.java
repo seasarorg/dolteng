@@ -156,27 +156,74 @@ public class DatabaseView extends ViewPart {
      * @return
      */
     public static String[] getAllTables() {
-        int i = 0;
-        String[] tmp = null;
         TreeContent[] roots = DatabaseView.getRootContent();
+        
+        // 展開されているテーブルの数を数えます。
+        int tenkaiTableCount = 0;
         for (TreeContent root : roots) {
             TreeContent[] projects = root.getChildren();
             for (TreeContent project : projects) {
                 TreeContent[] tables = project.getChildren();
-                tmp = new String[tables.length];
                 for (TreeContent table : tables) {
                     TreeContent[] columns = table.getChildren();
-                    if (columns.length > 0) tmp[i++] = table.getText();
+                    boolean isH2 = false;
+                    for (TreeContent column_children : columns) {
+                        TreeContent[] column_child = column_children.getChildren();
+                        if (column_child.length > 0) {
+                            tenkaiTableCount++;
+                            isH2 = true;
+                        }
+                    }
+                    if (!isH2 && columns.length > 0) tenkaiTableCount++;
                 }
-                break;
             }
-            break;
-        }
+        }    
+
+        int i = 0;
+        String[] allTables = new String[tenkaiTableCount];
+        for (TreeContent root : roots) {
+            TreeContent[] projects = root.getChildren();
+            for (TreeContent project : projects) {
+                TreeContent[] tables = project.getChildren();
+                for (TreeContent table : tables) {
+                    TreeContent[] columns = table.getChildren();
+                    boolean isH2 = false;
+                    for (TreeContent column_children : columns) {
+                        TreeContent[] column_child = column_children.getChildren();
+                        if (column_child.length > 0) {
+                            allTables[i++] = column_children.getText();
+                            isH2 = true;
+                        }
+                    }
+                    if (!isH2 && columns.length > 0) allTables[i++] = table.getText();
+                }
+            }
+        }    
         
-        String[] allTables = new String[i];
-        for (int j = 0; j < i; j++) {
-            allTables[j] = tmp[j];
-        }
+        
+//        int i = 0;
+//        String[] tmp = null;
+//        for (TreeContent root : roots) {
+//            System.out.println("root name = " + root.getText());
+//            TreeContent[] projects = root.getChildren();
+//            for (TreeContent project : projects) {
+//                System.out.println("project name = " + project.getText());
+//                TreeContent[] tables = project.getChildren();
+//                tmp = new String[tables.length];
+//                for (TreeContent table : tables) {
+//                    System.out.println("table name = " + table.getText());
+//                    TreeContent[] columns = table.getChildren();
+//                    if (columns.length > 0) tmp[i++] = table.getText();
+//                }
+//                break;
+//            }
+//            break;
+//        }
+//        
+//        String[] allTables = new String[i];
+//        for (int j = 0; j < i; j++) {
+//            allTables[j] = tmp[j];
+//        }
         
         return allTables;
     }
@@ -200,12 +247,21 @@ public class DatabaseView extends ViewPart {
                         for (TreeContent column : columns) {
                             allColumns[i++] = column.getText();
                         }
-                        break;
+                        return allColumns;
+                    }
+                    TreeContent[] columns = table.getChildren();
+                    for (TreeContent column_children : columns) {
+                        if (tableName.compareTo(column_children.getText()) == 0) {
+                            TreeContent[] column_child = column_children.getChildren();
+                            allColumns = new String[column_child.length]; int i = 0;
+                            for (TreeContent column : column_child) {
+                                allColumns[i++] = column.getText();
+                            }
+                            return allColumns;
+                        }
                     }
                 }
-                break;
             }
-            break;
         }
         return allColumns;
     }
@@ -225,13 +281,17 @@ public class DatabaseView extends ViewPart {
                 for (TreeContent table : tables) {
                     if (tableName.compareTo(table.getText()) == 0) {
                         node = (TableNode)table;
-                        System.out.println("nodeさ" + node.getText());
-                        break;
+                        return node;
+                    }
+                    TreeContent[] columns = table.getChildren();
+                    for (TreeContent column_children : columns) {
+                        if (tableName.compareTo(column_children.getText()) == 0) {
+                            node = (TableNode)column_children;
+                            return node;
+                        }
                     }
                 }
-                break;
             }
-            break;
         }
         return node;
     }

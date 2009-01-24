@@ -183,9 +183,9 @@ public class HeadMeisaiScaffoldModel implements RootModel {
                     orderbyStringColumn += ",";
                     conditionArguments += ",";
                 }
-                orderbyString += camelize(selectedColumnsMappings[i].getSqlColumnName());
+                orderbyString += pascalize(selectedColumnsMappings[i].getSqlColumnName());
                 orderbyStringColumn += selectedColumnsMappings[i].getSqlColumnName();
-                conditionArguments += "\"" + "arg" + camelize(selectedColumnsMappings[i].getSqlColumnName()) + "\"";
+                conditionArguments += "\"" + "arg" + pascalize(selectedColumnsMappings[i].getSqlColumnName()) + "\"";
             }
             
             // 検索条件に与えるためのパラメータ
@@ -196,8 +196,8 @@ public class HeadMeisaiScaffoldModel implements RootModel {
                     conditionParam += ", ";
                     conditionCallParam += ", ";
                 }
-                conditionParam += selectedColumnsMappings[i].getJavaClassName() + " arg" + camelize(selectedColumnsMappings[i].getSqlColumnName());
-                conditionCallParam += "text" + camelize(selectedColumnsMappings[i].getSqlColumnName());
+                conditionParam += selectedColumnsMappings[i].getJavaClassName() + " arg" + pascalize(selectedColumnsMappings[i].getSqlColumnName());
+                conditionCallParam += "text" + pascalize(selectedColumnsMappings[i].getSqlColumnName());
             }
         }
         
@@ -232,19 +232,19 @@ public class HeadMeisaiScaffoldModel implements RootModel {
      * @param text 変換対象の文字列
      * @return パスカル形式に変換された文字列
      */
-    private String camelize(String text) {
+    private String pascalize(String text) {
         int length = text.length();
         StringBuffer sb = new StringBuffer();
         boolean isFirstChar = true;
-        for(int i = 0; i < length; i++) {
-            if(isFirstChar) {
+        for (int i = 0; i < length; i++) {
+            if (isFirstChar) {
                 sb.append(Character.toUpperCase(text.charAt(i)));
                 isFirstChar = false;
             } else {
                 if(text.charAt(i) == '-' || text.charAt(i) == '_') {
                     isFirstChar = true;
                 } else {
-                    sb.append(text.charAt(i));
+                    sb.append(Character.toLowerCase(text.charAt(i)));
                 }
             }
         }
@@ -809,7 +809,8 @@ public class HeadMeisaiScaffoldModel implements RootModel {
                 stb.append(' ');
                 stb.append(row.getJavaFieldName());
                 stb.append(',');
-                is |= true;
+                //is |= true;
+                is = true;
             }
         }
         if (is) {
@@ -818,6 +819,22 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         return stb.toString();
     }
 
+    /**
+     * S2Dao の SQL 文で使用する条件を取得します。
+     * @param fieldName 列名
+     * @param typeName タイプ名
+     * @return S2Dao の SQL 文で使用する条件
+     */
+    public String getS2DaoCondition(String fieldName, String typeName) {
+        if (typeName.compareTo("String") == 0) {
+            return "LIKE concat(/*" + fieldName + "*/' ','%')";
+        } else if (typeName.compareTo("Integer") == 0 || typeName.compareTo("BigDecimal") == 0) {
+            return ">= /*" + fieldName + "*/'0'";
+        } else if (typeName.compareTo("Date") == 0 || typeName.compareTo("Timestamp") == 0) {
+            return ">= /*" + fieldName + "*/'1900/1/1'";
+        }
+        return "= fieldName";
+    }
 
 
 
@@ -886,7 +903,8 @@ public class HeadMeisaiScaffoldModel implements RootModel {
                 stb.append(' ');
                 stb.append(row.getJavaFieldName());
                 stb.append(',');
-                is |= true;
+                //is |= true;
+                is = true;
                 break;
             }
         }

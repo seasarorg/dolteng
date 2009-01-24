@@ -189,33 +189,6 @@ public class ScaffoldModel implements RootModel {
     }
     
     /**
-     * text に指定された文字列をキャメル形式に変換します。
-     * @param text 変換対象の文字列
-     * @return キャメル形式に変換された文字列
-     */
-    private String camelize(String text) {
-        int length = text.length();
-        StringBuffer sb = new StringBuffer();
-        boolean isFirstChar = true;
-        for (int i = 0; i < length; i++) {
-            if (isFirstChar && i == 0) {
-                sb.append(Character.toLowerCase(text.charAt(i)));
-                isFirstChar = false;
-            } else if (isFirstChar) {
-                sb.append(Character.toUpperCase(text.charAt(i)));
-                isFirstChar = false;
-            } else {
-                if(text.charAt(i) == '-' || text.charAt(i) == '_') {
-                    isFirstChar = true;
-                } else {
-                    sb.append(Character.toLowerCase(text.charAt(i)));
-                }
-            }
-        }
-        return sb.toString();
-    }
-
-    /**
      * text に指定された文字列をパスカル形式に変換します。
      * @param text 変換対象の文字列
      * @return パスカル形式に変換された文字列
@@ -433,7 +406,13 @@ public class ScaffoldModel implements RootModel {
         }
         return "";
     }
-    
+
+    /**
+     * S2Dao の SQL 文で使用する条件を取得します。
+     * @param fieldName 列名
+     * @param typeName タイプ名
+     * @return S2Dao の SQL 文で使用する条件
+     */
     public String getS2DaoCondition(String fieldName, String typeName) {
         if (typeName.compareTo("String") == 0) {
             return "LIKE concat(/*" + fieldName + "*/' ','%')";
