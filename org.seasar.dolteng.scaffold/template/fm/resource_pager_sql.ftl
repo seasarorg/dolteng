@@ -11,7 +11,7 @@ select * from ${configs.table_rdb}
              <#if j != 0>
                <#assign setsuzokushi = setsuzokushi + " || ">
              </#if>
-             <#assign setsuzokushi = setsuzokushi + condition.javaFieldName + " != null">
+             <#assign setsuzokushi = setsuzokushi + "arg${condition.javaFieldName?cap_first}" + " != null">
              <#assign j = j + 1>
            </#list>
            <#if setsuzokushi != "">
@@ -19,7 +19,7 @@ select * from ${configs.table_rdb}
              and
            /*END*/
            </#if>
-             ${selectedColumnsMapping.sqlColumnName} LIKE concat(/*arg${selectedColumnsMapping.javaFieldName?cap_first}*/' ','%')
+             ${selectedColumnsMapping.sqlColumnName} ${getS2DaoCondition("arg${selectedColumnsMapping.javaFieldName?cap_first}", "${getJavaClassName(selectedColumnsMapping)}")}
        /*END*/
        <#assign i = i + 1>
 </#list>
