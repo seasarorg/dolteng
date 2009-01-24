@@ -434,6 +434,19 @@ public class ScaffoldModel implements RootModel {
         return "";
     }
     
+    public String getS2DaoCondition(String fieldName, String typeName) {
+        if (typeName.compareTo("String") == 0) {
+            return "LIKE concat(/*" + fieldName + "*/' ','%')";
+        } else if (typeName.compareTo("Integer") == 0 || typeName.compareTo("BigDecimal") == 0) {
+            return ">= /*" + fieldName + "*/'0'";
+        } else if (typeName.compareTo("Date") == 0 || typeName.compareTo("Timestamp") == 0) {
+            return ">= /*" + fieldName + "*/'1900/1/1'";
+        }
+        return "= fieldName";
+    }
+    
+    
+    
     /**
      * If the type of dto property is "String", true is returned.
      * @param typeName

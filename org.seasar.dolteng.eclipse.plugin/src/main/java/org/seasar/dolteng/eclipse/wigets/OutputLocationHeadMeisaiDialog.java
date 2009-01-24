@@ -212,7 +212,7 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
         //--------------------------------------------------------------------------
 
         // ヘッダ明細のうち明細に指定するテーブルの候補を、リストボックスにて表示します。
-        createLabel(composite, "Meisai\nTable:");
+        createLabel(composite, "Detail\nTable:");
         meisaiTableList = new org.eclipse.swt.widgets.List(
                 composite, SWT.BORDER | SWT.SINGLE | SWT.V_SCROLL | SWT.H_SCROLL);
         meisaiTableList.setSize(10, 10);
