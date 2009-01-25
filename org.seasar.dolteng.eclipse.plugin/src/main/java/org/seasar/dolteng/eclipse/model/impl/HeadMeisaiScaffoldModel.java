@@ -604,6 +604,10 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         return stb.toString();
     }
 
+    /**
+     * ヘッダテーブルにおけるプライマリキーの数を取得します。
+     * @return ヘッダテーブルにおけるプライマリキーの数
+     */
     public int countPkeys() {
         int result = 0;
         for (EntityMappingRow row : mappings) {
@@ -613,6 +617,34 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         }
         return result;
     }
+    
+    /**
+     * 明細テーブルにおけるプライマリキーの数を取得します。
+     * @return 明細テーブルにおけるプライマリキーの数
+     */
+    public int countPkeyInMeisai() {
+        int meisaiPrimaryCount = 0;
+        for (EntityMappingRow row : meisaiColumnsMappings) {
+            if (row.isPrimaryKey()) {
+                meisaiPrimaryCount++;
+            }
+        }
+        return meisaiPrimaryCount;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     public String createPkeyMethodCallArgs(boolean includeVersion, String prefix) {
         StringBuffer stb = new StringBuffer();
@@ -942,19 +974,6 @@ public class HeadMeisaiScaffoldModel implements RootModel {
     
     
     
-    /**
-     * 明細テーブルにおけるプライマリキーの数を取得します。
-     * @return 明細テーブルにおけるプライマリキーの数
-     */
-    private int countPkeyInMeisai() {
-        int meisaiPrimaryCount = 0;
-        for (EntityMappingRow row : meisaiColumnsMappings) {
-            if (row.isPrimaryKey()) {
-                meisaiPrimaryCount++;
-            }
-        }
-        return meisaiPrimaryCount;
-    }
     
     /**
      * 明細テーブルのカラム名に対するクラスを取得します。
