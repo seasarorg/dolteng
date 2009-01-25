@@ -18,7 +18,11 @@ public class ${configs.meisaitable_capitalize} {
 </#if>
 <#list meisaiColumnsMappings as mapping>
     <#if mapping.isPrimaryKey() = true>
+	<#if countPkeyInMeisai() = 2>
     @Id//(IdType.IDENTITY)
+    <#else>
+    @Id(IdType.IDENTITY)
+    </#if>
     </#if>
 	public ${getMeisaiJavaClassName(mapping)} ${mapping.javaFieldName};
 
