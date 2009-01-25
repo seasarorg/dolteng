@@ -5,7 +5,7 @@ import org.seasar.dao.annotation.tiger.Bean;
 import org.seasar.dao.annotation.tiger.Id;
 import org.seasar.dao.annotation.tiger.IdType;
 </#if>
-${getImports()}
+${getImportsInMeisai()}
 
 <#if isTigerResource() = true>
 @Bean(table="${configs.meisaitable_rdb}")
@@ -20,7 +20,7 @@ public class ${configs.meisaitable_capitalize} {
     <#if mapping.isPrimaryKey() = true>
     @Id//(IdType.IDENTITY)
     </#if>
-	public ${getJavaClassName(mapping)} ${mapping.javaFieldName};
+	public ${getMeisaiJavaClassName(mapping)} ${mapping.javaFieldName};
 
 </#list>
 	public ${configs.meisaitable_capitalize}() {

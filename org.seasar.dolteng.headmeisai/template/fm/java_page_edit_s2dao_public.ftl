@@ -38,7 +38,8 @@ public class ${configs.table_capitalize}Edit${configs.pagesuffix} extends Abstra
 			${configs.meisaitable?uncap_first}Items = new ${configs.meisaitable?cap_first}Dto[5];
 			for (int i = 0; i < ${configs.meisaitable?uncap_first}Items.length; i++) {
 				${configs.meisaitable?cap_first}Dto dto = new ${configs.meisaitable?cap_first}Dto();
-				dto.meisai${createMeisaiPkeyName()?cap_first} = i + 1;
+				//dto.meisai${createMeisaiPkeyName()?cap_first} = i + 1;
+				dto.meisai${createMeisaiPkeyName()?cap_first} = ${castFromMeisaiToHead()};
 				${configs.meisaitable?uncap_first}Items[i] = dto;
 			}
 		}

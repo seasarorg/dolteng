@@ -42,6 +42,7 @@
 		<tr>
 <#list meisaiColumnsMappings as mapping>
 	    <#if mapping.isPrimaryKey() = true || isVersionColumn(mapping) = true>
+	    <#elseif isHeadPkey(mapping)>
 	    <#else>
 	    <th colspan="2"><span id="meisai${mapping.javaFieldName?cap_first}Label">${mapping.javaFieldName?uncap_first}</span></th>
 	    </#if>
@@ -53,6 +54,7 @@
 <#list meisaiColumnsMappings as mapping>
 	    <#if mapping.isPrimaryKey() = true || isVersionColumn(mapping) = true>
 	    <input type="hidden" id="meisai${mapping.javaFieldName?cap_first}" />
+	    <#elseif isHeadPkey(mapping)>
 	    <#else>
 	    <td><input type="text" id="meisai${mapping.javaFieldName?cap_first}" /></td>
 	    <td><span id="meisai${mapping.javaFieldName?cap_first}Message"></span></td>

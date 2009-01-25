@@ -5,7 +5,7 @@ import org.seasar.dao.annotation.tiger.Bean;
 import org.seasar.dao.annotation.tiger.Id;
 import org.seasar.dao.annotation.tiger.IdType;
 </#if>
-${getImports()}
+${getImportsInMeisai()}
 
 import java.io.Serializable;
 import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.meisaitable_capitalize};
@@ -13,7 +13,7 @@ import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.meisait
 
 public class ${configs.meisaitable_capitalize}Dto implements Serializable {
 <#list meisaiColumnsMappings as mapping>
-	public ${getJavaClassName(mapping)} meisai${mapping.javaFieldName?cap_first};
+	public ${getMeisaiJavaClassName(mapping)} meisai${mapping.javaFieldName?cap_first};
 
 </#list>
 	public ${configs.meisaitable_capitalize} convert() {
