@@ -190,6 +190,7 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
         }
         
         // Scaffold対象のテーブルの列情報を、リストボックスにて表示します。
+        // current.getText() でヘッダのテーブル名が取得できます。
         createLabel(composite, current.getText() + "\nRetrieval\nCondition :");
         currentTableColumnsList = new org.eclipse.swt.widgets.List(
                 composite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL);

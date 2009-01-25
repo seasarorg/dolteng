@@ -127,6 +127,10 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         this.configs = configs;
         this.configs.put("pagingpackagename", "paging");
         this.configs.put("dtopackagename", "dto");
+        
+        // ヘッダのテーブル名を取得してみましょう
+        System.out.println("ヘッダのテーブル名：" + this.configs.get("table_rdb"));
+        
         initialize(node, selectedColumns, meisaiTableName, meisaiColumns);
     }
 
@@ -472,10 +476,48 @@ public class HeadMeisaiScaffoldModel implements RootModel {
             stb.append(';');
             stb.append(separator);
         }
-
+        
         return stb.toString();
     }
 
+    
+    
+    /**
+     * 明細テーブルクラス用のインポート文を取得します。
+     * @return 明細テーブルクラス用のインポート文
+     */
+    public String getImportsInMeisai() {
+        Set<String> imports = new HashSet<String>();
+        for (EntityMappingRow row : meisaiColumnsMappings) {
+            if (row.isPrimitive()) {
+                continue;
+            }
+            String pkg = row.getJavaClassName();
+            if (pkg.startsWith("java.lang") == false) {
+                imports.add(pkg);
+            }
+        }
+        String separator = System.getProperty("line.separator", "\n");
+        StringBuffer stb = new StringBuffer();
+        for (String element : imports) {
+            stb.append("import ");
+            stb.append(element);
+            stb.append(';');
+            stb.append(separator);
+        }
+        
+        return stb.toString();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public String getJavaClassName(EntityMappingRow row) {
         return ClassUtil.getShortClassName(row.getJavaClassName());
     }
@@ -794,6 +836,11 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         return createMeisaiPkeyMethodArgs(false);
     }
 
+    /**
+     * 明細テーブルにおける単一のレコードを取得するための、メソッドのパラメタを取得します。
+     * @param includeVersion バージョン列を含める場合、true を指定します。
+     * @return 明細テーブルにおける単一のレコードを取得するための、メソッドのパラメタ
+     */
     public String createMeisaiPkeyMethodArgs(boolean includeVersion) {
         StringBuffer stb = new StringBuffer();
         boolean is = false;
@@ -866,46 +913,225 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         return "pkey";
     }
 
+    /**
+     * ヘッダの１レコードに対応する明細テーブル上の単一のレコードを取得する
+     * ためのプライマリキー名を取得します。
+     * @return ヘッダの１レコードに対応する明細テーブル上の単一のレコード
+     *         を取得するためのプライマリキー名
+     */
     public String createMeisaiPkeyName() {
-        int i = 0;
-        for (EntityMappingRow row : meisaiColumnsMappings) {
-            if (row.isPrimaryKey()) {
-                if (i == 1) {
+        if (countPkeyInMeisai() == 1) {
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.isPrimaryKey()) {
                     return row.getJavaFieldName();
                 }
-                i++;
+            }
+        } else {
+            int i = 0;
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.isPrimaryKey()) {
+                    if (i == 1) {
+                        return row.getJavaFieldName();
+                    }
+                    i++;
+                }
             }
         }
         return "by";
     }
-
-    public String createHeadMeisaiPkeyByName() {
+    
+    
+    
+    /**
+     * 明細テーブルにおけるプライマリキーの数を取得します。
+     * @return 明細テーブルにおけるプライマリキーの数
+     */
+    private int countPkeyInMeisai() {
+        int meisaiPrimaryCount = 0;
         for (EntityMappingRow row : meisaiColumnsMappings) {
             if (row.isPrimaryKey()) {
-                return row.getJavaFieldName();
+                meisaiPrimaryCount++;
             }
         }
+        return meisaiPrimaryCount;
+    }
+    
+    /**
+     * 明細テーブルのカラム名に対するクラスを取得します。
+     * @param meisaiMapping 明細テーブルのカラム名
+     * @return 明細テーブルのカラム名に対するクラス
+     */
+    public String getMeisaiJavaClassName(EntityMappingRow meisaiMapping) {
+        System.out.println("#########################################################################");
+        System.out.println("meisaiMapping.getSqlColumnName() = " + meisaiMapping.getSqlColumnName());
+        System.out.println("this.configs.get(table_rdb) = " + this.configs.get("table_rdb"));
+        // 明細テーブルのカラム名がヘッダテーブルのプライマリキーと対応している場合は、
+        // ヘッダテーブルのクラス名を取得します。
+        if (meisaiMapping.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+            for (EntityMappingRow mapping : mappings) {
+                if (mapping.getSqlColumnName().compareTo("ID") == 0) {
+                    return mapping.getJavaClassName();
+                }
+            }
+        }
+        return meisaiMapping.getJavaClassName();
+    }
+
+    /**
+     * 与えられた明細のカラム名がヘッダのプライマリキーに対応している場合、true を返却します。
+     * @param meisaiMapping 与えられた明細のカラム
+     * @return 与えられた明細のカラム名がヘッダのプライマリキーに対応している場合、true
+     */
+    public boolean isHeadPkey(EntityMappingRow meisaiMapping) {
+        if (meisaiMapping.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+            return true;
+        }
+        return false;
+    }
+    
+    
+    
+    
+    /**
+     * 「i+1」という構文を明細のプライマリキーの型へ変換するための構文を取得します。
+     * @return 「i+1」という構文を明細のプライマリキーの型へ変換するための構文
+     */
+    public String castFromMeisaiToHead() {
+        // 明細テーブルのプライマリキーの数が１の場合、
+        // 「ID」の列を明細テーブル上から探索します。
+        if (countPkeyInMeisai() == 1) {
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.getSqlColumnName().compareTo("ID") == 0) {
+                    //return row.getJavaFieldName();
+                    
+//                    String s = row.getJavaClassName();
+//                    if (s.startsWith("java.lang")) {
+//                        s = ClassUtil.getShortClassName(s);
+//                    }
+                    
+                    if (ClassUtil.getShortClassName(row.getJavaClassName()).compareTo("Long") == 0) {
+                        return "new Long(i+1)";
+                    } else {
+                        return "i+1";
+                    }
+                }
+            }
+        } else {
+            // １番目のプライマリキーを取得し、使用します。
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.isPrimaryKey()) {
+                    if (ClassUtil.getShortClassName(row.getJavaClassName()).compareTo("Long") == 0) {
+                        return "new Long(i+1)";
+                    } else {
+                        return "i+1";
+                    }
+                }
+            }
+        }
+        
+        return "i+1";
+    }
+    
+
+    /**
+     * ヘッダの１レコードに対応する明細テーブル上のレコードを取得するための
+     * メソッド名を取得します。
+     * @return ヘッダの１レコードに対応する明細テーブル上のレコードを
+     *         取得するためのメソッド名
+     */
+    public String createHeadMeisaiPkeyByName() {
+        // 明細テーブルのプライマリキーの数が１の場合、
+        // 「ヘッダテーブル名_id」の列を明細テーブル上から探索します。
+        if (countPkeyInMeisai() == 1) {
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+                    return row.getJavaFieldName();
+                }
+            }
+        } else {
+            // １番目のプライマリキーを取得し、使用します。
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.isPrimaryKey()) {
+                    return row.getJavaFieldName();
+                }
+            }
+        }
+        
         return "by";
     }
 
+    /**
+     * ヘッダの１レコードに対応する明細テーブル上のレコードを取得するためのメソッドに
+     * 与える引数を取得します。
+     * @param includeVersion バージョン列を含む場合、true
+     * @return ヘッダの１レコードに対応する明細テーブル上のレコードを取得する
+     *         ためのメソッドに与える引数
+     */
     public String createHeadMeisaiPkeyMethodArgs(boolean includeVersion) {
         StringBuffer stb = new StringBuffer();
         boolean is = false;
-        for (EntityMappingRow row : meisaiColumnsMappings) {
-            if (row.isPrimaryKey()
-                    || (includeVersion && NamingUtil.isVersionNo(row
-                            .getSqlColumnName()))) {
-                String s = row.getJavaClassName();
-                if (s.startsWith("java.lang")) {
-                    s = ClassUtil.getShortClassName(s);
+//        for (EntityMappingRow row : meisaiColumnsMappings) {
+//            if (row.isPrimaryKey()
+//                    || (includeVersion && NamingUtil.isVersionNo(row
+//                            .getSqlColumnName()))) {
+//                String s = row.getJavaClassName();
+//                if (s.startsWith("java.lang")) {
+//                    s = ClassUtil.getShortClassName(s);
+//                }
+//                stb.append(s);
+//                stb.append(' ');
+//                stb.append(row.getJavaFieldName());
+//                stb.append(',');
+//                //is |= true;
+//                is = true;
+//                break;
+//            }
+//        }
+        // 明細テーブルのプライマリキーの数が１の場合、
+        // 「ヘッダテーブル名_id」の列を明細テーブル上から探索します。
+        if (countPkeyInMeisai() == 1) {
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.getSqlColumnName().
+                    compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+                    String s = row.getJavaClassName();
+                    if (s.startsWith("java.lang")) {
+                        s = ClassUtil.getShortClassName(s);
+                        // ヘッダテーブルのIDのクラス名を取得します。
+                        for (EntityMappingRow headRow : mappings) {
+                            if (headRow.getSqlColumnName().compareTo("ID") == 0) {
+                                s = headRow.getJavaClassName();
+                                if (s.startsWith("java.lang")) {
+                                    s = ClassUtil.getShortClassName(s);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    stb.append(s);
+                    stb.append(' ');
+                    stb.append(row.getJavaFieldName());
+                    stb.append(',');
+                    is = true;
+                    break;
                 }
-                stb.append(s);
-                stb.append(' ');
-                stb.append(row.getJavaFieldName());
-                stb.append(',');
-                //is |= true;
-                is = true;
-                break;
+            }
+        } else {
+            // １番目のプライマリキーを取得し、使用します。
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.isPrimaryKey()
+                    || (includeVersion && NamingUtil.isVersionNo(row
+                                          .getSqlColumnName()))) {
+                    String s = row.getJavaClassName();
+                    if (s.startsWith("java.lang")) {
+                        s = ClassUtil.getShortClassName(s);
+                    }
+                    stb.append(s);
+                    stb.append(' ');
+                    stb.append(row.getJavaFieldName());
+                    stb.append(',');
+                    is = true;
+                    break;
+                }
             }
         }
         if (is) {
@@ -914,6 +1140,12 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         return stb.toString();
     }
 
+    /**
+     * ヘッダの１レコードに対応する明細テーブル上のレコードを取得するための
+     * メソッドに対して与えるアノテーションを取得します。
+     * @return ヘッダの１レコードに対応する明細テーブル上のレコードを取得するための
+     *         メソッドに対して与えるアノテーション
+     */
     public String createHeadMeisaiPkeyMethodArgNames() {
         if (isTigerResource()) {
             return createHeadMeisaiAnnotationArgNames();
@@ -921,12 +1153,30 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         return createHeadMeisaiConstArgNames();
     }
     
+    /**
+     * ヘッダの１レコードに対応する明細テーブル上のレコードを取得するための
+     * メソッドに対して与えるアノテーションを取得します。
+     * @return ヘッダの１レコードに対応する明細テーブル上のレコードを取得するための
+     *         メソッドに対して与えるアノテーション
+     */
     private String createHeadMeisaiAnnotationArgNames() {
         List<EntityMappingRow> prows = new ArrayList<EntityMappingRow>();
-        for (EntityMappingRow row : meisaiColumnsMappings) {
-            if (row.isPrimaryKey()) {
-                prows.add(row);
-                break;
+        // 明細テーブルのプライマリキーの数が１の場合、
+        // 「ヘッダテーブル名_id」の列を明細テーブル上から探索します。
+        if (countPkeyInMeisai() == 1) {
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+                    prows.add(row);
+                    break;
+                }
+            }
+        } else {
+            // １番目のプライマリキーを取得し、使用します。
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.isPrimaryKey()) {
+                    prows.add(row);
+                    break;
+                }
             }
         }
 
@@ -950,23 +1200,51 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         return stb.toString();
     }
 
+    /**
+     * ヘッダの１レコードに対応する明細テーブル上のレコードを取得するための
+     * メソッドに対して与えるアノテーションを取得します。
+     * @return ヘッダの１レコードに対応する明細テーブル上のレコードを取得するための
+     *         メソッドに対して与えるアノテーション
+     */
     private String createHeadMeisaiConstArgNames() {
-        StringBuffer stb = new StringBuffer();
-        boolean is = false;
-        stb.append('"');
-        for (EntityMappingRow row : meisaiColumnsMappings) {
-            if (row.isPrimaryKey()) {
-                stb.append(row.getSqlColumnName());
-                stb.append(',');
-                is = true;
-                break;
+        // 明細テーブルのプライマリキーの数が１の場合、
+        // 「ヘッダテーブル名_id」の列を明細テーブル上から探索します。
+        if (countPkeyInMeisai() == 1) {
+            StringBuffer stb = new StringBuffer();
+            boolean is = false;
+            stb.append('"');
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+                    stb.append(row.getSqlColumnName());
+                    stb.append(',');
+                    is = true;
+                    break;
+                }
             }
+            if (is) {
+                stb.setLength(stb.length() - 1);
+            }
+            stb.append('"');
+            return stb.toString();
+        } else {
+            // １番目のプライマリキーを取得し、使用します。
+            StringBuffer stb = new StringBuffer();
+            boolean is = false;
+            stb.append('"');
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.isPrimaryKey()) {
+                    stb.append(row.getSqlColumnName());
+                    stb.append(',');
+                    is = true;
+                    break;
+                }
+            }
+            if (is) {
+                stb.setLength(stb.length() - 1);
+            }
+            stb.append('"');
+            return stb.toString();
         }
-        if (is) {
-            stb.setLength(stb.length() - 1);
-        }
-        stb.append('"');
-        return stb.toString();
     }
     
     

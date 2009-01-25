@@ -165,16 +165,16 @@ public class DatabaseView extends ViewPart {
             for (TreeContent project : projects) {
                 TreeContent[] tables = project.getChildren();
                 for (TreeContent table : tables) {
-                    TreeContent[] columns = table.getChildren();
-                    boolean isH2 = false;
-                    for (TreeContent column_children : columns) {
-                        TreeContent[] column_child = column_children.getChildren();
-                        if (column_child.length > 0) {
-                            tenkaiTableCount++;
-                            isH2 = true;
-                        }
+                    if (table instanceof TableNode) {
+                        tenkaiTableCount++;
+                    } else {
+                      TreeContent[] columns = table.getChildren();
+                      for (TreeContent column_children : columns) {                        
+                          if (column_children instanceof TableNode) {
+                              tenkaiTableCount++;
+                          }
+                      }
                     }
-                    if (!isH2 && columns.length > 0) tenkaiTableCount++;
                 }
             }
         }    
@@ -186,44 +186,19 @@ public class DatabaseView extends ViewPart {
             for (TreeContent project : projects) {
                 TreeContent[] tables = project.getChildren();
                 for (TreeContent table : tables) {
-                    TreeContent[] columns = table.getChildren();
-                    boolean isH2 = false;
-                    for (TreeContent column_children : columns) {
-                        TreeContent[] column_child = column_children.getChildren();
-                        if (column_child.length > 0) {
-                            allTables[i++] = column_children.getText();
-                            isH2 = true;
-                        }
+                    if (table instanceof TableNode) {
+                        allTables[i++] = table.getText();
+                    } else {
+                      TreeContent[] columns = table.getChildren();
+                      for (TreeContent column_children : columns) {                        
+                          if (column_children instanceof TableNode) {
+                              allTables[i++] = column_children.getText();
+                          }
+                      }
                     }
-                    if (!isH2 && columns.length > 0) allTables[i++] = table.getText();
                 }
             }
         }    
-        
-        
-//        int i = 0;
-//        String[] tmp = null;
-//        for (TreeContent root : roots) {
-//            System.out.println("root name = " + root.getText());
-//            TreeContent[] projects = root.getChildren();
-//            for (TreeContent project : projects) {
-//                System.out.println("project name = " + project.getText());
-//                TreeContent[] tables = project.getChildren();
-//                tmp = new String[tables.length];
-//                for (TreeContent table : tables) {
-//                    System.out.println("table name = " + table.getText());
-//                    TreeContent[] columns = table.getChildren();
-//                    if (columns.length > 0) tmp[i++] = table.getText();
-//                }
-//                break;
-//            }
-//            break;
-//        }
-//        
-//        String[] allTables = new String[i];
-//        for (int j = 0; j < i; j++) {
-//            allTables[j] = tmp[j];
-//        }
         
         return allTables;
     }
@@ -242,6 +217,7 @@ public class DatabaseView extends ViewPart {
                 TreeContent[] tables = project.getChildren();
                 for (TreeContent table : tables) {
                     if (tableName.compareTo(table.getText()) == 0) {
+                        table.findChildren();
                         TreeContent[] columns = table.getChildren();
                         allColumns = new String[columns.length]; int i = 0;
                         for (TreeContent column : columns) {
@@ -252,6 +228,7 @@ public class DatabaseView extends ViewPart {
                     TreeContent[] columns = table.getChildren();
                     for (TreeContent column_children : columns) {
                         if (tableName.compareTo(column_children.getText()) == 0) {
+                            column_children.findChildren();
                             TreeContent[] column_child = column_children.getChildren();
                             allColumns = new String[column_child.length]; int i = 0;
                             for (TreeContent column : column_child) {
@@ -281,12 +258,14 @@ public class DatabaseView extends ViewPart {
                 for (TreeContent table : tables) {
                     if (tableName.compareTo(table.getText()) == 0) {
                         node = (TableNode)table;
+                        node.findChildren();
                         return node;
                     }
                     TreeContent[] columns = table.getChildren();
                     for (TreeContent column_children : columns) {
                         if (tableName.compareTo(column_children.getText()) == 0) {
                             node = (TableNode)column_children;
+                            node.findChildren();
                             return node;
                         }
                     }
