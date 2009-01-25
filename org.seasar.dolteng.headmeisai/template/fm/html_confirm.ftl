@@ -24,6 +24,12 @@
 	<td><span id="${mapping.javaFieldName}">${mapping.javaFieldName}</span><input type="hidden" id="${mapping.javaFieldName}-hidden"/></td>
 	<td><span id="${mapping.javaFieldName}Message"></span></td>
 </tr>
+<#elseif isVersionColumn(mapping) = true>
+<tr>
+	<td><span id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</span></td>
+	<td><span id="${mapping.javaFieldName}">${mapping.javaFieldName}</span><input type="hidden" id="${mapping.javaFieldName}-hidden"/></td>
+	<td><span id="${mapping.javaFieldName}Message"></span></td>
+</tr>
 </#if>
 </#list>
 </table>
