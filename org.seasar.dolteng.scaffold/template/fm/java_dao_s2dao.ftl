@@ -24,9 +24,9 @@ public interface ${configs.table_capitalize}${configs.daosuffix} {
 	public ${configs.table_capitalize}[] findBy${orderbyString}PagerCondition(
 		${conditionParam}, ${configs.table_capitalize}PagerCondition dto);
 	
-	@Arguments({${conditionArguments}})
-	public int countBy${orderbyString}PagerCondition(
-		${conditionParam});
+//	@Arguments({${conditionArguments}})
+//	public int countBy${orderbyString}PagerCondition(
+//		${conditionParam});
 </#if>
 	
 <#if 0 &lt; countPkeys()>
