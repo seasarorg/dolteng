@@ -155,6 +155,14 @@ public class OutputLocationDialog extends TitleAreaDialog {
             public void widgetSelected(SelectionEvent e) {
                 selectedConfig = resolver.getConfig(index2id.get(new Integer(
                         scaffolds.getSelectionIndex())));
+                
+                // 検索条件をサポートしていないパターンの場合、検索条件を無効化します。
+                if (scaffolds.getText().compareTo("Teeda + S2Dao (use public field)") != 0 &&
+                    scaffolds.getText().compareTo("Teeda + S2Dao") != 0 &&
+                    scaffolds.getText().compareTo("Teeda + Kuina-Dao") != 0) {
+                    currentTableColumnsList.setEnabled(false);
+                }
+                
             }
         });
         
@@ -168,7 +176,7 @@ public class OutputLocationDialog extends TitleAreaDialog {
         }
         
         // The column information in the table of scaffold object are shown as the list box. 
-        createLabel(composite, current.getText() + "\nRetrieval\nCondition :" + "\n(Only for S2Dao)");
+        createLabel(composite, current.getText() + "\nRetrieval\nCondition :");
         currentTableColumnsList = new org.eclipse.swt.widgets.List(
                 composite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL);
         currentTableColumnsList.setSize(10, 10);
@@ -188,6 +196,14 @@ public class OutputLocationDialog extends TitleAreaDialog {
         });
         
         scaffolds.select(0);
+
+        // 検索条件をサポートしていないパターンの場合、検索条件を無効化します。
+        if (scaffolds.getText().compareTo("Teeda + S2Dao (use public field)") != 0 &&
+            scaffolds.getText().compareTo("Teeda + S2Dao") != 0 &&
+            scaffolds.getText().compareTo("Teeda + Kuina-Dao") != 0) {
+            currentTableColumnsList.setEnabled(false);
+        }
+        
         return composite;
     }
     
