@@ -66,10 +66,6 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 
 <#if isSelectedExisted() = true>
 	public void calculatePageIndex() {
-//		totalNumber = ${configs.table}Dao.
-//			countBy${orderbyString}PagerCondition(
-//				${conditionCallParam});
-
 		currentPageIndex = offset/limit+1;
 		totalPageIndex = totalNumber/limit;
 		if (totalNumber%limit > 0) {
@@ -97,11 +93,6 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 
 	public Class doGoNextPage() {
 		${configs.table}Index = offset;
-//		if (${configs.table}Index + limit < ${configs.table}Dao.
-//			countBy${orderbyString}PagerCondition(
-//				${conditionCallParam})) {
-//			${configs.table}Index += limit;
-//		}
 		prerender();
 		if (${configs.table}Index + limit < totalNumber) {
 			${configs.table}Index += limit;
@@ -110,7 +101,6 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	}
 
 	public Class doGoLastPage() {
-		//calculatePageIndex();		
 		prerender();
 		offset = (totalPageIndex-1)*limit;
 		${configs.table}Index = offset;

@@ -20,16 +20,4 @@ public class ${configs.table_capitalize}PagerCondition extends DefaultPagerCondi
 </#list>
 	public ${configs.table_capitalize}PagerCondition() {
 	}
-
-/*
-<#list selectedColumnsMappings as selectedColumnsMapping>
-	public ${getJavaClassName(selectedColumnsMapping)} get${selectedColumnsMapping.javaFieldName?cap_first}() {
-		return this.${selectedColumnsMapping.javaFieldName};
-	}
-
-	public void set${selectedColumnsMapping.javaFieldName?cap_first}(${getJavaClassName(selectedColumnsMapping)} ${selectedColumnsMapping.javaFieldName?lower_case}) {
-		this.${selectedColumnsMapping.javaFieldName} = ${selectedColumnsMapping.javaFieldName?lower_case};
-	}
-</#list>
-*/
 }
