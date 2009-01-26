@@ -68,24 +68,16 @@
 <table>
 	<tr>
 		<td>
-			<div id="isFirstPage">
-				<input type="button" id="doGoFirstPage" value="First Page"/>
-			</div>
+			<input type="button" id="doGoFirstPage" value="First Page" te:disabled="false" />
 		</td>
 		<td>
-			<div id="isPreviousPage">
-				<input type="button" id="doGoPreviousPage" value="Previous Page"/>
-			</div>
+			<input type="button" id="doGoPreviousPage" value="Previous Page" te:disabled="false" />
 		</td>
 		<td>
-			<div id="isNextPage">
-				<input type="button" id="doGoNextPage" value="Next Page"/>
-			</div>
+			<input type="button" id="doGoNextPage" value="Next Page" te:disabled="false" />
 		</td>
 		<td>
-			<div id="isLastPage">
-				<input type="button" id="doGoLastPage" value="Last Page"/>
-			</div>
+			<input type="button" id="doGoLastPage" value="Last Page" te:disabled="false" />
 		</td>
 	</tr>
 </table>

@@ -12,11 +12,11 @@ import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.table_c
 import ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.CrudType;
 
 public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstract${configs.table_capitalize}${configs.pagesuffix} {
-	
+
 	private List<${configs.table_capitalize}> ${configs.table}Items;
-	
+
 	private int ${configs.table}Index;
-	
+
 <#if isSelectedExisted() = true>
 	<#list selectedColumnsMappings as selectedColumnsMapping>
 	public ${getJavaClassName(selectedColumnsMapping)} text${selectedColumnsMapping.javaFieldName?cap_first};
@@ -24,38 +24,40 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	</#list>
 </#if>
 
+<#if isSelectedExisted() = true>
 	public Integer offset;
-	
+
 	public Integer currentPageIndex;
-	
+
 	public Integer totalPageIndex;
-	
+
 	public Integer totalNumber;
-	
+
 	private int limit = 10;
-	
+</#if>
+
 	public ${configs.table_capitalize}List${configs.pagesuffix}() {
 	}
-	
+
 	public Class initialize() {
 		return null;
 	}
-	
+
 	public Class prerender() {
 		<#if isSelectedExisted() = true>
 		offset = ${configs.table}Index;
-		
+
 		${configs.table?cap_first}Dto dto = new ${configs.table?cap_first}Dto();
 		dto.setMaxResults(limit);
 		dto.setFirstResult(${configs.table}Index);
 		setCondition(dto);
 		${configs.table}Items = get${configs.table?cap_first}Service().findBy${configs.table?cap_first}(dto);
-			    
+
 		calculatePageIndex();
 		<#else>
 		${configs.table}Items = get${configs.table_capitalize}${configs.servicesuffix}().findAll();
 		</#if>
-		
+	
 		return null;
 	}
 
@@ -83,22 +85,22 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		setCondition(dto);
 		List<${configs.table?cap_first}> tmp = get${configs.table?cap_first}Service().findBy${configs.table?cap_first}(dto);
 		totalNumber = tmp.size();
-		
+
 		currentPageIndex = offset/limit+1;
 		totalPageIndex = totalNumber/limit;
 		if (totalNumber%limit > 0) totalPageIndex++;
 	}
-	
+
 	public Class doRetrieve() {
 		return null;
 	}
-	
+
 	public Class doGoFirstPage() {
 		offset = 0;
 		${configs.table}Index = offset;
 		return null;
 	}
-	
+
 	public Class doGoPreviousPage() {
 		${configs.table}Index = offset;
 		if (${configs.table}Index - limit >= 0) {
@@ -106,7 +108,7 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		}
 		return null;
 	}
-	  
+
 	public Class doGoNextPage() {
 		${configs.table}Index = offset;
 		${configs.table?cap_first}Dto dto = new ${configs.table?cap_first}Dto();
@@ -119,34 +121,28 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		}
 		return null;
 	}
-	
+
 	public Class doGoLastPage() {
 		calculatePageIndex();		
 		offset = (totalPageIndex-1)*limit;
 		${configs.table}Index = offset;
 		return null;
 	}
-	
-	public boolean isFirstPage() {
-		if (offset == 0) {
-			return false;
-		}
-		return true;
+
+	public boolean isDoGoFirstPageDisabled() {
+		return offset == 0;
 	}
-	
-	public boolean isPreviousPage() {
-		return isFirstPage();
+
+	public boolean isDoGoPreviousPageDisabled() {
+		return isDoGoFirstPageDisabled();
 	}
-	
-	public boolean isNextPage() {
-		if (currentPageIndex == totalPageIndex) {
-			return false;
-		}
-		return true;
+
+	public boolean isDoGoNextPageDisabled() {
+		return currentPageIndex == totalPageIndex;
 	}
-	
-	public boolean isLastPage() {
-		return isNextPage();
+
+	public boolean isDoGoLastPageDisabled() {
+		return isDoGoNextPageDisabled();
 	}
 </#if>
 

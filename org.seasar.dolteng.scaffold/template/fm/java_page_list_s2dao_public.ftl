@@ -23,64 +23,68 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	</#list>
 </#if>
 
+<#if isSelectedExisted() = true>
 	public Integer offset;
-	
+
 	public Integer currentPageIndex;
-	
+
 	public Integer totalPageIndex;
-	
+
 	public Integer totalNumber;
-	
+
 	private int limit = 10;
-	
+</#if>
+
 	public ${configs.table_capitalize}ListPage() {
 	}
-	
+
 	public Class initialize() {
 		return null;
 	}
-	
+
 	public Class prerender() {
 		<#if isSelectedExisted() = true>
 		offset = ${configs.table}Index;
-		
+
 		${configs.table?cap_first}PagerCondition dto = new ${configs.table?cap_first}PagerCondition();
 		dto.setLimit(limit);
 		dto.setOffset(${configs.table}Index);
-		
+
 		${configs.table}Items = ${configs.table}Dao.
-		  findBy${orderbyString}PagerCondition(
-		    ${conditionCallParam}, dto);
-		    
+			findBy${orderbyString}PagerCondition(
+				${conditionCallParam}, dto);
+	
 		calculatePageIndex();
 		<#else>
 		${configs.table}Items = ${configs.table}${configs.daosuffix}.selectAll();
 		</#if>
-		
+
 		return null;
 	}
-	
+
 <#if isSelectedExisted() = true>
 	public void calculatePageIndex() {
 		totalNumber = ${configs.table}Dao.
-		  countBy${orderbyString}PagerCondition(
-		    ${conditionCallParam});
-		
+			countBy${orderbyString}PagerCondition(
+				${conditionCallParam});
+
 		currentPageIndex = offset/limit+1;
 		totalPageIndex = totalNumber/limit;
-		if (totalNumber%limit > 0) totalPageIndex++;
+		if (totalNumber%limit > 0) {
+			totalPageIndex++;
+		}
 	}
-	
+
 	public Class doRetrieve() {
 		return null;
 	}
-	
+
 	public Class doGoFirstPage() {
 		offset = 0;
 		${configs.table}Index = offset;
 		return null;
 	}
-	
+
 	public Class doGoPreviousPage() {
 		${configs.table}Index = offset;
 		if (${configs.table}Index - limit >= 0) {
@@ -88,7 +92,7 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		}
 		return null;
 	}
-	  
+
 	public Class doGoNextPage() {
 		${configs.table}Index = offset;
 		if (${configs.table}Index + limit < ${configs.table}Dao.
@@ -98,34 +102,28 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		}
 		return null;
 	}
-	
+
 	public Class doGoLastPage() {
 		calculatePageIndex();		
 		offset = (totalPageIndex-1)*limit;
 		${configs.table}Index = offset;
 		return null;
 	}
-	
-	public boolean isFirstPage() {
-		if (offset == 0) {
-			return false;
-		}
-		return true;
+
+	public boolean isDoGoFirstPageDisabled() {
+		return offset == 0;
 	}
-	
-	public boolean isPreviousPage() {
-		return isFirstPage();
+
+	public boolean isDoGoPreviousPageDisabled() {
+		return isDoGoFirstPageDisabled();
 	}
-	
-	public boolean isNextPage() {
-		if (currentPageIndex == totalPageIndex) {
-			return false;
-		}
-		return true;
+
+	public boolean isDoGoNextPageDisabled() {
+		return currentPageIndex == totalPageIndex;
 	}
-	
-	public boolean isLastPage() {
-		return isNextPage();
+
+	public boolean isDoGoLastPageDisabled() {
+		return isDoGoNextPageDisabled();
 	}
 </#if>
 	
@@ -149,7 +147,7 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		crudType = CrudType.CREATE;
 		return ${configs.table_capitalize}Edit${configs.pagesuffix}.class;
 	}
-	
+
 <#list mappings as mapping>
 <#if mapping.isDate() = true>
 <#if isTigerResource() = true>
