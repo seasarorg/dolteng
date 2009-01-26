@@ -18,19 +18,19 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 
 <#if isSelectedExisted() = true>
 	<#list selectedColumnsMappings as selectedColumnsMapping>
-	public ${getJavaClassName(selectedColumnsMapping)} text${selectedColumnsMapping.javaFieldName?cap_first};
+	private ${getJavaClassName(selectedColumnsMapping)} text${selectedColumnsMapping.javaFieldName?cap_first};
 
 	</#list>
 </#if>
 
 <#if isSelectedExisted() = true>
-	public Integer offset;
+	private Integer offset;
 
-	public Integer currentPageIndex;
+	private Integer currentPageIndex;
 
-	public Integer totalPageIndex;
+	private Integer totalPageIndex;
 
-	public Integer totalNumber;
+	private Integer totalNumber;
 
 	private int limit = 10;
 </#if>
@@ -184,4 +184,48 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	public void set${configs.table_capitalize}Index(int ${configs.table}Index) {
 		this.${configs.table}Index = ${configs.table}Index;
 	}
+
+<#if isSelectedExisted() = true>
+	<#list selectedColumnsMappings as selectedColumnsMapping>
+	public ${getJavaClassName(selectedColumnsMapping)} getText${selectedColumnsMapping.javaFieldName?cap_first}() {
+		return this.text${selectedColumnsMapping.javaFieldName?cap_first};
+	}
+
+	public void setText${selectedColumnsMapping.javaFieldName?cap_first}(${getJavaClassName(selectedColumnsMapping)} text${selectedColumnsMapping.javaFieldName?cap_first}) {
+		this.text${selectedColumnsMapping.javaFieldName?cap_first} = text${selectedColumnsMapping.javaFieldName?cap_first};
+	}
+	</#list>
+
+	public Integer getOffset() {
+		return offset;
+	}
+	
+	public void setOffset(Integer offset) {
+		this.offset = offset;
+	}
+
+	public Integer getCurrentPageIndex() {
+		return currentPageIndex;
+	}
+	
+	public void setCurrentPageIndex(Integer currentPageIndex) {
+		this.currentPageIndex = currentPageIndex;
+	}
+	
+	public Integer getTotalPageIndex() {
+		return totalPageIndex;
+	}
+	
+	public void setTotalPageIndex(Integer totalPageIndex) {
+		this.totalPageIndex = totalPageIndex;
+	}
+	
+	public Integer getTotalNumber() {
+		return totalNumber;
+	}
+	
+	public void setTotalNumber(Integer totalNumber) {
+		this.totalNumber = totalNumber;
+	}
+</#if>
 }
