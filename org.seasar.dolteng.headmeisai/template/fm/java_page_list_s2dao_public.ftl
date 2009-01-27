@@ -99,27 +99,21 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		${configs.table}Index = offset;
 		return null;
 	}
-	
-	public boolean isFirstPage() {
-		if (offset == 0) {
-			return false;
-		}
-		return true;
+
+	public boolean isDoGoFirstPageDisabled() {
+		return offset == 0;
 	}
-	
-	public boolean isPreviousPage() {
-		return isFirstPage();
+
+	public boolean isDoGoPreviousPageDisabled() {
+		return isDoGoFirstPageDisabled();
 	}
-	
-	public boolean isNextPage() {
-		if (currentPageIndex == totalPageIndex) {
-			return false;
-		}
-		return true;
+
+	public boolean isDoGoNextPageDisabled() {
+		return currentPageIndex == totalPageIndex;
 	}
-	
-	public boolean isLastPage() {
-		return isNextPage();
+
+	public boolean isDoGoLastPageDisabled() {
+		return isDoGoNextPageDisabled();
 	}
 	
 	

@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:te="http://www.seasar.org/teeda/extension" xml:lang="ja" lang="ja">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="../../css/global.css"/>
@@ -67,24 +66,16 @@
 <table>
 	<tr>
 		<td>
-			<div id="isFirstPage">
-				<input type="button" id="doGoFirstPage" value="First Page"/>
-			</div>
+			<input type="button" id="doGoFirstPage" value="First Page" te:disabled="false" />
 		</td>
 		<td>
-			<div id="isPreviousPage">
-				<input type="button" id="doGoPreviousPage" value="Previous Page"/>
-			</div>
+			<input type="button" id="doGoPreviousPage" value="Previous Page" te:disabled="false" />
 		</td>
 		<td>
-			<div id="isNextPage">
-				<input type="button" id="doGoNextPage" value="Next Page"/>
-			</div>
+			<input type="button" id="doGoNextPage" value="Next Page" te:disabled="false" />
 		</td>
 		<td>
-			<div id="isLastPage">
-				<input type="button" id="doGoLastPage" value="Last Page"/>
-			</div>
+			<input type="button" id="doGoLastPage" value="Last Page" te:disabled="false" />
 		</td>
 	</tr>
 </table>

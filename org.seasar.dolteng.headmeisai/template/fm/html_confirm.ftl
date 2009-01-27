@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:te="http://www.seasar.org/teeda/extension" xml:lang="ja" lang="ja">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="../../css/global.css"/>
@@ -14,26 +13,26 @@
 <#list mappings as mapping>
 <#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 <tr>
-	<td><span id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</span></td>
+	<th><span id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</span></th>
 	<td><span id="${mapping.javaFieldName}">${mapping.javaFieldName}</span><input type="hidden" id="${mapping.javaFieldName}-hidden" /></td>
 	<td><span id="${mapping.javaFieldName}Message"></span></td>
 </tr>
 <#elseif mapping.isPrimaryKey() = true>
 <tr>
-	<td><span id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</span></td>
+	<th><span id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</span></th>
 	<td><span id="${mapping.javaFieldName}">${mapping.javaFieldName}</span><input type="hidden" id="${mapping.javaFieldName}-hidden"/></td>
 	<td><span id="${mapping.javaFieldName}Message"></span></td>
 </tr>
 <#elseif isVersionColumn(mapping) = true>
 <tr>
-	<td><span id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</span></td>
+	<th><span id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</span></th>
 	<td><span id="${mapping.javaFieldName}">${mapping.javaFieldName}</span><input type="hidden" id="${mapping.javaFieldName}-hidden"/></td>
 	<td><span id="${mapping.javaFieldName}Message"></span></td>
 </tr>
 </#if>
 </#list>
 </table>
-
+<br />
 
 
 
