@@ -75,4 +75,10 @@ governing permissions and limitations under the License.
          version="0.0.1"
          unpack="false"/>
 
+   <plugin
+         id="org.seasar.dolteng.headmeisai"
+         download-size="0"
+         install-size="0"
+         version="0.35.0"/>
+
 </feature>
