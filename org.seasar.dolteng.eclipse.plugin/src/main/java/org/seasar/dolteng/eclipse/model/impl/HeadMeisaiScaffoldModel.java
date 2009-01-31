@@ -79,7 +79,7 @@ public class HeadMeisaiScaffoldModel implements RootModel {
     private EntityMappingRow[] mappings;
     
     // 選択されたテーブルの列情報
-    private EntityMappingRow[] selectedColumnsMappings;
+    private EntityMappingRow[] selectedColumnsMappings = new EntityMappingRow[0];
     
     // 明細テーブルの名前
     private EntityMappingRow meisaiTableName;
@@ -124,6 +124,9 @@ public class HeadMeisaiScaffoldModel implements RootModel {
             Map<Integer, String[]> selectedColumns,
             String meisaiTableName, Map<Integer, String[]> meisaiColumns) {
         super();
+        
+System.out.println("ヘッダ明細Scaffoldモデル---------------------------------");
+        
         this.configs = configs;
         this.configs.put("pagingpackagename", "paging");
         this.configs.put("dtopackagename", "dto");
@@ -139,6 +142,8 @@ public class HeadMeisaiScaffoldModel implements RootModel {
             String meisaiTableName, Map<Integer, String[]> meisaiColumns) {
         ProjectNode n = (ProjectNode) node.getRoot();
         this.project = n.getJavaProject();
+
+        System.out.println("ヘッダ明細Scaffoldモデル2---------------------------------");
 
         // データベースビューの起動元のテーブル情報を設定します。
         {
@@ -156,7 +161,7 @@ public class HeadMeisaiScaffoldModel implements RootModel {
                     .size()]));
         }
         
-        {
+        if (selectedColumns != null) {
             // 選択されたテーブルの列情報を設定します。
             List<TreeContent> columns = Arrays.asList(node.getChildren());
             Collections.sort(columns);
@@ -176,7 +181,12 @@ public class HeadMeisaiScaffoldModel implements RootModel {
             setSelectedColumnsMappings(
                     (EntityMappingRow[]) rows.toArray(
                             new EntityMappingRow[rows.size()]));
-                            
+        }
+
+System.out.println("ヘッダ明細Scaffoldモデル3---------------------------------");
+        
+        
+        {
             // 検索条件に付与するためのORDER BY句を作成します。
             orderbyString = "";
             orderbyStringColumn = "";
@@ -204,7 +214,9 @@ public class HeadMeisaiScaffoldModel implements RootModel {
                 conditionCallParam += "text" + pascalize(selectedColumnsMappings[i].getSqlColumnName());
             }
         }
-        
+
+        System.out.println("ヘッダ明細Scaffoldモデル4---------------------------------");
+
         // 明細
         // 明細のテーブル名を設定します。
         {
