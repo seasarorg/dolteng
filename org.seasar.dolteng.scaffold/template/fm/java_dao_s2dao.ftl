@@ -11,8 +11,6 @@ import ${configs.rootpackagename}.${configs.pagingpackagename}.${configs.table_c
 @S2Dao(bean=${configs.table_capitalize}.class)
 </#if>
 public interface ${configs.table_capitalize}${configs.daosuffix} {
-//	public static final String findBy${orderbyString}PagerCondition = "ORDER BY ${orderbyStringColumn}";
-
 <#if isTigerResource() = false>
 	public Class BEAN = ${configs.table_capitalize}.class;
 

@@ -14,10 +14,6 @@ public class ${configs.table_capitalize}PagerCondition extends DefaultPagerCondi
 	public static final String TABLE = "${configs.table_rdb}";
 
 </#if>
-<#list selectedColumnsMappings as selectedColumnsMapping>
-	private ${getJavaClassName(selectedColumnsMapping)} ${selectedColumnsMapping.javaFieldName};
-
-</#list>
 	public ${configs.table_capitalize}PagerCondition() {
 	}
 }
