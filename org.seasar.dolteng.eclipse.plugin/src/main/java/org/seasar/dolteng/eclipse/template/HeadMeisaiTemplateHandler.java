@@ -85,12 +85,15 @@ public class HeadMeisaiTemplateHandler extends AbstractTemplateHandler implement
         result.put("rootpackagename", pkg);
         result.put("rootpackagepath", pkg.replace('.', '/'));
         
+        
         String orderbyString = "";
-        for (int i = 0; i < selectedColumns.size(); i++) {
-            if (i > 0) {
-                orderbyString += "And";
+        if (selectedColumns != null) {
+            for (int i = 0; i < selectedColumns.size(); i++) {
+                if (i > 0) {
+                    orderbyString += "And";
+                }
+                orderbyString += pascalize(selectedColumns.get(new Integer(i))[0]);
             }
-            orderbyString += pascalize(selectedColumns.get(new Integer(i))[0]);
         }
         result.put("orderbyString", orderbyString);
 
@@ -182,6 +185,8 @@ public class HeadMeisaiTemplateHandler extends AbstractTemplateHandler implement
             ResourcesUtil.createDir(this.project, config
                     .resolveOutputPath(baseModel.getConfigs()));
 
+            // The file is not created if at least one of the parameters can not be replaced. 
+            if (p.toString().indexOf("$") > 0) return null;
             IFile f = project.getFile(p);
             boolean is = true;
             if (f.exists()) {
