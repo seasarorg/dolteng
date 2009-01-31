@@ -91,10 +91,6 @@
 				override="true"
 				outputpath="${resourceroot}/${rootpackagepath}/${daopackagename}/"
 				outputname="${table_capitalize}${daosuffix}_findBy${orderbyString}PagerCondition.sql" />
-			<template path="template/fm/resource_pager_count_sql.ftl"
-				override="true"
-				outputpath="${resourceroot}/${rootpackagepath}/${daopackagename}/"
-				outputname="${table_capitalize}${daosuffix}_countBy${orderbyString}PagerCondition.sql" />
 
 
 
