@@ -24,3 +24,5 @@ select * from ${configs.table_rdb}
        <#assign i = i + 1>
 </#list>
 /*END*/
+ ORDER BY ${orderbyStringColumn}
+ 

@@ -16,11 +16,14 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	
 	public int ${configs.table}Index;
 	
+<#if isSelectedExisted() = true>
 	<#list selectedColumnsMappings as selectedColumnsMapping>
 	public ${getJavaClassName(selectedColumnsMapping)} text${selectedColumnsMapping.javaFieldName?cap_first};
 	
 	</#list>
+</#if>
 
+<#if isSelectedExisted() = true>
 	public Integer offset;
 	
 	public Integer currentPageIndex;
@@ -30,6 +33,7 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	public Integer totalNumber;
 	
 	private int limit = 10;
+</#if>
 	
 	public ${configs.table_capitalize}ListPage() {
 	}
@@ -39,7 +43,7 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	}
 	
 	public Class prerender() {
-		//${configs.table}Items = ${configs.table}${configs.daosuffix}.selectAll();
+		<#if isSelectedExisted() = true>
 		offset = ${configs.table}Index;
 		
 		${configs.table?cap_first}PagerCondition dto = new ${configs.table?cap_first}PagerCondition();
@@ -49,17 +53,24 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		${configs.table}Items = ${configs.table}Dao.
 		  findBy${orderbyString}PagerCondition(
 		    ${conditionCallParam}, dto);
+		
+		totalNumber = dto.getCount();
 		    
 		calculatePageIndex();
+		<#else>
+		${configs.table}Items = ${configs.table}${configs.daosuffix}.selectAll();
+		</#if>
 		
 		return null;
 	}
 	
+<#if isSelectedExisted() = true>
 	public void calculatePageIndex() {
+/*
 		totalNumber = ${configs.table}Dao.
 		  countBy${orderbyString}PagerCondition(
 		    ${conditionCallParam});
-		
+*/	
 		currentPageIndex = offset/limit+1;
 		totalPageIndex = totalNumber/limit;
 		if (totalNumber%limit > 0) totalPageIndex++;
@@ -85,16 +96,15 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	  
 	public Class doGoNextPage() {
 		${configs.table}Index = offset;
-		if (${configs.table}Index + limit < ${configs.table}Dao.
-			countBy${orderbyString}PagerCondition(
-				${conditionCallParam})) {
+		prerender();
+		if (${configs.table}Index + limit < totalNumber) {
 			${configs.table}Index += limit;
 		}
 		return null;
 	}
 	
 	public Class doGoLastPage() {
-		calculatePageIndex();		
+		prerender();
 		offset = (totalPageIndex-1)*limit;
 		${configs.table}Index = offset;
 		return null;
@@ -115,7 +125,7 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	public boolean isDoGoLastPageDisabled() {
 		return isDoGoNextPageDisabled();
 	}
-	
+</#if>
 	
 	
 	

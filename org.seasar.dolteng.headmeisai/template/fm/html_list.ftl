@@ -7,6 +7,7 @@
 <body>
 <form id="${configs.table_capitalize}ListForm">
 
+<#if isSelectedExisted() = true>
 <table border="1" class="tablebg">
 <#list selectedColumnsMappings as selectedColumnsMapping>
 	<tr>
@@ -19,7 +20,7 @@
 	</tr>
 </table>
 <input type="hidden" id="offset"/>
-
+</#if>
 
 
 
@@ -51,6 +52,7 @@
 </table>
 
 
+<#if isSelectedExisted() = true>
 <table>
 	<tr>
 		<td>
@@ -79,7 +81,7 @@
 		</td>
 	</tr>
 </table>
-
+</#if>
 
 
 
