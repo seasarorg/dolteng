@@ -5,7 +5,9 @@ import org.seasar.dao.annotation.tiger.Arguments;
 import org.seasar.dao.annotation.tiger.S2Dao;
 </#if>
 import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.table_capitalize};
+<#if isSelectedExisted() = true>	
 import ${configs.rootpackagename}.${configs.pagingpackagename}.${configs.table_capitalize}PagerCondition;
+</#if>
 
 <#if isTigerResource() = true>
 @S2Dao(bean=${configs.table_capitalize}.class)
