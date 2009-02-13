@@ -1001,7 +1001,7 @@
         <entry kind="file" path="${libPath}/geronimo-annotation_1.0_spec-1.0.jar" maven="org.apache.geronimo.specs,geronimo-annotation_1.0_spec,1.0" />
         <entry kind="file" path="${libPath}/geronimo-jpa_3.0_spec-1.0.jar" maven="org.apache.geronimo.specs,geronimo-jpa_3.0_spec,1.0" />
         <entry kind="file" path="${testLibPath}/s2jdbc-gen-2.4.34.jar" maven="org.seasar.container,s2jdbc-gen,2.4.34" />
-      	<entry kind="file" path="${testLibPath}/freemarker-2.3.13.jar" maven="freemarker,freemarker,2.3.13" />
+      	<entry kind="file" path="${testLibPath}/freemarker-2.3.13.jar" maven="org.freemarker,freemarker,2.3.13" />
       	<entry kind="file" path="${testLibPath}/svnkit-1.2.0.4949.jar" maven="org.tmatesoft.svnkit,svnkit,1.2.0.4949" />
       </handler>
       <handler type="dolteng" resourceLoader="composite">
