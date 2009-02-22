@@ -46,13 +46,6 @@ public class ScaffoldHeadMeisaiConfigResolver {
                 new ExtensionAcceptor.ExtensionVisitor() {
                     public void visit(IConfigurationElement e) {
                         try {
-                            System.out.println("-----------------------------------------------------");
-                            System.out.println("-----------------------------------------------------");
-                            System.out.println("-----------------------------------------------------");
-                            System.out.println("e.getName = " + e.getName());
-                            System.out.println("-----------------------------------------------------");
-                            System.out.println("-----------------------------------------------------");
-                            System.out.println("-----------------------------------------------------");
                             if ("templates".equals(e.getName())) {
                                 ScaffoldConfigEnabler enabler = (ScaffoldConfigEnabler) e
                                         .createExecutableExtension("enablement");
