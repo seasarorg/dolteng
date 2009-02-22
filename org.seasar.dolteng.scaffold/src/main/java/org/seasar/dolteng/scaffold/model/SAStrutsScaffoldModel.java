@@ -58,8 +58,8 @@ public class SAStrutsScaffoldModel extends ScaffoldModel {
 	 * @see org.seasar.dolteng.eclipse.model.impl.ScaffoldModel
 	 */
 	public SAStrutsScaffoldModel(Map<String, String> configs, TableNode node,
-			String viewTemplateExtension) {
-		super(configs, node, null);
+			String viewTemplateExtension, Map<Integer, String[]> selectedColumns) {
+		super(configs, node, selectedColumns);
 
 		appendConfig(configs, node, viewTemplateExtension);
 
