@@ -8,6 +8,14 @@
 	xmlns:fmt="http://java.sun.com/jstl/fmt"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 	<html:errors m:id="errors" />
+<#if isSelectedExisted() = true>	
+	<s:form m:id="form"></s:form>
+	<html:hidden m:id="offset" property="offset" />
+	<html:hidden m:id="count" property="count" />
+<#list selectedColumnsMappings as condition>
+	<html:text m:id="${condition.javaFieldName}" property="${condition.javaFieldName}" />
+</#list>
+</#if>
 	<c:forEach m:id="items" var="e" varStatus="s" items="<#noparse>${</#noparse>${configs.table}Items<#noparse>}</#noparse>">
 		<#noparse>
 		<m:echo>
@@ -19,7 +27,7 @@
 	</c:forEach>
 <#list mappings as mapping>
     <#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
-	<m:write id="${mapping.javaFieldName}" value="<#noparse>${e.</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse>" />
+	<m:write id="l_${mapping.javaFieldName}" value="<#noparse>${e.</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse>" />
 	</#if>
 </#list>
 
@@ -35,4 +43,11 @@
 	<s:link m:id="createLink" href="create">
 		<m:doBody />
 	</s:link>
+<#if isSelectedExisted() = true>	
+	<#noparse>
+	<m:write id="totalNumber" value="${totalNumber}" />
+	<m:write id="currentPageIndex" value="${currentPageIndex}" />
+	<m:write id="totalPageIndex" value="${totalPageIndex}" />
+	</#noparse>
+</#if>
 </m:mayaa>
