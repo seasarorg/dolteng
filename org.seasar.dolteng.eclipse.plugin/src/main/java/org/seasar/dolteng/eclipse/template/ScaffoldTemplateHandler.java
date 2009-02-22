@@ -85,7 +85,6 @@ public class ScaffoldTemplateHandler extends AbstractTemplateHandler implements
             if (i > 0) {
                 orderbyString += "And";
             }
-//System.out.println("テスト：：：" + selectedColumns.get(new Integer(i))[0]);
             orderbyString += pascalize(selectedColumns.get(new Integer(i))[0]);
         }
         result.put("orderbyString", orderbyString);
