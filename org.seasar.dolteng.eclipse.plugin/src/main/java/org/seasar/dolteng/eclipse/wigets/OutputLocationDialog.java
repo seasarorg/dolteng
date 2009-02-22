@@ -156,10 +156,12 @@ public class OutputLocationDialog extends TitleAreaDialog {
                 selectedConfig = resolver.getConfig(index2id.get(new Integer(
                         scaffolds.getSelectionIndex())));
                 
-                // 検索条件をサポートしていないパターンの場合、検索条件を無効化します。
+                // Retrieval condition is nullified in the case of retrieval condition isn't supported
                 if (scaffolds.getText().compareTo("Teeda + S2Dao (use public field)") != 0 &&
                     scaffolds.getText().compareTo("Teeda + S2Dao") != 0 &&
-                    scaffolds.getText().compareTo("Teeda + Kuina-Dao") != 0) {
+                    scaffolds.getText().compareTo("Teeda + Kuina-Dao") != 0 &&
+                    scaffolds.getText().compareTo("SAStruts") != 0 &&
+                    scaffolds.getText().compareTo("SAStruts+Mayaa") != 0) {
                     currentTableColumnsList.setEnabled(false);
                 }
                 
@@ -197,10 +199,12 @@ public class OutputLocationDialog extends TitleAreaDialog {
         
         scaffolds.select(0);
 
-        // 検索条件をサポートしていないパターンの場合、検索条件を無効化します。
+        // Retrieval condition is nullified in the case of retrieval condition isn't supported
         if (scaffolds.getText().compareTo("Teeda + S2Dao (use public field)") != 0 &&
             scaffolds.getText().compareTo("Teeda + S2Dao") != 0 &&
-            scaffolds.getText().compareTo("Teeda + Kuina-Dao") != 0) {
+            scaffolds.getText().compareTo("Teeda + Kuina-Dao") != 0 &&
+            scaffolds.getText().compareTo("SAStruts") != 0 &&
+            scaffolds.getText().compareTo("SAStruts+Mayaa") != 0) {
             currentTableColumnsList.setEnabled(false);
         }
         
@@ -214,7 +218,7 @@ public class OutputLocationDialog extends TitleAreaDialog {
      * 
      * @return The selected columns information on the table
      */
-    public Map<Integer, String[]> getSelectedColumns() {
+    public Map<Integer, String[]> getSelectedColumns() {        
         return selectedColumns;
     }
 
