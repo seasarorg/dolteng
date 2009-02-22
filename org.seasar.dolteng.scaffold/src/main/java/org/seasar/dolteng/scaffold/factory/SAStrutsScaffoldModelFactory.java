@@ -33,14 +33,14 @@ public class SAStrutsScaffoldModelFactory extends ScaffoldModelFactory {
 	public RootModel createScaffoldModel(Map<String, String> configs,
 			TableNode node) {
 
-		return new SAStrutsScaffoldModel(configs, node, "jsp");
+		return new SAStrutsScaffoldModel(configs, node, "jsp", null);
 	}
 
 	@Override
 	public RootModel createScaffoldModel(Map<String, String> configs,
 			TableNode node, Map<Integer, String[]> selectedColumns) {
-
-		return new SAStrutsScaffoldModel(configs, node, "jsp");
+	    
+		return new SAStrutsScaffoldModel(configs, node, "jsp", selectedColumns);
 	}
 
     /* (non-Javadoc)
@@ -51,6 +51,6 @@ public class SAStrutsScaffoldModelFactory extends ScaffoldModelFactory {
             TableNode node, Map<Integer, String[]> selectedColumns,
             String meisaiTableName, Map<Integer, String[]> meisaiColumns)
     {
-		return new SAStrutsScaffoldModel(configs, node, "jsp");
+		return new SAStrutsScaffoldModel(configs, node, "jsp", selectedColumns);
     }
 }
