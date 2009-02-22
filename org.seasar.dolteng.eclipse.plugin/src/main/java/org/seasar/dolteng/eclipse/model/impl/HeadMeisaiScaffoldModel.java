@@ -125,15 +125,10 @@ public class HeadMeisaiScaffoldModel implements RootModel {
             String meisaiTableName, Map<Integer, String[]> meisaiColumns) {
         super();
         
-System.out.println("ヘッダ明細Scaffoldモデル---------------------------------");
-        
         this.configs = configs;
         this.configs.put("pagingpackagename", "paging");
         this.configs.put("dtopackagename", "dto");
-        
-        // ヘッダのテーブル名を取得してみましょう
-        System.out.println("ヘッダのテーブル名：" + this.configs.get("table_rdb"));
-        
+                
         initialize(node, selectedColumns, meisaiTableName, meisaiColumns);
     }
 
@@ -142,8 +137,6 @@ System.out.println("ヘッダ明細Scaffoldモデル----------------------------
             String meisaiTableName, Map<Integer, String[]> meisaiColumns) {
         ProjectNode n = (ProjectNode) node.getRoot();
         this.project = n.getJavaProject();
-
-        System.out.println("ヘッダ明細Scaffoldモデル2---------------------------------");
 
         // データベースビューの起動元のテーブル情報を設定します。
         {
@@ -183,9 +176,6 @@ System.out.println("ヘッダ明細Scaffoldモデル----------------------------
                             new EntityMappingRow[rows.size()]));
         }
 
-System.out.println("ヘッダ明細Scaffoldモデル3---------------------------------");
-        
-        
         {
             // 検索条件に付与するためのORDER BY句を作成します。
             orderbyString = "";
@@ -214,8 +204,6 @@ System.out.println("ヘッダ明細Scaffoldモデル3---------------------------
                 conditionCallParam += "text" + pascalize(selectedColumnsMappings[i].getSqlColumnName());
             }
         }
-
-        System.out.println("ヘッダ明細Scaffoldモデル4---------------------------------");
 
         // 明細
         // 明細のテーブル名を設定します。
@@ -993,9 +981,6 @@ System.out.println("ヘッダ明細Scaffoldモデル3---------------------------
      * @return 明細テーブルのカラム名に対するクラス
      */
     public String getMeisaiJavaClassName(EntityMappingRow meisaiMapping) {
-        System.out.println("#########################################################################");
-        System.out.println("meisaiMapping.getSqlColumnName() = " + meisaiMapping.getSqlColumnName());
-        System.out.println("this.configs.get(table_rdb) = " + this.configs.get("table_rdb"));
         // 明細テーブルのカラム名がヘッダテーブルのプライマリキーと対応している場合は、
         // ヘッダテーブルのクラス名を取得します。
         if (meisaiMapping.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
