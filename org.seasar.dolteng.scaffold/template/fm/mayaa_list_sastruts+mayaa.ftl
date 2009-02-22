@@ -48,6 +48,10 @@
 	<m:write id="totalNumber" value="${totalNumber}" />
 	<m:write id="currentPageIndex" value="${currentPageIndex}" />
 	<m:write id="totalPageIndex" value="${totalPageIndex}" />
+	<m:if m:id="prevPageVisible"  test="${isPrevPage == 'true' }" />
+	<m:if m:id="prevPageDisabled" test="${isPrevPage == 'false' }" />
+	<m:if m:id="nextPageVisible"  test="${isNextPage == 'true' }" />
+	<m:if m:id="nextPageDisabled" test="${isNextPage == 'false' }" />
 	</#noparse>
 </#if>
 </m:mayaa>

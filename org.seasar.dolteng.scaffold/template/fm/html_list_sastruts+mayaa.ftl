@@ -66,10 +66,22 @@
 <table>
 	<tr>
 	    <#noparse>
-		<td><input type="submit" name="firsPage" value="firsPage" ${isPrevPage == "true" ? '' : 'disabled'} /></td>
-		<td><input type="submit" name="prevPage" value="prevPage" ${isPrevPage == "true" ? '' : 'disabled'} /></td>
-		<td><input type="submit" name="nextPage" value="nextPage" ${isNextPage == "true" ? '' : 'disabled'} /></td>
-		<td><input type="submit" name="lastPage" value="lastPage" ${isNextPage == "true" ? '' : 'disabled'} /></td>
+		<span id="prevPageVisible">
+		<td><input type="submit" name="firsPage" value="firsPage" /></td>
+		<td><input type="submit" name="prevPage" value="prevPage" /></td>
+		</span>
+		<span id="prevPageDisabled">
+		<td><input type="submit" name="firsPage" value="firsPage" disabled /></td>
+		<td><input type="submit" name="prevPage" value="prevPage" disabled /></td>
+		</span>
+		<span id="nextPageVisible">
+		<td><input type="submit" name="nextPage" value="nextPage" /></td>
+		<td><input type="submit" name="lastPage" value="lastPage" /></td>
+		</span>
+		<span id="nextPageDisabled">
+		<td><input type="submit" name="nextPage" value="nextPage" disabled /></td>
+		<td><input type="submit" name="lastPage" value="lastPage" disabled /></td>
+		</span>
 		</#noparse>
 	</tr>
 </table>
@@ -77,7 +89,6 @@
 </#if>
 
 <a m:id="createLink" href="create.html"> create new Object </a>
-
 
 <body>
 </html>
