@@ -365,5 +365,77 @@
 				outputpath="${webcontentsroot}/${viewrootpath}/${table}/"
 				outputname="show.mayaa" />
 		</templates>
+		<templates
+			enablement="org.seasar.dolteng.scaffold.enabler.Flex2S2JdbcEnabler"
+			id="6" name="Flex2 + S2JDBC"
+			resourceLoader="org.seasar.dolteng.scaffold.ScaffoldResourceLoader" >
+			<template path="template/fm/java_entity_s2jdbc.ftl"
+				override="false"
+				outputpath="${javasrcroot}/${rootpackagepath}/${entitypackagename}/"
+				outputname="${table_capitalize}.java" />
+			<template path="template/fm/java_service_abstract_s2jdbc.ftl"
+                override="false"
+                outputpath="${javasrcroot}/${rootpackagepath}/${servicepackagename}/"
+                outputname="AbstractService.java" />
+			<template path="template/fm/java_service_flex_s2jdbc.ftl"
+				override="false"
+				outputpath="${javasrcroot}/${rootpackagepath}/${servicepackagename}/"
+				outputname="${table_capitalize}${servicesuffix}.java" />
+			<template path="template/fm/flex_appmode.ftl"
+				override="false"
+				outputpath="${flexsrcroot}/${rootpackagepath}/${subapplicationrootpackagename}/"
+				outputname="AppMode.as" />
+			<template path="template/fm/flex_abstractpage.ftl"
+				override="false"
+				outputpath="${flexsrcroot}/${rootpackagepath}/${subapplicationrootpackagename}/"
+				outputname="Abstract${pagesuffix}.as" />
+			<template path="template/fm/flex_entity.ftl"
+				override="false"
+				outputpath="${flexsrcroot}/${rootpackagepath}/${entitypackagename}/"
+				outputname="${table_capitalize}.as" />
+			<template path="template/fm/flex_page.ftl"
+				override="true"
+				outputpath="${flexsrcroot}/${rootpackagepath}/${subapplicationrootpackagename}/${table}/"
+				outputname="${table_capitalize}${pagesuffix}.as" />
+			<template path="template/fm/flex_mxml_s2jdbc.ftl"
+				override="true"
+				outputpath="${flexsrcroot}/${rootpackagepath}/${subapplicationrootpackagename}/${table}/"
+				outputname="${table_capitalize}View.mxml" />
+		</templates>		
+		<templates
+			enablement="org.seasar.dolteng.scaffold.enabler.BlazeDSS2JdbcEnabler"
+			id="7" name="S2BlazeDS + S2JDBC"
+			resourceLoader="org.seasar.dolteng.scaffold.ScaffoldResourceLoader">
+			<template path="template/fm/java_entity_s2jdbc.ftl"
+				override="false"
+				outputpath="${javasrcroot}/${rootpackagepath}/${entitypackagename}/"
+				outputname="${table_capitalize}.java" />
+			<template path="template/fm/java_service_abstract_s2jdbc.ftl"
+                override="false"
+                outputpath="${javasrcroot}/${rootpackagepath}/${servicepackagename}/"
+                outputname="AbstractService.java" />
+			<template path="template/fm/java_service_blaze_s2jdbc.ftl"
+				override="false"
+				outputpath="${javasrcroot}/${rootpackagepath}/${servicepackagename}/"
+				outputname="${table_capitalize}${servicesuffix}.java" />
+		</templates>		
+		<templates
+			enablement="org.seasar.dolteng.scaffold.enabler.BlazeDSS2DaoEnabler"
+			id="8" name="S2BlazeDS + S2Dao"
+			resourceLoader="org.seasar.dolteng.scaffold.ScaffoldResourceLoader">
+			<template path="template/fm/java_entity_s2dao.ftl"
+				override="false"
+				outputpath="${javasrcroot}/${rootpackagepath}/${entitypackagename}/"
+				outputname="${table_capitalize}.java" />
+			<template path="template/fm/java_dao_s2dao.ftl"
+				override="false"
+				outputpath="${javasrcroot}/${rootpackagepath}/${daopackagename}/"
+				outputname="${table_capitalize}${daosuffix}.java" />
+			<template
+				path="template/fm/java_service_blaze_s2dao.ftl"
+				override="true"
+				outputpath="${javasrcroot}/${rootpackagepath}/${subapplicationrootpackagename}/${table}/"
+				outputname="${table_capitalize}${servicesuffix}.java" />
+		</templates>
 	</extension>
 </plugin>

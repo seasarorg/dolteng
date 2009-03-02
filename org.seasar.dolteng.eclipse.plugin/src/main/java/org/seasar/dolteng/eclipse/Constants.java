@@ -207,6 +207,8 @@ public final class Constants {
 
     public static final String VIEW_TYPE_FLEX2 = "Flex2";
     
+    public static final String VIEW_TYPE_NONE = "None";
+    
     public static final String VIEW_TYPE_SASTRUTS = "SA-Struts";
 
     public static final String VIEW_TYPE_SASTRUTSMAYAA = "SA-Struts+Mayaa";
