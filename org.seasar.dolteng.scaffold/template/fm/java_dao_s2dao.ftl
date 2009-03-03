@@ -20,7 +20,11 @@ public interface ${configs.table_capitalize}${configs.daosuffix} {
 	public ${configs.table_capitalize}[] selectAll();
 
 <#if isSelectedExisted() = true>	
+<#if isTigerResource() = true>
 	@Arguments({${conditionArguments}})
+<#else>
+	public String findBy${orderbyString}PagerCondition_ARGS = ${conditionArgumentsTeisuAnnotation};
+</#if>
 	public ${configs.table_capitalize}[] findBy${orderbyString}PagerCondition(
 		${conditionParam}, ${configs.table_capitalize}PagerCondition dto);
 </#if>
