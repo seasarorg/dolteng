@@ -99,7 +99,7 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		${configs.table}Index = offset;
 	<#else>
 		offset = new Integer(0);
-		empIndex = offset.intValue();
+		${configs.table}Index = offset.intValue();
 	</#if>
 		return null;
 	}
@@ -140,7 +140,7 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		${configs.table}Index = offset;
 	<#else>
 		offset = new Integer((totalPageIndex.intValue()-1)*limit);
-		empIndex = offset.intValue();
+		${configs.table}Index = offset.intValue();
 	</#if>
 		return null;
 	}
