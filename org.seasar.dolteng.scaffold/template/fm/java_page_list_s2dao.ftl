@@ -165,7 +165,11 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	}
 
 	public boolean isDoGoNextPageDisabled() {
+	<#if isTigerResource() = true>
 		return currentPageIndex == totalPageIndex;
+	<#else>
+		return currentPageIndex.intValue() == totalPageIndex.intValue();
+	</#if>
 	}
 
 	public boolean isDoGoLastPageDisabled() {
