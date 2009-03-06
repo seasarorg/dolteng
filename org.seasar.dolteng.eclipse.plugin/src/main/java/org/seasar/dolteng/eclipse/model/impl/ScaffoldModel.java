@@ -432,9 +432,14 @@ public class ScaffoldModel implements RootModel {
      * @return S2Dao の SQL 文で使用する条件
      */
     public String getS2DaoCondition(String fieldName, String typeName) {
+        
+        //System.out.println("タイプ名：" + typeName + ", " + fieldName);
+        
         if (typeName.compareTo("String") == 0) {
             return "LIKE concat(/*" + fieldName + "*/' ','%')";
-        } else if (typeName.compareTo("Integer") == 0 || typeName.compareTo("BigDecimal") == 0) {
+        } else if (typeName.compareTo("Integer") == 0 || 
+                   typeName.compareTo("BigDecimal") == 0 || 
+                   typeName.compareTo("Long") == 0) {
             return ">= /*" + fieldName + "*/'0'";
         } else if (typeName.compareTo("Date") == 0 || typeName.compareTo("Timestamp") == 0) {
             return ">= /*" + fieldName + "*/'1900/1/1'";
