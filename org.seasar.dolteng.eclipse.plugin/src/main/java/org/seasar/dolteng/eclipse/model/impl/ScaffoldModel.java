@@ -444,7 +444,8 @@ public class ScaffoldModel implements RootModel {
         } else if (typeName.compareTo("Date") == 0 || typeName.compareTo("Timestamp") == 0) {
             return ">= /*" + fieldName + "*/'1900/1/1'";
         }
-        return "= fieldName";
+        //return "= fieldName";
+        return "= /*" + fieldName + "*/";
     }
     
     
