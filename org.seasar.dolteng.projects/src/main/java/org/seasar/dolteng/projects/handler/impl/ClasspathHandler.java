@@ -36,6 +36,8 @@ import org.seasar.dolteng.eclipse.DoltengCore;
 import org.seasar.dolteng.eclipse.loader.impl.CompositeResourceLoader;
 import org.seasar.dolteng.projects.ProjectBuilder;
 import org.seasar.dolteng.projects.model.Entry;
+import org.seasar.dolteng.projects.model.maven.DependencyModel;
+import org.seasar.framework.util.StringUtil;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -119,22 +121,13 @@ public class ClasspathHandler extends DefaultHandler {
 
             for (Entry entry : entries) {
                 String maven = entry.attribute.get("maven");
-                if (maven != null) {
+                if (entry.dependency != null) {
+                    Element dependency = createDependency(document, entry);
+                    dependencies.appendChild(dependency);
+                } else if (maven != null) {
                     String[] data = maven.split("[ ]*,[ ]*");
-                    if (data.length == 3) {
-                        Element dependency = document
-                                .createElement("dependency");
-                        Element groupId = document.createElement("groupId");
-                        groupId.appendChild(document.createTextNode(data[0]));
-                        Element artifactId = document
-                                .createElement("artifactId");
-                        artifactId
-                                .appendChild(document.createTextNode(data[1]));
-                        Element version = document.createElement("version");
-                        version.appendChild(document.createTextNode(data[2]));
-                        dependency.appendChild(groupId);
-                        dependency.appendChild(artifactId);
-                        dependency.appendChild(version);
+                    if (data.length == 3 || data.length == 4) {
+                        Element dependency = createDependency(document, data);
                         dependencies.appendChild(dependency);
                     } else {
                         DoltengCore.log("invalid maven attribute("
@@ -154,6 +147,56 @@ public class ClasspathHandler extends DefaultHandler {
             DoltengCore.log(e);
         }
         return document;
+    }
+
+    private Element createDependency(Document document, String[] data) {
+        Element dependency = document.createElement("dependency");
+        Element groupId = document.createElement("groupId");
+        groupId.appendChild(document.createTextNode(data[0]));
+        Element artifactId = document.createElement("artifactId");
+        artifactId.appendChild(document.createTextNode(data[1]));
+        Element version = document.createElement("version");
+        version.appendChild(document.createTextNode(data[2]));
+        dependency.appendChild(groupId);
+        dependency.appendChild(artifactId);
+        dependency.appendChild(version);
+        if (data.length == 4) {
+            Element scope = document.createElement("scope");
+            scope.appendChild(document.createTextNode(data[3]));
+            dependency.appendChild(scope);
+        }
+        return dependency;
+    }
+
+    private Element createDependency(Document document, Entry entry) {
+        Element dep = document.createElement("dependency");
+        DependencyModel dm = entry.dependency;
+        dep.appendChild(createTextNode(document, "groupId", dm.groupId));
+        dep.appendChild(createTextNode(document, "artifactId", dm.artifactId));
+        dep.appendChild(createTextNode(document, "version", dm.version));
+        if (StringUtil.isNotEmpty(dm.scope)) {
+            dep.appendChild(createTextNode(document, "scope", dm.scope));
+        }
+        if (dm.exclusions != null && dm.exclusions.size() > 0) {
+            Element exclusions = document.createElement("exclusions");
+            for (DependencyModel ex : dm.exclusions) {
+                Element exclusion = document.createElement("exclusion");
+                exclusion.appendChild(createTextNode(document, "groupId",
+                        ex.groupId));
+                exclusion.appendChild(createTextNode(document, "artifactId",
+                        ex.artifactId));
+                exclusions.appendChild(exclusion);
+            }
+            dep.appendChild(exclusions);
+        }
+        return dep;
+    }
+
+    private Element createTextNode(Document document, String tagName,
+            String value) {
+        Element element = document.createElement(tagName);
+        element.appendChild(document.createTextNode(value));
+        return element;
     }
 
     protected Document createClasspathDocument() {

@@ -19,6 +19,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 import org.seasar.dolteng.eclipse.loader.ResourceLoader;
+import org.seasar.dolteng.projects.model.maven.DependencyModel;
 import org.seasar.framework.util.StringUtil;
 
 @SuppressWarnings("serial")
@@ -26,6 +27,11 @@ public class Entry implements Serializable {
 
     public HashMap<String, String> attribute = new HashMap<String, String>();
     public String value;
+
+    /*
+     * for maven2 pom.xml
+     */
+    public DependencyModel dependency;
 
     private ResourceLoader loader;
 

@@ -81,6 +81,7 @@ import org.seasar.dolteng.projects.model.FacetCategory;
 import org.seasar.dolteng.projects.model.FacetConfig;
 import org.seasar.dolteng.projects.model.dicon.DiconElement;
 import org.seasar.dolteng.projects.model.dicon.DiconModel;
+import org.seasar.dolteng.projects.model.maven.DependencyModel;
 import org.seasar.eclipse.common.util.ExtensionAcceptor;
 import org.seasar.framework.util.ArrayMap;
 import org.seasar.framework.util.StringUtil;
@@ -448,8 +449,8 @@ public class ProjectBuildConfigResolver {
 
         FacetConfig pc = getFacet(facetId);
         IConfigurationElement current = pc.getConfigurationElement();
-// ResourceLoader loader = (ResourceLoader) current
-// .createExecutableExtension(EXTENSION_POINT_RESOURCE_LOADER);
+        // ResourceLoader loader = (ResourceLoader) current
+        // .createExecutableExtension(EXTENSION_POINT_RESOURCE_LOADER);
 
         resolveExtends(builder, current, proceedIds);
         resolveMain(builder, current);
@@ -573,19 +574,51 @@ public class ProjectBuildConfigResolver {
                                 .getConfigContext());
                         entry.attribute.put(attrName, attr);
                     }
-                    String value = entryElement.getValue();
-                    if (StringUtil.isEmpty(value) == false) {
-                        value = ScriptingUtil.resolveString(value, builder
-                                .getConfigContext());
-                        entry.value = value;
-                    }
                 }
+                String value = entryElement.getValue();
+                if (StringUtil.isEmpty(value) == false) {
+                    value = ScriptingUtil.resolveString(value, builder
+                            .getConfigContext());
+                    entry.value = value;
+                }
+                entry.dependency = findDependency(entryElement);
                 handler.add(entry);
             }
         }
     }
 
-    @SuppressWarnings("unchecked")
+    private DependencyModel findDependency(IConfigurationElement entryElement) {
+        if (findValue(entryElement, "groupId") == null) {
+            return null;
+        }
+        DependencyModel result = new DependencyModel();
+        result.groupId = findValue(entryElement, "groupId");
+        result.artifactId = findValue(entryElement, "artifactId");
+        result.version = findValue(entryElement, "version");
+        result.scope = findValue(entryElement, "scope");
+        IConfigurationElement[] exclusions = entryElement
+                .getChildren("exclusions");
+        if (exclusions != null && exclusions.length > 0) {
+            for (IConfigurationElement exclusion : exclusions[0]
+                    .getChildren("exclusion")) {
+                DependencyModel d = new DependencyModel();
+                d.groupId = findValue(exclusion, "groupId");
+                d.artifactId = findValue(exclusion, "artifactId");
+                result.exclusions.add(d);
+            }
+        }
+        return result;
+    }
+
+    private String findValue(IConfigurationElement entryElement, String tagName) {
+        for (IConfigurationElement child : entryElement.getChildren()) {
+            if (child.getName().equalsIgnoreCase(tagName)) {
+                return child.getValue();
+            }
+        }
+        return null;
+    }
+
     protected void manageDiconHandler(IConfigurationElement handNode,
             DiconHandler handler) {
         DiconModel model = handler.getModel();
