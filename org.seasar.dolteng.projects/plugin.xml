@@ -813,6 +813,12 @@
             <groupId>commons-digester</groupId>
             <artifactId>commons-digester</artifactId>
             <version>1.6</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>xml-apis</groupId>
+                    <artifactId>xml-apis</artifactId>
+                </exclusion>
+            </exclusions>
         </entry>
         <entry kind="file" path="${libPath}/commons-el-1.0.jar" >
             <groupId>commons-el</groupId>
@@ -858,7 +864,7 @@
             <version>2.0.8</version>
         </entry>
         <entry kind="file" path="${libPath}/jstl-1.1.2.jar" >
-            <groupId>jstl</groupId>
+            <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.1.2</version>
         </entry>
@@ -871,6 +877,12 @@
             <groupId>struts</groupId>
             <artifactId>struts</artifactId>
             <version>1.2.9</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>xalan</groupId>
+                    <artifactId>xalan</artifactId>
+                </exclusion>
+            </exclusions>
         </entry>
         <entry kind="file" path="${libPath}/antlr-2.7.7.jar" >
             <groupId>antlr</groupId>
@@ -912,7 +924,7 @@
         <include path="j2ee.dicon" />
         <component name="actionMessagesThrowsInterceptor" class="org.seasar.struts.interceptor.ActionMessagesThrowsInterceptor"/>
       </handler>
-      <handler type="creatorDicon">      
+      <handler type="creatorDicon">
         <component name="formCreator" class="org.seasar.struts.creator.FormCreator"/>
       </handler>
       <handler type="customizerDicon">
