@@ -76,26 +76,24 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
 
     private ScaffoldHeadMeisaiConfig selectedConfig;
     
-    // 起動元のデータベースビューのカレントノード（テーブル情報）
+    // The current node in database view
+    // The current node is the table.
     private TableNode current;
     
-    // 現在のテーブル（起動元のデータベースビューのカレントノード）の列情報を表示するリストコンポーネント
+    // The List component to show the columns of the current node in database view
     private org.eclipse.swt.widgets.List currentTableColumnsList = null;
 
-    // ヘッダ明細のうち明細に指定するテーブルの候補を表示するリストコンポーネント
-    private org.eclipse.swt.widgets.List meisaiTableList = null;
-
+    // List component that displays candidate of table specified 
+    // for detail in master-detail
+    private org.eclipse.swt.widgets.List meisaiTableList = null;    
     
-    
-    
-    
-    // テーブルの選択されている列情報
-    // Map<i, String[0]> に列名が格納されています。
-    // Map<i, String[1]> に型（データベースのカラムタイプ）が格納されています。
+    // The selected columns information on the table
+    // Map<i, String[0]> means column name.
+    // Map<i, String[1]> means database column type name.
     private Map<Integer, String[]> selectedColumns;
     
     
-    // 明細テーブルの名前
+    // The name of detail table
     private String meisaiTableName;
     
     // 明細テーブルの列情報
@@ -181,7 +179,8 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
             }
         });
         
-        // 起動元のデータベースビューのカレントノード（テーブル情報）
+        // The current node in database view
+        // The current node is table.
         TreeContent[] currentTable = current.getChildren();
         String[] dbcolumns = new String[currentTable.length];
         int i = 0;
@@ -189,8 +188,10 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
             dbcolumns[i++] = column.getText();
         }
         
-        // Scaffold対象のテーブルの列情報を、リストボックスにて表示します。
-        // current.getText() でヘッダのテーブル名が取得できます。
+        // The column information in the table of scaffold object are shown 
+        // as the list box. 
+        // The master table name can be acquired 
+        // by using "current.getText()".
         createLabel(composite, current.getText() + "\nRetrieval\nCondition :");
         currentTableColumnsList = new org.eclipse.swt.widgets.List(
                 composite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL);
@@ -223,6 +224,8 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
             public void widgetSelected(SelectionEvent e) {
                 String[] tmp = meisaiTableList.getSelection();
                 meisaiTableName = tmp[0];
+                Button ok = getButton(IDialogConstants.OK_ID);
+                ok.setEnabled(true);
             }
         });
         //--------------------------------------------------------------------------
@@ -233,30 +236,30 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
     }
     
     /**
-     * テーブル上の選択された列情報を取得します。
-     * Map<i, String[0]> に列名が格納されています。
-     * Map<i, String[1]> に型（データベースのカラムタイプ）が格納されています。
+     * The selected columns information on the table
+     * Map<i, String[0]> means column name.
+     * Map<i, String[1]> means database column type name.
      * 
-     * @return テーブル上の選択された列情報
+     * @return The selected columns information on the table
      */
     public Map<Integer, String[]> getSelectedColumns() {
         return selectedColumns;
     }
     
     /**
-     * 明細テーブルの名前を取得します。
-     * @return
+     * The detail table name is returned.
+     * @return the detail table name
      */
     public String getMeisaiTableName() {
         return meisaiTableName;
     }
     
     /**
-     * 明細テーブルの列情報を取得します。
-     * Map<i, String[0]> に列名が格納されています。
-     * Map<i, String[1]> に型（データベースのカラムタイプ）が格納されています。
+     * The columns information on the detail table is returned.
+     * Map<i, String[0]> means column name.
+     * Map<i, String[1]> means database column type name.
      * 
-     * @return
+     * @return The columns information on the detail table
      */
     public Map<Integer, String[]> getMeisaiColumns() {
         return meisaiColumns;
@@ -281,7 +284,8 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
     protected Control createButtonBar(Composite parent) {
         Control c = super.createButtonBar(parent);
         Button ok = getButton(IDialogConstants.OK_ID);
-        ok.setEnabled(0 < this.displaies.length);
+        //ok.setEnabled(0 < this.displaies.length);
+        ok.setEnabled(false);
         return c;
     }
 
