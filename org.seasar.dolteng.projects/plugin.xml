@@ -413,7 +413,7 @@
             <version>1.2</version>
         </entry>
         <entry kind="file" path="${libPath}/jstl-1.1.2.jar" >
-            <groupId>jstl</groupId>
+            <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.1.2</version>
         </entry>
@@ -1026,6 +1026,7 @@
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-jsp_2.0_spec</artifactId>
             <version>1.0</version>
+            <scope>provided</scope>
         </entry>
       </handler>
       <handler type="dolteng" resourceLoader="composite">
@@ -1102,6 +1103,7 @@
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-jsp_2.0_spec</artifactId>
             <version>1.0</version>
+            <scope>provided</scope>
         </entry>
       </handler>
       <handler type="dolteng" resourceLoader="composite">
