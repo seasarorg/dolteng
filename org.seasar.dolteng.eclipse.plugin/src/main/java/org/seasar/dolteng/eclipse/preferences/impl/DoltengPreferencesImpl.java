@@ -117,23 +117,23 @@ public class DoltengPreferencesImpl implements DoltengPreferences {
 
     protected void loadfromOtherPlugin() {
         try {
-            IFile file = ResourcesUtil.toFile(this.project
+            IFile tomcatFile = ResourcesUtil.toFile(this.project
                     .findMember(TOMCAT_PLUGIN_PREF));
-            if (file != null) {
-                readFromTomcatPlugin(file);
+            if (tomcatFile != null) {
+                readFromTomcatPlugin(tomcatFile);
             }
-            file = ResourcesUtil.toFile(this.project
+            IFile wstFile = ResourcesUtil.toFile(this.project
                     .findMember(WST_PLUGIN_PREF));
-            if (file != null) {
-                readFromWST(file);
-            } else {
+            if (wstFile != null) {
+                readFromWST(wstFile);
+            } else if (tomcatFile == null) {
                 this.store.setValue(Constants.PREF_WEBCONTENTS_ROOT, DEFAULT_WEBCONENT_ROOT);
                 this.store.setValue(Constants.PREF_SERVLET_PATH, project.getName());
             }
-            file = ResourcesUtil.toFile(this.project
+            IFile flexFile = ResourcesUtil.toFile(this.project
                     .findMember(FLEX_BUILDER_PLUGIN_PREF));
-            if (file != null) {
-                readFromFlexBuilder(file);
+            if (flexFile != null) {
+                readFromFlexBuilder(flexFile);
             }
         } catch (Exception e) {
             DoltengCore.log(e);
