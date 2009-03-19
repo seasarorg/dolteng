@@ -63,7 +63,7 @@
 
 	<servlet-mapping>
 		<servlet-name>s2servlet</servlet-name>
-		<url-pattern>/s2servlet</url-pattern>
+		<url-pattern>/s2servlet/*</url-pattern>
 	</servlet-mapping>
 
 </web-app>
