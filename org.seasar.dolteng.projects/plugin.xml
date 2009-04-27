@@ -740,8 +740,8 @@
       </handler>
       <handler type="customizerDicon">
         <component name="actionCustomizer" class="org.seasar.framework.container.customizer.CustomizerChain">
-          <initMethod name="addAspectCustomizer">
-            <arg>"aop.traceInterceptor"</arg>
+          <initMethod name="addCustomizer">
+            <arg>traceCustomizer</arg>
           </initMethod>
           <initMethod name="addAspectCustomizer">
             <arg>"actionMessagesThrowsInterceptor"</arg>
@@ -758,8 +758,8 @@
         </component>
         
         <component name="serviceCustomizer" class="org.seasar.framework.container.customizer.CustomizerChain">
-          <initMethod name="addAspectCustomizer">
-            <arg>"aop.traceInterceptor"</arg>
+          <initMethod name="addCustomizer">
+            <arg>traceCustomizer</arg>
           </initMethod>
           <initMethod name="addCustomizer">
             <arg><component class="org.seasar.framework.container.customizer.TxAttributeCustomizer"/></arg>
@@ -929,8 +929,8 @@
       </handler>
       <handler type="customizerDicon">
         <component name="actionCustomizer" class="org.seasar.framework.container.customizer.CustomizerChain">
-          <initMethod name="addAspectCustomizer">
-            <arg>"aop.traceInterceptor"</arg>
+          <initMethod name="addCustomizer">
+            <arg>traceCustomizer</arg>
           </initMethod>
           <initMethod name="addAspectCustomizer">
             <arg>"actionMessagesThrowsInterceptor"</arg>
@@ -947,8 +947,8 @@
         </component>
 
         <component name="serviceCustomizer" class="org.seasar.framework.container.customizer.CustomizerChain">
-          <initMethod name="addAspectCustomizer">
-            <arg>"aop.traceInterceptor"</arg>
+          <initMethod name="addCustomizer">
+            <arg>traceCustomizer</arg>
           </initMethod>
           <initMethod name="addCustomizer">
             <arg><component class="org.seasar.framework.container.customizer.TxAttributeCustomizer"/></arg>
