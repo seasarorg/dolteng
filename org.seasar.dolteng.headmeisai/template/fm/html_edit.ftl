@@ -14,17 +14,17 @@
 <#if mapping.isPrimaryKey() = true || isVersionColumn(mapping) = true>
 <tr>
 	<td><span id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</span></td>
-	<td><input type="text" id="${mapping.javaFieldName}" /></td>
+	<td><input type="text" id="${mapping.javaFieldName}" size="${mapping.sqlColumnSize}" maxlength="${mapping.sqlColumnSize}"/></td>
 </tr>
 <#elseif mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 <tr>
 	<td><span id="${mapping.javaFieldName}Label">${mapping.javaFieldName}</span></td>
 	<td><#if mapping.isPrimaryKey() = true><div id="isCreate<#if 0 &lt; pkcount>-${pkcount-1}</#if>">
-			<input type="text" id="${mapping.javaFieldName}"<#if mapping.isDate() = true> class="T_date"</#if>/>
+			<input type="text" id="${mapping.javaFieldName}"<#if mapping.isDate() = true> class="T_date"</#if> size="${mapping.sqlColumnSize}" maxlength="${mapping.sqlColumnSize}"/>
 		</div>
 		<div id="isNotCreate<#if 0 &lt; pkcount>-${pkcount-1}</#if>" style="display: none;">
 			<span id="${mapping.javaFieldName}-out">${mapping.javaFieldName}</span><input type="hidden" id="${mapping.javaFieldName}-hidden" />
-		</div><#assign pkcount=pkcount + 1><#else><input type="text" id="${mapping.javaFieldName}"<#if mapping.isDate() = true> class="T_date"</#if>/></#if></td>
+		</div><#assign pkcount=pkcount + 1><#else><input type="text" id="${mapping.javaFieldName}"<#if mapping.isDate() = true> class="T_date"</#if> size="${mapping.sqlColumnSize}" maxlength="${mapping.sqlColumnSize}"/></#if></td>
 	<td><span id="${mapping.javaFieldName}Message"></span></td>
 </tr>
 </#if>
@@ -55,7 +55,7 @@
 	    <input type="hidden" id="meisai${mapping.javaFieldName?cap_first}" />
 	    <#elseif isHeadPkey(mapping)>
 	    <#else>
-	    <td><input type="text" id="meisai${mapping.javaFieldName?cap_first}" /></td>
+	    <td><input type="text" id="meisai${mapping.javaFieldName?cap_first}" size="${mapping.sqlColumnSize}" maxlength="${mapping.sqlColumnSize}"/></td>
 	    <td><span id="meisai${mapping.javaFieldName?cap_first}Message"></span></td>
 	    </#if>
 </#list>
