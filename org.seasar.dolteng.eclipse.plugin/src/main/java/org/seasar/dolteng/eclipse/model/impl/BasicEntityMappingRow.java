@@ -131,4 +131,12 @@ public class BasicEntityMappingRow implements EntityMappingRow {
         return 0;
     }
 
+    /**
+     * The size of table column is returned.
+     * 
+     * @return The size of table column
+     */
+    public int getSqlColumnSize() {
+        return column.getColumnSize();
+    }
 }

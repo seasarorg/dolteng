@@ -51,4 +51,6 @@ public interface EntityMappingRow extends Comparable<EntityMappingRow>, IsGenera
     public String getJavaFieldName();
 
     public void setJavaFieldName(String name);
+    
+    public int getSqlColumnSize();
 }
