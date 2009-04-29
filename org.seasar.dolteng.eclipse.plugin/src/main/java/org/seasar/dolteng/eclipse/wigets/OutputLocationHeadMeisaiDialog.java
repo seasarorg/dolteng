@@ -225,7 +225,7 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
                 String[] tmp = meisaiTableList.getSelection();
                 meisaiTableName = tmp[0];
                 Button ok = getButton(IDialogConstants.OK_ID);
-                ok.setEnabled(true);
+                ok.setEnabled(0 < displaies.length);
             }
         });
         //--------------------------------------------------------------------------
