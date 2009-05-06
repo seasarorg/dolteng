@@ -972,6 +972,33 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         return "by";
     }
     
+    /**
+     * ヘッダの１レコードに対応する明細テーブル上の単一のレコードを取得する
+     * ためのプライマリキーのSQLカラム名を取得します。
+     * @return ヘッダの１レコードに対応する明細テーブル上の単一のレコード
+     *         を取得するためのプライマリキーのSQLカラム名
+     */
+    public String createMeisaiPkeySqlColumnName() {
+        if (countPkeyInMeisai() == 1) {
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.isPrimaryKey()) {
+                    return row.getSqlColumnName();
+                }
+            }
+        } else {
+            int i = 0;
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.isPrimaryKey()) {
+                    if (i == 1) {
+                        return row.getSqlColumnName();
+                    }
+                    i++;
+                }
+            }
+        }
+        return "by";
+    }
+    
     
     
     
@@ -1051,9 +1078,9 @@ public class HeadMeisaiScaffoldModel implements RootModel {
 
     /**
      * ヘッダの１レコードに対応する明細テーブル上のレコードを取得するための
-     * メソッド名を取得します。
+     * プライマリキー名を取得します。
      * @return ヘッダの１レコードに対応する明細テーブル上のレコードを
-     *         取得するためのメソッド名
+     *         取得するためのプライマリキー名
      */
     public String createHeadMeisaiPkeyByName() {
         // 明細テーブルのプライマリキーの数が１の場合、
@@ -1076,6 +1103,54 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         return "by";
     }
 
+    
+    
+    
+    
+    
+    
+    /**
+     * ヘッダの１レコードに対応する明細テーブル上のレコードのプライマリキーのタイプ名を取得します。
+     * 
+     * @return ヘッダの１レコードに対応する明細テーブル上のレコードのプライマリキーのタイプ名
+     */
+    public String createHeadMeisaiPkeyBySqlTypeName() {
+        // 明細テーブルのプライマリキーの数が１の場合、
+        // 「ヘッダテーブル名_id」の列を明細テーブル上から探索します。
+        if (countPkeyInMeisai() == 1) {
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+                    return row.getSqlTypeName();
+                }
+            }
+        } else {
+            // １番目のプライマリキーを取得し、使用します。
+            for (EntityMappingRow row : meisaiColumnsMappings) {
+                if (row.isPrimaryKey()) {
+                    return row.getSqlTypeName();
+                }
+            }
+        }
+        
+        return "by";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * ヘッダの１レコードに対応する明細テーブル上のレコードを取得するためのメソッドに
      * 与える引数を取得します。
@@ -1086,23 +1161,6 @@ public class HeadMeisaiScaffoldModel implements RootModel {
     public String createHeadMeisaiPkeyMethodArgs(boolean includeVersion) {
         StringBuffer stb = new StringBuffer();
         boolean is = false;
-//        for (EntityMappingRow row : meisaiColumnsMappings) {
-//            if (row.isPrimaryKey()
-//                    || (includeVersion && NamingUtil.isVersionNo(row
-//                            .getSqlColumnName()))) {
-//                String s = row.getJavaClassName();
-//                if (s.startsWith("java.lang")) {
-//                    s = ClassUtil.getShortClassName(s);
-//                }
-//                stb.append(s);
-//                stb.append(' ');
-//                stb.append(row.getJavaFieldName());
-//                stb.append(',');
-//                //is |= true;
-//                is = true;
-//                break;
-//            }
-//        }
         // 明細テーブルのプライマリキーの数が１の場合、
         // 「ヘッダテーブル名_id」の列を明細テーブル上から探索します。
         if (countPkeyInMeisai() == 1) {

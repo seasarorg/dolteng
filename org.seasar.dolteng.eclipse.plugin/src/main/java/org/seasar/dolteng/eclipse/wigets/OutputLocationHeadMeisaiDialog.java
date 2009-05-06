@@ -284,8 +284,8 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
     protected Control createButtonBar(Composite parent) {
         Control c = super.createButtonBar(parent);
         Button ok = getButton(IDialogConstants.OK_ID);
-        //ok.setEnabled(0 < this.displaies.length);
-        ok.setEnabled(false);
+        ok.setEnabled(0 < this.displaies.length);
+        //ok.setEnabled(false);
         return c;
     }
 
