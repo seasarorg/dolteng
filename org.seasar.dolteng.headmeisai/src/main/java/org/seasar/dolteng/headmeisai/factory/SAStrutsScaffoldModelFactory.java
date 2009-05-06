@@ -20,7 +20,7 @@ import java.util.Map;
 import org.seasar.dolteng.eclipse.model.RootModel;
 import org.seasar.dolteng.eclipse.model.impl.TableNode;
 import org.seasar.dolteng.eclipse.scaffold.ScaffoldModelFactory;
-import org.seasar.dolteng.headmeisai.model.SAStrutsScaffoldModel;
+import org.seasar.dolteng.headmeisai.model.SAStrutsHeadMeisaiScaffoldModel;
 
 /**
  * SAStruts専用のScaffoldModelを作成するFactory
@@ -33,14 +33,14 @@ public class SAStrutsScaffoldModelFactory extends ScaffoldModelFactory {
 	public RootModel createScaffoldModel(Map<String, String> configs,
 			TableNode node) {
 
-		return new SAStrutsScaffoldModel(configs, node, "jsp");
+		return new SAStrutsHeadMeisaiScaffoldModel(configs, node, "jsp", null, null, null);
 	}
 
 	@Override
 	public RootModel createScaffoldModel(Map<String, String> configs,
 			TableNode node, Map<Integer, String[]> selectedColumns) {
 
-		return new SAStrutsScaffoldModel(configs, node, "jsp");
+		return new SAStrutsHeadMeisaiScaffoldModel(configs, node, "jsp", selectedColumns, null, null);
 	}
 
     /* (non-Javadoc)
@@ -51,6 +51,7 @@ public class SAStrutsScaffoldModelFactory extends ScaffoldModelFactory {
             TableNode node, Map<Integer, String[]> selectedColumns,
             String meisaiTableName, Map<Integer, String[]> meisaiColumns)
     {
-		return new SAStrutsScaffoldModel(configs, node, "jsp");
+		return new SAStrutsHeadMeisaiScaffoldModel(configs, node, "jsp",
+				selectedColumns, meisaiTableName, meisaiColumns);
     }
 }

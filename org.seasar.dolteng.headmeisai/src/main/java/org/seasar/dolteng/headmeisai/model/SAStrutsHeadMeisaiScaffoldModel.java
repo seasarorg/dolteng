@@ -17,7 +17,9 @@ package org.seasar.dolteng.headmeisai.model;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -27,6 +29,8 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.core.IJavaProject;
 import org.seasar.dolteng.eclipse.DoltengCore;
+import org.seasar.dolteng.eclipse.model.EntityMappingRow;
+import org.seasar.dolteng.eclipse.model.impl.HeadMeisaiScaffoldModel;
 import org.seasar.dolteng.eclipse.model.impl.ProjectNode;
 import org.seasar.dolteng.eclipse.model.impl.ScaffoldModel;
 import org.seasar.dolteng.eclipse.model.impl.TableNode;
@@ -42,7 +46,7 @@ import org.xml.sax.SAXException;
  * 
  * @author newta
  */
-public class SAStrutsScaffoldModel extends ScaffoldModel {
+public class SAStrutsHeadMeisaiScaffoldModel extends HeadMeisaiScaffoldModel {
 
 	public static final String WEB_INF_WEB_XML = "/WEB-INF/web.xml";
 
@@ -57,9 +61,11 @@ public class SAStrutsScaffoldModel extends ScaffoldModel {
 	/*
 	 * @see org.seasar.dolteng.eclipse.model.impl.ScaffoldModel
 	 */
-	public SAStrutsScaffoldModel(Map<String, String> configs, TableNode node,
-			String viewTemplateExtension) {
-		super(configs, node, null);
+	public SAStrutsHeadMeisaiScaffoldModel(Map<String, String> configs, TableNode node,
+			String viewTemplateExtension,
+			Map<Integer, String[]> selectedColumns,
+			String meisaiTableName, Map<Integer, String[]> meisaiColumns) {
+		super(configs, node, selectedColumns, meisaiTableName, meisaiColumns);
 
 		appendConfig(configs, node, viewTemplateExtension);
 
@@ -159,5 +165,48 @@ public class SAStrutsScaffoldModel extends ScaffoldModel {
 	private static String convertKey(String key) {
 		return key.toLowerCase();
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

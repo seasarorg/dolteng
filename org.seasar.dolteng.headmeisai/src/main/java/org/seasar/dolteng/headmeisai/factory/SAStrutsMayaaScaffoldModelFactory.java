@@ -21,7 +21,7 @@ import org.seasar.dolteng.eclipse.model.RootModel;
 import org.seasar.dolteng.eclipse.model.impl.ScaffoldModel;
 import org.seasar.dolteng.eclipse.model.impl.TableNode;
 import org.seasar.dolteng.eclipse.scaffold.ScaffoldModelFactory;
-import org.seasar.dolteng.headmeisai.model.SAStrutsScaffoldModel;
+import org.seasar.dolteng.headmeisai.model.SAStrutsHeadMeisaiScaffoldModel;
 
 /**
  * SAStruts+Mayaa専用のScaffoldModelを作成するFactory
@@ -33,14 +33,16 @@ public class SAStrutsMayaaScaffoldModelFactory extends ScaffoldModelFactory {
 	public RootModel createScaffoldModel(Map<String, String> configs,
 			TableNode node) {
 		
-		return new SAStrutsScaffoldModel(configs, node, "html");
+		return new SAStrutsHeadMeisaiScaffoldModel(configs, node, "html",
+				null, null, null);
 	}
 
 	@Override
 	public RootModel createScaffoldModel(Map<String, String> configs,
 			TableNode node, Map<Integer, String[]> selectedColumns) {
 		
-		return new SAStrutsScaffoldModel(configs, node, "html");
+		return new SAStrutsHeadMeisaiScaffoldModel(configs, node, "html",
+				selectedColumns, null, null);
 	}
 
     /* (non-Javadoc)
@@ -51,6 +53,7 @@ public class SAStrutsMayaaScaffoldModelFactory extends ScaffoldModelFactory {
             TableNode node, Map<Integer, String[]> selectedColumns,
             String meisaiTableName, Map<Integer, String[]> meisaiColumns)
     {
-		return new SAStrutsScaffoldModel(configs, node, "html");
+		return new SAStrutsHeadMeisaiScaffoldModel(configs, node, "html",
+				selectedColumns, meisaiTableName, meisaiColumns);
     }
 }
