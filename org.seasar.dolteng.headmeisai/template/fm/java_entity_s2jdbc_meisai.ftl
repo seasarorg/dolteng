@@ -7,22 +7,22 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
-<#if configs.table_rdb.equalsIgnoreCase(configs.table_capitalize) = false>
+<#if configs.table_rdb.equalsIgnoreCase(configs.meisaitable_capitalize) = false>
 import javax.persistence.Table;
 </#if>
 
-${getImports()}
+${getImportsInMeisai()}
 
 @Entity
-<#if configs.table_rdb.equalsIgnoreCase(configs.table_capitalize) = false>
-@Table(name="${configs.table_rdb}")
+<#if configs.table_rdb.equalsIgnoreCase(configs.meisaitable_capitalize) = false>
+@Table(name="${configs.meisaitable_rdb}")
 </#if>
-public class ${configs.table_capitalize} {
+public class ${configs.meisaitable_capitalize} {
 
-<#list mappings as mapping>
+<#list meisaiColumnsMappings as mapping>
 <#if mapping.isPrimaryKey() = true>
-    //@GeneratedValue
     @Id
+    @GeneratedValue
 <#elseif isVersionColumn(mapping) = true>
     @Version
 </#if>

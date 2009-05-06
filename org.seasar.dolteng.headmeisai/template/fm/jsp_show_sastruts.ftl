@@ -12,7 +12,14 @@
 
 <table class="tablebg">
 <#list mappings as mapping>
-    <#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
+    <#if mapping.isPrimaryKey() = true>
+	<tr>
+		<td> ${mapping.javaFieldName} </td>
+		<td>
+			<#noparse>${f:h(</#noparse>${mapping.javaFieldName}<#noparse>)}</#noparse>
+		</td>	
+	</tr>
+    <#elseif mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 	<tr>
 		<td> ${mapping.javaFieldName} </td>
 		<td>
@@ -24,10 +31,51 @@
 
 </table>
 
+
+
+
+
+
+
+
+
+
+
+<table border="1">
+<tr>
+<#list meisaiColumnsMappings as mapping>
+  <td>${mapping.javaFieldName}</td>
+</#list>
+</tr>
+<c:forEach var="${configs.meisaitable}Items" items="<#noparse>${</#noparse>${configs.meisaitable}Items}">
+<tr>
+<#list meisaiColumnsMappings as mapping>
+  <td><#noparse>${f:h(</#noparse>${configs.meisaitable}Items.${mapping.javaFieldName})}</td>
+</#list>
+</tr>
+</c:forEach>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <s:link href="edit<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/${</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>"> edit </s:link>
 
 
 <br/><br/>
 <s:link href="/${configs.table}/">list page</s:link>
-<body>
+</body>
 </html>

@@ -30,11 +30,51 @@
 
 </table>
 
+
+
+
+
+
+
+
+
+
+<table border="1">
+<tr>
+<#list meisaiColumnsMappings as mapping>
+<#if mapping.isPrimaryKey() = false>
+  <td>${mapping.javaFieldName}</td>
+</#if>
+</#list>
+</tr>
+<c:forEach var="${configs.meisaitable}Items" items="<#noparse>${</#noparse>${configs.meisaitable}Items}">
+<tr>
+<#list meisaiColumnsMappings as mapping>
+<#if mapping.isPrimaryKey() = true>
+  <html:hidden name="${configs.meisaitable}Items" property="${mapping.javaFieldName}" indexed="true"/>
+<#else>
+  <td><html:text name="${configs.meisaitable}Items" property="${mapping.javaFieldName}" indexed="true"/></td>
+</#if>
+</#list>
+</tr>
+</c:forEach>
+</table>
+
+
+
+
+
+
+
+
+
+
+
 <input type="submit" name="update" value="UPDATE" />
 </s:form>
 <br/><br/>
 
 <s:link href="/${configs.table}/">list page</s:link>
 
-<body>
+</body>
 </html>

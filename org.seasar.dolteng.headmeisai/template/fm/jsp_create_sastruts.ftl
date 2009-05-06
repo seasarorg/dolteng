@@ -14,7 +14,14 @@
 
 <table class="tablebg">
 <#list mappings as mapping>
-    <#if mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
+	<#if mapping.isPrimaryKey() = true>
+	<tr>
+		<td> ${mapping.javaFieldName} </td>
+		<td>
+			<html:text property="${mapping.javaFieldName}" />
+		</td>	
+	</tr>
+    <#elseif mapping.isPrimaryKey() = false && isVersionColumn(mapping) = false>
 	<tr>
 		<td> ${mapping.javaFieldName} </td>
 		<td>
@@ -25,6 +32,47 @@
 </#list>
 
 </table>
+
+
+
+
+
+
+
+
+
+<table border="1">
+<tr>
+<#list meisaiColumnsMappings as mapping>
+<#if mapping.isPrimaryKey() = false>
+  <td>${mapping.javaFieldName}</td>
+</#if>
+</#list>
+</tr>
+<c:forEach var="${configs.meisaitable}Items" items="<#noparse>${</#noparse>${configs.meisaitable}Items}">
+<tr>
+<#list meisaiColumnsMappings as mapping>
+<#if mapping.isPrimaryKey() = false>
+  <td><html:text name="${configs.meisaitable}Items" property="${mapping.javaFieldName}" indexed="true"/></td>
+</#if>
+</#list>
+</tr>
+</c:forEach>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <input type="submit" name="insert" value="CREATE" />
 </s:form>
