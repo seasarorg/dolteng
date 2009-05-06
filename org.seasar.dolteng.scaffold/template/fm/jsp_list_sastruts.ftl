@@ -10,7 +10,7 @@
 
 <html:errors/>
 
-<#if isSelectedExisted() = true>	
+<#if isSelectedExisted() = true>
 <s:form>
 <html:hidden property="offset" />
 <html:hidden property="count" />
@@ -56,7 +56,7 @@
 </c:forEach>
 
 </table>
-<#if isSelectedExisted() = true>	
+<#if isSelectedExisted() = true>
 <table>
 	<tr>
 		<td>

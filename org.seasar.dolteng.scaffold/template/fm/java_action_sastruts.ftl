@@ -19,7 +19,7 @@ import ${configs.rootpackagename}.form.${configs.table_capitalize}Form;
 
 public class ${configs.table_capitalize}${configs.actionsuffix} {
 
-<#if isSelectedExisted() = true>	
+<#if isSelectedExisted() = true>
     private Integer limit = 5;
 
     private Integer count;
@@ -84,7 +84,7 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
         return "list.${configs.viewtemplateextension}";
     }
 
-<#if isSelectedExisted() = true>	
+<#if isSelectedExisted() = true>
     @Execute(validator = false)
     public String retrieve() {
         return index();
