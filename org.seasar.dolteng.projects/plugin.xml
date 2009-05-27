@@ -1649,10 +1649,10 @@
             <artifactId>geronimo-jpa_3.0_spec</artifactId>
             <version>1.0</version>
         </entry>
-        <entry kind="file" path="${libPath}/kuina-dao-1.0.2.jar" >
+        <entry kind="file" path="${libPath}/kuina-dao-1.0.3.jar" >
             <groupId>org.seasar.kuina</groupId>
             <artifactId>kuina-dao</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.3</version>
         </entry>
       </handler>
       <handler type="diigu" resourceLoader="composite" />
