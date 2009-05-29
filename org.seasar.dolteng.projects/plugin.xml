@@ -197,15 +197,15 @@
             <version>1.0</version>
             <scope>provided</scope>
         </entry>
-        <entry kind="file" path="${libPath}/s2-extension-2.4.37.jar" >
+        <entry kind="file" path="${libPath}/s2-extension-2.4.38.jar" >
             <groupId>org.seasar.container</groupId>
             <artifactId>s2-extension</artifactId>
-            <version>2.4.37</version>
+            <version>2.4.38</version>
         </entry>
-        <entry kind="file" path="${libPath}/s2-framework-2.4.37.jar" >
+        <entry kind="file" path="${libPath}/s2-framework-2.4.38.jar" >
             <groupId>org.seasar.container</groupId>
             <artifactId>s2-framework</artifactId>
-            <version>2.4.37</version>
+            <version>2.4.38</version>
         </entry>
       </handler>
       <handler type="jdt" resourceLoader="composite">
@@ -248,10 +248,10 @@
           <entry kind="file" path="${testResourcePath}/s2junit4.dicon" />
         </handler>
         <handler type="classpath" resourceLoader="maven">
-          <entry kind="file" path="${libPath}/s2-tiger-2.4.37.jar" >
+          <entry kind="file" path="${libPath}/s2-tiger-2.4.38.jar" >
             <groupId>org.seasar.container</groupId>
             <artifactId>s2-tiger</artifactId>
-            <version>2.4.37</version>
+            <version>2.4.38</version>
         </entry>
           <entry kind="file" path="${testLibPath}/junit-4.4.jar" >
             <groupId>junit</groupId>
@@ -1053,10 +1053,10 @@
       <if jre="1.4" />
       <if jre="1.5,1.6">
         <handler type="classpath" resourceLoader="maven">
-          <entry kind="file" path="${libPath}/s2-tiger-2.4.37.jar" >
+          <entry kind="file" path="${libPath}/s2-tiger-2.4.38.jar" >
             <groupId>org.seasar.container</groupId>
             <artifactId>s2-tiger</artifactId>
-            <version>2.4.37</version>
+            <version>2.4.38</version>
         </entry>
           <entry kind="file" path="${libPath}/geronimo-ejb_3.0_spec-1.0.jar" >
             <groupId>org.apache.geronimo.specs</groupId>
@@ -1130,10 +1130,10 @@
       <if jre="1.4" />
       <if jre="1.5,1.6">
         <handler type="classpath" resourceLoader="maven">
-          <entry kind="file" path="${libPath}/s2-tiger-2.4.37.jar" >
+          <entry kind="file" path="${libPath}/s2-tiger-2.4.38.jar" >
             <groupId>org.seasar.container</groupId>
             <artifactId>s2-tiger</artifactId>
-            <version>2.4.37</version>
+            <version>2.4.38</version>
         </entry>
           <entry kind="file" path="${libPath}/geronimo-ejb_3.0_spec-1.0.jar" >
             <groupId>org.apache.geronimo.specs</groupId>
@@ -1237,10 +1237,10 @@
       <if jre="1.4" />
       <if jre="1.5,1.6">
         <handler type="classpath" resourceLoader="maven">
-          <entry kind="file" path="${libPath}/s2-tiger-2.4.37.jar" >
+          <entry kind="file" path="${libPath}/s2-tiger-2.4.38.jar" >
             <groupId>org.seasar.container</groupId>
             <artifactId>s2-tiger</artifactId>
-            <version>2.4.37</version>
+            <version>2.4.38</version>
         </entry>
           <entry kind="file" path="${libPath}/geronimo-ejb_3.0_spec-1.0.jar" >
             <groupId>org.apache.geronimo.specs</groupId>
@@ -1551,10 +1551,10 @@
             <artifactId>geronimo-jpa_3.0_spec</artifactId>
             <version>1.0</version>
         </entry>
-        <entry kind="file" path="${testLibPath}/s2jdbc-gen-2.4.37.jar" >
+        <entry kind="file" path="${testLibPath}/s2jdbc-gen-2.4.38.jar" >
             <groupId>org.seasar.container</groupId>
             <artifactId>s2jdbc-gen</artifactId>
-            <version>2.4.37</version>
+            <version>2.4.38</version>
             <scope>test</scope>
         </entry>
       	<entry kind="file" path="${testLibPath}/freemarker-2.3.13.jar" >
