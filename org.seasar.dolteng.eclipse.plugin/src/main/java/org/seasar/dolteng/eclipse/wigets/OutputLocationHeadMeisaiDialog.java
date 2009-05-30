@@ -40,21 +40,15 @@ import org.eclipse.swt.widgets.Shell;
 import org.seasar.dolteng.eclipse.DoltengCore;
 import org.seasar.dolteng.eclipse.model.ScaffoldDisplay;
 import org.seasar.dolteng.eclipse.model.TreeContent;
+import org.seasar.dolteng.eclipse.model.impl.TableNode;
 import org.seasar.dolteng.eclipse.nls.Labels;
 import org.seasar.dolteng.eclipse.nls.Messages;
 import org.seasar.dolteng.eclipse.part.DatabaseView;
 import org.seasar.dolteng.eclipse.preferences.DoltengPreferences;
-import org.seasar.dolteng.eclipse.scaffold.ScaffoldConfig;
-import org.seasar.dolteng.eclipse.scaffold.ScaffoldConfigResolver;
 import org.seasar.dolteng.eclipse.scaffold.ScaffoldHeadMeisaiConfig;
 import org.seasar.dolteng.eclipse.scaffold.ScaffoldHeadMeisaiConfigResolver;
 import org.seasar.dolteng.eclipse.util.ProjectUtil;
 import org.seasar.framework.util.StringUtil;
-
-import org.seasar.dolteng.eclipse.model.impl.ScaffoldModel;
-import org.seasar.dolteng.eclipse.model.impl.TableNode;
-import org.seasar.dolteng.core.dao.impl.BasicDatabaseMetadataDao;
-import org.seasar.dolteng.core.entity.ColumnMetaData;
 
 /**
  * @author seiichi
@@ -75,39 +69,34 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
     private Map<Integer, String> index2id;
 
     private ScaffoldHeadMeisaiConfig selectedConfig;
-    
+
     // The current node in database view
     // The current node is the table.
     private TableNode current;
-    
-    // The List component to show the columns of the current node in database view
+
+    // The List component to show the columns of the current node in database
+    // view
     private org.eclipse.swt.widgets.List currentTableColumnsList = null;
 
-    // List component that displays candidate of table specified 
+    // List component that displays candidate of table specified
     // for detail in master-detail
-    private org.eclipse.swt.widgets.List meisaiTableList = null;    
-    
+    private org.eclipse.swt.widgets.List meisaiTableList = null;
+
     // The selected columns information on the table
     // Map<i, String[0]> means column name.
     // Map<i, String[1]> means database column type name.
     private Map<Integer, String[]> selectedColumns;
-    
-    
+
     // The name of detail table
     private String meisaiTableName;
-    
+
     // 明細テーブルの列情報
     // Map<i, String[0]> に列名が格納されています。
     // Map<i, String[1]> に型（データベースのカラムタイプ）が格納されています。
     private Map<Integer, String[]> meisaiColumns;
-    
-    
-    
-    
-    
-    
-    
-    public OutputLocationHeadMeisaiDialog(Shell parentShell, IJavaProject javap, TableNode current) {
+
+    public OutputLocationHeadMeisaiDialog(Shell parentShell,
+            IJavaProject javap, TableNode current) {
         super(parentShell);
         this.javap = javap;
         this.rootPkg = ProjectUtil.getDefaultSrcPackageFragmentRoot(javap);
@@ -117,8 +106,9 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
         if (pref != null) {
             this.rootPkgName = pref.getDefaultRootPackageName();
         }
-        
-        this.resolver = new ScaffoldHeadMeisaiConfigResolver(this.javap.getProject());
+
+        this.resolver = new ScaffoldHeadMeisaiConfigResolver(this.javap
+                .getProject());
         this.resolver.initialize();
         this.displaies = this.resolver.getScaffolds();
         this.index2id = new HashMap<Integer, String>(this.displaies.length);
@@ -137,7 +127,7 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
                 .createDialogArea(parent));
 
         setTitle(Messages.GENERATE_HEAD_MEISAI_CODES);
-                
+
         createLabel(composite, Labels.PACKAGEFRAGMENT_ROOT);
         final Combo fragment = createCombo(composite, getPkgFragmentRoot());
         fragment.addSelectionListener(new SelectionAdapter() {
@@ -178,7 +168,7 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
                         scaffolds.getSelectionIndex())));
             }
         });
-        
+
         // The current node in database view
         // The current node is table.
         TreeContent[] currentTable = current.getChildren();
@@ -187,105 +177,100 @@ public class OutputLocationHeadMeisaiDialog extends TitleAreaDialog {
         for (TreeContent column : currentTable) {
             dbcolumns[i++] = column.getText();
         }
-        
-        // The column information in the table of scaffold object are shown 
-        // as the list box. 
-        // The master table name can be acquired 
+
+        // The column information in the table of scaffold object are shown
+        // as the list box.
+        // The master table name can be acquired
         // by using "current.getText()".
         createLabel(composite, current.getText() + "\nRetrieval\nCondition :");
-        currentTableColumnsList = new org.eclipse.swt.widgets.List(
-                composite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL);
+        currentTableColumnsList = new org.eclipse.swt.widgets.List(composite,
+                SWT.BORDER | SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL);
         currentTableColumnsList.setSize(10, 10);
         currentTableColumnsList.setLayoutData(new GridData(SWT.LEFT));
         currentTableColumnsList.setItems(dbcolumns);
         currentTableColumnsList.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
-                String[] tmp = currentTableColumnsList.getSelection();
+                String[] headSelection = currentTableColumnsList.getSelection();
 
-                selectedColumns = new HashMap<Integer, String[]>(tmp.length);
-                for (int i = 0; i < tmp.length; i++) {
-                    selectedColumns.put(i, tmp[i].split(":"));
-                    selectedColumns.get(i)[0] = selectedColumns.get(i)[0].trim();
-                    selectedColumns.get(i)[1] = selectedColumns.get(i)[1].trim();
+                selectedColumns = new HashMap<Integer, String[]>(
+                        headSelection.length);
+                for (int i = 0; i < headSelection.length; i++) {
+                    selectedColumns.put(i, headSelection[i].split(":"));
+                    selectedColumns.get(i)[0] = selectedColumns.get(i)[0]
+                            .trim();
+                    selectedColumns.get(i)[1] = selectedColumns.get(i)[1]
+                            .trim();
                 }
+                String[] meisaiSelection = meisaiTableList.getSelection();
+                Button ok = getButton(IDialogConstants.OK_ID);
+                ok.setEnabled(displaies.length > 0 && headSelection.length > 0
+                        && meisaiSelection.length > 0);
             }
         });
-        //--------------------------------------------------------------------------
-        //--------------------------------------------------------------------------
+        // --------------------------------------------------------------------------
+        // --------------------------------------------------------------------------
 
         // ヘッダ明細のうち明細に指定するテーブルの候補を、リストボックスにて表示します。
         createLabel(composite, "Detail\nTable:");
-        meisaiTableList = new org.eclipse.swt.widgets.List(
-                composite, SWT.BORDER | SWT.SINGLE | SWT.V_SCROLL | SWT.H_SCROLL);
+        meisaiTableList = new org.eclipse.swt.widgets.List(composite,
+                SWT.BORDER | SWT.SINGLE | SWT.V_SCROLL | SWT.H_SCROLL);
         meisaiTableList.setSize(10, 10);
         meisaiTableList.setLayoutData(new GridData(SWT.LEFT));
         meisaiTableList.setItems(DatabaseView.getAllTables());
         meisaiTableList.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
-                String[] tmp = meisaiTableList.getSelection();
-                meisaiTableName = tmp[0];
+                String[] headSelection = currentTableColumnsList.getSelection();
+                String[] meisaiSelection = meisaiTableList.getSelection();
+                meisaiTableName = meisaiSelection[0];
                 Button ok = getButton(IDialogConstants.OK_ID);
-                ok.setEnabled(0 < displaies.length);
+                ok.setEnabled(displaies.length > 0 && headSelection.length > 0
+                        && meisaiSelection.length > 0);
             }
         });
-        //--------------------------------------------------------------------------
-        //--------------------------------------------------------------------------
-        
+        // --------------------------------------------------------------------------
+        // --------------------------------------------------------------------------
+
         scaffolds.select(0);
         return composite;
     }
-    
+
     /**
-     * The selected columns information on the table
-     * Map<i, String[0]> means column name.
-     * Map<i, String[1]> means database column type name.
+     * The selected columns information on the table Map<i, String[0]> means
+     * column name. Map<i, String[1]> means database column type name.
      * 
      * @return The selected columns information on the table
      */
     public Map<Integer, String[]> getSelectedColumns() {
         return selectedColumns;
     }
-    
+
     /**
      * The detail table name is returned.
+     * 
      * @return the detail table name
      */
     public String getMeisaiTableName() {
         return meisaiTableName;
     }
-    
+
     /**
-     * The columns information on the detail table is returned.
-     * Map<i, String[0]> means column name.
-     * Map<i, String[1]> means database column type name.
+     * The columns information on the detail table is returned. Map<i,
+     * String[0]> means column name. Map<i, String[1]> means database column
+     * type name.
      * 
      * @return The columns information on the detail table
      */
     public Map<Integer, String[]> getMeisaiColumns() {
         return meisaiColumns;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     @Override
     protected Control createButtonBar(Composite parent) {
         Control c = super.createButtonBar(parent);
         Button ok = getButton(IDialogConstants.OK_ID);
-        ok.setEnabled(0 < this.displaies.length);
-        //ok.setEnabled(false);
+        // 初期表示時は明細テーブルが選択されていないため
+        // ボタンを非活性で表示
+        ok.setEnabled(false);
         return c;
     }
 
