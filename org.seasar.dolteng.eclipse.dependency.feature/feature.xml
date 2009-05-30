@@ -38,7 +38,7 @@ governing permissions and limitations under the License.
          id="org.seasar.dolteng.projects.dependencies1"
          download-size="0"
          install-size="0"
-         version="0.36.0"/>
+         version="0.37.0"/>
 
    <plugin
          id="org.seasar.dolteng.projects.dependencies2"
