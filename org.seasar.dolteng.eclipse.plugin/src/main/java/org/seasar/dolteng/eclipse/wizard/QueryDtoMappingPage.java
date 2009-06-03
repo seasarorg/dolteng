@@ -33,7 +33,9 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -147,6 +149,7 @@ public class QueryDtoMappingPage extends WizardPage implements
         Button browse = new Button(composite, SWT.PUSH);
         browse.setText(Labels.BROWSE);
         browse.addSelectionListener(new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 chooseSQL();
                 refreshRows();
@@ -161,6 +164,7 @@ public class QueryDtoMappingPage extends WizardPage implements
         Button refresh = new Button(composite, SWT.PUSH);
         refresh.setText(Labels.REFRESH);
         refresh.addSelectionListener(new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent event) {
                 refreshRows();
             }
@@ -181,6 +185,11 @@ public class QueryDtoMappingPage extends WizardPage implements
                 createColumnDescs(table)));
         viewer.setSorter(new ComparableViewerSorter());
         viewer.setInput(this.mappingRows);
+        viewer.addSelectionChangedListener(new ISelectionChangedListener() {
+            public void selectionChanged(SelectionChangedEvent event) {
+                validateDuplicateJavaFieldNames();
+            }
+        });
 
         gd = new GridData(GridData.FILL_BOTH | GridData.GRAB_HORIZONTAL
                 | GridData.GRAB_VERTICAL);
@@ -197,6 +206,31 @@ public class QueryDtoMappingPage extends WizardPage implements
         spacer.setLayoutData(gd);
 
         setControl(composite);
+    }
+
+    public void validateDuplicateJavaFieldNames() {
+        for (EntityMappingRow currentRow : mappingRows) {
+            if (!currentRow.isGenerate()) {
+                continue;
+            }
+            for (EntityMappingRow otherRow : mappingRows) {
+                if (!otherRow.isGenerate()) {
+                    continue;
+                }
+                if (otherRow == currentRow) {
+                    continue;
+                }
+                String s1 = currentRow.getJavaFieldName();
+                String s2 = otherRow.getJavaFieldName();
+                if (StringUtil.equals(s1, s2)) {
+                    setErrorMessage("フィールド名が重複しています。");
+                    setPageComplete(false);
+                    return;
+                }
+            }
+        }
+        setErrorMessage(null);
+        setPageComplete(true);
     }
 
     private void createPartOfPublicField(Composite composite) {
@@ -245,6 +279,7 @@ public class QueryDtoMappingPage extends WizardPage implements
                 getShell(), ProjectUtil.getWorkspaceRoot(), IResource.FOLDER
                         | IResource.PROJECT | IResource.FILE);
         dialog.addFilter(new ViewerFilter() {
+            @Override
             public boolean select(Viewer viewer, Object parentElement,
                     Object element) {
                 if (element instanceof IFile) {
@@ -315,8 +350,8 @@ public class QueryDtoMappingPage extends WizardPage implements
         TypeMappingRegistry registry = DoltengCore
                 .getTypeMappingRegistry(project);
         TypeMapping[] types = registry.findAllTypes();
-        for (int i = 0; i < types.length; i++) {
-            l.add(types[i].getJavaClassName());
+        for (TypeMapping type : types) {
+            l.add(type.getJavaClassName());
         }
         return l.toArray(new String[l.size()]);
     }
@@ -340,11 +375,11 @@ public class QueryDtoMappingPage extends WizardPage implements
         String sql = getSql(file);
         if (StringUtil.isEmpty(sql) == false) {
             ColumnMetaData[] metas = dao.getColumns(sql);
-            for (int i = 0; i < metas.length; i++) {
+            for (ColumnMetaData meta : metas) {
                 FieldMetaData field = new BasicFieldMetaData();
-                setUpFieldMetaData(registry, metas[i], field);
-                EntityMappingRow row = new BasicEntityMappingRow(metas[i],
-                        field, registry);
+                setUpFieldMetaData(registry, meta, field);
+                EntityMappingRow row = new BasicEntityMappingRow(meta, field,
+                        registry);
                 row.setGenerate(true);
                 this.mappingRows.add(row);
             }
@@ -402,10 +437,19 @@ public class QueryDtoMappingPage extends WizardPage implements
      * 
      * @see org.eclipse.jface.dialogs.DialogPage#setVisible(boolean)
      */
+    @Override
     public void setVisible(boolean visible) {
         if (visible) {
             refreshRows();
         }
+
+        /*
+         * ここで初期表示時のためのフィールド名重複チェックを行う。
+         * （createControl内で呼んでもうまくいかなかったため）
+         * もっと良い方法があれば変える。
+         */
+        validateDuplicateJavaFieldNames();
+
         super.setVisible(visible);
     }
 }
