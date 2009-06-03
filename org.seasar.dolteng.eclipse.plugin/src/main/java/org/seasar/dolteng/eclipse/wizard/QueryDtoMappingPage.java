@@ -208,7 +208,7 @@ public class QueryDtoMappingPage extends WizardPage implements
         setControl(composite);
     }
 
-    public void validateDuplicateJavaFieldNames() {
+    private void validateDuplicateJavaFieldNames() {
         for (EntityMappingRow currentRow : mappingRows) {
             if (!currentRow.isGenerate()) {
                 continue;
