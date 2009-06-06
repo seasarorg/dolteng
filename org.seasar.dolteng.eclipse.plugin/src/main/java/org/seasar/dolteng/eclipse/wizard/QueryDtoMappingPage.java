@@ -41,6 +41,8 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
@@ -187,6 +189,14 @@ public class QueryDtoMappingPage extends WizardPage implements
         viewer.setInput(this.mappingRows);
         viewer.addSelectionChangedListener(new ISelectionChangedListener() {
             public void selectionChanged(SelectionChangedEvent event) {
+                validateDuplicateJavaFieldNames();
+            }
+        });
+        table.addFocusListener(new FocusListener() {
+            public void focusGained(FocusEvent e) {
+                validateDuplicateJavaFieldNames();
+            }
+            public void focusLost(FocusEvent e) {
                 validateDuplicateJavaFieldNames();
             }
         });
