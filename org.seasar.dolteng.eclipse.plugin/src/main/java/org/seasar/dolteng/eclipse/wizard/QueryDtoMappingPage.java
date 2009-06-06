@@ -233,7 +233,7 @@ public class QueryDtoMappingPage extends WizardPage implements
                 String s1 = currentRow.getJavaFieldName();
                 String s2 = otherRow.getJavaFieldName();
                 if (StringUtil.equals(s1, s2)) {
-                    setErrorMessage("フィールド名が重複しています。");
+                    setErrorMessage("Duplicate java field name: " + s1);
                     setPageComplete(false);
                     return;
                 }
