@@ -15,6 +15,7 @@
  */
 package org.seasar.dolteng.eclipse.preferences;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
@@ -28,7 +29,15 @@ public class DoltengCommonPreferenceInitializer extends
         IEclipsePreferences pref = new DefaultScope()
                 .getNode(Constants.ID_PLUGIN + "common");
         pref.put(Constants.PREF_MAVEN_REPOS_PATH, Constants.PREF_DEFAULT_MAVEN_REPOS_PATH);
-        pref.putBoolean(Constants.PREF_DOWNLOAD_ONLINE, Constants.PREF_DEFAULT_DOWNLOAD_ONLINE);
+        pref.putBoolean(Constants.PREF_DOWNLOAD_ONLINE, isDownloadOnline());
+    }
+
+    private static boolean isDownloadOnline() {
+        if (Platform.getBundle("org.seasar.dolteng.projects.dependencies1") == null
+                || Platform.getBundle("org.seasar.dolteng.projects.dependencies2") == null) {
+            return true;
+        }
+        return false;
     }
 
 }

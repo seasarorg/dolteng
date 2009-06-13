@@ -165,8 +165,6 @@ public final class Constants {
     /* ------------------------------------------------------------------ */
 
     public static final String PREF_DOWNLOAD_ONLINE = "downloadOnline";
-    
-    public static final boolean PREF_DEFAULT_DOWNLOAD_ONLINE = true;
 
     public static final String PREF_MAVEN_REPOS_PATH = "mavenReposPath";
 
