@@ -63,8 +63,8 @@ public class ${configs.table_capitalize}Confirm${configs.pagesuffix} extends Abs
 <#else>
 	@Required
 </#if>
-	public void set${mapping.javaFieldName?cap_first}(${getJavaClassName(mapping)} ${mapping.javaFieldName?lower_case}) {
-		super.set${mapping.javaFieldName?cap_first}(${mapping.javaFieldName?lower_case});
+	public void set${mapping.javaFieldName?cap_first}(${getJavaClassName(mapping)} ${mapping.javaFieldName}) {
+		super.set${mapping.javaFieldName?cap_first}(${mapping.javaFieldName});
 	}
 
 </#if>

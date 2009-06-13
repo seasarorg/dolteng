@@ -237,6 +237,7 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	public void setText${selectedColumnsMapping.javaFieldName?cap_first}(${getJavaClassName(selectedColumnsMapping)} text${selectedColumnsMapping.javaFieldName?cap_first}) {
 		this.text${selectedColumnsMapping.javaFieldName?cap_first} = text${selectedColumnsMapping.javaFieldName?cap_first};
 	}
+
 	</#list>
 
 	public Integer getOffset() {

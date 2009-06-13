@@ -23,9 +23,10 @@ public class ${configs.table_capitalize}Dto {
 		return this.${mapping.javaFieldName}_${getDtoSuffix("${getJavaClassName(mapping)}")};
 	}
 
-	public void set${mapping.javaFieldName?cap_first}_${getDtoSuffix("${getJavaClassName(mapping)}")}(${getJavaClassName(mapping)} ${mapping.javaFieldName?lower_case}) {
-		this.${mapping.javaFieldName}_${getDtoSuffix("${getJavaClassName(mapping)}")} = ${mapping.javaFieldName?lower_case};
+	public void set${mapping.javaFieldName?cap_first}_${getDtoSuffix("${getJavaClassName(mapping)}")}(${getJavaClassName(mapping)} ${mapping.javaFieldName}) {
+		this.${mapping.javaFieldName}_${getDtoSuffix("${getJavaClassName(mapping)}")} = ${mapping.javaFieldName};
 	}
+
 </#list>
 
 	public int getFirstResult() {
