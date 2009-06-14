@@ -42,9 +42,10 @@ public class ${configs.meisaitable_capitalize}Dto implements Serializable {
 	public ${getMeisaiJavaClassName(mapping)} getMeisai${mapping.javaFieldName?cap_first}() {
 		return this.meisai${mapping.javaFieldName?cap_first};
 	}
-	
-	public void setMeisai${mapping.javaFieldName?cap_first}(${getMeisaiJavaClassName(mapping)} ${mapping.javaFieldName?lower_case}) {
-		this.meisai${mapping.javaFieldName?cap_first} = ${mapping.javaFieldName?lower_case};
+
+	public void setMeisai${mapping.javaFieldName?cap_first}(${getMeisaiJavaClassName(mapping)} ${mapping.javaFieldName}) {
+		this.meisai${mapping.javaFieldName?cap_first} = ${mapping.javaFieldName};
 	}
+
 </#list>
 }

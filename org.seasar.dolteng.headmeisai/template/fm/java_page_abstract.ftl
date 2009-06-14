@@ -31,9 +31,10 @@ public abstract class Abstract${configs.table_capitalize}${configs.pagesuffix} e
 		return this.${mapping.javaFieldName};
 	}
 
-	public void set${mapping.javaFieldName?cap_first}(${getJavaClassName(mapping)} ${mapping.javaFieldName?lower_case}) {
-		this.${mapping.javaFieldName} = ${mapping.javaFieldName?lower_case};
+	public void set${mapping.javaFieldName?cap_first}(${getJavaClassName(mapping)} ${mapping.javaFieldName}) {
+		this.${mapping.javaFieldName} = ${mapping.javaFieldName};
 	}
+
 </#list>
 
 <#list meisaiColumnsMappings as mapping>
@@ -41,9 +42,10 @@ public abstract class Abstract${configs.table_capitalize}${configs.pagesuffix} e
 		return this.meisai${mapping.javaFieldName?cap_first};
 	}
 
-	public void setMeisai${mapping.javaFieldName?cap_first}(${getMeisaiJavaClassName(mapping)} ${mapping.javaFieldName?lower_case}) {
-		this.meisai${mapping.javaFieldName?cap_first} = ${mapping.javaFieldName?lower_case};
+	public void setMeisai${mapping.javaFieldName?cap_first}(${getMeisaiJavaClassName(mapping)} ${mapping.javaFieldName}) {
+		this.meisai${mapping.javaFieldName?cap_first} = ${mapping.javaFieldName};
 	}
+
 </#list>
 
 	public ${configs.table_capitalize}${configs.daosuffix} get${configs.table_capitalize}${configs.daosuffix}() {

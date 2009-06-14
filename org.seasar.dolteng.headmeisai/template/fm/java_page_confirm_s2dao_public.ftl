@@ -93,8 +93,8 @@ public class ${configs.table_capitalize}Confirm${configs.pagesuffix} extends Abs
 <#else>
 	public static final String ${mapping.javaFieldName}_TRequiredValidator = null;
 </#if>
-	public void set${mapping.javaFieldName?cap_first}(${getJavaClassName(mapping)} ${mapping.javaFieldName?lower_case}) {
-		super.${mapping.javaFieldName} = ${mapping.javaFieldName?lower_case};
+	public void set${mapping.javaFieldName?cap_first}(${getJavaClassName(mapping)} ${mapping.javaFieldName}) {
+		super.${mapping.javaFieldName} = ${mapping.javaFieldName};
 	}
 
 </#if>

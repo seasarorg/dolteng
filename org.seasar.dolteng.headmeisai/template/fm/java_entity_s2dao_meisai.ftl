@@ -29,14 +29,15 @@ public class ${configs.meisaitable_capitalize} {
 </#list>
 	public ${configs.meisaitable_capitalize}() {
 	}
-	
+
 <#list meisaiColumnsMappings as mapping>
 	public ${getMeisaiJavaClassName(mapping)} get${mapping.javaFieldName?cap_first}() {
 		return this.${mapping.javaFieldName};
 	}
-	
-	public void set${mapping.javaFieldName?cap_first}(${getMeisaiJavaClassName(mapping)} ${mapping.javaFieldName?lower_case}) {
-		this.${mapping.javaFieldName} = ${mapping.javaFieldName?lower_case};
+
+	public void set${mapping.javaFieldName?cap_first}(${getMeisaiJavaClassName(mapping)} ${mapping.javaFieldName}) {
+		this.${mapping.javaFieldName} = ${mapping.javaFieldName};
 	}
+
 </#list>
 }

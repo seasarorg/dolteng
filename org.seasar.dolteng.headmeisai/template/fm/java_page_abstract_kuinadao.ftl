@@ -21,9 +21,10 @@ public abstract class Abstract${configs.table_capitalize}${configs.pagesuffix} e
 		return this.${mapping.javaFieldName};
 	}
 
-	public void set${mapping.javaFieldName?cap_first}(${getJavaClassName(mapping)} ${mapping.javaFieldName?lower_case}) {
-		this.${mapping.javaFieldName} = ${mapping.javaFieldName?lower_case};
+	public void set${mapping.javaFieldName?cap_first}(${getJavaClassName(mapping)} ${mapping.javaFieldName}) {
+		this.${mapping.javaFieldName} = ${mapping.javaFieldName};
 	}
+
 </#list>
 
 	public ${configs.table_capitalize}${configs.servicesuffix} get${configs.table_capitalize}${configs.servicesuffix}() {

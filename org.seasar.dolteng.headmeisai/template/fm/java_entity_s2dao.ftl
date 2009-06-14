@@ -31,8 +31,9 @@ public class ${configs.table_capitalize} {
 		return this.${mapping.javaFieldName};
 	}
 
-	public void set${mapping.javaFieldName?cap_first}(${getJavaClassName(mapping)} ${mapping.javaFieldName?lower_case}) {
-		this.${mapping.javaFieldName} = ${mapping.javaFieldName?lower_case};
+	public void set${mapping.javaFieldName?cap_first}(${getJavaClassName(mapping)} ${mapping.javaFieldName}) {
+		this.${mapping.javaFieldName} = ${mapping.javaFieldName};
 	}
+
 </#list>
 }
