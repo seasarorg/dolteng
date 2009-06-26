@@ -27,9 +27,8 @@ public class ErrorPage {
 
 	private Exception exception;
 
-	public Class prerender() {
+	public void prerender() {
 		stackTrace = buildStackTrace(exception);
-		return null;
 	}
 
 	protected String buildStackTrace(Throwable t) {
