@@ -2,11 +2,9 @@ package ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${co
 
 import java.util.List;
 ${getImports()}
-<#if isTigerResource() = true>
 import org.seasar.teeda.extension.annotation.convert.DateTimeConverter;
 import org.seasar.teeda.extension.annotation.takeover.TakeOver;
 
-</#if>
 import ${configs.rootpackagename}.${configs.dtopackagename}.${configs.table_capitalize}Dto;
 import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.table_capitalize};
 import ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.CrudType;
@@ -39,11 +37,11 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	public ${configs.table_capitalize}List${configs.pagesuffix}() {
 	}
 
-	public Class initialize() {
+	public Class<?> initialize() {
 		return null;
 	}
 
-	public Class prerender() {
+	public Class<?> prerender() {
 		<#if isSelectedExisted() = true>
 		offset = ${configs.table}Index;
 
@@ -91,17 +89,17 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		if (totalNumber%limit > 0) totalPageIndex++;
 	}
 
-	public Class doRetrieve() {
+	public Class<?> doRetrieve() {
 		return null;
 	}
 
-	public Class doGoFirstPage() {
+	public Class<?> doGoFirstPage() {
 		offset = 0;
 		${configs.table}Index = offset;
 		return null;
 	}
 
-	public Class doGoPreviousPage() {
+	public Class<?> doGoPreviousPage() {
 		${configs.table}Index = offset;
 		if (${configs.table}Index - limit >= 0) {
 			${configs.table}Index -= limit;
@@ -109,7 +107,7 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		return null;
 	}
 
-	public Class doGoNextPage() {
+	public Class<?> doGoNextPage() {
 		${configs.table}Index = offset;
 		${configs.table?cap_first}Dto dto = new ${configs.table?cap_first}Dto();
 		dto.setMaxResults(Integer.MAX_VALUE);
@@ -122,7 +120,7 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		return null;
 	}
 
-	public Class doGoLastPage() {
+	public Class<?> doGoLastPage() {
 		calculatePageIndex();		
 		offset = (totalPageIndex-1)*limit;
 		${configs.table}Index = offset;
@@ -146,10 +144,6 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	}
 </#if>
 
-
-
-
-	
 	public String get${configs.table_capitalize}RowClass() {
 		if (get${configs.table_capitalize}Index() % 2 == 0) {
 			return "row_even";
@@ -157,12 +151,8 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		return "row_odd";
 	}
 
-<#if isTigerResource() = true>
 	@TakeOver(properties = "crudType")
-<#else>
-	public static final String doCreate_TAKE_OVER = "properties='crudType'";
-</#if>
-	public Class doCreate() {
+	public Class<?> doCreate() {
 		setCrudType(CrudType.CREATE);
 		return ${configs.table_capitalize}Edit${configs.pagesuffix}.class;
 		
@@ -170,12 +160,8 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	
 <#list mappings as mapping>
 <#if mapping.isDate() = true>
-<#if isTigerResource() = true>
 	@Override
 	@DateTimeConverter
-<#else>
-	public static final String ${mapping.javaFieldName}_TDateTimeConverter = null;
-</#if>
 	public ${getJavaClassName(mapping)} get${mapping.javaFieldName?cap_first}() {
 		return super.get${mapping.javaFieldName?cap_first}();
 	}

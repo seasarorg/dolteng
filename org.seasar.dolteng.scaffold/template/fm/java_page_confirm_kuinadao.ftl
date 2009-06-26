@@ -18,7 +18,7 @@ public class ${configs.table_capitalize}Confirm${configs.pagesuffix} extends Abs
 	public ${configs.table_capitalize}Confirm${configs.pagesuffix}() {
 	}
 	
-	public Class initialize() {
+	public Class<?> initialize() {
 		if(isComeFromList()) {
 			${configs.table_capitalize} data = get${configs.table_capitalize}${configs.servicesuffix}().find(${createPkeyMethodCallArgs(true)});
 			if(data == null) {
@@ -29,7 +29,7 @@ public class ${configs.table_capitalize}Confirm${configs.pagesuffix} extends Abs
 		return null;
 	}
 	
-	public Class prerender() {
+	public Class<?> prerender() {
 		return null;
 	}
 
