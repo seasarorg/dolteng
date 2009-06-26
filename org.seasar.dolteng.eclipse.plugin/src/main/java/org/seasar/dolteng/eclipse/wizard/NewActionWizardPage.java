@@ -87,7 +87,11 @@ public class NewActionWizardPage extends NewClassWizardPage {
             }
 
             stb.append(Modifier.toString(meta.getModifiers()));
-            stb.append(" Class ");
+            if (ProjectUtil.enableAnnotation(type.getJavaProject())) {
+                stb.append(" Class<?> ");
+            } else {
+                stb.append(" Class ");
+            }
             stb.append(meta.getName());
             stb.append("() {");
             stb.append(lineDelimiter);

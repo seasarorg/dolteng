@@ -17,7 +17,6 @@ package org.seasar.dolteng.eclipse.wizard;
 
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -495,7 +494,11 @@ public class NewPageWizardPage extends NewClassWizardPage {
             }
         }
 
-        stb.append("public Class ").append(name).append("() {");
+        stb.append("public Class");
+        if (ProjectUtil.enableAnnotation(type.getJavaProject())) {
+            stb.append("<?>");
+        }
+        stb.append(" ").append(name).append("() {");
         stb.append(lineDelimiter);
         stb.append("return null;");
         stb.append(lineDelimiter);
@@ -543,15 +546,18 @@ public class NewPageWizardPage extends NewClassWizardPage {
             }
         }
 
-        stb.append("public Class ").append(name).append("() {");
+        stb.append("public Class");
+        if (ProjectUtil.enableAnnotation(type.getJavaProject())) {
+            stb.append("<?>");
+        }
+        stb.append(" ").append(name).append("() {");
         stb.append(lineDelimiter);
 
         String search = "find";
         if (Constants.DAO_TYPE_S2DAO.equals(pref.getDaoType())) {
             search = "select";
         }
-        for (Iterator i = tables.iterator(); i.hasNext();) {
-            String table = (String) i.next();
+        for (String table : tables) {
             stb.append("this.");
             if (usePublicField) {
                 table = StringUtil.decapitalize(table);
@@ -587,7 +593,7 @@ public class NewPageWizardPage extends NewClassWizardPage {
     protected void createConditionMethod(IType type, ImportsManager imports,
             IProgressMonitor monitor, String lineDelimiter)
             throws CoreException {
-        Map methods = getSuperTypeMethods(type);
+        Map<String, IMethod> methods = getSuperTypeMethods(type);
         for (MethodMetaData meta : this.mappingPage.getConditionMethods()) {
             if (methods.containsKey(meta.getName())) {
                 continue;
@@ -620,7 +626,7 @@ public class NewPageWizardPage extends NewClassWizardPage {
     }
 
     @SuppressWarnings("unchecked")
-    protected Map getSuperTypeMethods(IType type) {
+    protected Map<String, IMethod> getSuperTypeMethods(IType type) {
         final Map<String, IMethod> result = new CaseInsensitiveMap();
         IRunnableWithProgress runnable = new TypeHierarchyMethodProcessor(type,
                 new TypeHierarchyMethodProcessor.MethodHandler() {
