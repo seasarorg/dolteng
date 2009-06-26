@@ -21,7 +21,11 @@ public class ${configs.table_capitalize}Edit${configs.pagesuffix} extends Abstra
 	public ${configs.table_capitalize}Edit${configs.pagesuffix}() {
 	}
 	
+<#if isTigerResource() = true>
+	public Class<?> initialize() {
+<#else>
 	public Class initialize() {
+</#if>
 		if(super.crudType == CrudType.UPDATE) {
 			${configs.table_capitalize} data = ${configs.table}${configs.daosuffix}.selectById(${createPkeyMethodCallArgsCopy()});
 			if(data == null) {
@@ -49,7 +53,11 @@ public class ${configs.table_capitalize}Edit${configs.pagesuffix} extends Abstra
 		return null;
 	}
 	
+<#if isTigerResource() = true>
+	public Class<?> prerender() {
+<#else>
 	public Class prerender() {
+</#if>
 		return null;
 	}
 

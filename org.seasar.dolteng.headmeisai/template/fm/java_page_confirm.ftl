@@ -20,7 +20,11 @@ public class ${configs.table_capitalize}Confirm${configs.pagesuffix} extends Abs
 	public ${configs.table_capitalize}Confirm${configs.pagesuffix}() {
 	}
 	
+<#if isTigerResource() = true>
+	public Class<?> initialize() {
+<#else>
 	public Class initialize() {
+</#if>
 		if(isComeFromList()) {
 			Map data = get${configs.table_capitalize}${configs.daosuffix}().find(${createPkeyMethodCallArgs()});
 			if(data == null) {
@@ -31,16 +35,21 @@ public class ${configs.table_capitalize}Confirm${configs.pagesuffix} extends Abs
 		return null;
 	}
 	
+<#if isTigerResource() = true>
+	public Class<?> prerender() {
+<#else>
 	public Class prerender() {
+</#if>
 		return null;
 	}
 
 <#if isTigerResource() = true>
 	@TakeOver(type = TakeOverType.NEVER)
+	public Class<?> doFinish() {
 <#else>
 	public static final String doFinish_TAKE_OVER = "type=never";
-</#if>
 	public Class doFinish() {
+</#if>
 		switch(getCrudType()) {
 			case CrudType.CREATE:
 				get${configs.table_capitalize}${configs.daosuffix}().insert(get${configs.table_capitalize}${configs.dxosuffix}().convert(this));

@@ -38,11 +38,19 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	public ${configs.table_capitalize}ListPage() {
 	}
 	
+<#if isTigerResource() = true>
+	public Class<?> initialize() {
+<#else>
 	public Class initialize() {
+</#if>
 		return null;
 	}
 	
+<#if isTigerResource() = true>
+	public Class<?> prerender() {
+<#else>
 	public Class prerender() {
+</#if>
 		<#if isSelectedExisted() = true>
 		offset = ${configs.table}Index;
 		
@@ -66,27 +74,34 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	
 <#if isSelectedExisted() = true>
 	public void calculatePageIndex() {
-/*
-		totalNumber = ${configs.table}Dao.
-		  countBy${orderbyString}PagerCondition(
-		    ${conditionCallParam});
-*/	
 		currentPageIndex = offset/limit+1;
 		totalPageIndex = totalNumber/limit;
 		if (totalNumber%limit > 0) totalPageIndex++;
 	}
 	
+<#if isTigerResource() = true>
+	public Class<?> doRetrieve() {
+<#else>
 	public Class doRetrieve() {
+</#if>
 		return null;
 	}
 	
+<#if isTigerResource() = true>
+	public Class<?> doGoFirstPage() {
+<#else>
 	public Class doGoFirstPage() {
+</#if>
 		offset = 0;
 		${configs.table}Index = offset;
 		return null;
 	}
 	
+<#if isTigerResource() = true>
+	public Class<?> doGoPreviousPage() {
+<#else>
 	public Class doGoPreviousPage() {
+</#if>
 		${configs.table}Index = offset;
 		if (${configs.table}Index - limit >= 0) {
 			${configs.table}Index -= limit;
@@ -94,7 +109,11 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		return null;
 	}
 	  
+<#if isTigerResource() = true>
+	public Class<?> doGoNextPage() {
+<#else>
 	public Class doGoNextPage() {
+</#if>
 		${configs.table}Index = offset;
 		prerender();
 		if (${configs.table}Index + limit < totalNumber) {
@@ -103,7 +122,11 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		return null;
 	}
 	
+<#if isTigerResource() = true>
+	public Class<?> doGoLastPage() {
+<#else>
 	public Class doGoLastPage() {
+</#if>
 		prerender();
 		offset = (totalPageIndex-1)*limit;
 		${configs.table}Index = offset;
@@ -139,10 +162,11 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 
 <#if isTigerResource() = true>
 	@TakeOver(properties = "crudType")
+	public Class<?> doCreate() {
 <#else>
 	public static final String doCreate_TAKE_OVER = "properties='crudType'";
-</#if>
 	public Class doCreate() {
+</#if>
 		crudType = CrudType.CREATE;
 		return ${configs.table_capitalize}Edit${configs.pagesuffix}.class;
 	}

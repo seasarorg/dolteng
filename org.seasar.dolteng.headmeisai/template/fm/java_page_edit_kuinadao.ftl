@@ -15,7 +15,7 @@ public class ${configs.table_capitalize}Edit${configs.pagesuffix} extends Abstra
 	public ${configs.table_capitalize}Edit${configs.pagesuffix}() {
 	}
 	
-	public Class initialize() {
+	public Class<?> initialize() {
 		if(getCrudType() == CrudType.UPDATE) {
 			${configs.table_capitalize} data = get${configs.table_capitalize}${configs.servicesuffix}().find(${createPkeyMethodCallArgs(true)});
 			if(data == null) {
@@ -26,7 +26,7 @@ public class ${configs.table_capitalize}Edit${configs.pagesuffix} extends Abstra
 		return null;
 	}
 
-	public Class prerender() {
+	public Class<?> prerender() {
 		return null;
 	}
 

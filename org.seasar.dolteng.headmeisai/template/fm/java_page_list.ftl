@@ -18,11 +18,19 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	public ${configs.table_capitalize}List${configs.pagesuffix}() {
 	}
 	
+<#if isTigerResource() = true>
+	public Class<?> initialize() {
+<#else>
 	public Class initialize() {
+</#if>
 		return null;
 	}
 	
+<#if isTigerResource() = true>
+	public Class<?> prerender() {
+<#else>
 	public Class prerender() {
+</#if>
 		${configs.table}Items = get${configs.table_capitalize}${configs.daosuffix}().findAll();
 		return null;
 	}
@@ -36,10 +44,11 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 
 <#if isTigerResource() = true>
 	@TakeOver(properties = "crudType")
+	public Class<?> doCreate() {
 <#else>
 	public static final String doCreate_TAKE_OVER = "properties='crudType'";
-</#if>
 	public Class doCreate() {
+</#if>
 		setCrudType(CrudType.CREATE);
 		return ${configs.table_capitalize}Edit${configs.pagesuffix}.class;
 	}

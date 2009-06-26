@@ -10,6 +10,8 @@ import org.seasar.dao.pager.DefaultPagerCondition;
 
 public class ${configs.table_capitalize}PagerCondition extends DefaultPagerCondition {
 
+	private static final long serialVersionUID = 1L;
+
 <#if isTigerResource() = false>
 	public static final String TABLE = "${configs.table_rdb}";
 
