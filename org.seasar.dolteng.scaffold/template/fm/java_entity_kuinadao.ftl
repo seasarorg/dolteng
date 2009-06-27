@@ -1,15 +1,11 @@
 package ${configs.rootpackagename}.${configs.entitypackagename};
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Version;
 <#if configs.table_rdb.equalsIgnoreCase(configs.table_capitalize) = false>
 import javax.persistence.Table;
 </#if>
+
+${getJpaEntityImports()}
 
 ${getImports()}
 
