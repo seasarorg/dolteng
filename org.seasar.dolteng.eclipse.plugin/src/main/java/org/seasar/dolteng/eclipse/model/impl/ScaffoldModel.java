@@ -21,10 +21,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Formatter;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.jdt.core.IJavaProject;
 import org.seasar.dolteng.core.entity.ColumnMetaData;
@@ -37,6 +35,7 @@ import org.seasar.dolteng.eclipse.convention.NamingUtil;
 import org.seasar.dolteng.eclipse.model.EntityMappingRow;
 import org.seasar.dolteng.eclipse.model.RootModel;
 import org.seasar.dolteng.eclipse.model.TreeContent;
+import org.seasar.dolteng.eclipse.scaffold.ScaffoldImportsSet;
 import org.seasar.dolteng.eclipse.util.NameConverter;
 import org.seasar.dolteng.eclipse.util.ProjectUtil;
 import org.seasar.framework.convention.NamingConvention;
@@ -437,8 +436,8 @@ public class ScaffoldModel implements RootModel {
         
         if (typeName.compareTo("String") == 0) {
             return "LIKE concat(/*" + fieldName + "*/' ','%')";
-        } else if (typeName.compareTo("Integer") == 0 || 
-                   typeName.compareTo("BigDecimal") == 0 || 
+        } else if (typeName.compareTo("Integer") == 0 ||
+                   typeName.compareTo("BigDecimal") == 0 ||
                    typeName.compareTo("Long") == 0) {
             return ">= /*" + fieldName + "*/'0'";
         } else if (typeName.compareTo("Date") == 0 || typeName.compareTo("Timestamp") == 0) {
@@ -461,128 +460,43 @@ public class ScaffoldModel implements RootModel {
         }
         return false;
     }
-    
-    
-    
-    
 
     public String getImports() {
-        Set<String> imports = new HashSet<String>();
-        for (EntityMappingRow row : mappings) {
-            if (row.isPrimitive()) {
-                continue;
-            }
-            String pkg = row.getJavaClassName();
-            if (pkg.startsWith("java.lang") == false) {
-                imports.add(pkg);
-            }
-        }
-        return toImportsString(imports);
+        ScaffoldImportsSet imports = new ScaffoldImportsSet();
+        imports.addAll(mappings);
+        return imports.getImportsString();
     }
 
     public String getDateImport() {
-        Set<String> imports = new HashSet<String>();
-        for (EntityMappingRow row : mappings) {
-            if (row.isDate()) {
-                String pkg = row.getJavaClassName();
-                imports.add(pkg);
-                break;
-            }
-        }
-        if (imports.isEmpty()) {
-            return "";
-        }
-        return toImportsString(imports);
+        ScaffoldImportsSet imports = new ScaffoldImportsSet();
+        imports.addDate(mappings);
+        return imports.getImportsString();
     }
 
     public String getDateAndSelectedImports() {
-        Set<String> imports = new HashSet<String>();
-        for (EntityMappingRow row : mappings) {
-            if (row.isDate()) {
-                String pkg = row.getJavaClassName();
-                imports.add(pkg);
-                break;
-            }
-        }
-        for (EntityMappingRow row : selectedColumnsMappings) {
-            if (row.isPrimitive()) {
-                continue;
-            }
-            String pkg = row.getJavaClassName();
-            if (pkg.startsWith("java.lang") == false) {
-                imports.add(pkg);
-            }
-        }
-        return toImportsString(imports);
+        ScaffoldImportsSet imports = new ScaffoldImportsSet();
+        imports.addDate(mappings);
+        imports.addAll(selectedColumnsMappings);
+        return imports.getImportsString();
     }
 
     public String getNullableAndPrimaryKeyImports() {
-        Set<String> imports = new HashSet<String>();
-        for (EntityMappingRow row : mappings) {
-            if (row.isNullable() == false || row.isPrimaryKey()) {
-                String pkg = row.getJavaClassName();
-                if (pkg.startsWith("java.lang") == false) {
-                    imports.add(pkg);
-                }
-                break;
-            }
-        }
-        return toImportsString(imports);
+        ScaffoldImportsSet imports = new ScaffoldImportsSet();
+        imports.addRequired(mappings);
+        return imports.getImportsString();
     }
 
     public String getDateAndNullableAndPrimaryKeyImports() {
-        Set<String> imports = new HashSet<String>();
-        for (EntityMappingRow row : mappings) {
-            if (row.isDate()) {
-                String pkg = row.getJavaClassName();
-                imports.add(pkg);
-                break;
-            }
-        }
-        for (EntityMappingRow row : mappings) {
-            if (row.isNullable() == false || row.isPrimaryKey() || isVersionColumn(row)) {
-                String pkg = row.getJavaClassName();
-                if (pkg.startsWith("java.lang") == false) {
-                    imports.add(pkg);
-                }
-                break;
-            }
-        }
-        return toImportsString(imports);
+        ScaffoldImportsSet imports = new ScaffoldImportsSet();
+        imports.addDate(mappings);
+        imports.addRequired(mappings);
+        return imports.getImportsString();
     }
 
     public String getJpaEntityImports() {
-        Set<String> imports = new HashSet<String>();
-        for (EntityMappingRow row : mappings) {
-            if (row.getSqlColumnName().equalsIgnoreCase(row.getJavaFieldName()) == false) {
-                imports.add("javax.persistence.Column");
-            }
-            if (row.isPrimaryKey()) {
-                imports.add("javax.persistence.Id");
-                imports.add("javax.persistence.GeneratedValue");
-            }
-            if (isVersionColumn(row)) {
-                imports.add("javax.persistence.Version");
-            }
-            if (row.isDate()) {
-                imports.add("javax.persistence.Temporal");
-                imports.add("javax.persistence.TemporalType");
-            }
-        }
-        return toImportsString(imports);
-    }
-
-    private String toImportsString(Set<String> imports) {
-        String separator = System.getProperty("line.separator", "\n");
-        StringBuffer stb = new StringBuffer();
-        for (String element : imports) {
-            stb.append("import ");
-            stb.append(element);
-            stb.append(';');
-            stb.append(separator);
-        }
-
-        return stb.toString();
+        ScaffoldImportsSet imports = new ScaffoldImportsSet();
+        imports.addJpaAnnotaion(mappings);
+        return imports.getImportsString();
     }
 
     public String getJavaClassName(EntityMappingRow row) {
