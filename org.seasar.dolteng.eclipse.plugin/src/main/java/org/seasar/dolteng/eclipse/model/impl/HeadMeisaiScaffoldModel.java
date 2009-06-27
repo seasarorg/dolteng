@@ -549,7 +549,6 @@ public class HeadMeisaiScaffoldModel implements RootModel {
 
     public String getImportsInMeisai() {
         Set<String> imports = new HashSet<String>();
-        addMappingImports(imports);
         addMeisaiImports(imports);
         return toImportsString(imports);
     }
