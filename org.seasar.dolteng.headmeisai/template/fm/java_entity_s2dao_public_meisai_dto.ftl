@@ -1,17 +1,12 @@
 package ${configs.rootpackagename}.${configs.dtopackagename};
 
-<#if isTigerResource() = true>
-import org.seasar.dao.annotation.tiger.Bean;
-import org.seasar.dao.annotation.tiger.Id;
-import org.seasar.dao.annotation.tiger.IdType;
-</#if>
-${getImportsInMeisai()}
-
 import java.io.Serializable;
 import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.meisaitable_capitalize};
 
-
 public class ${configs.meisaitable_capitalize}Dto implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 <#list meisaiColumnsMappings as mapping>
 	public ${getMeisaiJavaClassName(mapping)} meisai${mapping.javaFieldName?cap_first};
 

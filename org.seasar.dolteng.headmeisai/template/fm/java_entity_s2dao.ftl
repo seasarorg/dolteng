@@ -18,7 +18,7 @@ public class ${configs.table_capitalize} {
 </#if>
 <#list mappings as mapping>
     <#if mapping.isPrimaryKey() = true>
-    @Id//(IdType.IDENTITY)
+    @Id(IdType.IDENTITY)
     </#if>
 	private ${getJavaClassName(mapping)} ${mapping.javaFieldName};
 

@@ -3,9 +3,10 @@ package ${configs.rootpackagename}.${configs.entitypackagename};
 <#if isTigerResource() = true>
 import org.seasar.dao.annotation.tiger.Bean;
 import org.seasar.dao.annotation.tiger.Id;
+	<#if countPkeyInMeisai() = 1>
 import org.seasar.dao.annotation.tiger.IdType;
+	</#if>
 </#if>
-${getImportsInMeisai()}
 
 <#if isTigerResource() = true>
 @Bean(table="${configs.meisaitable_rdb}")
@@ -18,10 +19,10 @@ public class ${configs.meisaitable_capitalize} {
 </#if>
 <#list meisaiColumnsMappings as mapping>
     <#if mapping.isPrimaryKey() = true>
-	<#if countPkeyInMeisai() = 2>
-    @Id//(IdType.IDENTITY)
-    <#else>
+	<#if countPkeyInMeisai() = 1>
     @Id(IdType.IDENTITY)
+    <#else>
+    @Id//(IdType.IDENTITY)
     </#if>
     </#if>
 	private ${getMeisaiJavaClassName(mapping)} ${mapping.javaFieldName};

@@ -1,11 +1,16 @@
 package ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${configs.table};
 
-${getImports()}
+${getDateAndNullableAndPrimaryKeyImports()}
+
 <#if isTigerResource() = true>
-import org.seasar.teeda.extension.annotation.convert.DateTimeConverter;
 import org.seasar.teeda.extension.annotation.takeover.TakeOver;
 import org.seasar.teeda.extension.annotation.takeover.TakeOverType;
+	<#if isMappingsContainsDate() = true>
+import org.seasar.teeda.extension.annotation.convert.DateTimeConverter;
+	</#if>
+	<#if isMappingsContainsRequired() = true>
 import org.seasar.teeda.extension.annotation.validator.Required;
+	</#if>
 </#if>
 import org.seasar.teeda.core.exception.AppFacesException;
 import org.seasar.teeda.extension.util.LabelHelper;

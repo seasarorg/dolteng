@@ -1,7 +1,7 @@
 package ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${configs.table};
 
 ${getImports()}
-${getImportsInMeisai()}
+
 import ${configs.rootpackagename}.${configs.daopackagename}.${configs.table_capitalize}Dao;
 import ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.AbstractCrudPage;
 import ${configs.rootpackagename}.${configs.daopackagename}.${configs.meisaitable_capitalize}Dao;

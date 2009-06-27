@@ -459,6 +459,102 @@ public class HeadMeisaiScaffoldModel implements RootModel {
 
     public String getImports() {
         Set<String> imports = new HashSet<String>();
+        addMappingImports(imports);
+        return toImportsString(imports);
+    }
+
+    public String getDateImport() {
+        Set<String> imports = new HashSet<String>();
+        for (EntityMappingRow row : mappings) {
+            if (row.isDate()) {
+                String pkg = row.getJavaClassName();
+                imports.add(pkg);
+                break;
+            }
+        }
+        if (imports.isEmpty()) {
+            return "";
+        }
+        return toImportsString(imports);
+    }
+
+    public String getDateAndSelectedImports() {
+        Set<String> imports = new HashSet<String>();
+        for (EntityMappingRow row : mappings) {
+            if (row.isDate()) {
+                String pkg = row.getJavaClassName();
+                imports.add(pkg);
+                break;
+            }
+        }
+        for (EntityMappingRow row : selectedColumnsMappings) {
+            if (row.isPrimitive()) {
+                continue;
+            }
+            String pkg = row.getJavaClassName();
+            if (pkg.startsWith("java.lang") == false) {
+                imports.add(pkg);
+            }
+        }
+        return toImportsString(imports);
+    }
+
+    public String getNullableAndPrimaryKeyImports() {
+        Set<String> imports = new HashSet<String>();
+        for (EntityMappingRow row : mappings) {
+            if (row.isNullable() == false || row.isPrimaryKey()) {
+                String pkg = row.getJavaClassName();
+                if (pkg.startsWith("java.lang") == false) {
+                    imports.add(pkg);
+                }
+                break;
+            }
+        }
+        return toImportsString(imports);
+    }
+
+    public String getDateAndNullableAndPrimaryKeyImports() {
+        Set<String> imports = new HashSet<String>();
+        for (EntityMappingRow row : mappings) {
+            if (row.isDate()) {
+                String pkg = row.getJavaClassName();
+                imports.add(pkg);
+                break;
+            }
+        }
+        for (EntityMappingRow row : mappings) {
+            if (row.isNullable() == false || row.isPrimaryKey() || isVersionColumn(row)) {
+                String pkg = row.getJavaClassName();
+                if (pkg.startsWith("java.lang") == false) {
+                    imports.add(pkg);
+                }
+                break;
+            }
+        }
+        return toImportsString(imports);
+    }
+
+    private String toImportsString(Set<String> imports) {
+        String separator = System.getProperty("line.separator", "\n");
+        StringBuffer stb = new StringBuffer();
+        for (String element : imports) {
+            stb.append("import ");
+            stb.append(element);
+            stb.append(';');
+            stb.append(separator);
+        }
+
+        return stb.toString();
+    }
+
+    public String getImportsInMeisai() {
+        Set<String> imports = new HashSet<String>();
+        addMappingImports(imports);
+        addMeisaiImports(imports);
+        return toImportsString(imports);
+    }
+
+    private void addMappingImports(Set<String> imports) {
         for (EntityMappingRow row : mappings) {
             if (row.isPrimitive()) {
                 continue;
@@ -468,26 +564,9 @@ public class HeadMeisaiScaffoldModel implements RootModel {
                 imports.add(pkg);
             }
         }
-        String separator = System.getProperty("line.separator", "\n");
-        StringBuffer stb = new StringBuffer();
-        for (String element : imports) {
-            stb.append("import ");
-            stb.append(element);
-            stb.append(';');
-            stb.append(separator);
-        }
-        
-        return stb.toString();
     }
 
-    
-    
-    /**
-     * 明細テーブルクラス用のインポート文を取得します。
-     * @return 明細テーブルクラス用のインポート文
-     */
-    public String getImportsInMeisai() {
-        Set<String> imports = new HashSet<String>();
+    private void addMeisaiImports(Set<String> imports) {
         for (EntityMappingRow row : meisaiColumnsMappings) {
             if (row.isPrimitive()) {
                 continue;
@@ -497,16 +576,6 @@ public class HeadMeisaiScaffoldModel implements RootModel {
                 imports.add(pkg);
             }
         }
-        String separator = System.getProperty("line.separator", "\n");
-        StringBuffer stb = new StringBuffer();
-        for (String element : imports) {
-            stb.append("import ");
-            stb.append(element);
-            stb.append(';');
-            stb.append(separator);
-        }
-        
-        return stb.toString();
     }
     
     
@@ -749,6 +818,24 @@ public class HeadMeisaiScaffoldModel implements RootModel {
 
     public boolean isTigerResource() {
         return ProjectUtil.enableAnnotation(this.project);
+    }
+
+    public boolean isMappingsContainsDate() {
+        for (EntityMappingRow mapping : mappings) {
+            if (mapping.isDate()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isMappingsContainsRequired() {
+        for (EntityMappingRow mapping : mappings) {
+            if (mapping.isNullable() == false || mapping.isPrimaryKey()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public String toAsType(EntityMappingRow row) {
@@ -1013,11 +1100,19 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         if (meisaiMapping.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
             for (EntityMappingRow mapping : mappings) {
                 if (mapping.getSqlColumnName().compareTo("ID") == 0) {
-                    return mapping.getJavaClassName();
+                    String s = mapping.getJavaClassName();
+                    if (s.startsWith("java.lang")) {
+                        s = ClassUtil.getShortClassName(s);
+                    }
+                    return s;
                 }
             }
         }
-        return meisaiMapping.getJavaClassName();
+        String s = meisaiMapping.getJavaClassName();
+        if (s.startsWith("java.lang")) {
+            s = ClassUtil.getShortClassName(s);
+        }
+        return s;
     }
 
     /**

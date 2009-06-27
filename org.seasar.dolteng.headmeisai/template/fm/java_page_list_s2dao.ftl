@@ -1,14 +1,20 @@
 package ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${configs.table};
 
-${getImports()}
+${getDateAndSelectedImports()}
+
 <#if isTigerResource() = true>
+	<#if isMappingsContainsDate() = true>
 import org.seasar.teeda.extension.annotation.convert.DateTimeConverter;
+	</#if>
 import org.seasar.teeda.extension.annotation.takeover.TakeOver;
 
 </#if>
 import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.table_capitalize};
 import ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.CrudType;
+
+<#if isSelectedExisted() = true>
 import ${configs.rootpackagename}.${configs.pagingpackagename}.${configs.table_capitalize}PagerCondition;
+</#if>
 
 public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstract${configs.table_capitalize}${configs.pagesuffix} {
 	
