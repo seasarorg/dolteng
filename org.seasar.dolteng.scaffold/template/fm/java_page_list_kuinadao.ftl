@@ -9,7 +9,10 @@ import org.seasar.teeda.extension.annotation.convert.DateTimeConverter;
 </#if>
 import org.seasar.teeda.extension.annotation.takeover.TakeOver;
 
+<#if isSelectedExisted() = true>
 import ${configs.rootpackagename}.${configs.dtopackagename}.${configs.table_capitalize}Dto;
+</#if>
+
 import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.table_capitalize};
 import ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.CrudType;
 
