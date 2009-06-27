@@ -1,6 +1,7 @@
 package ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${configs.table};
 
-${getImports()}
+${getNullableAndPrimaryKeyImports()}
+
 import org.seasar.teeda.extension.annotation.validator.Required;
 
 import org.seasar.teeda.core.exception.AppFacesException;

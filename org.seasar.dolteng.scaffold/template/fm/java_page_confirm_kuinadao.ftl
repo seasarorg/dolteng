@@ -1,10 +1,15 @@
 package ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${configs.table};
 
-${getImports()}
-import org.seasar.teeda.extension.annotation.convert.DateTimeConverter;
+${getDateAndNullableAndPrimaryKeyImports()}
+
 import org.seasar.teeda.extension.annotation.takeover.TakeOver;
 import org.seasar.teeda.extension.annotation.takeover.TakeOverType;
+<#if isMappingsContainsDate() = true>
+import org.seasar.teeda.extension.annotation.convert.DateTimeConverter;
+</#if>
+<#if isMappingsContainsRequired() = true>
 import org.seasar.teeda.extension.annotation.validator.Required;
+</#if>
 import org.seasar.teeda.core.exception.AppFacesException;
 import org.seasar.teeda.extension.util.LabelHelper;
 
@@ -34,7 +39,7 @@ public class ${configs.table_capitalize}Confirm${configs.pagesuffix} extends Abs
 	}
 
 	@TakeOver(type = TakeOverType.NEVER)
-	public Class doFinish() {
+	public Class<?> doFinish() {
 		switch(getCrudType()) {
 			case CrudType.CREATE:
 				get${configs.table_capitalize}${configs.servicesuffix}().persist(this);

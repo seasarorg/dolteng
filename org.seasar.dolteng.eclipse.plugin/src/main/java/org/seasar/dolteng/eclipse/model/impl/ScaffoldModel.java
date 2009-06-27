@@ -477,6 +477,81 @@ public class ScaffoldModel implements RootModel {
                 imports.add(pkg);
             }
         }
+        return toImportsString(imports);
+    }
+
+    public String getDateImport() {
+        Set<String> imports = new HashSet<String>();
+        for (EntityMappingRow row : mappings) {
+            if (row.isDate()) {
+                String pkg = row.getJavaClassName();
+                imports.add(pkg);
+                break;
+            }
+        }
+        if (imports.isEmpty()) {
+            return "";
+        }
+        return toImportsString(imports);
+    }
+
+    public String getDateAndSelectedImports() {
+        Set<String> imports = new HashSet<String>();
+        for (EntityMappingRow row : mappings) {
+            if (row.isDate()) {
+                String pkg = row.getJavaClassName();
+                imports.add(pkg);
+                break;
+            }
+        }
+        for (EntityMappingRow row : selectedColumnsMappings) {
+            if (row.isPrimitive()) {
+                continue;
+            }
+            String pkg = row.getJavaClassName();
+            if (pkg.startsWith("java.lang") == false) {
+                imports.add(pkg);
+            }
+        }
+        return toImportsString(imports);
+    }
+
+    public String getNullableAndPrimaryKeyImports() {
+        Set<String> imports = new HashSet<String>();
+        for (EntityMappingRow row : mappings) {
+            if (row.isNullable() == false || row.isPrimaryKey()) {
+                String pkg = row.getJavaClassName();
+                if (pkg.startsWith("java.lang") == false) {
+                    imports.add(pkg);
+                }
+                break;
+            }
+        }
+        return toImportsString(imports);
+    }
+
+    public String getDateAndNullableAndPrimaryKeyImports() {
+        Set<String> imports = new HashSet<String>();
+        for (EntityMappingRow row : mappings) {
+            if (row.isDate()) {
+                String pkg = row.getJavaClassName();
+                imports.add(pkg);
+                break;
+            }
+        }
+        for (EntityMappingRow row : mappings) {
+            if (row.isNullable() == false || row.isPrimaryKey() || isVersionColumn(row)) {
+                String pkg = row.getJavaClassName();
+                if (pkg.startsWith("java.lang") == false) {
+                    imports.add(pkg);
+                }
+                break;
+            }
+        }
+        return toImportsString(imports);
+    }
+
+    private String toImportsString(Set<String> imports) {
         String separator = System.getProperty("line.separator", "\n");
         StringBuffer stb = new StringBuffer();
         for (String element : imports) {
@@ -688,6 +763,24 @@ public class ScaffoldModel implements RootModel {
 
     public boolean isTigerResource() {
         return ProjectUtil.enableAnnotation(this.project);
+    }
+
+    public boolean isMappingsContainsDate() {
+        for (EntityMappingRow mapping : mappings) {
+            if (mapping.isDate()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isMappingsContainsRequired() {
+        for (EntityMappingRow mapping : mappings) {
+            if (mapping.isNullable() == false || mapping.isPrimaryKey()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public String toAsType(EntityMappingRow row) {

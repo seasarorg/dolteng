@@ -1,7 +1,9 @@
 package ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${configs.table};
 
 import java.util.List;
-${getImports()}
+
+${getDateAndSelectedImports()}
+
 import org.seasar.teeda.extension.annotation.convert.DateTimeConverter;
 import org.seasar.teeda.extension.annotation.takeover.TakeOver;
 

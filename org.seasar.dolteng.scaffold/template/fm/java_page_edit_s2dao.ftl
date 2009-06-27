@@ -1,9 +1,11 @@
 package ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${configs.table};
 
-${getImports()}
-<#if isTigerResource() = true>
-import org.seasar.teeda.extension.annotation.validator.Required;
+${getNullableAndPrimaryKeyImports()}
 
+<#if isTigerResource() = true>
+	<#if isMappingsContainsRequired() = true>
+import org.seasar.teeda.extension.annotation.validator.Required;
+	</#if>
 </#if>
 import org.seasar.teeda.core.exception.AppFacesException;
 
