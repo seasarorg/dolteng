@@ -1,8 +1,6 @@
 package ${configs.rootpackagename}.${configs.dtopackagename};
 
-import java.sql.Timestamp;
-import java.math.BigDecimal;
-import java.util.Date;
+${getImports()}
 
 public class ${configs.table_capitalize}Dto {
 
