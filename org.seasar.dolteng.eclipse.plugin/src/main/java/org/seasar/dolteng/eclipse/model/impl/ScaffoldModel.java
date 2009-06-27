@@ -551,6 +551,27 @@ public class ScaffoldModel implements RootModel {
         return toImportsString(imports);
     }
 
+    public String getJpaEntityImports() {
+        Set<String> imports = new HashSet<String>();
+        for (EntityMappingRow row : mappings) {
+            if (row.getSqlColumnName().equalsIgnoreCase(row.getJavaFieldName()) == false) {
+                imports.add("javax.persistence.Column");
+            }
+            if (row.isPrimaryKey()) {
+                imports.add("javax.persistence.Id");
+                imports.add("javax.persistence.GeneratedValue");
+            }
+            if (isVersionColumn(row)) {
+                imports.add("javax.persistence.Version");
+            }
+            if (row.isDate()) {
+                imports.add("javax.persistence.Temporal");
+                imports.add("javax.persistence.TemporalType");
+            }
+        }
+        return toImportsString(imports);
+    }
+
     private String toImportsString(Set<String> imports) {
         String separator = System.getProperty("line.separator", "\n");
         StringBuffer stb = new StringBuffer();
