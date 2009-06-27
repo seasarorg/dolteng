@@ -2,7 +2,9 @@ package ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${co
 
 ${getNullableAndPrimaryKeyImports()}
 
+<#if isMappingsContainsRequired() = true>
 import org.seasar.teeda.extension.annotation.validator.Required;
+</#if>
 
 import org.seasar.teeda.core.exception.AppFacesException;
 
