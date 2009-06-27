@@ -18,14 +18,10 @@ public abstract class Abstract${configs.table_capitalize}${configs.pagesuffix} e
 	public ${getJavaClassName(mapping)} ${mapping.javaFieldName};
 
 </#list>
-
-
-
 <#list meisaiColumnsMappings as mapping>
-	public ${getJavaClassName(mapping)} meisai${mapping.javaFieldName?cap_first};
+	public ${getMeisaiJavaClassName(mapping)} meisai${mapping.javaFieldName?cap_first};
+
 </#list>
-
-
 
 	public Abstract${configs.table_capitalize}${configs.pagesuffix}() {
 	}
