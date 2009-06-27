@@ -4,7 +4,9 @@ import java.util.List;
 
 ${getDateAndSelectedImports()}
 
+<#if isMappingsContainsDate() = true>
 import org.seasar.teeda.extension.annotation.convert.DateTimeConverter;
+</#if>
 import org.seasar.teeda.extension.annotation.takeover.TakeOver;
 
 import ${configs.rootpackagename}.${configs.dtopackagename}.${configs.table_capitalize}Dto;
