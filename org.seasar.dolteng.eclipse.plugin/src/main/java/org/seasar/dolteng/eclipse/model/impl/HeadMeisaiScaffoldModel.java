@@ -98,6 +98,9 @@ public class HeadMeisaiScaffoldModel implements RootModel {
     // 検索条件のArguments句
     private String conditionArguments;
     
+    // 検索条件のArguments句（定数アノテーション用）
+    private String conditionArgumentsTeisuAnnotation;
+    
     // 検索条件に与えるためのパラメータ（定義文用）
     private String conditionParam;
     
@@ -180,16 +183,20 @@ public class HeadMeisaiScaffoldModel implements RootModel {
             orderbyString = "";
             orderbyStringColumn = "";
             conditionArguments = "";
+            conditionArgumentsTeisuAnnotation = "\"";
             for (int i = 0; i < selectedColumnsMappings.length; i++) {
                 if (i > 0) {
                     orderbyString += "And";
                     orderbyStringColumn += ",";
                     conditionArguments += ",";
+                    conditionArgumentsTeisuAnnotation += ",";
                 }
                 orderbyString += pascalize(selectedColumnsMappings[i].getSqlColumnName());
                 orderbyStringColumn += selectedColumnsMappings[i].getSqlColumnName();
                 conditionArguments += "\"" + "arg" + pascalize(selectedColumnsMappings[i].getSqlColumnName()) + "\"";
+                conditionArgumentsTeisuAnnotation += "arg" + pascalize(selectedColumnsMappings[i].getSqlColumnName());
             }
+            conditionArgumentsTeisuAnnotation += "\"";
             
             // 検索条件に与えるためのパラメータ
             conditionParam = "";
@@ -406,6 +413,15 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         this.conditionArguments = conditionArguments;
     }
     
+    public String getConditionArgumentsTeisuAnnotation() {
+        return conditionArgumentsTeisuAnnotation;
+    }
+
+    public void setConditionArgumentsTeisuAnnotation(
+            String conditionArgumentsTeisuAnnotation) {
+        this.conditionArgumentsTeisuAnnotation = conditionArgumentsTeisuAnnotation;
+    }
+
     public String getConditionParam() {
         return conditionParam;
     }

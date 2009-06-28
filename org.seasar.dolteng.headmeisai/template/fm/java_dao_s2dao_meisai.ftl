@@ -29,7 +29,7 @@ public interface ${configs.meisaitable_capitalize}${configs.daosuffix} {
 <#if isTigerResource() = true>
 	@Arguments(${createHeadMeisaiPkeyMethodArgNames()})
 <#else>
-	public String selectById_ARGS = ${createHeadMeisaiPkeyMethodArgNames()};
+	public String selectBy${createHeadMeisaiPkeyByName()?cap_first}_ARGS = ${createHeadMeisaiPkeyMethodArgNames()};
 </#if>
 </#if>
 	public ${configs.meisaitable_capitalize}[] selectBy${createHeadMeisaiPkeyByName()?cap_first}(${createHeadMeisaiPkeyMethodArgs(false)});

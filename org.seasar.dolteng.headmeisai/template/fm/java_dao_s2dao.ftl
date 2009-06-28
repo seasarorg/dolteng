@@ -5,7 +5,9 @@ import org.seasar.dao.annotation.tiger.Arguments;
 import org.seasar.dao.annotation.tiger.S2Dao;
 </#if>
 import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.table_capitalize};
+<#if isSelectedExisted() = true>	
 import ${configs.rootpackagename}.${configs.pagingpackagename}.${configs.table_capitalize}PagerCondition;
+</#if>
 
 <#if isTigerResource() = true>
 @S2Dao(bean=${configs.table_capitalize}.class)
@@ -16,9 +18,13 @@ public interface ${configs.table_capitalize}${configs.daosuffix} {
 
 </#if>
 	public ${configs.table_capitalize}[] selectAll();
-	
+
 <#if isSelectedExisted() = true>
+<#if isTigerResource() = true>
 	@Arguments({${conditionArguments}})
+<#else>
+	public String findBy${orderbyString}PagerCondition_ARGS = ${conditionArgumentsTeisuAnnotation};
+</#if>
 	public ${configs.table_capitalize}[] findBy${orderbyString}PagerCondition(
 		${conditionParam}, ${configs.table_capitalize}PagerCondition dto);
 </#if>

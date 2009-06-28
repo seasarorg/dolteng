@@ -58,7 +58,11 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	public Class prerender() {
 </#if>
 		<#if isSelectedExisted() = true>
+			<#if isTigerResource() = true>
 		offset = ${configs.table}Index;
+			<#else>
+		offset = new Integer(${configs.table}Index);
+			</#if>
 		
 		${configs.table?cap_first}PagerCondition dto = new ${configs.table?cap_first}PagerCondition();
 		dto.setLimit(limit);
@@ -68,8 +72,12 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 		  findBy${orderbyString}PagerCondition(
 		    ${conditionCallParam}, dto);
 		
+			<#if isTigerResource() = true>
 		totalNumber = dto.getCount();
-		    
+			<#else>
+		totalNumber = new Integer(dto.getCount());
+			</#if>
+	    
 		calculatePageIndex();
 		<#else>
 		${configs.table}Items = ${configs.table}${configs.daosuffix}.selectAll();
@@ -80,9 +88,17 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	
 <#if isSelectedExisted() = true>
 	public void calculatePageIndex() {
+	<#if isTigerResource() = true>
 		currentPageIndex = offset/limit+1;
 		totalPageIndex = totalNumber/limit;
 		if (totalNumber%limit > 0) totalPageIndex++;
+	<#else>
+		currentPageIndex = new Integer(offset.intValue()/limit+1);
+		totalPageIndex = new Integer(totalNumber.intValue()/limit);
+		if (totalNumber.intValue()%limit > 0) {
+			totalPageIndex = new Integer(totalPageIndex.intValue() + 1);
+		}
+	</#if>
 	}
 	
 <#if isTigerResource() = true>
@@ -98,8 +114,13 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 <#else>
 	public Class doGoFirstPage() {
 </#if>
+	<#if isTigerResource() = true>
 		offset = 0;
 		${configs.table}Index = offset;
+	<#else>
+		offset = new Integer(0);
+		${configs.table}Index = offset.intValue();
+	</#if>
 		return null;
 	}
 	
@@ -108,7 +129,11 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 <#else>
 	public Class doGoPreviousPage() {
 </#if>
+	<#if isTigerResource() = true>
 		${configs.table}Index = offset;
+	<#else>
+		${configs.table}Index = offset.intValue();
+	</#if>
 		if (${configs.table}Index - limit >= 0) {
 			${configs.table}Index -= limit;
 		}
@@ -120,9 +145,17 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 <#else>
 	public Class doGoNextPage() {
 </#if>
+	<#if isTigerResource() = true>
 		${configs.table}Index = offset;
+	<#else>
+		${configs.table}Index = offset.intValue();
+	</#if>
 		prerender();
+	<#if isTigerResource() = true>
 		if (${configs.table}Index + limit < totalNumber) {
+	<#else>
+		if (${configs.table}Index + limit < totalNumber.intValue()) {
+	</#if>
 			${configs.table}Index += limit;
 		}
 		return null;
@@ -134,13 +167,22 @@ public class ${configs.table_capitalize}List${configs.pagesuffix} extends Abstra
 	public Class doGoLastPage() {
 </#if>
 		prerender();
+	<#if isTigerResource() = true>
 		offset = (totalPageIndex-1)*limit;
 		${configs.table}Index = offset;
+	<#else>
+		offset = new Integer((totalPageIndex.intValue()-1)*limit);
+		${configs.table}Index = offset.intValue();
+	</#if>
 		return null;
 	}
 
 	public boolean isDoGoFirstPageDisabled() {
+	<#if isTigerResource() = true>
 		return offset == 0;
+	<#else>
+		return offset.intValue() == 0;
+	</#if>
 	}
 
 	public boolean isDoGoPreviousPageDisabled() {

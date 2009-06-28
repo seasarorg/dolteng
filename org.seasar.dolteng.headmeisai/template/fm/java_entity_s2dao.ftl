@@ -16,6 +16,7 @@ public class ${configs.table_capitalize} {
 	public static final String TABLE = "${configs.table_rdb}";
 
 </#if>
+<#if isTigerResource() = true>
 <#list mappings as mapping>
     <#if mapping.isPrimaryKey() = true>
     @Id(IdType.IDENTITY)
@@ -23,6 +24,15 @@ public class ${configs.table_capitalize} {
 	private ${getJavaClassName(mapping)} ${mapping.javaFieldName};
 
 </#list>
+<#else>
+<#list mappings as mapping>
+    <#if mapping.isPrimaryKey() = true>
+    public static final String ${mapping.javaFieldName}_ID = "identity";
+    </#if>
+	private ${getJavaClassName(mapping)} ${mapping.javaFieldName};
+
+</#list>
+</#if>
 	public ${configs.table_capitalize}() {
 	}
 
