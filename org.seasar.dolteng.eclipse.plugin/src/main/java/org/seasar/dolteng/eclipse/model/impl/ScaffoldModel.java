@@ -188,7 +188,11 @@ public class ScaffoldModel implements RootModel {
                 conditionParam += ", ";
                 conditionCallParam += ", ";
             }
-            conditionParam += selectedColumnsMappings[i].getJavaClassName() + " arg" + pascalize(selectedColumnsMappings[i].getSqlColumnName());
+            String javaClassName = selectedColumnsMappings[i].getJavaClassName();
+            if (javaClassName.startsWith("java.lang")) {
+                javaClassName = ClassUtil.getShortClassName(javaClassName);
+            }
+            conditionParam += javaClassName + " arg" + pascalize(selectedColumnsMappings[i].getSqlColumnName());
             conditionCallParam += "text" + pascalize(selectedColumnsMappings[i].getSqlColumnName());
         }
 
