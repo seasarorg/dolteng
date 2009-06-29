@@ -149,7 +149,7 @@ public class ScaffoldModel implements RootModel {
                     if (content instanceof ColumnNode) {
                         ColumnNode cn = (ColumnNode) content;
                         ColumnMetaData meta = cn.getColumnMetaData();
-                        if (meta.getName().compareTo(selectedColumns.get(i)[0]) == 0) {
+                        if (meta.getName().equalsIgnoreCase(selectedColumns.get(i)[0])) {
                             rows.add(createEntityMappingRow(meta));
                             break;
                         }
@@ -417,12 +417,12 @@ public class ScaffoldModel implements RootModel {
      * @return
      */
     public String getDtoSuffix(String typeName) {
-        if (typeName.compareTo("Integer") == 0 ||
-            typeName.compareTo("BigDecimal") == 0 ||
-            typeName.compareTo("Date") == 0 ||
-            typeName.compareTo("Timestamp") == 0) {
+        if (typeName.equals("Integer") ||
+            typeName.equals("BigDecimal") ||
+            typeName.equals("Date") ||
+            typeName.equals("Timestamp")) {
             return "GE";
-        } else if (typeName.compareTo("String") == 0) {
+        } else if (typeName.equals("String")) {
             return "LIKE";
         }
         return "";
@@ -438,13 +438,13 @@ public class ScaffoldModel implements RootModel {
         
         //System.out.println("タイプ名：" + typeName + ", " + fieldName);
         
-        if (typeName.compareTo("String") == 0) {
+        if (typeName.equals("String")) {
             return "LIKE concat(/*" + fieldName + "*/' ','%')";
-        } else if (typeName.compareTo("Integer") == 0 ||
-                   typeName.compareTo("BigDecimal") == 0 ||
-                   typeName.compareTo("Long") == 0) {
+        } else if (typeName.equals("Integer") ||
+                   typeName.equals("BigDecimal") ||
+                   typeName.equals("Long")) {
             return ">= /*" + fieldName + "*/'0'";
-        } else if (typeName.compareTo("Date") == 0 || typeName.compareTo("Timestamp") == 0) {
+        } else if (typeName.equals("Date") || typeName.equals("Timestamp")) {
             return ">= /*" + fieldName + "*/'1900/1/1'";
         }
         //return "= fieldName";
@@ -459,7 +459,7 @@ public class ScaffoldModel implements RootModel {
      * @return
      */
     public boolean isDtoParameterLike(String typeName) {
-        if (typeName.compareTo("String") == 0) {
+        if (typeName.equals("String")) {
             return true;
         }
         return false;

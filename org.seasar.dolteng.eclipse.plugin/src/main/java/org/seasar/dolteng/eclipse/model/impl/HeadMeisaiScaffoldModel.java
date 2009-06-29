@@ -166,7 +166,7 @@ public class HeadMeisaiScaffoldModel implements RootModel {
                     if (content instanceof ColumnNode) {
                         ColumnNode cn = (ColumnNode) content;
                         ColumnMetaData meta = cn.getColumnMetaData();
-                        if (meta.getName().compareTo(selectedColumns.get(i)[0]) == 0) {
+                        if (meta.getName().equalsIgnoreCase(selectedColumns.get(i)[0])) {
                             rows.add(createEntityMappingRow(meta));
                             break;
                         }
@@ -929,11 +929,11 @@ public class HeadMeisaiScaffoldModel implements RootModel {
      * @return S2Dao の SQL 文で使用する条件
      */
     public String getS2DaoCondition(String fieldName, String typeName) {
-        if (typeName.compareTo("String") == 0) {
+        if (typeName.equals("String")) {
             return "LIKE concat(/*" + fieldName + "*/' ','%')";
-        } else if (typeName.compareTo("Integer") == 0 || typeName.compareTo("BigDecimal") == 0) {
+        } else if (typeName.equals("Integer") || typeName.equals("BigDecimal")) {
             return ">= /*" + fieldName + "*/'0'";
-        } else if (typeName.compareTo("Date") == 0 || typeName.compareTo("Timestamp") == 0) {
+        } else if (typeName.equals("Date") || typeName.equals("Timestamp")) {
             return ">= /*" + fieldName + "*/'1900/1/1'";
         }
         return "= fieldName";
@@ -1034,9 +1034,9 @@ public class HeadMeisaiScaffoldModel implements RootModel {
     public String getMeisaiJavaClassName(EntityMappingRow meisaiMapping) {
         // 明細テーブルのカラム名がヘッダテーブルのプライマリキーと対応している場合は、
         // ヘッダテーブルのクラス名を取得します。
-        if (meisaiMapping.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+        if (meisaiMapping.getSqlColumnName().equalsIgnoreCase(this.configs.get("table_rdb") + "_ID")) {
             for (EntityMappingRow mapping : mappings) {
-                if (mapping.getSqlColumnName().compareTo("ID") == 0) {
+                if (mapping.getSqlColumnName().equalsIgnoreCase("ID")) {
                     String s = mapping.getJavaClassName();
                     if (s.startsWith("java.lang")) {
                         s = ClassUtil.getShortClassName(s);
@@ -1058,7 +1058,7 @@ public class HeadMeisaiScaffoldModel implements RootModel {
      * @return 与えられた明細のカラム名がヘッダのプライマリキーに対応している場合、true
      */
     public boolean isHeadPkey(EntityMappingRow meisaiMapping) {
-        if (meisaiMapping.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+        if (meisaiMapping.getSqlColumnName().equalsIgnoreCase(this.configs.get("table_rdb") + "_ID")) {
             return true;
         }
         return false;
@@ -1076,7 +1076,7 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         // 「ID」の列を明細テーブル上から探索します。
         if (countPkeyInMeisai() == 1) {
             for (EntityMappingRow row : meisaiColumnsMappings) {
-                if (row.getSqlColumnName().compareTo("ID") == 0) {
+                if (row.getSqlColumnName().equalsIgnoreCase("ID")) {
                     //return row.getJavaFieldName();
                     
 //                    String s = row.getJavaClassName();
@@ -1084,7 +1084,7 @@ public class HeadMeisaiScaffoldModel implements RootModel {
 //                        s = ClassUtil.getShortClassName(s);
 //                    }
                     
-                    if (ClassUtil.getShortClassName(row.getJavaClassName()).compareTo("Long") == 0) {
+                    if (ClassUtil.getShortClassName(row.getJavaClassName()).equals("Long")) {
                         return "new Long(i+1)";
                     } else {
                         return "i+1";
@@ -1095,7 +1095,7 @@ public class HeadMeisaiScaffoldModel implements RootModel {
             // １番目のプライマリキーを取得し、使用します。
             for (EntityMappingRow row : meisaiColumnsMappings) {
                 if (row.isPrimaryKey()) {
-                    if (ClassUtil.getShortClassName(row.getJavaClassName()).compareTo("Long") == 0) {
+                    if (ClassUtil.getShortClassName(row.getJavaClassName()).equals("Long")) {
                         return "new Long(i+1)";
                     } else {
                         return "i+1";
@@ -1119,7 +1119,7 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         // 「ヘッダテーブル名_id」の列を明細テーブル上から探索します。
         if (countPkeyInMeisai() == 1) {
             for (EntityMappingRow row : meisaiColumnsMappings) {
-                if (row.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+                if (row.getSqlColumnName().equalsIgnoreCase(this.configs.get("table_rdb") + "_ID")) {
                     return row.getJavaFieldName();
                 }
             }
@@ -1151,7 +1151,7 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         // 「ヘッダテーブル名_id」の列を明細テーブル上から探索します。
         if (countPkeyInMeisai() == 1) {
             for (EntityMappingRow row : meisaiColumnsMappings) {
-                if (row.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+                if (row.getSqlColumnName().equalsIgnoreCase(this.configs.get("table_rdb") + "_ID")) {
                     return row.getSqlTypeName();
                 }
             }
@@ -1198,13 +1198,13 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         if (countPkeyInMeisai() == 1) {
             for (EntityMappingRow row : meisaiColumnsMappings) {
                 if (row.getSqlColumnName().
-                    compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+                    equalsIgnoreCase(this.configs.get("table_rdb") + "_ID")) {
                     String s = row.getJavaClassName();
                     if (s.startsWith("java.lang")) {
                         s = ClassUtil.getShortClassName(s);
                         // ヘッダテーブルのIDのクラス名を取得します。
                         for (EntityMappingRow headRow : mappings) {
-                            if (headRow.getSqlColumnName().compareTo("ID") == 0) {
+                            if (headRow.getSqlColumnName().equalsIgnoreCase("ID")) {
                                 s = headRow.getJavaClassName();
                                 if (s.startsWith("java.lang")) {
                                     s = ClassUtil.getShortClassName(s);
@@ -1271,7 +1271,7 @@ public class HeadMeisaiScaffoldModel implements RootModel {
         // 「ヘッダテーブル名_id」の列を明細テーブル上から探索します。
         if (countPkeyInMeisai() == 1) {
             for (EntityMappingRow row : meisaiColumnsMappings) {
-                if (row.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+                if (row.getSqlColumnName().equalsIgnoreCase(this.configs.get("table_rdb") + "_ID")) {
                     prows.add(row);
                     break;
                 }
@@ -1320,7 +1320,7 @@ public class HeadMeisaiScaffoldModel implements RootModel {
             boolean is = false;
             stb.append('"');
             for (EntityMappingRow row : meisaiColumnsMappings) {
-                if (row.getSqlColumnName().compareTo(this.configs.get("table_rdb") + "_ID") == 0) {
+                if (row.getSqlColumnName().equalsIgnoreCase(this.configs.get("table_rdb") + "_ID")) {
                     stb.append(row.getSqlColumnName());
                     stb.append(',');
                     is = true;
