@@ -132,14 +132,14 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
     @Execute(validator = false, urlPattern = "show<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>")
     public String show() {
         ${configs.table_capitalize} entity = ${configs.table}${configs.servicesuffix}.findById(${createFormPkeyMethodCallArgsCopy("${configs.table}Form")});
-        Beans.copy(entity, ${configs.table}Form).execute();
+        Beans.copy(entity, ${configs.table}Form).dateConverter("yyyy-MM-dd").execute();
         return "show.${configs.viewtemplateextension}";
     }
 
     @Execute(validator = false, urlPattern = "edit<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>")
     public String edit() {
         ${configs.table_capitalize} entity = ${configs.table}${configs.servicesuffix}.findById(${createFormPkeyMethodCallArgsCopy("${configs.table}Form")});
-        Beans.copy(entity, ${configs.table}Form).execute();
+        Beans.copy(entity, ${configs.table}Form).dateConverter("yyyy-MM-dd").execute();
         return "edit.${configs.viewtemplateextension}";
     }
 
@@ -150,21 +150,21 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
 
     @Execute(validator = false, urlPattern = "delete<#list mappings as mapping><#if mapping.isPrimaryKey() = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if><#if isVersionColumn(mapping) = true><#noparse>/{</#noparse>${mapping.javaFieldName}<#noparse>}</#noparse></#if></#list>", redirect = true)
     public String delete() {
-        ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form).execute();
+        ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form).dateConverter("yyyy-MM-dd").execute();
         ${configs.table}${configs.servicesuffix}.delete(entity);
         return "/${configs.table}/";
     }
 
     @Execute(input = "create.${configs.viewtemplateextension}", redirect = true)
     public String insert() {
-        ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form).execute();
+        ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form).dateConverter("yyyy-MM-dd").execute();
         ${configs.table}${configs.servicesuffix}.insert(entity);
         return "/${configs.table}/";
     }
 
     @Execute(input = "edit.${configs.viewtemplateextension}", redirect = true)
     public String update() {
-        ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form).execute();
+        ${configs.table_capitalize} entity = Beans.createAndCopy(${configs.table_capitalize}.class, ${configs.table}Form).dateConverter("yyyy-MM-dd").execute();
         ${configs.table}${configs.servicesuffix}.update(entity);
         return "/${configs.table}/";
     }
