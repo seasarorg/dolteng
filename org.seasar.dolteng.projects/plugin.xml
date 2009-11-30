@@ -1089,11 +1089,11 @@
         </handler>
       </if>
     </facet>
-    <facet id="s2flex2withFlex3" name="S2Flex2(with Flex3.1)"
+    <facet id="s2flex2withFlex3" name="S2Flex2(with Flex3.2)"
         extends="base"
         root="template/s2flex2"
         displayOrder="PR07"
-        description="%facetDesc.S2Flex2withFlex3.1">
+        description="%facetDesc.S2Flex2">
       <contextProperty name="mainJavaPath" value="src/main/java" />
       <contextProperty name="mainResourcePath" value="src/main/resources" />
       <contextProperty name="testJavaPath" value="src/test/java" />
@@ -1104,7 +1104,7 @@
       <contextProperty name="testLibPath" value="lib" />
       <contextProperty name="testLibSrcPath" value="libsrc" /><!-- 効果なし -->
       <contextProperty name="webAppRoot" value="src/main/webapp" />
-      <contextProperty name="flexSDK" value="Flex 3.1" />
+      <contextProperty name="flexSDK" value="Flex 3.2" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="src/main/flex/Main.mxml" />
         <entry path="src/main/flex/${packagePath}/dto" />
@@ -1170,7 +1170,7 @@
         extends="base"
         root="template/s2blazeds"
         displayOrder="PR08"
-        description="%facetDesc.s2blazeds">
+        description="%facetDesc.S2Flex2">
       <contextProperty name="mainJavaPath" value="src/main/java" />
       <contextProperty name="mainResourcePath" value="src/main/resources" />
       <contextProperty name="testJavaPath" value="src/test/java" />
