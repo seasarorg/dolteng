@@ -1875,7 +1875,7 @@
         <entry kind="file" path="${libPath}/s2jms-core-1.0.0.jar" >
             <groupId>org.seasar.jms</groupId>
             <artifactId>s2jms-core</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </entry>
       </handler>
       <handler type="appDicon">
@@ -1902,12 +1902,12 @@
         <entry kind="file" path="${libPath}/s2jms-container-1.0.0.jar" >
             <groupId>org.seasar.jms</groupId>
             <artifactId>s2jms-container</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </entry>
         <entry kind="file" path="${libPath}/s2jms-server-1.0.0.jar" >
             <groupId>org.seasar.jms</groupId>
             <artifactId>s2jms-server</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </entry>
       </handler>
       <handler type="creatorDicon">
