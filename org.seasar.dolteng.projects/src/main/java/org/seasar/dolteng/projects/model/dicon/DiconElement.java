@@ -84,7 +84,7 @@ public class DiconElement implements Serializable, Comparable<DiconElement> {
 
     private String tag;
 
-    private ArrayMap/*<String, String>*/ attributeMap;
+    private ArrayMap/* <String, String> */attributeMap;
 
     private String value;
 
@@ -94,7 +94,7 @@ public class DiconElement implements Serializable, Comparable<DiconElement> {
 
     private boolean counteract = false;
 
-    public DiconElement(String tag, ArrayMap/*<String, String>*/ attributeMap,
+    public DiconElement(String tag, ArrayMap/* <String, String> */attributeMap,
             String value) {
         if (tag == null) {
             throw new IllegalArgumentException("tag is null.");
@@ -116,6 +116,7 @@ public class DiconElement implements Serializable, Comparable<DiconElement> {
         priority.add("");
         priority.add("components");
         priority.add("include");
+        priority.add("comment");
         priority.add("component");
         priority.add("initMethod");
         priority.add("property");
@@ -158,9 +159,9 @@ public class DiconElement implements Serializable, Comparable<DiconElement> {
         priority.add("\"app_aop.actionSupportInterceptor\"");
         priority.add("\"j2ee.requiredTx\"");
         priority.add("\"actionMessagesThrowsInterceptor\"");
-}
+    }
 
-    public DiconElement(String tag, ArrayMap/*<String, String>*/ attributeMap) {
+    public DiconElement(String tag, ArrayMap/* <String, String> */attributeMap) {
         this(tag, attributeMap, null);
     }
 
@@ -177,9 +178,19 @@ public class DiconElement implements Serializable, Comparable<DiconElement> {
         if ("".equals(tag)) {
             sb.append(value);
             ProgressMonitorUtil.isCanceled(monitor, 1);
+        } else if ("comment".equals(tag)) {
+            appendIndent(sb, indent);
+            sb.append("<!--");
+            for (DiconElement child : children) {
+                sb.append(child.buildElement(indent + 1, monitor));
+                ProgressMonitorUtil.isCanceled(monitor, 1);
+            }
+            appendIndent(sb, indent);
+            sb.append("-->").append(NL);
         } else {
             sb.append("<").append(tag);
-            for (Object/*Map.Entry<String, String>*/ o : attributeMap.entrySet()) {
+            for (Object/* Map.Entry<String, String> */o : attributeMap
+                    .entrySet()) {
                 Map.Entry<String, String> e = (Entry<String, String>) o;
                 sb.append(" ").append(e.getKey()).append("=\"").append(
                         e.getValue()).append("\"");
@@ -395,7 +406,7 @@ public class DiconElement implements Serializable, Comparable<DiconElement> {
         return tag;
     }
 
-    public ArrayMap/*<String, String>*/ getAttributeMap() {
+    public ArrayMap/* <String, String> */getAttributeMap() {
         return attributeMap;
     }
 

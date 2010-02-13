@@ -127,6 +127,7 @@
             <element ref="entry"/>
             <element ref="include"/>
             <element ref="component"/>
+            <element ref="comment"/>
          </sequence>
          <attribute name="type" type="string">
             <annotation>
@@ -247,6 +248,9 @@ a         <attribute name="kind" type="string">
             </annotation>
          </attribute>
       </complexType>
+   </element>
+
+   <element name="comment" type="string">
    </element>
 
    <element name="property">

@@ -44,6 +44,7 @@ import static org.seasar.dolteng.projects.Constants.EXTENSION_POINT_RESOURCE_LOA
 import static org.seasar.dolteng.projects.Constants.ID_PLUGIN;
 import static org.seasar.dolteng.projects.Constants.TAG_APP_TYPE;
 import static org.seasar.dolteng.projects.Constants.TAG_CATEGORY;
+import static org.seasar.dolteng.projects.Constants.TAG_COMMENT;
 import static org.seasar.dolteng.projects.Constants.TAG_COMPONENT;
 import static org.seasar.dolteng.projects.Constants.TAG_CONTEXT_PROPERTY;
 import static org.seasar.dolteng.projects.Constants.TAG_DEFAULT;
@@ -642,6 +643,14 @@ public class ProjectBuildConfigResolver {
             for (IConfigurationElement node : compNode.getChildren()) {
                 target.appendChild(assebleElement(node));
             }
+        }
+
+        IConfigurationElement[] commentNodes = handNode
+                .getChildren(TAG_COMMENT);
+        for (IConfigurationElement commentNode : commentNodes) {
+            DiconElement target = new DiconElement(TAG_COMMENT, new ArrayMap());
+            model.appendChild(target);
+            target.appendChild(new DiconElement("", null, commentNode.getValue()));
         }
     }
 

@@ -94,6 +94,8 @@ public class Constants {
 
     public static final String ATTR_COMPONENT_CLASS = "class";
 
+    public static final String TAG_COMMENT = "comment";
+
     public static final String TAG_INIT_METHOD = "initMethod";
 
     public static final String TAG_INIT_METHOD_X = "initMethodXXX";
