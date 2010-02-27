@@ -1901,12 +1901,12 @@
             <artifactId>geronimo-jpa_3.0_spec</artifactId>
             <version>1.0</version>
         </entry>
-        <entry kind="file" path="${libPath}/s2jca-1.0.1.jar" >
+        <entry kind="file" path="${libPath}/s2jca-1.0.2.jar" >
             <groupId>org.seasar.jca</groupId>
             <artifactId>s2jca</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </entry>
-        <entry kind="file" path="${libPath}/s2jms-core-1.0.0.jar" >
+        <entry kind="file" path="${libPath}/s2jms-core-1.0.1.jar" >
             <groupId>org.seasar.jms</groupId>
             <artifactId>s2jms-core</artifactId>
             <version>1.0.1</version>
@@ -1933,12 +1933,12 @@
         <entry path="${testJavaPath}/${packagePath}/listener" />
       </handler>
       <handler type="classpath" resourceLoader="maven">
-        <entry kind="file" path="${libPath}/s2jms-container-1.0.0.jar" >
+        <entry kind="file" path="${libPath}/s2jms-container-1.0.1.jar" >
             <groupId>org.seasar.jms</groupId>
             <artifactId>s2jms-container</artifactId>
             <version>1.0.1</version>
         </entry>
-        <entry kind="file" path="${libPath}/s2jms-server-1.0.0.jar" >
+        <entry kind="file" path="${libPath}/s2jms-server-1.0.1.jar" >
             <groupId>org.seasar.jms</groupId>
             <artifactId>s2jms-server</artifactId>
             <version>1.0.1</version>
@@ -1976,6 +1976,9 @@
       <if jre="1.5,1.6" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="${mainResourcePath}/jms-ra.dicon" />
+      </handler>
+      <handler type="appDicon">
+        <component name="messageEndpointActivator" class="org.seasar.jca.deploy.impl.MessageEndpointActivator" />
       </handler>
     </facet>
     <facet id="s2jmsOut" name="S2JMS (Outbound)"
@@ -2029,6 +2032,9 @@
         extends="s2rmi"
         root="template/s2rmi/server">
       <if jre="1.4,1.5,1.6" />
+      <contextProperty name="libPath" value="lib" />
+      <contextProperty name="libSrcPath" value="libsrc" /><!-- 効果なし -->
+      <contextProperty name="mainOutPath" value="target/classes" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="${mainResourcePath}/s2rmi.dicon" />
         <entry kind="file" path="${testJavaPath}/${packagePath}/Main.java" />
