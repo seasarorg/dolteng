@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %plugin.brand
 Bundle-SymbolicName: org.seasar.dolteng.eclipse; singleton:=true
-Bundle-Version: 0.39.0
+Bundle-Version: 0.40.0
 Bundle-Activator: org.seasar.dolteng.eclipse.DoltengCore
 Bundle-Vendor: %plugin.author
 Bundle-Localization: plugin
@@ -30,9 +30,9 @@ Bundle-ClassPath: dolteng-core.jar,
  template/jars/commons-jxpath-1.2.jar,
  template/jars/freemarker-2.3.8.jar,
  template/jars/javassist-3.4.ga.jar,
- template/jars/s2-extension-2.4.40.jar,
- template/jars/s2-framework-2.4.40.jar,
- template/jars/s2-tiger-2.4.40.jar,
+ template/jars/s2-extension-2.4.41.jar,
+ template/jars/s2-framework-2.4.41.jar,
+ template/jars/s2-tiger-2.4.41.jar,
  template/jars/metaas-0.5.jar,
  template/jars/antlr-2.7.6.jar,
  template/jars/antlr-20070101.jar,
