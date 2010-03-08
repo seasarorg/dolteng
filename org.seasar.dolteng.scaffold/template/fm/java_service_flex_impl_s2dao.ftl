@@ -22,7 +22,7 @@ public class ${configs.table_capitalize}${configs.servicesuffix}${configs.implem
 	public ${configs.table_capitalize}${configs.servicesuffix}${configs.implementationsuffix}() {
 	}
 
-	public ${configs.table_capitalize}[] selectAll() {
+	public ${configs.table_capitalize}[] getAllItems() {
 		return get${configs.table_capitalize}${configs.daosuffix}().selectAll();
 	}
 	
@@ -30,19 +30,19 @@ public class ${configs.table_capitalize}${configs.servicesuffix}${configs.implem
 		return get${configs.table_capitalize}${configs.daosuffix}().selectById(${createPkeyMethodCallArgsCopy()});
 	}
 	
-	public void insert(${configs.table_capitalize} ${configs.table}) {
+	public void insertItem(${configs.table_capitalize} ${configs.table}) {
 		get${configs.table_capitalize}${configs.daosuffix}().insert(${configs.table});
 	}
 
-	public int update(${configs.table_capitalize} ${configs.table}) {
-		return get${configs.table_capitalize}${configs.daosuffix}().update(${configs.table});
+	public void updateItem(${configs.table_capitalize} ${configs.table}) {
+		 get${configs.table_capitalize}${configs.daosuffix}().update(${configs.table});
 	}
 	
-	public void remove(${createPkeyMethodArgs()}) {
+	public void deleteItem(${createPkeyMethodArgs()}) {
 		${configs.table_capitalize} ${configs.table} = selectById(${createPkeyMethodCallArgsCopy()});
 		get${configs.table_capitalize}${configs.daosuffix}().delete(${configs.table});
 	}
-
+	
 	public ${configs.table_capitalize}${configs.daosuffix} get${configs.table_capitalize}${configs.daosuffix}() {
 		return this.${configs.table}${configs.daosuffix};
 	}

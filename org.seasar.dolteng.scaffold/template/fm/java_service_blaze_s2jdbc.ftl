@@ -10,17 +10,19 @@ public class ${configs.table_capitalize}${configs.servicesuffix}  extends Abstra
         return select().id(${createPkeyMethodCallArgsCopy()}).getSingleResult();
     }
     
-	public int remove(${createPkeyMethodArgs()}) {
+    public List<${configs.table_capitalize}> selectAllPaged(int startIndex,int numItems){
+    	return findAllPaged("${createPkeyMethodCallArgsCopy()}", startIndex, numItems);
+	}
+	
+	public int deleteItem(${createPkeyMethodArgs()}) {
 		${configs.table_capitalize} ${configs.table} = findById(${createPkeyMethodCallArgsCopy()});
-		return delete(${configs.table});
+		return removeItem(${configs.table});
 	}
-	
-	public List<${configs.table_capitalize}> fill(){
-		return selectAll();
+
+	public void updateItem(${createPkeyMethodArgs()}) {
+		${configs.table_capitalize} ${configs.table} = findById(${createPkeyMethodCallArgsCopy()});
+		 update(${configs.table});
 	}
-	
-	public List<${configs.table_capitalize}> selectAll(){
-		return findAll();
-	}
-		
+
+
 }

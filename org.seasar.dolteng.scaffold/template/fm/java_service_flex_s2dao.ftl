@@ -4,14 +4,14 @@ import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.table_c
 
 public interface ${configs.table_capitalize}${configs.servicesuffix} {
 
-	public ${configs.table_capitalize}[] selectAll();
+	public ${configs.table_capitalize}[] getAllItems();
 	
 	public ${configs.table_capitalize} selectById(${createPkeyMethodArgs()});
 	
-	public void insert(${configs.table_capitalize} ${configs.table});
+	public void insertItem(${configs.table_capitalize} ${configs.table});
 
-	public int update(${configs.table_capitalize} ${configs.table});
+	public void updateItem(${configs.table_capitalize} ${configs.table});
 	
-	public void remove(${createPkeyMethodArgs()});
-
+	public void deleteItem(${createPkeyMethodArgs()});
+	
 }

@@ -373,7 +373,7 @@
 				override="false"
 				outputpath="${javasrcroot}/${rootpackagepath}/${entitypackagename}/"
 				outputname="${table_capitalize}.java" />
-			<template path="template/fm/java_service_abstract_s2jdbc.ftl"
+			<template path="template/fm/java_service_amf_abstract_s2jdbc.ftl"
                 override="false"
                 outputpath="${javasrcroot}/${rootpackagepath}/${servicepackagename}/"
                 outputname="AbstractService.java" />
@@ -410,7 +410,7 @@
 				override="false"
 				outputpath="${javasrcroot}/${rootpackagepath}/${entitypackagename}/"
 				outputname="${table_capitalize}.java" />
-			<template path="template/fm/java_service_abstract_s2jdbc.ftl"
+			<template path="template/fm/java_service_amf_abstract_s2jdbc.ftl"
                 override="false"
                 outputpath="${javasrcroot}/${rootpackagepath}/${servicepackagename}/"
                 outputname="AbstractService.java" />

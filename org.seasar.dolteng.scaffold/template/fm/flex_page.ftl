@@ -56,7 +56,7 @@ package ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${co
 		}
 
 		public function selectAll():void {
-			remoteCall(service.selectAll(), selectAllOnSuccess, selectAllOnFault);
+			remoteCall(service.getAllItems(), selectAllOnSuccess, selectAllOnFault);
 		}
 		public function selectAllOnSuccess(e:ResultEvent, token:Object=null):void {
 			document.dg.dataProvider=e.result;
@@ -74,7 +74,7 @@ package ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${co
 			Alert.show("selectById is fault");
 		}
 		public function insert():void {
-			remoteCall(service.insert(this.model), insertOnSuccess, insertOnFault);
+			remoteCall(service.insertItem(this.model), insertOnSuccess, insertOnFault);
 		}
 		public function insertOnSuccess(e:ResultEvent, token:Object=null):void {
 			selectAll();
@@ -83,7 +83,7 @@ package ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${co
 			Alert.show("insert is fault");
 		}
 		public function update():void {
-			remoteCall(service.update(this.model), updateOnSuccess, updateOnFault);
+			remoteCall(service.updateItem(this.model), updateOnSuccess, updateOnFault);
 		}
 		public function updateOnSuccess(e:ResultEvent, token:Object=null):void {
 			selectAll();
@@ -93,7 +93,7 @@ package ${configs.rootpackagename}.${configs.subapplicationrootpackagename}.${co
 		}
 		public function remove():void {
 			var id : int = model.id;
-			remoteCall(service.remove(id), removeOnSuccess, removeOnFault);
+			remoteCall(service.deleteItem(id), removeOnSuccess, removeOnFault);
 		}
 		public function removeOnSuccess(e:ResultEvent, token:Object=null):void {
 			selectAll();
