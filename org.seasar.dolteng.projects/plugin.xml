@@ -1225,17 +1225,17 @@
         <entry kind="file" path="${webAppRoot}/WEB-INF/flex/services-config.xml" />
       </handler>
       <handler type="classpath" resourceLoader="maven">
-        <entry kind="file" path="${libPath}/s2blazeds-1.0.0.jar" >
+        <entry kind="file" path="${libPath}/s2blazeds-1.0.1.jar" >
             <groupId>org.seasar.blazeds</groupId>
             <artifactId>s2blazeds</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </entry>
         <entry kind="file" path="${libPath}/blazeds-common-3.2.0.3978.jar" >
             <groupId>com.adobe.blazeds</groupId>
             <artifactId>blazeds-common</artifactId>
             <version>3.2.0.3978</version>
         </entry>
-        <entry kind="file" path="${libPath}/blazeds-core-3.2.0.3978.jar" >
+        <entry kind="file" path="${libPath}/flex-messaging-core-3.3.0.12617.jar" >
             <groupId>com.adobe.blazeds</groupId>
             <artifactId>blazeds-core</artifactId>
             <version>3.2.0.3978</version>
@@ -1279,11 +1279,6 @@
             <groupId>xalan</groupId>
             <artifactId>xalan</artifactId>
             <version>2.7.0</version>
-        </entry>
-        <entry kind="file" path="${libPath}/s2blazeds-1.0.0.jar" >
-            <groupId>org.seasar.blazeds</groupId>
-            <artifactId>s2blazeds</artifactId>
-            <version>1.0.0</version>
         </entry>
       </handler>
       <if jre="1.4" />
