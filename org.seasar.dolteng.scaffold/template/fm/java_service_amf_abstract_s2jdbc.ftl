@@ -130,7 +130,7 @@ public abstract class AbstractService<T> {
 		return jdbcManager.insert(entity).execute();
 	}
 
-	public int updateItem(T entity) {
+	public int update(T entity) {
 		return jdbcManager.update(entity).execute();
 	}
 

@@ -29,4 +29,8 @@ public class ${configs.table_capitalize}${configs.servicesuffix}  extends Abstra
 		${configs.table_capitalize} ${configs.table} = findById(${createPkeyMethodCallArgsCopy()});
 		 removeItem(${configs.table});
 	}
+	
+	public void updateItem(${configs.table_capitalize} ${configs.table}){
+		update(${configs.table});
+	}	
 }
