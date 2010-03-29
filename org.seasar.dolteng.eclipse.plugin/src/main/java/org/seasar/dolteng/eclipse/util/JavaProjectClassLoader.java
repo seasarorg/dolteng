@@ -23,6 +23,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
@@ -74,7 +75,10 @@ public class JavaProjectClassLoader extends URLClassLoader {
                     if (p.toFile().exists()) {
                         addURL(toURL(p));
                     } else {
-                        addURL(toURL(workspaceroot.getFile(p).getLocation()));
+                        IFile file = workspaceroot.getFile(p);
+                        if (file.exists()) {
+                            addURL(toURL(file.getLocation()));
+                        }
                     }
                     break;
                 case IClasspathEntry.CPE_PROJECT:
