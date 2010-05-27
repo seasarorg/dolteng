@@ -1200,7 +1200,7 @@
         </handler>
       </if>
     </facet>
-    <facet id="s2blazeds" name="S2BlazeDS(ServerOnly)"
+    <facet id="s2blazeds" name="S2BlazeDS(ServerOnly blazeds 3)"
         extends="base"
         root="template/s2blazeds"
         displayOrder="PR08"
@@ -1225,7 +1225,7 @@
         <entry kind="file" path="${webAppRoot}/WEB-INF/flex/services-config.xml" />
       </handler>
       <handler type="classpath" resourceLoader="maven">
-        <entry kind="file" path="${libPath}/s2blazeds-1.0.1.jar" >
+        <entry kind="file" path="${libPath}/s2blazeds-1.0.2.jar" >
             <groupId>org.seasar.blazeds</groupId>
             <artifactId>s2blazeds</artifactId>
             <version>1.0.1</version>
