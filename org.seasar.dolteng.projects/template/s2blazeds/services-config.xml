@@ -14,6 +14,10 @@
     	application level default channels will be used to contact the destination.
         -->   
         <default-channels>
+           <!--
+            SSLを利用するときには、以下のchannel設定を有効にしてください。
+            -->
+           <!--  <channel ref="my-secure-amf"/>-->
            <channel ref="my-amf"/>
         </default-channels>
     
@@ -50,11 +54,9 @@
                 <polling-enabled>false</polling-enabled>
             </properties>
         </channel-definition>
-
         <channel-definition id="my-secure-amf" class="mx.messaging.channels.SecureAMFChannel">
-            <endpoint url="https://{server.name}:{server.port}/{context.root}/messagebroker/amfsecure" class="flex.messaging.endpoints.SecureAMFEndpoint"/>
+            <endpoint url="https://{server.name}:{server.port}/{context.root}/messagebroker/amfsecure" class="org.seasar.blazeds.endpoints.S2SecureAMFEndpoint"/>
         </channel-definition>
-
         <channel-definition id="my-polling-amf" class="mx.messaging.channels.AMFChannel">
             <endpoint url="http://{server.name}:{server.port}/{context.root}/messagebroker/amfpolling" class="flex.messaging.endpoints.AMFEndpoint"/>
             <properties>

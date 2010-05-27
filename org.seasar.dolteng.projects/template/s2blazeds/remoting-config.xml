@@ -10,6 +10,13 @@
     </adapters>
 
     <default-channels>
+    <!--
+       SSLを利用するときには、以下のchannel設定を有効にしてください。
+       S2BlazeDS1.0.2から有効です。
+     -->
+     <!-- 
+        <channel ref="my-secure-amf"/>
+      -->   
         <channel ref="my-amf"/>
     </default-channels>
     
