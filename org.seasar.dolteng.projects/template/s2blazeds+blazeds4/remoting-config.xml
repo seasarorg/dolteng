@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service id="remoting-service" 
+    class="flex.messaging.services.RemotingService">
+
+    <adapters>
+    <!--
+        <adapter-definition id="java-object" class="flex.messaging.services.remoting.adapters.JavaAdapter" default="true"/> 
+    -->
+        <adapter-definition id="s2-object" class="org.seasar.blazeds.adapters.S2Adapter" default="true"/>
+    </adapters>
+
+    <default-channels>
+    <!--
+       SSLを利用するときには、以下のchannel設定を有効にしてください。
+       S2BlazeDS1.0.2から有効です。
+     -->
+     <!-- 
+        <channel ref="my-secure-amf"/>
+      -->     
+        <channel ref="my-amf"/>
+    </default-channels>
+
+</service>

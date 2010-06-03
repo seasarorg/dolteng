@@ -1200,7 +1200,7 @@
         </handler>
       </if>
     </facet>
-    <facet id="s2blazeds" name="S2BlazeDS(ServerOnly blazeds 3)"
+    <facet id="s2blazeds" name="S2BlazeDS(ServerOnly with blazeds 3)"
         extends="base"
         root="template/s2blazeds"
         displayOrder="PR08"
@@ -1228,7 +1228,7 @@
         <entry kind="file" path="${libPath}/s2blazeds-1.0.2.jar" >
             <groupId>org.seasar.blazeds</groupId>
             <artifactId>s2blazeds</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </entry>
         <entry kind="file" path="${libPath}/blazeds-common-3.2.0.3978.jar" >
             <groupId>com.adobe.blazeds</groupId>
@@ -1238,7 +1238,7 @@
         <entry kind="file" path="${libPath}/flex-messaging-core-3.3.0.12617.jar" >
             <groupId>com.adobe.blazeds</groupId>
             <artifactId>blazeds-core</artifactId>
-            <version>3.2.0.3978</version>
+            <version>3.3.0.12617</version>
         </entry>
         <entry kind="file" path="${libPath}/blazeds-opt-3.2.0.3978.jar" >
             <groupId>com.adobe.blazeds</groupId>
@@ -1254,6 +1254,108 @@
             <groupId>com.adobe.blazeds</groupId>
             <artifactId>blazeds-remoting</artifactId>
             <version>3.2.0.3978</version>
+        </entry>
+        <entry kind="file" path="${libPath}/backport-util-concurrent-3.1.jar" >
+            <groupId>backport-util-concurrent</groupId>
+            <artifactId>backport-util-concurrent</artifactId>
+            <version>3.1</version>
+        </entry>
+        <entry kind="file" path="${libPath}/concurrent-1.3.4.jar" >
+            <groupId>concurrent</groupId>
+            <artifactId>concurrent</artifactId>
+            <version>1.3.4</version>
+        </entry>
+        <entry kind="file" path="${libPath}/commons-httpclient-3.1.jar" >
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </entry>
+        <entry kind="file" path="${libPath}/commons-codec-1.3.jar" >
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.3</version>
+        </entry>
+        <entry kind="file" path="${libPath}/xalan-2.7.0.jar" >
+            <groupId>xalan</groupId>
+            <artifactId>xalan</artifactId>
+            <version>2.7.0</version>
+        </entry>
+      </handler>
+      <if jre="1.4" />
+      <if jre="1.5,1.6">
+        <handler type="classpath" resourceLoader="maven">
+          <entry kind="file" path="${libPath}/s2-tiger-2.4.41.jar" >
+            <groupId>org.seasar.container</groupId>
+            <artifactId>s2-tiger</artifactId>
+            <version>2.4.41</version>
+        </entry>
+          <entry kind="file" path="${libPath}/geronimo-ejb_3.0_spec-1.0.jar" >
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-ejb_3.0_spec</artifactId>
+            <version>1.0</version>
+        </entry>
+        </handler>
+      </if>
+    </facet>
+    <facet id="s2blazeds4" name="S2BlazeDS(ServerOnly with blazeds 4)"
+        extends="base"
+        root="template/s2blazeds+blazeds4"
+        displayOrder="PR09"
+        description="">
+      <contextProperty name="mainJavaPath" value="src/main/java" />
+      <contextProperty name="mainResourcePath" value="src/main/resources" />
+      <contextProperty name="testJavaPath" value="src/test/java" />
+      <contextProperty name="testResourcePath" value="src/test/resources" />
+      <contextProperty name="mainOutPath" value="src/main/webapp/WEB-INF/classes" />
+      <contextProperty name="libPath" value="src/main/webapp/WEB-INF/lib" />
+      <contextProperty name="libSrcPath" value="src/main/webapp/WEB-INF/libsrc" /><!-- 効果なし -->
+      <contextProperty name="testLibPath" value="lib" />
+      <contextProperty name="testLibSrcPath" value="libsrc" /><!-- 効果なし -->
+      <contextProperty name="webAppRoot" value="src/main/webapp" />
+      <handler type="default" resourceLoader="composite">
+		<entry path="${mainJavaPath}/${packagePath}/service" />
+		<entry path="${testJavaPath}/${packagePath}/service" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/web.xml" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/flex/messaging-config.xml" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/flex/proxy-config.xml" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/flex/remoting-config.xml" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/flex/services-config.xml" />
+      </handler>
+      <handler type="classpath" resourceLoader="maven">
+        <entry kind="file" path="${libPath}/s2blazeds-1.0.2.jar" >
+            <groupId>org.seasar.blazeds</groupId>
+            <artifactId>s2blazeds</artifactId>
+            <version>1.0.2</version>
+        </entry>
+        <entry kind="file" path="${libPath}/flex-messaging-common-4.0.0.14931.jar" >
+            <groupId>com.adobe.blazeds</groupId>
+            <artifactId>blazeds-common</artifactId>
+            <version>4.0.0.14931</version>
+        </entry>
+        <entry kind="file" path="${libPath}/flex-messaging-core-4.0.0.14931.jar" >
+            <groupId>com.adobe.blazeds</groupId>
+            <artifactId>blazeds-core</artifactId>
+            <version>4.0.0.14931</version>
+        </entry>
+        <entry kind="file" path="${libPath}/flex-messaging-opt-4.0.0.14931.jar" >
+            <groupId>com.adobe.blazeds</groupId>
+            <artifactId>blazeds-opt</artifactId>
+            <version>4.0.0.14931</version>
+        </entry>
+        <entry kind="file" path="${libPath}/flex-messaging-proxy-4.0.0.14931.jar" >
+            <groupId>com.adobe.blazeds</groupId>
+            <artifactId>blazeds-proxy</artifactId>
+            <version>4.0.0.14931</version>
+        </entry>
+        <entry kind="file" path="${libPath}/flex-messaging-remoting-4.0.0.14931.jar" >
+            <groupId>com.adobe.blazeds</groupId>
+            <artifactId>blazeds-remoting</artifactId>
+            <version>4.0.0.14931</version>
+        </entry>
+        <entry kind="file" path="${libPath}/flex-rds-server-272564.jar" >
+            <groupId>com.adobe.blazeds</groupId>
+            <artifactId>flex-rds-server</artifactId>
+            <version>272564</version>
         </entry>
         <entry kind="file" path="${libPath}/backport-util-concurrent-3.1.jar" >
             <groupId>backport-util-concurrent</groupId>
