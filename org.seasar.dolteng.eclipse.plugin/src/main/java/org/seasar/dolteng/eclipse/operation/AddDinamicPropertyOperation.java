@@ -73,8 +73,14 @@ public class AddDinamicPropertyOperation implements IWorkspaceRunnable {
     private IJavaElement createMethod(String lineDelimiter,
             FuzzyXMLAttribute attr) throws CoreException {
         StringBuffer stb = new StringBuffer();
-        String methodName = "get" + this.elementId
-                + StringUtil.capitalize(attr.getName());
+        String attrName = attr.getName();
+        String methodName;
+        if (attrName.equals("class")) {
+            methodName = "get" + this.elementId + "StyleClass";
+        } else {
+            methodName = "get" + this.elementId
+                    + StringUtil.capitalize(attr.getName());
+        }
         IMethod mtd = type.getMethod(methodName, StringUtil.EMPTY_STRINGS);
         if (mtd != null && mtd.exists()) {
             return mtd;
