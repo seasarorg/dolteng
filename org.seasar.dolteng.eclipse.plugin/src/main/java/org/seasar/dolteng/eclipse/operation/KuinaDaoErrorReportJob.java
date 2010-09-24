@@ -62,6 +62,7 @@ import org.seasar.dolteng.eclipse.util.TypeUtil;
 import org.seasar.dolteng.eclipse.util.ResourcesUtil.FindingHandler;
 import org.seasar.framework.convention.NamingConvention;
 import org.seasar.framework.util.StringUtil;
+import org.seasar.kuina.dao.OrderingSpec;
 
 /**
  * @author taichi
@@ -92,7 +93,9 @@ public class KuinaDaoErrorReportJob extends WorkspaceJob {
     /*
      * (non-Javadoc)
      * 
-     * @see org.eclipse.core.resources.WorkspaceJob#runInWorkspace(org.eclipse.core.runtime.IProgressMonitor)
+     * @see
+     * org.eclipse.core.resources.WorkspaceJob#runInWorkspace(org.eclipse.core
+     * .runtime.IProgressMonitor)
      */
     @Override
     public IStatus runInWorkspace(IProgressMonitor monitor)
@@ -181,10 +184,12 @@ public class KuinaDaoErrorReportJob extends WorkspaceJob {
                 }
 
                 if (KuinaEmulator.isOrderbyPatterns(name)) {
-                    if (String.class.getName().equals(paramType) == false) {
+                    if (OrderingSpec.class.getName().equals(paramType) == false
+                            && String.class.getName().equals(paramType) == false) {
                         String msg = Messages.bind(
                                 Messages.ILLEGAL_KEYWORD_TYPE, new String[] {
-                                        name, "String" });
+                                        name,
+                                                "String, OrderingSpec or OrderingSpec[]" });
                         report(param.getName(),
                                 Constants.ERROR_TYPE_KUINA_TYPE, methodName,
                                 name, msg);

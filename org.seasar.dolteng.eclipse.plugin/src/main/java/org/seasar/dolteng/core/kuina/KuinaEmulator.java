@@ -99,7 +99,6 @@ public class KuinaEmulator {
     }
 
     public static String toPropertyName(String paramName) {
-        String result = null;
         if (StringUtil.isEmpty(paramName) == false) {
             String[][][] operations = Operations.getOperations();
             for (int j = 0; j < operations.length; j++) {
@@ -111,6 +110,6 @@ public class KuinaEmulator {
                 }
             }
         }
-        return result;
+        return paramName;
     }
 }
