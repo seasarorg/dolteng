@@ -1044,6 +1044,7 @@
       </handler>
       <if jre="1.5,1.6" />
     </facet>
+    <!--
     <facet id="s2flex2" name="S2Flex2"
         extends="base"
         root="template/s2flex2"
@@ -1055,9 +1056,9 @@
       <contextProperty name="testResourcePath" value="src/test/resources" />
       <contextProperty name="mainOutPath" value="src/main/webapp/WEB-INF/classes" />
       <contextProperty name="libPath" value="src/main/webapp/WEB-INF/lib" />
-      <contextProperty name="libSrcPath" value="src/main/webapp/WEB-INF/libsrc" /><!-- 効果なし -->
+      <contextProperty name="libSrcPath" value="src/main/webapp/WEB-INF/libsrc" />
       <contextProperty name="testLibPath" value="lib" />
-      <contextProperty name="testLibSrcPath" value="libsrc" /><!-- 効果なし -->
+      <contextProperty name="testLibSrcPath" value="libsrc" />
       <contextProperty name="webAppRoot" value="src/main/webapp" />
       <contextProperty name="flexSDK" value="Flex 2.0.1 Hotfix 3" />
       <handler type="default" resourceLoader="composite">
@@ -1123,10 +1124,11 @@
         </handler>
       </if>
     </facet>
-    <facet id="s2flex2withFlex3" name="S2Flex2(with Flex3.2)"
+    -->
+    <facet id="s2flex2withFlex3" name="S2Flex2(with Flex3.5)"
         extends="base"
         root="template/s2flex2"
-        displayOrder="PR07"
+        displayOrder="PR06"
         description="%facetDesc.S2Flex2">
       <contextProperty name="mainJavaPath" value="src/main/java" />
       <contextProperty name="mainResourcePath" value="src/main/resources" />
@@ -1138,7 +1140,7 @@
       <contextProperty name="testLibPath" value="lib" />
       <contextProperty name="testLibSrcPath" value="libsrc" /><!-- 効果なし -->
       <contextProperty name="webAppRoot" value="src/main/webapp" />
-      <contextProperty name="flexSDK" value="Flex 3.2" />
+      <contextProperty name="flexSDK" value="Flex 3.5" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="src/main/flex/Main.mxml" />
         <entry path="src/main/flex/${packagePath}/dto" />
@@ -1200,6 +1202,86 @@
         </handler>
       </if>
     </facet>
+    <!--
+    <facet id="s2flex2withFlex4" name="S2Flex2(fb4)"
+        extends="base"
+        root="template/s2flex2+fb4"
+        displayOrder="PR07"
+        description="%facetDesc.S2Flex2">
+      <contextProperty name="mainJavaPath" value="src/main/java" />
+      <contextProperty name="mainResourcePath" value="src/main/resources" />
+      <contextProperty name="testJavaPath" value="src/test/java" />
+      <contextProperty name="testResourcePath" value="src/test/resources" />
+      <contextProperty name="mainOutPath" value="src/main/webapp/WEB-INF/classes" />
+      <contextProperty name="libPath" value="src/main/webapp/WEB-INF/lib" />
+      <contextProperty name="libSrcPath" value="src/main/webapp/WEB-INF/libsrc" />
+      <contextProperty name="testLibPath" value="lib" />
+      <contextProperty name="testLibSrcPath" value="libsrc" />
+      <contextProperty name="webAppRoot" value="src/main/webapp" />
+      <contextProperty name="flexSDK" value="Flex 4.1" />
+      <handler type="default" resourceLoader="composite">
+        <entry kind="file" path="src/main/flex/Main.mxml" />
+        <entry path="src/main/flex/${packagePath}/dto" />
+        <entry path="src/main/flex/${packagePath}/web" />
+        <entry path="${webAppRoot}/bin" />
+        <entry kind="file" path="${webAppRoot}/WEB-INF/web.xml" />
+      </handler>
+      <handler type="classpath" resourceLoader="maven">
+        <entry kind="file" path="${libPath}/s2-flex2-1.1.1-rc1.jar" >
+            <groupId>org.seasar.flex2</groupId>
+            <artifactId>s2-flex2</artifactId>
+            <version>1.1.1-rc1</version>
+        </entry>
+        <entry kind="file" path="${libPath}/geronimo-jsp_2.0_spec-1.0.jar" >
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-jsp_2.0_spec</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </entry>
+      </handler>
+      <handler type="dolteng" resourceLoader="composite">
+        <entry kind="file" path=".settings/dolteng.s2flex2.pref" />
+      </handler>
+      <handler type="appDicon">
+        <include path="remoting_amf3.dicon" />
+      </handler>
+      <handler type="customizerDicon">
+        <component name="remotingServiceCustomizer"
+            class="org.seasar.flex2.rpc.remoting.service.customizer.RemotingServiceCustomizer" />
+      </handler>
+      <handler type="flexbuilder" resourceLoader="composite">
+        <entry kind="file" path=".actionScriptProperties" />
+        <entry kind="file" path=".flexProperties" />
+        <entry kind="file" path="html-template/history/history.css" />
+        <entry kind="file" path="html-template/history/history.js" />
+        <entry kind="file" path="html-template/history/historyFrame.html" />
+        <entry kind="file" path="html-template/index.template.html" />
+        <entry kind="file" path="html-template/playerProductInstall.swf" />
+        <entry kind="file" path="html-template/swfobject.js" />
+        <entry kind="file" path="${libPath}/swc/s2flex2-components-2.0.0.swc"/>
+      </handler>
+      <if jre="1.4" />
+      <if jre="1.5,1.6">
+        <handler type="classpath" resourceLoader="maven">
+          <entry kind="file" path="${libPath}/s2-tiger-2.4.43.jar" >
+            <groupId>org.seasar.container</groupId>
+            <artifactId>s2-tiger</artifactId>
+            <version>2.4.43</version>
+        </entry>
+          <entry kind="file" path="${libPath}/geronimo-ejb_3.0_spec-1.0.jar" >
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-ejb_3.0_spec</artifactId>
+            <version>1.0</version>
+        </entry>
+          <entry kind="file" path="${libPath}/s2-flex2-tiger-1.0.0.jar" >
+            <groupId>org.seasar.flex2</groupId>
+            <artifactId>s2-flex2-tiger</artifactId>
+            <version>1.0.0</version>
+        </entry>
+        </handler>
+      </if>
+    </facet>
+    -->
     <facet id="s2blazeds" name="S2BlazeDS(ServerOnly with blazeds 3)"
         extends="base"
         root="template/s2blazeds"
