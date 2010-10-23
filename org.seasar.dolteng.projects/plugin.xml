@@ -125,18 +125,6 @@
         <entry output="${testOutPath}" path="${testJavaPath}" />
         <entry output="${testOutPath}" path="${testResourcePath}" />
         <entry kind="con" path="${jreContainer}" />
-        <entry kind="file" path="${testLibPath}/junit-3.8.2.jar" >
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.2</version>
-            <scope>test</scope>
-        </entry>
-        <entry kind="file" path="${testLibPath}/junit-addons-1.4.jar" >
-            <groupId>junit-addons</groupId>
-            <artifactId>junit-addons</artifactId>
-            <version>1.4</version>
-            <scope>test</scope>
-        </entry>
         <entry kind="file" path="${libPath}/aopalliance-1.0.jar" >
             <groupId>aopalliance</groupId>
             <artifactId>aopalliance</artifactId>
@@ -280,7 +268,22 @@
     &lt;/component&gt;
         </comment>
       </handler>
-      <if jre="1.4" root="template/jdt/1.4" />
+      <if jre="1.4" root="template/jdt/1.4">
+        <handler type="classpath" resourceLoader="maven">
+          <entry kind="file" path="${testLibPath}/junit-3.8.2.jar" >
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.2</version>
+            <scope>test</scope>
+          </entry>
+          <entry kind="file" path="${testLibPath}/junit-addons-1.4.jar" >
+            <groupId>junit-addons</groupId>
+            <artifactId>junit-addons</artifactId>
+            <version>1.4</version>
+            <scope>test</scope>
+          </entry>
+        </handler>
+      </if>
       <if jre="1.5,1.6" root="template/jdt/1.5">
         <handler type="default" resourceLoader="composite">
           <entry kind="file" path="${testResourcePath}/s2junit4.dicon" />
