@@ -1525,6 +1525,7 @@
         <entry kind="file" path="${mainResourcePath}/env_ut.txt" />
         <entry kind="file" path="${mainResourcePath}/env.txt" />
         <entry kind="file" path="${mainResourcePath}/jdbc.dicon" />
+        <entry kind="file" path="${mainResourcePath}/dao.dicon" />
         <entry kind="file" path="${mainResourcePath}/log4j.properties" />
         <entry kind="file" path="${mainResourcePath}/s2container.dicon" />
         <entry path="${testJavaPath}/${packagePath}/dao" />
