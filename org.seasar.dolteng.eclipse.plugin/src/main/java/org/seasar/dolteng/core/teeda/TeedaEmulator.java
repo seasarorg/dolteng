@@ -53,7 +53,7 @@ public class TeedaEmulator {
             "input", Pattern.CASE_INSENSITIVE);
 
     public static final Pattern MAPPING_COMMAND_METHOD_TAG_TYPE = Pattern
-            .compile("submit|button", Pattern.CASE_INSENSITIVE);
+            .compile("submit|button|image", Pattern.CASE_INSENSITIVE);
 
     public static final Pattern MAPPING_COMMAND_METHOD_ID = Pattern
             .compile("do[\\w-]*");
