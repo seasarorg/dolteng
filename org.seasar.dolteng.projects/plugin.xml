@@ -284,7 +284,7 @@
           </entry>
         </handler>
       </if>
-      <if jre="1.5,1.6" root="template/jdt/1.5">
+      <if jre="1.5,1.6,1.7" root="template/jdt/1.5">
         <handler type="default" resourceLoader="composite">
           <entry kind="file" path="${testResourcePath}/s2junit4.dicon" />
         </handler>
@@ -341,7 +341,7 @@
         root="template/sysdeo"
         displayOrder="SM01"
         description="%facetDesc.Sysdeo">
-      <if jre="1.4,1.5,1.6" />
+      <if jre="1.4,1.5,1.6,1.7" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path=".tomcatplugin" />
       </handler>
@@ -352,7 +352,7 @@
         root="template/WTP,template/WTP/2.4"
         displayOrder="SM02"
         description="%facetDesc.WTP">
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
       <handler type="classpath" resourceLoader="composite">
         <entry kind="con" path="org.eclipse.jst.j2ee.internal.web.container" />
       </handler>
@@ -372,7 +372,7 @@
         root="template/WTP,template/WTP/2.5"
         displayOrder="SM03"
         description="%facetDesc.WTP">
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
       <handler type="classpath" resourceLoader="maven">
         <entry kind="con" path="org.eclipse.jst.j2ee.internal.web.container" />
       </handler>
@@ -588,7 +588,7 @@
         </component>
       </handler>
       <if jre="1.4" />
-      <if jre="1.5,1.6">
+      <if jre="1.5,1.6,1.7">
         <handler type="classpath" resourceLoader="maven">
           <entry kind="file" path="${libPath}/teeda-tiger-1.0.13-sp11.jar" >
             <groupId>org.seasar.teeda</groupId>
@@ -616,7 +616,7 @@
           </initMethod>
         </component>
       </handler>
-      <if jre="1.4,1.5,1.6" />
+      <if jre="1.4,1.5,1.6,1.7" />
     </facet>
     <facet id="teedaAction" name="Teeda (with Action)"
         extends="teeda"
@@ -636,7 +636,7 @@
           </initMethod>
         </component>
       </handler>
-      <if jre="1.4,1.5,1.6" />
+      <if jre="1.4,1.5,1.6,1.7" />
     </facet>
     <facet id="sastruts" name="SAStruts"
         extends="base"
@@ -821,7 +821,7 @@
           </initMethod>
         </component>
       </handler>
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
     </facet>
     <facet id="sastruts+mayaa" name="SAStruts+Mayaa"
         extends="mayaa"
@@ -1010,7 +1010,7 @@
           </initMethod>
         </component>
       </handler>
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
     </facet>
     <facet id="s2wicket" name="S2Wicket"
         extends="base"
@@ -1045,7 +1045,7 @@
       <handler type="dolteng" resourceLoader="composite">
         <entry kind="file" path=".settings/dolteng.s2wicket.pref" />
       </handler>
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
     </facet>
     <facet id="s2flex2withFlex3" name="S2Flex2(with Flex3.5)"
         extends="base"
@@ -1104,7 +1104,7 @@
         <entry kind="file" path="${libPath}/swc/s2flex2-components-2.0.0.swc"/>
       </handler>
       <if jre="1.4" />
-      <if jre="1.5,1.6">
+      <if jre="1.5,1.6,1.7">
         <handler type="classpath" resourceLoader="maven">
           <entry kind="file" path="${libPath}/s2-tiger-2.4.45.jar" >
             <groupId>org.seasar.container</groupId>
@@ -1206,7 +1206,7 @@
         </entry>
       </handler>
       <if jre="1.4" />
-      <if jre="1.5,1.6">
+      <if jre="1.5,1.6,1.7">
         <handler type="classpath" resourceLoader="maven">
           <entry kind="file" path="${libPath}/s2-tiger-2.4.45.jar" >
             <groupId>org.seasar.container</groupId>
@@ -1308,7 +1308,7 @@
         </entry>
       </handler>
       <if jre="1.4" />
-      <if jre="1.5,1.6">
+      <if jre="1.5,1.6,1.7">
         <handler type="classpath" resourceLoader="maven">
           <entry kind="file" path="${libPath}/s2-tiger-2.4.45.jar" >
             <groupId>org.seasar.container</groupId>
@@ -1373,7 +1373,7 @@
       <handler type="matatabi" resourceLoader="composite">
         <entry kind="file" path=".settings/matatabi.pref" />
       </handler>
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
     </facet>
     <facet id="struts2" name="Struts2"
         extends="base"
@@ -1434,7 +1434,7 @@
       <handler type="dolteng" resourceLoader="composite">
         <entry kind="file" path=".settings/dolteng.struts2.pref" />
       </handler>
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
     </facet>
     <facet id="struts2+mayaa" name="Struts2+Mayaa"
         extends="mayaa"
@@ -1504,7 +1504,7 @@
       <handler type="matatabi" resourceLoader="composite">
         <entry kind="file" path=".settings/matatabi.struts2.pref" />
       </handler>
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
     </facet>
     
 <!-- ==== Persistence.Java ==== -->
@@ -1585,7 +1585,7 @@
         </component>
       </handler>
       <if jre="1.4" />
-      <if jre="1.5,1.6">
+      <if jre="1.5,1.6,1.7">
         <handler type="classpath" resourceLoader="maven">
           <entry kind="file" path="${libPath}/s2-dao-tiger-1.0.51.jar" >
             <groupId>org.seasar.dao</groupId>
@@ -1650,7 +1650,7 @@
       <handler type="appDicon">
         <include path="s2jdbc.dicon" />
       </handler>
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
     </facet>
     <facet id="kuina" name="Kuina Base"
         extends="base"
@@ -1779,7 +1779,7 @@
         root="template/kuina/hibernate"
         displayOrder="PE03"
         description="%facetDesc.KuinaHibernate">
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="${mainResourcePath}/jpa.dicon" />
         <entry kind="file" path="${mainResourcePath}/META-INF/persistence.xml" />
@@ -1822,7 +1822,7 @@
         root="template/kuina/topLink"
         displayOrder="PE04"
         description="%facetDesc.KuinaTopLink">
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="${mainResourcePath}/jpa.dicon" />
         <entry kind="file" path="${mainResourcePath}/META-INF/persistence.xml" />
@@ -1845,7 +1845,7 @@
         root="template/kuina/openJPA"
         displayOrder="PE05"
         description="%facetDesc.KuinaOpenJPA">
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="${mainResourcePath}/jpa.dicon" />
         <entry kind="file" path="${mainResourcePath}/META-INF/persistence.xml" />
@@ -1944,7 +1944,7 @@
     <facet id="s2jmsInFirst" name="S2JMS (Inbound)"
         extends="s2jms"
         root="template/s2jms/inbound">
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
       <contextProperty name="libPath" value="lib" />
       <contextProperty name="libSrcPath" value="libsrc" /><!-- 効果なし -->
       <contextProperty name="mainOutPath" value="target/classes" />
@@ -1995,7 +1995,7 @@
     </facet>
     <facet id="s2jmsInLast" name="S2JMS (Inbound Last)"
         root="template/s2jms/inbound">
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="${mainResourcePath}/jms-ra.dicon" />
       </handler>
@@ -2008,7 +2008,7 @@
         root="template/s2jms/outbound"
         displayOrder="_01"
         description="%facetDesc.S2JMSo">
-      <if jre="1.5,1.6" />
+      <if jre="1.5,1.6,1.7" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="${mainResourcePath}/jms-outbound.dicon" />
         <entry kind="file" path="${mainResourcePath}/jms-ra.dicon" />
@@ -2020,7 +2020,7 @@
     <facet id="s2rmi" name="S2RMI Base"
         extends="base"
         root="template/s2rmi">
-      <if jre="1.4,1.5,1.6" />
+      <if jre="1.4,1.5,1.6,1.7" />
       <handler type="default" resourceLoader="composite">
         <entry kind="file" path="${mainResourcePath}/app_aop.dicon" />
         <entry path="${mainJavaPath}/${packagePath}/service" />
@@ -2053,7 +2053,7 @@
     <facet id="s2rmiServer" name="S2RMI (Server)"
         extends="s2rmi"
         root="template/s2rmi/server">
-      <if jre="1.4,1.5,1.6" />
+      <if jre="1.4,1.5,1.6,1.7" />
       <contextProperty name="libPath" value="lib" />
       <contextProperty name="libSrcPath" value="libsrc" /><!-- 効果なし -->
       <contextProperty name="mainOutPath" value="target/classes" />
@@ -2082,7 +2082,7 @@
         root="template/s2rmi/client"
         displayOrder="_02"
         description="%facetDesc.S2RMIc">
-      <if jre="1.4,1.5,1.6" />
+      <if jre="1.4,1.5,1.6,1.7" />
       <handler type="creatorDicon">
         <component name="connectorCreator" class="org.seasar.remoting.common.creator.ConnectorCreator"/>
       </handler>
