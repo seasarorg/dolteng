@@ -15,6 +15,9 @@
  */
 package org.seasar.dolteng.eclipse.operation;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jp.aonir.fuzzyxml.FuzzyXMLAttribute;
 
 import org.eclipse.core.resources.IWorkspaceRunnable;
@@ -35,6 +38,22 @@ import org.seasar.framework.util.StringUtil;
  * 
  */
 public class AddDinamicPropertyOperation implements IWorkspaceRunnable {
+
+    private static Set booleanAttributeNames = new HashSet();
+    static {
+        booleanAttributeNames.add("defer");
+        booleanAttributeNames.add("compact");
+        booleanAttributeNames.add("noshade");
+        booleanAttributeNames.add("declare");
+        booleanAttributeNames.add("ismap");
+        booleanAttributeNames.add("nohref");
+        booleanAttributeNames.add("checked");
+        booleanAttributeNames.add("disabled");
+        booleanAttributeNames.add("readonly");
+        booleanAttributeNames.add("multiple");
+        booleanAttributeNames.add("selected");
+        booleanAttributeNames.add("nowrap");
+    }
 
     private IType type;
 
@@ -74,12 +93,13 @@ public class AddDinamicPropertyOperation implements IWorkspaceRunnable {
             FuzzyXMLAttribute attr) throws CoreException {
         StringBuffer stb = new StringBuffer();
         String attrName = attr.getName();
+        boolean booleanAttribute = booleanAttributeNames.contains(attrName);
         String methodName;
         if (attrName.equals("class")) {
             methodName = "get" + this.elementId + "StyleClass";
         } else {
             methodName = "get" + this.elementId
-                    + StringUtil.capitalize(attr.getName());
+                    + StringUtil.capitalize(attrName);
         }
         IMethod mtd = type.getMethod(methodName, StringUtil.EMPTY_STRINGS);
         if (mtd != null && mtd.exists()) {
@@ -92,14 +112,20 @@ public class AddDinamicPropertyOperation implements IWorkspaceRunnable {
                 StringUtil.EMPTY_STRINGS, null, lineDelimiter);
         stb.append(comment);
         stb.append(lineDelimiter);
-        stb.append("public String ");
+        if (booleanAttribute) {
+            stb.append("public boolean ");
+        } else {
+            stb.append("public String ");
+        }
         stb.append(methodName);
         stb.append("() {");
         stb.append(lineDelimiter);
         stb.append(ProjectUtil.createIndentString(1, type.getJavaProject()));
         stb.append("return ");
         String value = attr.getValue();
-        if (StringUtil.isEmpty(value)) {
+        if (booleanAttribute) {
+            stb.append("true");
+        } else if (StringUtil.isEmpty(value)) {
             stb.append("null");
         } else {
             stb.append('"');
