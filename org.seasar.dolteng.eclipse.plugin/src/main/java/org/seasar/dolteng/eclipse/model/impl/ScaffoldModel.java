@@ -84,6 +84,9 @@ public class ScaffoldModel implements RootModel {
     // 検索条件に付与するためのORDER BY句における列名
     private String orderbyStringColumn;
     
+    // 検索条件に付与するためのORDER BY句におけるプロパティ名
+    private String orderbyStringProperty;
+    
     // 検索条件のArguments句
     private String conditionArguments;
     
@@ -164,17 +167,20 @@ public class ScaffoldModel implements RootModel {
         // 検索条件に付与するためのORDER BY句を作成します。
         orderbyString = "";
         orderbyStringColumn = "";
+        orderbyStringProperty = "";
         conditionArguments = "";
         conditionArgumentsTeisuAnnotation = "\"";
         for (int i = 0; i < selectedColumnsMappings.length; i++) {
             if (i > 0) {
                 orderbyString += "And";
                 orderbyStringColumn += ",";
+                orderbyStringProperty += ",";
                 conditionArguments += ",";
                 conditionArgumentsTeisuAnnotation += ",";
             }
             orderbyString += pascalize(selectedColumnsMappings[i].getSqlColumnName());
             orderbyStringColumn += selectedColumnsMappings[i].getSqlColumnName();
+            orderbyStringProperty += selectedColumnsMappings[i].getJavaFieldName();
             conditionArguments += "\"" + "arg" + pascalize(selectedColumnsMappings[i].getSqlColumnName()) + "\"";
             conditionArgumentsTeisuAnnotation += "arg" + pascalize(selectedColumnsMappings[i].getSqlColumnName());
         }
@@ -348,6 +354,22 @@ public class ScaffoldModel implements RootModel {
      */
     public void setOrderbyStringColumn(String orderbyStringColumn) {
         this.orderbyStringColumn = orderbyStringColumn;
+    }
+    
+    /**
+     * 検索条件に付与するためのORDER BY句におけるプロパティ名を取得します。
+     * @return
+     */
+    public String getOrderbyStringProperty() {
+        return orderbyStringProperty;
+    }
+    
+    /**
+     * 検索条件に付与するためのORDER BY句におけるプロパティ名を設定します。
+     * @param orderbyString
+     */
+    public void setOrderbyStringProperty(String orderbyStringProperty) {
+        this.orderbyStringProperty = orderbyStringProperty;
     }
     
     public String getConditionArguments() {

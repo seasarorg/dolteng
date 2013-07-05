@@ -58,7 +58,7 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
         ;
         
         ${configs.table}Items = jdbcManager.from(${configs.table_capitalize}.class).where(swh)
-                                  .orderBy("${orderbyStringColumn}")
+                                  .orderBy("${orderbyStringProperty}")
                                   .getResultList();
         count = ${configs.table}Items.size();
         ${configs.table}Form.count = count.toString();
@@ -69,7 +69,7 @@ public class ${configs.table_capitalize}${configs.actionsuffix} {
         ${configs.table}Form.currentPageIndex = String.valueOf(Integer.valueOf(${configs.table}Form.offset)/limit+1);
         
         ${configs.table}Items = jdbcManager.from(${configs.table_capitalize}.class).where(swh)
-                                  .orderBy("${orderbyStringColumn}")
+                                  .orderBy("${orderbyStringProperty}")
                                   .limit(limit).offset(Integer.valueOf(${configs.table}Form.offset))
                                   .getResultList();        
         
