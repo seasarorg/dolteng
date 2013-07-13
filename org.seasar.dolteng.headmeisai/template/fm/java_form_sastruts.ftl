@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.table_capitalize};
+import org.seasar.framework.beans.util.Beans;
 import ${configs.rootpackagename}.${configs.entitypackagename}.${configs.meisaitable_capitalize};
 
 public class ${configs.table_capitalize}Form {
@@ -59,17 +59,8 @@ public class ${configs.table_capitalize}Form {
 	
 	public void initializeMeisai(List<${configs.meisaitable_capitalize}> ${configs.meisaitable}List) {
 		for (int i = 0; i < ${configs.meisaitable}List.size(); i++) {
-			Map<String, Object> m = new HashMap<String, Object>();
-<#list meisaiColumnsMappings as mapping>
-<#if mapping.isDate() = true>
-			if (${configs.meisaitable}List.get(i).${mapping.javaFieldName} != null) {
-				m.put("${mapping.javaFieldName}", ${configs.meisaitable}List.get(i).${mapping.javaFieldName}.
-						toString().replace('-', '/'));
-			}
-<#else>
-			m.put("${mapping.javaFieldName}", ${configs.meisaitable}List.get(i).${mapping.javaFieldName});
-</#if>
-</#list>
+			@SuppressWarnings("unchecked")
+			Map<String, Object> m = Beans.createAndCopy(Map.class, ${configs.meisaitable}List.get(i)).dateConverter("yyyy-MM-dd").execute();
 			${configs.meisaitable}Items.add(m);
 		}
 	}
